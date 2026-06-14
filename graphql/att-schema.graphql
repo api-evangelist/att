@@ -1,0 +1,1188 @@
+"""
+AT&T Telecommunications and Network Services — Conceptual GraphQL Schema
+Developer Portal: https://developer.att.com/
+"""
+
+# ─── Scalars ────────────────────────────────────────────────────────────────
+
+scalar DateTime
+scalar Date
+scalar JSON
+scalar URL
+scalar PhoneNumberString
+scalar GeoCoordinate
+
+# ─── Enums ──────────────────────────────────────────────────────────────────
+
+enum AccountStatus {
+  ACTIVE
+  SUSPENDED
+  CLOSED
+  PENDING
+}
+
+enum SubscriberStatus {
+  ACTIVE
+  SUSPENDED
+  DEACTIVATED
+  PENDING_ACTIVATION
+}
+
+enum DeviceType {
+  SMARTPHONE
+  TABLET
+  WEARABLE
+  HOTSPOT
+  ROUTER
+  IOT_DEVICE
+  CONNECTED_CAR
+  LAPTOP
+}
+
+enum NetworkTechnology {
+  FIVE_G
+  LTE
+  HSPA
+  EDGE
+  CDMA
+}
+
+enum CallStatus {
+  COMPLETED
+  MISSED
+  VOICEMAIL
+  REJECTED
+  IN_PROGRESS
+}
+
+enum CallDirection {
+  INBOUND
+  OUTBOUND
+}
+
+enum MessageStatus {
+  SENT
+  DELIVERED
+  READ
+  FAILED
+  PENDING
+}
+
+enum PortStatus {
+  SUBMITTED
+  IN_PROGRESS
+  COMPLETED
+  REJECTED
+  CANCELLED
+}
+
+enum TicketStatus {
+  OPEN
+  IN_PROGRESS
+  PENDING_CUSTOMER
+  RESOLVED
+  CLOSED
+}
+
+enum TicketPriority {
+  LOW
+  MEDIUM
+  HIGH
+  CRITICAL
+}
+
+enum PaymentStatus {
+  PENDING
+  COMPLETED
+  FAILED
+  REFUNDED
+}
+
+enum RoamingStatus {
+  ENABLED
+  DISABLED
+  RESTRICTED
+}
+
+enum PlanType {
+  CONSUMER
+  BUSINESS
+  PREPAID
+  FIRSTNET
+  ENTERPRISE
+  IOT
+}
+
+enum TokenType {
+  ACCESS
+  REFRESH
+  OAUTH2
+}
+
+enum UpgradeEligibility {
+  ELIGIBLE
+  NOT_YET_ELIGIBLE
+  NEXT_UP
+  EARLY_UPGRADE
+}
+
+# ─── Account & Identity ─────────────────────────────────────────────────────
+
+"""A top-level AT&T billing and service account."""
+type Account {
+  id: ID!
+  accountNumber: String!
+  status: AccountStatus!
+  profile: AccountProfile
+  subscribers: [Subscriber!]
+  plan: ServicePlan
+  invoices: [Invoice!]
+  paymentMethods: [PaymentMethod!]
+  contract: Contract
+  apiKeys: [APIKey!]
+  createdAt: DateTime!
+  modifiedAt: DateTime!
+}
+
+"""Contact details, preferences, and identity for an account holder."""
+type AccountProfile {
+  id: ID!
+  account: Account!
+  firstName: String!
+  lastName: String!
+  email: String
+  phoneNumber: PhoneNumberString
+  address: String
+  city: String
+  state: String
+  zipCode: String
+  country: String
+  language: String
+  paperlessBilling: Boolean!
+  autoPayEnabled: Boolean!
+  createdAt: DateTime!
+  modifiedAt: DateTime!
+}
+
+"""An individual line or service user under an AT&T account."""
+type Subscriber {
+  id: ID!
+  account: Account!
+  status: SubscriberStatus!
+  phoneNumber: PhoneNumber
+  msisdn: MSISDN
+  device: Device
+  simCard: SIMCard
+  plan: ServicePlan
+  addOns: [AddOn!]
+  features: [Feature!]
+  dataUsage: DataUsage
+  dataBalance: DataBalance
+  roamingProfile: RoamingProfile
+  callRecords: [CallRecord!]
+  voicemail: [Voicemail!]
+  callForwarding: CallForwarding
+  callerId: CallerId
+  fiveG: FiveG
+  firstNet: FirstNet
+  createdAt: DateTime!
+  modifiedAt: DateTime!
+}
+
+"""An assigned AT&T phone number."""
+type PhoneNumber {
+  id: ID!
+  number: PhoneNumberString!
+  subscriber: Subscriber
+  type: String
+  portRequest: PortRequest
+  createdAt: DateTime!
+}
+
+"""Mobile Subscriber Integrated Services Digital Network number."""
+type MSISDN {
+  id: ID!
+  value: String!
+  subscriber: Subscriber!
+  countryCode: String!
+  nationalNumber: String!
+}
+
+"""International Mobile Equipment Identity — device hardware identifier."""
+type IMEI {
+  id: ID!
+  value: String!
+  device: Device!
+  tac: String
+  serialNumber: String
+  checkDigit: String
+  blacklisted: Boolean!
+}
+
+# ─── Device & SIM ───────────────────────────────────────────────────────────
+
+"""A physical handset or connected device on the AT&T network."""
+type Device {
+  id: ID!
+  type: DeviceType!
+  make: String!
+  model: String!
+  os: String
+  osVersion: String
+  imei: IMEI
+  simCard: SIMCard
+  subscriber: Subscriber
+  networkTechnology: NetworkTechnology
+  upgradeEligibility: UpgradeEligibility
+  instalmentPlan: EquipmentInstallment
+  createdAt: DateTime!
+  modifiedAt: DateTime!
+}
+
+"""A SIM card associated with a subscriber and device."""
+type SIMCard {
+  id: ID!
+  iccid: String!
+  imsi: String
+  subscriber: Subscriber
+  device: Device
+  status: String!
+  activatedAt: DateTime
+  createdAt: DateTime!
+}
+
+"""A connected IoT endpoint (sensor, tracker, asset tag)."""
+type IoTDevice {
+  id: ID!
+  name: String!
+  deviceType: String!
+  iotSim: IoTSIM
+  location: Location
+  status: String!
+  lastSeen: DateTime
+  metadata: JSON
+  createdAt: DateTime!
+  modifiedAt: DateTime!
+}
+
+"""A SIM provisioned for IoT or machine-to-machine use."""
+type IoTSIM {
+  id: ID!
+  iccid: String!
+  imsi: String
+  device: IoTDevice
+  plan: ServicePlan
+  status: String!
+  dataUsage: DataUsage
+  activatedAt: DateTime
+  createdAt: DateTime!
+}
+
+"""A SIM used in fleet or transportation management."""
+type FleetSIM {
+  id: ID!
+  iccid: String!
+  vehicleId: String
+  vehicleType: String
+  account: Account!
+  plan: ServicePlan
+  dataUsage: DataUsage
+  location: Location
+  status: String!
+  createdAt: DateTime!
+}
+
+"""Automotive connectivity profile with telematics."""
+type ConnectedCar {
+  id: ID!
+  vin: String!
+  make: String
+  model: String
+  year: Int
+  simCard: SIMCard
+  subscriber: Subscriber
+  location: Location
+  telematics: JSON
+  status: String!
+  createdAt: DateTime!
+  modifiedAt: DateTime!
+}
+
+# ─── Plans & Features ───────────────────────────────────────────────────────
+
+"""A base service plan for a subscriber."""
+type Plan {
+  id: ID!
+  name: String!
+  type: PlanType!
+  description: String
+  monthlyRate: Float!
+  currency: String!
+  dataAllowanceGB: Float
+  voiceMinutes: Int
+  smsCount: Int
+  mmsCount: Int
+  hotspotGB: Float
+  international: Boolean!
+  createdAt: DateTime!
+  modifiedAt: DateTime!
+}
+
+"""A configured plan combining voice, data, and messaging tiers."""
+type ServicePlan {
+  id: ID!
+  plan: Plan!
+  subscriber: Subscriber
+  dataPlan: DataPlan
+  voicePlan: VoicePlan
+  messagePlan: MessagePlan
+  addOns: [AddOn!]
+  features: [Feature!]
+  effectiveDate: Date!
+  expiryDate: Date
+  autoRenew: Boolean!
+  createdAt: DateTime!
+}
+
+"""The data allocation component of a plan."""
+type DataPlan {
+  id: ID!
+  servicePlan: ServicePlan!
+  totalGB: Float!
+  hotspotGB: Float
+  streamingQuality: String
+  throttleSpeedKbps: Int
+  rollover: Boolean!
+  createdAt: DateTime!
+}
+
+"""Voice minutes and calling allowances."""
+type VoicePlan {
+  id: ID!
+  servicePlan: ServicePlan!
+  minutesIncluded: Int
+  unlimitedDomestic: Boolean!
+  internationalMinutes: Int
+  wifiCalling: Boolean!
+  hdVoice: Boolean!
+  createdAt: DateTime!
+}
+
+"""SMS/MMS messaging allocations."""
+type MessagePlan {
+  id: ID!
+  servicePlan: ServicePlan!
+  smsIncluded: Int
+  mmsIncluded: Int
+  unlimitedSMS: Boolean!
+  internationalSMS: Boolean!
+  createdAt: DateTime!
+}
+
+"""An optional service addition to a base plan."""
+type AddOn {
+  id: ID!
+  name: String!
+  description: String
+  category: String
+  monthlyRate: Float!
+  currency: String!
+  oneTime: Boolean!
+  active: Boolean!
+  createdAt: DateTime!
+}
+
+"""A specific capability enabled on an account or line."""
+type Feature {
+  id: ID!
+  name: String!
+  code: String
+  description: String
+  enabled: Boolean!
+  category: String
+  createdAt: DateTime!
+}
+
+"""A group or corporate service plan with shared resource pools."""
+type EnterprisePlan {
+  id: ID!
+  account: Account!
+  name: String!
+  type: PlanType!
+  sharedDataPoolGB: Float
+  subscriberCount: Int!
+  maxSubscribers: Int
+  dedicatedSupport: Boolean!
+  sla: String
+  contractId: String
+  createdAt: DateTime!
+  modifiedAt: DateTime!
+}
+
+# ─── Voice Services ─────────────────────────────────────────────────────────
+
+"""A live or completed voice call event."""
+type VoiceCall {
+  id: ID!
+  subscriber: Subscriber!
+  direction: CallDirection!
+  status: CallStatus!
+  fromNumber: PhoneNumberString!
+  toNumber: PhoneNumberString!
+  startedAt: DateTime
+  endedAt: DateTime
+  durationSeconds: Int
+  networkTechnology: NetworkTechnology
+  location: Location
+  callDetail: CallDetail
+  createdAt: DateTime!
+}
+
+"""A stored summary of a completed call."""
+type CallRecord {
+  id: ID!
+  subscriber: Subscriber!
+  call: VoiceCall
+  direction: CallDirection!
+  fromNumber: PhoneNumberString!
+  toNumber: PhoneNumberString!
+  durationSeconds: Int!
+  charge: Float
+  currency: String
+  date: DateTime!
+  roaming: Boolean!
+}
+
+"""Itemized call data including duration, cost, and parties."""
+type CallDetail {
+  id: ID!
+  call: VoiceCall!
+  billedMinutes: Int!
+  ratePerMinute: Float
+  totalCharge: Float!
+  currency: String!
+  taxAmount: Float
+  roamingZone: RoamingZone
+  notes: String
+}
+
+"""A voicemail message left for a subscriber."""
+type Voicemail {
+  id: ID!
+  subscriber: Subscriber!
+  fromNumber: PhoneNumberString!
+  durationSeconds: Int!
+  transcription: String
+  listened: Boolean!
+  saved: Boolean!
+  receivedAt: DateTime!
+}
+
+"""The recorded greeting for a subscriber's voicemail mailbox."""
+type VoicemailGreeting {
+  id: ID!
+  subscriber: Subscriber!
+  type: String!
+  audioUrl: URL
+  durationSeconds: Int
+  active: Boolean!
+  createdAt: DateTime!
+}
+
+"""Rules for redirecting incoming calls."""
+type CallForwarding {
+  id: ID!
+  subscriber: Subscriber!
+  enabled: Boolean!
+  forwardToNumber: PhoneNumberString
+  forwardOnBusy: Boolean!
+  forwardOnNoAnswer: Boolean!
+  forwardAlways: Boolean!
+  ringsBeforeForward: Int
+  updatedAt: DateTime!
+}
+
+"""Caller identification settings and data."""
+type CallerId {
+  id: ID!
+  subscriber: Subscriber!
+  displayName: String
+  displayNumber: PhoneNumberString
+  blockOutbound: Boolean!
+  showOnIncoming: Boolean!
+  updatedAt: DateTime!
+}
+
+"""A multi-party audio conference session configuration."""
+type Conference {
+  id: ID!
+  account: Account!
+  name: String!
+  accessCode: String!
+  moderatorCode: String
+  maxParticipants: Int!
+  recordingEnabled: Boolean!
+  scheduledAt: DateTime
+  createdAt: DateTime!
+}
+
+"""A specific conference call instance."""
+type ConferenceCall {
+  id: ID!
+  conference: Conference!
+  startedAt: DateTime!
+  endedAt: DateTime
+  durationSeconds: Int
+  participants: [Participant!]
+  recorded: Boolean!
+  recordingUrl: URL
+  createdAt: DateTime!
+}
+
+"""An individual party in a conference call."""
+type Participant {
+  id: ID!
+  conferenceCall: ConferenceCall!
+  phoneNumber: PhoneNumberString!
+  name: String
+  joinedAt: DateTime!
+  leftAt: DateTime
+  durationSeconds: Int
+  muted: Boolean!
+  moderator: Boolean!
+}
+
+# ─── Messaging Services ──────────────────────────────────────────────────────
+
+"""A short message service text."""
+type SMS {
+  id: ID!
+  subscriber: Subscriber!
+  direction: CallDirection!
+  fromNumber: PhoneNumberString!
+  toNumber: PhoneNumberString!
+  body: String!
+  status: MessageStatus!
+  thread: MessageThread
+  sentAt: DateTime!
+  deliveredAt: DateTime
+  charge: Float
+}
+
+"""A multimedia message with attachments."""
+type MMSMessage {
+  id: ID!
+  subscriber: Subscriber!
+  direction: CallDirection!
+  fromNumber: PhoneNumberString!
+  toNumber: [PhoneNumberString!]!
+  subject: String
+  body: String
+  attachments: [MessageAttachment!]
+  status: MessageStatus!
+  thread: MessageThread
+  sentAt: DateTime!
+  deliveredAt: DateTime
+  charge: Float
+}
+
+"""A conversation thread grouping messages between parties."""
+type MessageThread {
+  id: ID!
+  subscriber: Subscriber!
+  participants: [PhoneNumberString!]!
+  messages: [SMS!]
+  mmsMessages: [MMSMessage!]
+  lastMessageAt: DateTime
+  messageCount: Int!
+  createdAt: DateTime!
+}
+
+"""A media file or document attached to an MMS."""
+type MessageAttachment {
+  id: ID!
+  mmsMessage: MMSMessage!
+  fileName: String
+  mimeType: String!
+  sizeBytes: Int
+  url: URL
+  createdAt: DateTime!
+}
+
+# ─── Data & Roaming ──────────────────────────────────────────────────────────
+
+"""An active or historical mobile data session."""
+type DataSession {
+  id: ID!
+  subscriber: Subscriber!
+  startedAt: DateTime!
+  endedAt: DateTime
+  durationSeconds: Int
+  dataConsumedMB: Float!
+  networkTechnology: NetworkTechnology
+  apn: String
+  ipAddress: String
+  location: Location
+  roaming: Boolean!
+  roamingZone: RoamingZone
+}
+
+"""Consumed data metrics for a billing period or session."""
+type DataUsage {
+  id: ID!
+  subscriber: Subscriber
+  periodStart: Date!
+  periodEnd: Date!
+  totalConsumedGB: Float!
+  hotspotConsumedGB: Float
+  roamingConsumedGB: Float
+  streamingConsumedGB: Float
+  updatedAt: DateTime!
+}
+
+"""Remaining data allowance on a plan."""
+type DataBalance {
+  id: ID!
+  subscriber: Subscriber!
+  totalGB: Float!
+  usedGB: Float!
+  remainingGB: Float!
+  hotspotRemainingGB: Float
+  roamingRemainingGB: Float
+  resetDate: Date!
+  updatedAt: DateTime!
+}
+
+"""Roaming configuration for international use."""
+type RoamingProfile {
+  id: ID!
+  subscriber: Subscriber!
+  status: RoamingStatus!
+  dataRoaming: Boolean!
+  voiceRoaming: Boolean!
+  smsRoaming: Boolean!
+  zones: [RoamingZone!]
+  updatedAt: DateTime!
+}
+
+"""A geographic zone with specific roaming rates."""
+type RoamingZone {
+  id: ID!
+  name: String!
+  countries: [String!]!
+  dataRateMBPerUSD: Float
+  voiceRatePerMinute: Float
+  smsRatePerMessage: Float
+  includedInPlan: Boolean!
+}
+
+"""An international data add-on or usage record."""
+type InternationalData {
+  id: ID!
+  subscriber: Subscriber!
+  zone: RoamingZone!
+  addOnGB: Float
+  usedMB: Float!
+  startDate: Date!
+  endDate: Date
+  charge: Float
+  currency: String
+}
+
+"""A call made to or from an international number."""
+type InternationalCall {
+  id: ID!
+  subscriber: Subscriber!
+  direction: CallDirection!
+  fromNumber: PhoneNumberString!
+  toNumber: PhoneNumberString!
+  destinationCountry: String!
+  durationSeconds: Int!
+  ratePerMinute: Float!
+  totalCharge: Float!
+  currency: String!
+  date: DateTime!
+}
+
+# ─── Network Infrastructure ──────────────────────────────────────────────────
+
+"""A logical AT&T network service instance."""
+type NetworkService {
+  id: ID!
+  name: String!
+  type: String!
+  technology: NetworkTechnology!
+  region: String
+  status: String!
+  uptime: Float
+  createdAt: DateTime!
+  modifiedAt: DateTime!
+}
+
+"""A 5G network slice with dedicated QoS parameters."""
+type NetworkSlice {
+  id: ID!
+  name: String!
+  sliceType: String!
+  maxBandwidthMbps: Int
+  latencyMs: Int
+  reliability: Float
+  region: String!
+  status: String!
+  subscribers: [Subscriber!]
+  createdAt: DateTime!
+}
+
+"""5G service availability and capability for a subscriber."""
+type FiveG {
+  id: ID!
+  subscriber: Subscriber!
+  enabled: Boolean!
+  standalone: Boolean!
+  mmWave: Boolean!
+  subSix: Boolean!
+  ultraWideband: Boolean!
+  firstNet: Boolean!
+  activatedAt: DateTime
+}
+
+"""LTE connectivity profile and signal data."""
+type LTE {
+  id: ID!
+  subscriber: Subscriber
+  band: Band
+  signalStrengthDbm: Int
+  rsrp: Int
+  rsrq: Int
+  sinr: Float
+  downloadMbps: Float
+  uploadMbps: Float
+  recordedAt: DateTime!
+}
+
+"""A radio frequency band in use or available on the AT&T network."""
+type Band {
+  id: ID!
+  number: Int!
+  name: String!
+  frequencyMHz: Int!
+  technology: NetworkTechnology!
+  bandwidth: Int
+  notes: String
+}
+
+"""A cell tower with location and coverage data."""
+type Tower {
+  id: ID!
+  towerId: String!
+  location: Location!
+  height: Float
+  technologies: [NetworkTechnology!]!
+  bands: [Band!]
+  coverageRadius: Float
+  status: String!
+  lastInspectedAt: Date
+}
+
+"""A geographic region with defined network coverage."""
+type CoverageArea {
+  id: ID!
+  name: String!
+  type: String!
+  technology: NetworkTechnology!
+  polygon: JSON
+  qualityScore: Float
+  avgDownloadMbps: Float
+  avgUploadMbps: Float
+  updatedAt: DateTime!
+}
+
+"""A logged network incident, outage, or status change."""
+type NetworkEvent {
+  id: ID!
+  type: String!
+  severity: String!
+  technology: NetworkTechnology
+  region: String
+  affectedTowers: [Tower!]
+  description: String!
+  startedAt: DateTime!
+  resolvedAt: DateTime
+  impactedSubscribers: Int
+  createdAt: DateTime!
+}
+
+# ─── Location ────────────────────────────────────────────────────────────────
+
+"""A geographic location point with coordinates."""
+type Location {
+  id: ID!
+  latitude: GeoCoordinate!
+  longitude: GeoCoordinate!
+  accuracy: Float
+  altitude: Float
+  address: String
+  city: String
+  state: String
+  country: String
+  recordedAt: DateTime
+}
+
+"""A defined geographic boundary for alerts or tracking."""
+type Geofence {
+  id: ID!
+  name: String!
+  account: Account!
+  polygon: JSON!
+  radiusMeters: Float
+  alertOnEntry: Boolean!
+  alertOnExit: Boolean!
+  active: Boolean!
+  createdAt: DateTime!
+  modifiedAt: DateTime!
+}
+
+# ─── Number Portability ──────────────────────────────────────────────────────
+
+"""A number porting transaction."""
+type NumberPorting {
+  id: ID!
+  account: Account!
+  portRequests: [PortRequest!]
+  createdAt: DateTime!
+}
+
+"""A submitted request to port a phone number in or out of AT&T."""
+type PortRequest {
+  id: ID!
+  phoneNumber: PhoneNumber!
+  portingDirection: String!
+  donorCarrier: String
+  recipientCarrier: String
+  status: PortStatus!
+  requestedPortDate: Date
+  completedAt: DateTime
+  rejectionReason: String
+  submittedAt: DateTime!
+}
+
+# ─── Billing & Payments ──────────────────────────────────────────────────────
+
+"""A billing statement for an AT&T account period."""
+type Invoice {
+  id: ID!
+  account: Account!
+  billingPeriod: BillingPeriod!
+  charges: [Charge!]
+  subtotal: Float!
+  taxes: Float!
+  fees: Float!
+  totalDue: Float!
+  currency: String!
+  dueDate: Date!
+  paid: Boolean!
+  payments: [Payment!]
+  createdAt: DateTime!
+}
+
+"""The date range covered by a billing cycle."""
+type BillingPeriod {
+  id: ID!
+  account: Account!
+  startDate: Date!
+  endDate: Date!
+  invoices: [Invoice!]
+}
+
+"""An individual charge item on an AT&T invoice."""
+type Charge {
+  id: ID!
+  invoice: Invoice!
+  description: String!
+  category: String!
+  amount: Float!
+  currency: String!
+  taxable: Boolean!
+  subscriber: Subscriber
+  date: Date!
+}
+
+"""A payment transaction applied to an AT&T account."""
+type Payment {
+  id: ID!
+  account: Account!
+  invoice: Invoice
+  amount: Float!
+  currency: String!
+  method: PaymentMethod
+  status: PaymentStatus!
+  confirmationNumber: String
+  processedAt: DateTime
+  createdAt: DateTime!
+}
+
+"""A stored payment instrument for an account."""
+type PaymentMethod {
+  id: ID!
+  account: Account!
+  type: String!
+  last4: String
+  brand: String
+  bankName: String
+  expiryDate: String
+  isDefault: Boolean!
+  autopayEnabled: Boolean!
+  createdAt: DateTime!
+}
+
+"""A service agreement with terms and commitment period."""
+type Contract {
+  id: ID!
+  account: Account!
+  type: String!
+  startDate: Date!
+  endDate: Date
+  termMonths: Int
+  earlyTerminationFee: Float
+  autoRenew: Boolean!
+  status: String!
+  signedAt: DateTime
+  createdAt: DateTime!
+}
+
+"""An installment plan for device financing."""
+type EquipmentInstallment {
+  id: ID!
+  account: Account!
+  device: Device!
+  retailPrice: Float!
+  downPayment: Float!
+  monthlyInstallment: Float!
+  remainingBalance: Float!
+  currency: String!
+  termMonths: Int!
+  paidMonths: Int!
+  nextDueDate: Date
+  createdAt: DateTime!
+}
+
+# ─── Device Programs ─────────────────────────────────────────────────────────
+
+"""An upgrade eligibility and transaction record."""
+type DeviceUpgrade {
+  id: ID!
+  subscriber: Subscriber!
+  currentDevice: Device!
+  eligibility: UpgradeEligibility!
+  eligibleDate: Date
+  upgradeCredit: Float
+  currency: String!
+  nextUpEligible: Boolean!
+  tradeIn: TradeIn
+  createdAt: DateTime!
+}
+
+"""A device trade-in assessment and credit."""
+type TradeIn {
+  id: ID!
+  account: Account!
+  deviceMake: String!
+  deviceModel: String!
+  deviceCondition: String!
+  estimatedValue: Float!
+  finalValue: Float
+  currency: String!
+  status: String!
+  submittedAt: DateTime!
+  completedAt: DateTime
+}
+
+# ─── Customer Support ────────────────────────────────────────────────────────
+
+"""A customer service interaction record."""
+type CustomerService {
+  id: ID!
+  account: Account!
+  agentId: String
+  channel: String!
+  topic: String!
+  summary: String
+  tickets: [SupportTicket!]
+  startedAt: DateTime!
+  endedAt: DateTime
+  satisfactionScore: Int
+}
+
+"""A logged support case or trouble ticket."""
+type SupportTicket {
+  id: ID!
+  account: Account!
+  subscriber: Subscriber
+  status: TicketStatus!
+  priority: TicketPriority!
+  category: String!
+  subject: String!
+  description: String!
+  resolution: String
+  assignedTo: String
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  resolvedAt: DateTime
+}
+
+# ─── FirstNet ────────────────────────────────────────────────────────────────
+
+"""FirstNet public safety broadband account or service."""
+type FirstNet {
+  id: ID!
+  subscriber: Subscriber!
+  agencyName: String!
+  agencyType: String!
+  eligibilityVerified: Boolean!
+  priorityAccess: Boolean!
+  preemption: Boolean!
+  bandX: Boolean!
+  activatedAt: DateTime
+  createdAt: DateTime!
+}
+
+# ─── Security & Access ────────────────────────────────────────────────────────
+
+"""An API credential key for developer access."""
+type APIKey {
+  id: ID!
+  account: Account!
+  name: String!
+  keyPrefix: String!
+  scopes: [String!]!
+  active: Boolean!
+  expiresAt: DateTime
+  lastUsedAt: DateTime
+  createdAt: DateTime!
+}
+
+"""An OAuth or session token for authenticated API calls."""
+type Token {
+  id: ID!
+  type: TokenType!
+  account: Account!
+  scopes: [String!]!
+  expiresAt: DateTime!
+  issuedAt: DateTime!
+  revoked: Boolean!
+}
+
+# ─── Queries ─────────────────────────────────────────────────────────────────
+
+type Query {
+  account(id: ID!): Account
+  accounts(status: AccountStatus, limit: Int, offset: Int): [Account!]!
+
+  subscriber(id: ID!): Subscriber
+  subscribers(accountId: ID!, status: SubscriberStatus, limit: Int, offset: Int): [Subscriber!]!
+
+  phoneNumber(number: PhoneNumberString!): PhoneNumber
+  device(id: ID!): Device
+  simCard(iccid: String!): SIMCard
+  iotDevice(id: ID!): IoTDevice
+  iotDevices(accountId: ID!, limit: Int, offset: Int): [IoTDevice!]!
+  connectedCar(vin: String!): ConnectedCar
+  fleetSIMs(accountId: ID!, limit: Int, offset: Int): [FleetSIM!]!
+
+  plan(id: ID!): Plan
+  plans(type: PlanType, limit: Int, offset: Int): [Plan!]!
+  servicePlan(id: ID!): ServicePlan
+  addOns(planType: PlanType): [AddOn!]!
+
+  callRecord(id: ID!): CallRecord
+  callRecords(subscriberId: ID!, startDate: Date, endDate: Date, limit: Int, offset: Int): [CallRecord!]!
+  voicemails(subscriberId: ID!, listened: Boolean, limit: Int, offset: Int): [Voicemail!]!
+  conferences(accountId: ID!, limit: Int, offset: Int): [Conference!]!
+
+  smsMessages(subscriberId: ID!, startDate: Date, endDate: Date, limit: Int, offset: Int): [SMS!]!
+  mmsMessages(subscriberId: ID!, limit: Int, offset: Int): [MMSMessage!]!
+  messageThread(id: ID!): MessageThread
+  messageThreads(subscriberId: ID!, limit: Int, offset: Int): [MessageThread!]!
+
+  dataUsage(subscriberId: ID!, periodStart: Date, periodEnd: Date): DataUsage
+  dataBalance(subscriberId: ID!): DataBalance
+  dataSessions(subscriberId: ID!, startDate: Date, endDate: Date, limit: Int, offset: Int): [DataSession!]!
+  roamingProfile(subscriberId: ID!): RoamingProfile
+  roamingZones: [RoamingZone!]!
+
+  coverageArea(lat: GeoCoordinate!, lon: GeoCoordinate!, technology: NetworkTechnology): CoverageArea
+  tower(id: ID!): Tower
+  towers(region: String, technology: NetworkTechnology, limit: Int, offset: Int): [Tower!]!
+  networkEvents(region: String, severity: String, limit: Int, offset: Int): [NetworkEvent!]!
+  networkSlice(id: ID!): NetworkSlice
+
+  invoice(id: ID!): Invoice
+  invoices(accountId: ID!, limit: Int, offset: Int): [Invoice!]!
+  billingPeriod(id: ID!): BillingPeriod
+  payments(accountId: ID!, limit: Int, offset: Int): [Payment!]!
+
+  deviceUpgrade(subscriberId: ID!): DeviceUpgrade
+  tradeIn(id: ID!): TradeIn
+  portRequest(id: ID!): PortRequest
+
+  supportTicket(id: ID!): SupportTicket
+  supportTickets(accountId: ID!, status: TicketStatus, priority: TicketPriority, limit: Int, offset: Int): [SupportTicket!]!
+}
+
+# ─── Mutations ───────────────────────────────────────────────────────────────
+
+type Mutation {
+  activateSubscriber(subscriberId: ID!, planId: ID!): Subscriber
+  suspendSubscriber(subscriberId: ID!, reason: String): Subscriber
+  updateServicePlan(subscriberId: ID!, planId: ID!): ServicePlan
+  addAddOn(subscriberId: ID!, addOnId: ID!): AddOn
+  removeAddOn(subscriberId: ID!, addOnId: ID!): Boolean
+
+  updateCallForwarding(subscriberId: ID!, enabled: Boolean!, forwardToNumber: PhoneNumberString): CallForwarding
+  updateCallerId(subscriberId: ID!, displayName: String, blockOutbound: Boolean): CallerId
+  deleteVoicemail(voicemailId: ID!): Boolean
+  markVoicemailListened(voicemailId: ID!): Voicemail
+  setVoicemailGreeting(subscriberId: ID!, type: String!, audioUrl: URL): VoicemailGreeting
+
+  sendSMS(subscriberId: ID!, toNumber: PhoneNumberString!, body: String!): SMS
+  sendMMS(subscriberId: ID!, toNumbers: [PhoneNumberString!]!, subject: String, body: String, attachmentUrls: [URL!]): MMSMessage
+
+  enableRoaming(subscriberId: ID!, zones: [ID!]): RoamingProfile
+  disableRoaming(subscriberId: ID!): RoamingProfile
+
+  createConference(accountId: ID!, name: String!, maxParticipants: Int!, scheduledAt: DateTime): Conference
+  addParticipant(conferenceCallId: ID!, phoneNumber: PhoneNumberString!, moderator: Boolean): Participant
+  endConferenceCall(conferenceCallId: ID!): ConferenceCall
+
+  submitPortRequest(phoneNumber: PhoneNumberString!, donorCarrier: String!, requestedPortDate: Date): PortRequest
+  cancelPortRequest(portRequestId: ID!): PortRequest
+
+  createPayment(accountId: ID!, invoiceId: ID!, amount: Float!, paymentMethodId: ID!): Payment
+  addPaymentMethod(accountId: ID!, type: String!, token: String!, setDefault: Boolean): PaymentMethod
+  removePaymentMethod(paymentMethodId: ID!): Boolean
+
+  submitTradeIn(accountId: ID!, deviceMake: String!, deviceModel: String!, condition: String!): TradeIn
+  initiateDeviceUpgrade(subscriberId: ID!, newDeviceId: ID!, tradeInId: ID): DeviceUpgrade
+
+  createSupportTicket(accountId: ID!, subscriberId: ID, category: String!, subject: String!, description: String!, priority: TicketPriority): SupportTicket
+  updateSupportTicket(ticketId: ID!, status: TicketStatus, resolution: String): SupportTicket
+
+  createGeofence(accountId: ID!, name: String!, polygon: JSON!, alertOnEntry: Boolean!, alertOnExit: Boolean!): Geofence
+  deleteGeofence(geofenceId: ID!): Boolean
+
+  createAPIKey(accountId: ID!, name: String!, scopes: [String!]!, expiresAt: DateTime): APIKey
+  revokeAPIKey(apiKeyId: ID!): Boolean
+  revokeToken(tokenId: ID!): Boolean
+}
+
+# ─── Subscriptions ────────────────────────────────────────────────────────────
+
+type Subscription {
+  networkEventCreated(region: String, technology: NetworkTechnology): NetworkEvent
+  incomingCall(subscriberId: ID!): VoiceCall
+  incomingSMS(subscriberId: ID!): SMS
+  dataBalanceLow(subscriberId: ID!, thresholdGB: Float!): DataBalance
+  supportTicketUpdated(accountId: ID!): SupportTicket
+  geofenceAlert(geofenceId: ID!): Location
+  iotDeviceAlert(accountId: ID!): IoTDevice
+}
