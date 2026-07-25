@@ -1,0 +1,114 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: AT&T
+providerId: att
+created: '2026-05-04'
+modified: '2026-07-25'
+reconciled: false
+tags:
+- 5G
+- CAMARA
+- FOCUS
+- FinOps
+- Network APIs
+- Telecommunications
+description: FOCUS-aligned FinOps shape for AT&T's API portfolio — wireless messaging, MVNO operations, enterprise
+  wireline connectivity, and the CAMARA network APIs. AT&T publishes no public API pricing; consumers should instrument
+  client-side.
+notes: Pre-GA / invite-only; commercials TBD. Meters below describe the expected billable axes for CAMARA-style
+  network APIs so consumers can build instrumentation before contract.
+sources:
+- https://camaraproject.org/
+- https://developer.att.com/
+- https://focus.finops.org/focus-specification/v1-3/
+- https://www.att.com/business/
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: AT&T Services, Inc.
+serviceCategory: Telecommunications
+billingModel:
+  pricingCategory: Pay-As-You-Go (anticipated)
+  billingFrequency: Monthly (anticipated)
+  billingCurrency: USD
+  chargeCategories:
+  - Usage
+  - Tax
+  - Adjustment
+focusColumns:
+  ServiceName: AT&T
+  ServiceCategory: Telecommunications
+  ServiceSubcategory: Network APIs (CAMARA)
+  ProviderName: AT&T
+  PublisherName: AT&T Services, Inc.
+  InvoiceIssuerName: AT&T Services, Inc.
+  BillingCurrency: USD
+  PricingCategory: Pay-As-You-Go
+meters:
+- name: transactions
+  unit: transaction
+  aggregation: sum
+  dimensions:
+  - product
+- name: api_calls
+  unit: call
+  aggregation: sum
+- name: annual_contract
+  unit: year
+  aggregation: max
+- name: api_calls
+  description: Count of CAMARA API requests (Device Status, SIM Swap, Number Verification, etc.)
+  unit: request
+  aggregation: sum
+  dimensions:
+  - api
+  - country
+  - partner
+- name: verifications
+  description: Successful network verifications (SIM swap, number verify) — likely a billable success-only line
+  unit: verification
+  aggregation: sum
+  dimensions:
+  - api
+  - outcome
+- name: qod_sessions
+  description: Quality-on-Demand session count and duration
+  unit: session
+  aggregation: sum
+  dimensions:
+  - profile
+- name: qod_session_duration
+  description: Quality-on-Demand active duration
+  unit: minute
+  aggregation: sum
+  dimensions:
+  - profile
+principles:
+- name: Visibility
+  description: Track AT&T consumption monthly.
+- name: Allocation
+  description: Tag usage to teams/cost centers for chargeback.
+- name: Optimization
+  description: Right-size; reclaim unused entitlements.
+- name: Accountability
+  description: Set spend alerts; quarterly review.
+- name: Visibility
+  description: Once GA, expect AT&T to expose a developer console with usage dashboards; pre-GA, maintain client-side
+    counters per CAMARA API and per outcome.
+- name: Allocation
+  description: Tag every CAMARA call with consuming product / fraud-prevention surface in your own app telemetry
+    to support showback before AT&T's invoice arrives.
+- name: Optimization
+  description: For SIM-swap and number-verify, batch user enrollment events; for QoD, tear down sessions promptly.
+    Avoid speculative pre-flight calls during low-risk transactions.
+- name: Accountability
+  description: Fraud / risk and identity engineering teams typically own CAMARA spend; pair with finance on per-verification
+    ROI vs fraud loss avoided.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
+  url: https://apievangelist.com

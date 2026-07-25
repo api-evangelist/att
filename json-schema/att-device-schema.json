@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Device",
+  "title": "Device",
+  "type": "object",
+  "description": "Device identifier for connectivity status queries",
+  "properties": {
+    "phoneNumber": {
+      "type": "string",
+      "description": "Mobile phone number in E.164 format",
+      "example": "+12125551234"
+    },
+    "ipv4Address": {
+      "type": "object",
+      "description": "Device IPv4 address (alternative to phoneNumber)",
+      "properties": {
+        "publicAddress": {
+          "type": "string",
+          "description": "Public IPv4 address",
+          "example": "203.0.113.42"
+        },
+        "privateAddress": {
+          "type": "string",
+          "description": "Private IPv4 address",
+          "example": "10.0.0.5"
+        },
+        "publicPort": {
+          "type": "integer",
+          "description": "Public port if behind NAT",
+          "example": 54321
+        }
+      }
+    },
+    "networkAccessIdentifier": {
+      "type": "string",
+      "description": "Network access identifier (alternative to phoneNumber)",
+      "example": "user@example.com"
+    }
+  }
+}

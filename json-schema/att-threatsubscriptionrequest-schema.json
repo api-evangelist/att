@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ThreatSubscriptionRequest",
+  "title": "ThreatSubscriptionRequest",
+  "type": "object",
+  "required": [
+    "device",
+    "notificationUrl"
+  ],
+  "properties": {
+    "device": {
+      "$ref": "#/components/schemas/Device"
+    },
+    "notificationUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "Webhook URL for threat alert notifications",
+      "example": "https://webhook.example.com/threats"
+    },
+    "minRiskLevel": {
+      "type": "string",
+      "description": "Minimum risk level to trigger notifications",
+      "enum": [
+        "LOW",
+        "MEDIUM",
+        "HIGH",
+        "CRITICAL"
+      ],
+      "example": "MEDIUM"
+    },
+    "notificationAuthToken": {
+      "type": "string",
+      "description": "Bearer token for webhook authentication",
+      "example": "webhook-token-abc123"
+    }
+  }
+}

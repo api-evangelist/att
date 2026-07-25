@@ -1,0 +1,7 @@
+{
+  "phoneNumber": "+12125551234",
+  "ipv4Address": {
+    "publicAddress": "203.0.113.42",
+    "privateAddress": "10.0.0.5"
+  }
+}

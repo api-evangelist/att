@@ -1,0 +1,11 @@
+{
+  "repo": "att",
+  "feeds": [
+    {
+      "source": "https://www.att.com/gen/privacy-policy?pid=2506",
+      "error": "HTTPError"
+    }
+  ],
+  "fetched": "2026-07-25T15:00:33Z",
+  "post_count": 5
+}

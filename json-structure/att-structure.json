@@ -1,0 +1,75 @@
+{
+  "provider": "AT&T Developer Hub",
+  "providerId": "att",
+  "kind": "json-structure",
+  "description": "Structural overview of the AT&T Developer Hub API surface; extracted from openapi/.",
+  "schemaCount": 4,
+  "operationCount": 4,
+  "schemas": [
+    {
+      "name": "Device",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "CreateSessionRequest",
+      "type": "object",
+      "propertyCount": 5,
+      "required": [
+        "device",
+        "qosProfile"
+      ]
+    },
+    {
+      "name": "SessionInfo",
+      "type": "object",
+      "propertyCount": 7,
+      "required": []
+    },
+    {
+      "name": "ErrorInfo",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    }
+  ],
+  "operations": [
+    {
+      "method": "GET",
+      "path": "/sessions",
+      "operationId": "listQodSessions",
+      "summary": "AT&T List QoD Sessions",
+      "tags": [
+        "QoD Sessions"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/sessions",
+      "operationId": "createQodSession",
+      "summary": "AT&T Create QoD Session",
+      "tags": [
+        "QoD Sessions"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/sessions/{sessionId}",
+      "operationId": "getQodSession",
+      "summary": "AT&T Get QoD Session",
+      "tags": [
+        "QoD Sessions"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/sessions/{sessionId}",
+      "operationId": "deleteQodSession",
+      "summary": "AT&T Delete QoD Session",
+      "tags": [
+        "QoD Sessions"
+      ]
+    }
+  ]
+}

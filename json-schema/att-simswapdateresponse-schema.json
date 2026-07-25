@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SimSwapDateResponse",
+  "title": "SimSwapDateResponse",
+  "type": "object",
+  "properties": {
+    "latestSimChange": {
+      "type": "string",
+      "format": "date-time",
+      "nullable": true,
+      "description": "Date and time of the most recent SIM swap, or null if no swap has been detected recently.",
+      "example": null
+    }
+  }
+}

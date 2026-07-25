@@ -1,0 +1,33 @@
+# AT&T — JSON Schema Spectral ruleset (merged)
+# Merged 2026-07-25 across the at-and-t, atandt and at-t-developer-hub rulesets.
+# Dropped (the three sources disagreed, measured per-repo): property-name-casing.
+# Re-run the ruleset strengthener against the merged schema corpus to re-measure.
+rules:
+  schema-declares-$schema:
+    description: Every JSON Schema document should declare its $schema (draft).
+    severity: warn
+    given: $
+    then:
+      field: $schema
+      function: truthy
+  schema-draft-consistency:
+    description: $schema should reference the 2020-12 draft (this API's convention).
+    severity: warn
+    given: $.$schema
+    then:
+      function: pattern
+      functionOptions:
+        match: 2020\-12
+  schema-has-title:
+    description: JSON Schema documents should declare a title.
+    severity: info
+    given: $
+    then:
+      field: title
+      function: truthy
+  no-empty-descriptions:
+    description: Descriptions must not be empty strings.
+    severity: warn
+    given: $..description
+    then:
+      function: truthy

@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/att/refs/heads/main/json-schema/sim-swap-api-sim-swap-check-response-schema.json",
+  "title": "SimSwapCheckResponse",
+  "description": "SimSwapCheckResponse schema",
+  "type": "object",
+  "properties": {
+    "swapped": {
+      "type": "boolean",
+      "description": "True if a SIM swap was detected within the maxAge period, false otherwise.",
+      "example": false
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ThreatAssessment",
+  "title": "ThreatAssessment",
+  "type": "object",
+  "properties": {
+    "riskLevel": {
+      "type": "string",
+      "description": "Overall risk level for the device",
+      "enum": [
+        "LOW",
+        "MEDIUM",
+        "HIGH",
+        "CRITICAL"
+      ],
+      "example": "LOW"
+    },
+    "anomalyScore": {
+      "type": "number",
+      "format": "double",
+      "description": "Normalized anomaly score from 0.0 (normal) to 1.0 (highly anomalous)",
+      "minimum": 0.0,
+      "maximum": 1.0,
+      "example": 0.05
+    },
+    "threats": {
+      "type": "array",
+      "description": "List of detected threat indicators",
+      "items": {
+        "$ref": "#/components/schemas/ThreatIndicator"
+      }
+    },
+    "assessedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp of the threat assessment",
+      "example": "2026-04-19T14:30:00Z"
+    }
+  }
+}

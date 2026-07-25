@@ -1,0 +1,162 @@
+openapi: 3.0.3
+info:
+  title: AT&T Order Management API
+  description: Enterprise-grade APIs for AT&T wireline business services including service qualification, quoting, ordering, and provisioning. The Alliance API suite supports automated ordering of AVPN, IPBB, ATTPhone, ASE, and AT&T Internet Air for Business services.
+  version: 1.0.0
+  contact:
+    name: AT&T Alliance Developer Portal
+    url: https://devex-web.att.com/alliance
+  termsOfService: https://www.att.com/gen/general?pid=11561
+servers:
+- url: https://devex-web.att.com
+  description: AT&T Enterprise API Server
+security:
+- oauth2: []
+tags:
+- name: Order Management
+  description: Track and manage existing orders
+paths:
+  /alliance/productOrder/v1:
+    get:
+      operationId: listProductOrders
+      summary: List AT&T Enterprise Product Orders
+      description: Retrieve a list of product orders with optional filtering by state, date range, or external ID.
+      tags:
+      - Order Management
+      parameters:
+      - name: state
+        in: query
+        schema:
+          type: string
+          enum:
+          - acknowledged
+          - inProgress
+          - pending
+          - held
+          - assessingCancellation
+          - pendingCancellation
+          - cancelled
+          - completed
+          - failed
+          - partial
+        description: Filter by order state
+      - name: requestedStartDate.gt
+        in: query
+        schema:
+          type: string
+          format: date
+        description: Filter orders with requested start date after this date
+      - name: externalId
+        in: query
+        schema:
+          type: string
+        description: Filter by external order ID
+      responses:
+        '200':
+          description: List of product orders
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ProductOrder'
+              examples:
+                orders:
+                  summary: Active Orders
+                  value:
+                  - id: ord_xyz789
+                    externalId: ext_order_001
+                    state: inProgress
+                    orderDate: '2026-04-19T10:00:00Z'
+  /alliance/productOrder/v1/{orderId}:
+    get:
+      operationId: getProductOrder
+      summary: Get AT&T Enterprise Product Order
+      description: Retrieve the current status and details of a specific product order.
+      tags:
+      - Order Management
+      parameters:
+      - name: orderId
+        in: path
+        required: true
+        schema:
+          type: string
+        examples:
+          example:
+            value: ord_xyz789
+      responses:
+        '200':
+          description: Product order details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductOrder'
+              examples:
+                inProgress:
+                  summary: Order In Progress
+                  value:
+                    id: ord_xyz789
+                    externalId: ext_order_001
+                    state: inProgress
+                    orderDate: '2026-04-19T10:00:00Z'
+                    completionDate: null
+        '404':
+          description: Order not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code
+        reason:
+          type: string
+          description: Error reason
+        message:
+          type: string
+          description: Detailed error message
+    ProductOrder:
+      type: object
+      properties:
+        id:
+          type: string
+          description: AT&T order identifier
+        externalId:
+          type: string
+          description: Customer external reference
+        state:
+          type: string
+          enum:
+          - acknowledged
+          - inProgress
+          - pending
+          - held
+          - assessingCancellation
+          - pendingCancellation
+          - cancelled
+          - completed
+          - failed
+          - partial
+          description: Current order state
+        orderDate:
+          type: string
+          format: date-time
+          description: Order submission timestamp
+        completionDate:
+          type: string
+          format: date-time
+          nullable: true
+          description: Order completion timestamp
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://devex-web.att.com/oauth/token
+          scopes:
+            enterprise: Access AT&T enterprise connectivity APIs

@@ -1,0 +1,252 @@
+openapi: 3.0.3
+info:
+  title: AT&T Device Status API
+  description: >-
+    CAMARA-standard API that checks the connectivity status of user equipment,
+    including roaming information. Enables applications to determine if a device
+    is reachable, connected, and whether it is roaming on a partner network.
+    Part of the AT&T Network API Accelerator Program.
+  version: '1.0'
+  contact:
+    url: https://devex-web.att.com/developer-hub/docs/network-api-accelerator-program
+  termsOfService: https://www.att.com/gen/general?pid=11561
+  x-generated-from: documentation
+  x-last-validated: '2026-04-19'
+servers:
+  - url: https://api.att.com/camara/device-status/v1
+    description: AT&T CAMARA Device Status API endpoint
+paths:
+  /connectivity:
+    post:
+      operationId: getDeviceConnectivityStatus
+      summary: AT&T Get Device Connectivity Status
+      description: >-
+        Get the current connectivity status of a device identified by its phone
+        number or IP address. Returns whether the device is connected to the AT&T
+        network, the connection type, and whether the device is roaming.
+      tags:
+        - Device Connectivity
+      security:
+        - oauth2: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeviceConnectivityRequest'
+            examples:
+              GetDeviceConnectivityStatusRequestExample:
+                summary: Default getDeviceConnectivityStatus request
+                x-microcks-default: true
+                value:
+                  device:
+                    phoneNumber: '+12125551234'
+      responses:
+        '200':
+          description: Device connectivity status retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceConnectivityStatus'
+              examples:
+                GetDeviceConnectivityStatus200Example:
+                  summary: Default getDeviceConnectivityStatus 200 response
+                  x-microcks-default: true
+                  value:
+                    connectivityStatus: CONNECTED_DATA
+                    roaming: false
+        '400':
+          description: Bad request - invalid device identifier
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorInfo'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorInfo'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorInfo'
+        '404':
+          description: Device not found or not AT&T subscriber
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorInfo'
+        '429':
+          description: Too many requests
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorInfo'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /roaming:
+    post:
+      operationId: getDeviceRoamingStatus
+      summary: AT&T Get Device Roaming Status
+      description: >-
+        Check whether a device is currently roaming on a partner network outside
+        of the AT&T home network. Returns the roaming status and optionally the
+        country the device is roaming in.
+      tags:
+        - Device Roaming
+      security:
+        - oauth2: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeviceRoamingRequest'
+            examples:
+              GetDeviceRoamingStatusRequestExample:
+                summary: Default getDeviceRoamingStatus request
+                x-microcks-default: true
+                value:
+                  device:
+                    phoneNumber: '+12125551234'
+      responses:
+        '200':
+          description: Device roaming status retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceRoamingStatus'
+              examples:
+                GetDeviceRoamingStatus200Example:
+                  summary: Default getDeviceRoamingStatus 200 response
+                  x-microcks-default: true
+                  value:
+                    roaming: false
+                    countryCode: null
+                    countryName: null
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorInfo'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorInfo'
+        '404':
+          description: Device not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorInfo'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: AT&T OAuth 2.0 for CAMARA network APIs
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.att.com/oauth/v4/token
+          scopes: {}
+  schemas:
+    Device:
+      type: object
+      description: Device identifier for connectivity status queries
+      properties:
+        phoneNumber:
+          type: string
+          description: Mobile phone number in E.164 format
+          example: '+12125551234'
+        ipv4Address:
+          type: object
+          description: Device IPv4 address (alternative to phoneNumber)
+          properties:
+            publicAddress:
+              type: string
+              description: Public IPv4 address
+              example: 203.0.113.42
+            privateAddress:
+              type: string
+              description: Private IPv4 address
+              example: 10.0.0.5
+            publicPort:
+              type: integer
+              description: Public port if behind NAT
+              example: 54321
+        networkAccessIdentifier:
+          type: string
+          description: Network access identifier (alternative to phoneNumber)
+          example: user@example.com
+    DeviceConnectivityRequest:
+      type: object
+      required:
+        - device
+      properties:
+        device:
+          $ref: '#/components/schemas/Device'
+    DeviceConnectivityStatus:
+      type: object
+      properties:
+        connectivityStatus:
+          type: string
+          description: Current device connectivity state
+          enum:
+            - CONNECTED_DATA
+            - CONNECTED_SMS
+            - NOT_CONNECTED
+          example: CONNECTED_DATA
+        roaming:
+          type: boolean
+          description: Whether the device is currently roaming
+          example: false
+    DeviceRoamingRequest:
+      type: object
+      required:
+        - device
+      properties:
+        device:
+          $ref: '#/components/schemas/Device'
+    DeviceRoamingStatus:
+      type: object
+      properties:
+        roaming:
+          type: boolean
+          description: Whether the device is roaming
+          example: false
+        countryCode:
+          type: integer
+          nullable: true
+          description: Country code where device is roaming (ITU-T E.164)
+          example: null
+        countryName:
+          type: array
+          nullable: true
+          description: Country name(s) where device is roaming
+          items:
+            type: string
+          example: null
+    ErrorInfo:
+      type: object
+      properties:
+        status:
+          type: integer
+          description: HTTP status code
+          example: 400
+        code:
+          type: string
+          description: CAMARA error code
+          example: INVALID_ARGUMENT
+        message:
+          type: string
+          description: Human-readable error message
+          example: Invalid device identifier provided

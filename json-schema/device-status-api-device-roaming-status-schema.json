@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/att/refs/heads/main/json-schema/device-status-api-device-roaming-status-schema.json",
+  "title": "DeviceRoamingStatus",
+  "description": "DeviceRoamingStatus schema",
+  "type": "object",
+  "properties": {
+    "roaming": {
+      "type": "boolean",
+      "description": "Whether the device is roaming",
+      "example": false
+    },
+    "countryCode": {
+      "type": "integer",
+      "nullable": true,
+      "description": "Country code where device is roaming (ITU-T E.164)",
+      "example": null
+    },
+    "countryName": {
+      "type": "array",
+      "nullable": true,
+      "description": "Country name(s) where device is roaming",
+      "items": {
+        "type": "string"
+      },
+      "example": null
+    }
+  }
+}

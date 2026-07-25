@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ErrorInfo",
+  "title": "ErrorInfo",
+  "type": "object",
+  "properties": {
+    "status": {
+      "type": "integer",
+      "description": "HTTP status code",
+      "example": 400
+    },
+    "code": {
+      "type": "string",
+      "description": "CAMARA error code",
+      "example": "INVALID_ARGUMENT"
+    },
+    "message": {
+      "type": "string",
+      "description": "Human-readable error message",
+      "example": "Invalid device identifier provided"
+    }
+  }
+}

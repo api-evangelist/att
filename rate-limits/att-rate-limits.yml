@@ -1,0 +1,54 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: AT&T
+providerId: att
+created: '2026-05-04'
+modified: '2026-07-25'
+reconciled: false
+tags:
+- 5G
+- CAMARA
+- Connectivity
+- Edge Computing
+- Enterprise
+- Network APIs
+- Rate Limiting
+- Telecommunications
+description: AT&T API rate limits are negotiated per contract; no public defaults are published for the messaging,
+  MVNO or enterprise wireline APIs, and the invite-only Network API Accelerator sets per-partner quotas at onboarding.
+notes: No public canonical rate-limit table. Expect partner-specific quotas negotiated at onboarding. CAMARA-spec
+  response semantics apply.
+sources:
+- https://camaraproject.org/
+- https://developer.att.com/
+- https://www.att.com/business/
+headers:
+  retryAfter: Retry-After
+responseCodes:
+  throttled: 429
+  quotaExceeded: 429
+  serviceUnavailable: 503
+limits:
+- name: Per-contract
+  scope: account
+  metric: varies
+  limit: negotiated
+  notes: Contact provider sales for quota details.
+- name: Network API Accelerator (per-partner)
+  scope: account
+  metric: varies
+  limit: per-partner quotas set during onboarding; not publicly published
+  notes: Throughput envelope determined per accelerator participant.
+policies:
+- name: CAMARA Conformance
+  description: APIs follow CAMARA-standard error/throttling semantics; clients should respect 429 Retry-After.
+- name: Backoff Strategy
+  description: Use exponential backoff with jitter on 429/503 responses.
+- name: Partner-Specific Onboarding
+  description: Concrete per-second / per-day numbers are issued to each accelerator partner at onboarding rather
+    than published on a public docs page.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
+  url: https://apievangelist.com

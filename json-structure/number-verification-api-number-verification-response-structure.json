@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/att/refs/heads/main/json-structure/number-verification-api-number-verification-response-structure.json",
+  "description": "NumberVerificationResponse schema",
+  "type": "object",
+  "properties": {
+    "devicePhoneNumberVerified": {
+      "type": "boolean",
+      "description": "True if the device's network connection matches the provided phone number, false otherwise.",
+      "example": true
+    }
+  },
+  "name": "NumberVerificationResponse"
+}

@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://devex-web.att.com/schemas/enterprise/service-qualification-request",
+  "title": "Service Qualification Request",
+  "description": "Request to check AT&T wireline service availability at a location",
+  "type": "object",
+  "required": [
+    "address"
+  ],
+  "properties": {
+    "address": {
+      "type": "object",
+      "required": [
+        "streetAddress",
+        "city",
+        "state",
+        "postalCode",
+        "country"
+      ],
+      "properties": {
+        "streetAddress": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "postalCode": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

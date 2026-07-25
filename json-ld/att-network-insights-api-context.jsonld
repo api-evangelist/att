@@ -1,0 +1,52 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "att": "https://att.dev/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "Device": "att:Device",
+    "NetworkMetricsRequest": "att:NetworkMetricsRequest",
+    "NetworkMetrics": "att:NetworkMetrics",
+    "phoneNumber": {
+      "@id": "att:phoneNumber",
+      "@type": "xsd:string"
+    },
+    "ipv4Address": {
+      "@id": "att:ipv4Address",
+      "@type": "@id"
+    },
+    "publicAddress": {
+      "@id": "att:publicAddress",
+      "@type": "xsd:string"
+    },
+    "device": {
+      "@id": "att:device",
+      "@type": "@id"
+    },
+    "networkGeneration": {
+      "@id": "att:networkGeneration",
+      "@type": "xsd:string"
+    },
+    "signalStrength": {
+      "@id": "att:signalStrength",
+      "@type": "xsd:string"
+    },
+    "estimatedDownlinkThroughput": {
+      "@id": "att:estimatedDownlinkThroughput",
+      "@type": "xsd:integer"
+    },
+    "estimatedUplinkThroughput": {
+      "@id": "att:estimatedUplinkThroughput",
+      "@type": "xsd:integer"
+    },
+    "estimatedLatency": {
+      "@id": "att:estimatedLatency",
+      "@type": "xsd:integer"
+    },
+    "congestionLevel": {
+      "@id": "att:congestionLevel",
+      "@type": "xsd:string"
+    }
+  }
+}

@@ -1,0 +1,375 @@
+openapi: 3.0.3
+info:
+  title: AT&T Enterprise Connectivity APIs
+  description: Enterprise-grade APIs for AT&T wireline business services including service qualification, quoting, ordering, and provisioning. The Alliance API suite supports automated ordering of AVPN, IPBB, ATTPhone, ASE, and AT&T Internet Air for Business services.
+  version: 1.0.0
+  contact:
+    name: AT&T Alliance Developer Portal
+    url: https://devex-web.att.com/alliance
+  termsOfService: https://www.att.com/gen/general?pid=11561
+servers:
+  - url: https://devex-web.att.com
+    description: AT&T Enterprise API Server
+security:
+  - oauth2: []
+tags:
+  - name: Service Qualification
+    description: Check service availability at a location
+  - name: Product Ordering
+    description: Place and manage service orders
+  - name: Order Management
+    description: Track and manage existing orders
+paths:
+  /alliance/serviceQualification/v1/check:
+    post:
+      operationId: checkServiceQualification
+      summary: Check AT&T Service Qualification
+      description: Determine which AT&T wireline services (AVPN, IPBB, ATTPhone, ASE, Internet Air for Business) are available at a given location.
+      tags:
+        - Service Qualification
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ServiceQualificationRequest'
+            examples:
+              check:
+                summary: Check Service at Address
+                value:
+                  address:
+                    streetAddress: 208 S Akard St
+                    city: Dallas
+                    state: TX
+                    postalCode: '75202'
+                    country: US
+      responses:
+        '200':
+          description: Service qualification results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceQualificationResponse'
+              examples:
+                available:
+                  summary: Services Available
+                  value:
+                    qualificationId: qual_abc123
+                    qualificationDate: '2026-04-19'
+                    serviceQualificationItems:
+                      - id: item_001
+                        state: done
+                        serviceSpecification:
+                          name: AVPN
+                        eligibilityUnavailabilityReason: null
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /alliance/productOrder/v1:
+    post:
+      operationId: createProductOrder
+      summary: Create AT&T Enterprise Product Order
+      description: Submit a product order for AT&T wireline business services including AVPN, IPBB, ATTPhone, ASE, or Internet Air for Business.
+      tags:
+        - Product Ordering
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductOrderRequest'
+            examples:
+              avpnOrder:
+                summary: AVPN Service Order
+                value:
+                  externalId: ext_order_001
+                  description: AVPN service order for Dallas HQ
+                  requestedStartDate: '2026-05-01'
+                  orderItem:
+                    - id: item_001
+                      action: add
+                      productOffering:
+                        name: AVPN
+      responses:
+        '201':
+          description: Product order created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductOrder'
+              examples:
+                created:
+                  summary: Order Created
+                  value:
+                    id: ord_xyz789
+                    externalId: ext_order_001
+                    state: acknowledged
+                    orderDate: '2026-04-19T10:00:00Z'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    get:
+      operationId: listProductOrders
+      summary: List AT&T Enterprise Product Orders
+      description: Retrieve a list of product orders with optional filtering by state, date range, or external ID.
+      tags:
+        - Order Management
+      parameters:
+        - name: state
+          in: query
+          schema:
+            type: string
+            enum:
+              - acknowledged
+              - inProgress
+              - pending
+              - held
+              - assessingCancellation
+              - pendingCancellation
+              - cancelled
+              - completed
+              - failed
+              - partial
+          description: Filter by order state
+        - name: requestedStartDate.gt
+          in: query
+          schema:
+            type: string
+            format: date
+          description: Filter orders with requested start date after this date
+        - name: externalId
+          in: query
+          schema:
+            type: string
+          description: Filter by external order ID
+      responses:
+        '200':
+          description: List of product orders
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ProductOrder'
+              examples:
+                orders:
+                  summary: Active Orders
+                  value:
+                    - id: ord_xyz789
+                      externalId: ext_order_001
+                      state: inProgress
+                      orderDate: '2026-04-19T10:00:00Z'
+  /alliance/productOrder/v1/{orderId}:
+    get:
+      operationId: getProductOrder
+      summary: Get AT&T Enterprise Product Order
+      description: Retrieve the current status and details of a specific product order.
+      tags:
+        - Order Management
+      parameters:
+        - name: orderId
+          in: path
+          required: true
+          schema:
+            type: string
+          examples:
+            example:
+              value: ord_xyz789
+      responses:
+        '200':
+          description: Product order details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductOrder'
+              examples:
+                inProgress:
+                  summary: Order In Progress
+                  value:
+                    id: ord_xyz789
+                    externalId: ext_order_001
+                    state: inProgress
+                    orderDate: '2026-04-19T10:00:00Z'
+                    completionDate: null
+        '404':
+          description: Order not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://devex-web.att.com/oauth/token
+          scopes:
+            enterprise: Access AT&T enterprise connectivity APIs
+  schemas:
+    ServiceQualificationRequest:
+      type: object
+      required:
+        - address
+      properties:
+        address:
+          $ref: '#/components/schemas/Address'
+    Address:
+      type: object
+      required:
+        - streetAddress
+        - city
+        - state
+        - postalCode
+        - country
+      properties:
+        streetAddress:
+          type: string
+          description: Street address line
+        city:
+          type: string
+          description: City name
+        state:
+          type: string
+          description: State abbreviation (US)
+        postalCode:
+          type: string
+          description: ZIP or postal code
+        country:
+          type: string
+          description: ISO 3166-1 alpha-2 country code
+    ServiceQualificationResponse:
+      type: object
+      properties:
+        qualificationId:
+          type: string
+          description: Unique qualification check identifier
+        qualificationDate:
+          type: string
+          format: date
+          description: Date the qualification was performed
+        serviceQualificationItems:
+          type: array
+          items:
+            $ref: '#/components/schemas/ServiceQualificationItem'
+    ServiceQualificationItem:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Item identifier
+        state:
+          type: string
+          enum:
+            - done
+            - terminatedWithError
+          description: Qualification state for this service
+        serviceSpecification:
+          type: object
+          properties:
+            name:
+              type: string
+              enum:
+                - AVPN
+                - IPBB
+                - ATTPhone
+                - ASE
+                - InternetAirBusiness
+              description: Service specification name
+        eligibilityUnavailabilityReason:
+          type: string
+          nullable: true
+          description: Reason service is unavailable (null if available)
+    ProductOrderRequest:
+      type: object
+      required:
+        - orderItem
+      properties:
+        externalId:
+          type: string
+          description: Customer-provided external order reference
+        description:
+          type: string
+          description: Order description
+        requestedStartDate:
+          type: string
+          format: date
+          description: Requested service start date
+        orderItem:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderItem'
+    OrderItem:
+      type: object
+      required:
+        - id
+        - action
+        - productOffering
+      properties:
+        id:
+          type: string
+          description: Order item identifier
+        action:
+          type: string
+          enum:
+            - add
+            - modify
+            - delete
+            - noChange
+          description: Order action type
+        productOffering:
+          type: object
+          properties:
+            name:
+              type: string
+              description: Product offering name
+    ProductOrder:
+      type: object
+      properties:
+        id:
+          type: string
+          description: AT&T order identifier
+        externalId:
+          type: string
+          description: Customer external reference
+        state:
+          type: string
+          enum:
+            - acknowledged
+            - inProgress
+            - pending
+            - held
+            - assessingCancellation
+            - pendingCancellation
+            - cancelled
+            - completed
+            - failed
+            - partial
+          description: Current order state
+        orderDate:
+          type: string
+          format: date-time
+          description: Order submission timestamp
+        completionDate:
+          type: string
+          format: date-time
+          nullable: true
+          description: Order completion timestamp
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code
+        reason:
+          type: string
+          description: Error reason
+        message:
+          type: string
+          description: Detailed error message

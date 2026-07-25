@@ -1,0 +1,133 @@
+openapi: 3.0.3
+info:
+  title: AT&T Number Verification API
+  description: >-
+    CAMARA-standard API enabling seamless device authentication via the mobile
+    network. Verifies that a device is currently using a specific phone number
+    without requiring the user to enter an OTP, leveraging the AT&T network
+    signal for frictionless identity verification. Part of the AT&T Network API
+    Accelerator Program.
+  version: '1.0'
+  contact:
+    url: https://devex-web.att.com/developer-hub/docs/network-api-accelerator-program
+  termsOfService: https://www.att.com/gen/general?pid=11561
+  x-generated-from: documentation
+  x-last-validated: '2026-04-19'
+servers:
+  - url: https://api.att.com/camara/number-verification/v1
+    description: AT&T CAMARA Number Verification API endpoint
+paths:
+  /verify:
+    post:
+      operationId: verifyPhoneNumber
+      summary: AT&T Verify Phone Number
+      description: >-
+        Verify that the device making the request is associated with the provided
+        phone number. The verification is performed silently using the mobile
+        network connection without requiring the user to enter a code, providing
+        frictionless authentication for mobile applications.
+      tags:
+        - Number Verification
+      security:
+        - oauth2: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NumberVerificationRequest'
+            examples:
+              VerifyPhoneNumberRequestExample:
+                summary: Default verifyPhoneNumber request
+                x-microcks-default: true
+                value:
+                  phoneNumber: '+12125551234'
+      responses:
+        '200':
+          description: Number verification result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NumberVerificationResponse'
+              examples:
+                VerifyPhoneNumber200Example:
+                  summary: Default verifyPhoneNumber 200 response
+                  x-microcks-default: true
+                  value:
+                    devicePhoneNumberVerified: true
+        '400':
+          description: Bad request - invalid phone number format
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorInfo'
+        '401':
+          description: Unauthorized - invalid or missing token
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorInfo'
+        '403':
+          description: Forbidden - insufficient scope
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorInfo'
+        '404':
+          description: Phone number not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorInfo'
+        '429':
+          description: Too many requests
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorInfo'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: AT&T OAuth 2.0 for CAMARA network APIs
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.att.com/oauth/v4/token
+          scopes: {}
+  schemas:
+    NumberVerificationRequest:
+      type: object
+      required:
+        - phoneNumber
+      properties:
+        phoneNumber:
+          type: string
+          description: Phone number in E.164 format to verify against the requesting device
+          example: '+12125551234'
+    NumberVerificationResponse:
+      type: object
+      properties:
+        devicePhoneNumberVerified:
+          type: boolean
+          description: >-
+            True if the device's network connection matches the provided phone
+            number, false otherwise.
+          example: true
+    ErrorInfo:
+      type: object
+      properties:
+        status:
+          type: integer
+          description: HTTP status code
+          example: 400
+        code:
+          type: string
+          description: CAMARA error code
+          example: INVALID_ARGUMENT
+        message:
+          type: string
+          description: Human-readable error message
+          example: Invalid phone number format. Must be E.164.

@@ -2,6 +2,23 @@ generated: '2026-07-11'
 method: probed
 source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
 hosts:
+- host: api.att.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Feb  6 23:59:59 2027 GMT
+  hsts: null
+- host: developer.att.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Oct 16 23:59:59 2026 GMT
+  hsts: true
+  hsts_max_age: 15768000
+- host: devex-web.att.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Oct 16 23:59:59 2026 GMT
+  hsts: true
+  hsts_max_age: 86400
 - host: www.att.com
   https: true
   tls_version: TLSv1.3

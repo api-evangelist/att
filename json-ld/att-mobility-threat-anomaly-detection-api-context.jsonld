@@ -1,0 +1,73 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "att": "https://att.dev/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "Device": "att:Device",
+    "ThreatAssessmentRequest": "att:ThreatAssessmentRequest",
+    "ThreatIndicator": "att:ThreatIndicator",
+    "ThreatAssessment": "att:ThreatAssessment",
+    "ThreatSubscriptionRequest": "att:ThreatSubscriptionRequest",
+    "ThreatSubscription": "att:ThreatSubscription",
+    "phoneNumber": {
+      "@id": "att:phoneNumber",
+      "@type": "xsd:string"
+    },
+    "device": {
+      "@id": "att:device",
+      "@type": "@id"
+    },
+    "type": {
+      "@id": "att:type",
+      "@type": "xsd:string"
+    },
+    "severity": {
+      "@id": "att:severity",
+      "@type": "xsd:string"
+    },
+    "description": "schema:description",
+    "detectedAt": {
+      "@id": "att:detectedAt",
+      "@type": "xsd:dateTime"
+    },
+    "riskLevel": {
+      "@id": "att:riskLevel",
+      "@type": "xsd:string"
+    },
+    "anomalyScore": {
+      "@id": "att:anomalyScore",
+      "@type": "xsd:string"
+    },
+    "threats": {
+      "@id": "att:threats",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "assessedAt": {
+      "@id": "att:assessedAt",
+      "@type": "xsd:dateTime"
+    },
+    "notificationUrl": {
+      "@id": "att:notificationUrl",
+      "@type": "@id"
+    },
+    "minRiskLevel": {
+      "@id": "att:minRiskLevel",
+      "@type": "xsd:string"
+    },
+    "notificationAuthToken": {
+      "@id": "att:notificationAuthToken",
+      "@type": "xsd:string"
+    },
+    "subscriptionId": {
+      "@id": "att:subscriptionId",
+      "@type": "xsd:string"
+    },
+    "status": {
+      "@id": "att:status",
+      "@type": "xsd:string"
+    }
+  }
+}

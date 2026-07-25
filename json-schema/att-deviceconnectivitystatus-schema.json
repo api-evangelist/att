@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DeviceConnectivityStatus",
+  "title": "DeviceConnectivityStatus",
+  "type": "object",
+  "properties": {
+    "connectivityStatus": {
+      "type": "string",
+      "description": "Current device connectivity state",
+      "enum": [
+        "CONNECTED_DATA",
+        "CONNECTED_SMS",
+        "NOT_CONNECTED"
+      ],
+      "example": "CONNECTED_DATA"
+    },
+    "roaming": {
+      "type": "boolean",
+      "description": "Whether the device is currently roaming",
+      "example": false
+    }
+  }
+}

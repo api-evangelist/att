@@ -1,0 +1,669 @@
+openapi: 3.0.3
+info:
+  title: AT&T 5G Network APIs
+  description: CAMARA-standard 5G network APIs available through the AT&T Developer Hub and Network API Accelerator Program. Includes SIM Swap detection, Device Status, Number Verification, Quality on Demand, Network Insights, and Mobility Threat and Anomaly Detection APIs.
+  version: 1.0.0
+  contact:
+    name: AT&T Developer Hub
+    url: https://devex-web.att.com/developer-hub/
+  termsOfService: https://www.att.com/gen/general?pid=11561
+servers:
+  - url: https://api.att.com/camara
+    description: AT&T CAMARA Network API Server
+security:
+  - oauth2: []
+tags:
+  - name: SIM Swap
+    description: SIM card change detection for fraud prevention
+  - name: Device Status
+    description: Device connectivity and roaming status
+  - name: Number Verification
+    description: Silent phone number verification
+  - name: Quality on Demand
+    description: 5G QoS session management
+  - name: Network Insights
+    description: Network performance metrics
+  - name: Threat Detection
+    description: Mobility threat and anomaly detection
+paths:
+  /sim-swap/v1/check:
+    post:
+      operationId: checkSimSwap
+      summary: Check AT&T SIM Swap Status
+      description: Check whether a SIM swap has occurred for a phone number within a specified time period to detect fraud.
+      tags:
+        - SIM Swap
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SimSwapCheckRequest'
+            examples:
+              check:
+                summary: SIM Swap Check
+                value:
+                  phoneNumber: '+12125551234'
+                  maxAge: 240
+      responses:
+        '200':
+          description: SIM swap check result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SimSwapCheckResponse'
+              examples:
+                notSwapped:
+                  summary: No Recent SIM Swap
+                  value:
+                    swapped: false
+                swapped:
+                  summary: SIM Swap Detected
+                  value:
+                    swapped: true
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden - insufficient permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /sim-swap/v1/retrieve-date:
+    post:
+      operationId: retrieveSimSwapDate
+      summary: Retrieve AT&T SIM Swap Date
+      description: Retrieve the most recent date when a SIM swap occurred for a given phone number.
+      tags:
+        - SIM Swap
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SimSwapDateRequest'
+            examples:
+              retrieve:
+                summary: Retrieve SIM Swap Date
+                value:
+                  phoneNumber: '+12125551234'
+      responses:
+        '200':
+          description: SIM swap date retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SimSwapDateResponse'
+              examples:
+                withDate:
+                  summary: SIM Swap Date Found
+                  value:
+                    latestSimChange: '2026-04-15T14:30:00Z'
+        '404':
+          description: No SIM swap records found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /device-status/v1/connectivity:
+    post:
+      operationId: getDeviceConnectivityStatus
+      summary: Get AT&T Device Connectivity Status
+      description: Check the current connectivity status of a device on the AT&T network, including whether the device is connected and the network generation.
+      tags:
+        - Device Status
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeviceStatusRequest'
+            examples:
+              check:
+                summary: Check Device Connectivity
+                value:
+                  phoneNumber: '+12125551234'
+      responses:
+        '200':
+          description: Device connectivity status retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceConnectivityStatus'
+              examples:
+                connected5G:
+                  summary: Device Connected on 5G
+                  value:
+                    connectivityStatus: CONNECTED_DATA
+                    networkGeneration: 5G
+                    roaming: false
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /device-status/v1/roaming:
+    post:
+      operationId: getDeviceRoamingStatus
+      summary: Get AT&T Device Roaming Status
+      description: Check whether a device is currently roaming on a partner network and retrieve the roaming location details.
+      tags:
+        - Device Status
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeviceStatusRequest'
+            examples:
+              check:
+                summary: Check Device Roaming
+                value:
+                  phoneNumber: '+12125551234'
+      responses:
+        '200':
+          description: Device roaming status retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceRoamingStatus'
+              examples:
+                notRoaming:
+                  summary: Device Not Roaming
+                  value:
+                    roaming: false
+                roaming:
+                  summary: Device Roaming
+                  value:
+                    roaming: true
+                    countryCode: '44'
+                    countryName: United Kingdom
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /number-verification/v1/verify:
+    post:
+      operationId: verifyPhoneNumber
+      summary: Verify AT&T Phone Number
+      description: Silently verify that a device is using a specific phone number via the AT&T network signal, without requiring user OTP entry.
+      tags:
+        - Number Verification
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NumberVerificationRequest'
+            examples:
+              verify:
+                summary: Verify Phone Number
+                value:
+                  phoneNumber: '+12125551234'
+      responses:
+        '200':
+          description: Phone number verification result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NumberVerificationResponse'
+              examples:
+                verified:
+                  summary: Phone Number Verified
+                  value:
+                    devicePhoneNumberVerified: true
+                notVerified:
+                  summary: Phone Number Not Verified
+                  value:
+                    devicePhoneNumberVerified: false
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /qod/v1/sessions:
+    post:
+      operationId: createQodSession
+      summary: Create AT&T Quality on Demand Session
+      description: Create a Quality on Demand session to temporarily enhance QoS for a device on the AT&T 5G network.
+      tags:
+        - Quality on Demand
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateSessionRequest'
+            examples:
+              lowLatency:
+                summary: Low Latency Session
+                value:
+                  phoneNumber: '+12125551234'
+                  qosProfile: LOW_LATENCY
+                  duration: 3600
+      responses:
+        '201':
+          description: QoD session created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SessionInfo'
+              examples:
+                created:
+                  summary: Session Created
+                  value:
+                    sessionId: sess_abc123
+                    qosProfile: LOW_LATENCY
+                    qosStatus: REQUESTED
+                    expiresAt: '2026-04-19T11:00:00Z'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    get:
+      operationId: listQodSessions
+      summary: List AT&T Quality on Demand Sessions
+      description: Retrieve all active Quality on Demand sessions for the current application.
+      tags:
+        - Quality on Demand
+      responses:
+        '200':
+          description: List of active QoD sessions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SessionInfo'
+              examples:
+                sessions:
+                  summary: Active Sessions
+                  value:
+                    - sessionId: sess_abc123
+                      qosProfile: LOW_LATENCY
+                      qosStatus: AVAILABLE
+                      expiresAt: '2026-04-19T11:00:00Z'
+  /qod/v1/sessions/{sessionId}:
+    get:
+      operationId: getQodSession
+      summary: Get AT&T Quality on Demand Session
+      description: Retrieve the status and details of a specific Quality on Demand session.
+      tags:
+        - Quality on Demand
+      parameters:
+        - name: sessionId
+          in: path
+          required: true
+          schema:
+            type: string
+          examples:
+            example:
+              value: sess_abc123
+      responses:
+        '200':
+          description: QoD session details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SessionInfo'
+              examples:
+                active:
+                  summary: Active Session
+                  value:
+                    sessionId: sess_abc123
+                    qosProfile: LOW_LATENCY
+                    qosStatus: AVAILABLE
+                    expiresAt: '2026-04-19T11:00:00Z'
+        '404':
+          description: Session not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    delete:
+      operationId: deleteQodSession
+      summary: Delete AT&T Quality on Demand Session
+      description: Terminate an active Quality on Demand session and restore normal network quality for the device.
+      tags:
+        - Quality on Demand
+      parameters:
+        - name: sessionId
+          in: path
+          required: true
+          schema:
+            type: string
+          examples:
+            example:
+              value: sess_abc123
+      responses:
+        '204':
+          description: Session terminated successfully
+        '404':
+          description: Session not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /network/insights/v1/metrics:
+    post:
+      operationId: getNetworkMetrics
+      summary: Get AT&T Network Insights Metrics
+      description: Retrieve network performance metrics for a device including signal strength, throughput estimates, and congestion levels.
+      tags:
+        - Network Insights
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeviceStatusRequest'
+            examples:
+              metrics:
+                summary: Get Network Metrics
+                value:
+                  phoneNumber: '+12125551234'
+      responses:
+        '200':
+          description: Network metrics retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NetworkMetrics'
+              examples:
+                good5G:
+                  summary: Good 5G Performance
+                  value:
+                    networkGeneration: 5G
+                    signalStrength: GOOD
+                    estimatedDownlinkThroughput: 450.5
+                    estimatedLatency: 12
+                    congestionLevel: LOW
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /network/threat-detection/v1/threats:
+    post:
+      operationId: getThreatAssessment
+      summary: Get AT&T Mobility Threat Assessment
+      description: Retrieve ML-based threat assessment for a device including risk level, anomaly score, and detected threat types.
+      tags:
+        - Threat Detection
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeviceStatusRequest'
+            examples:
+              assess:
+                summary: Assess Device Threats
+                value:
+                  phoneNumber: '+12125551234'
+      responses:
+        '200':
+          description: Threat assessment retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ThreatAssessment'
+              examples:
+                lowRisk:
+                  summary: Low Risk Device
+                  value:
+                    riskLevel: LOW
+                    anomalyScore: 0.05
+                    threats: []
+                highRisk:
+                  summary: High Risk Device
+                  value:
+                    riskLevel: HIGH
+                    anomalyScore: 0.87
+                    threats:
+                      - UNUSUAL_LOCATION
+                      - SIM_CLONING
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.att.com/oauth/v4/token
+          scopes:
+            network: Access AT&T network APIs
+  schemas:
+    SimSwapCheckRequest:
+      type: object
+      required:
+        - phoneNumber
+      properties:
+        phoneNumber:
+          type: string
+          description: E.164 format phone number
+          pattern: '^\+[1-9]\d{1,14}$'
+        maxAge:
+          type: integer
+          description: Maximum age in hours for SIM swap lookback period
+          minimum: 1
+          maximum: 2400
+    SimSwapCheckResponse:
+      type: object
+      properties:
+        swapped:
+          type: boolean
+          description: Whether a SIM swap occurred within the specified time period
+    SimSwapDateRequest:
+      type: object
+      required:
+        - phoneNumber
+      properties:
+        phoneNumber:
+          type: string
+          description: E.164 format phone number
+          pattern: '^\+[1-9]\d{1,14}$'
+    SimSwapDateResponse:
+      type: object
+      properties:
+        latestSimChange:
+          type: string
+          format: date-time
+          description: Timestamp of most recent SIM swap
+    DeviceStatusRequest:
+      type: object
+      required:
+        - phoneNumber
+      properties:
+        phoneNumber:
+          type: string
+          description: E.164 format phone number
+          pattern: '^\+[1-9]\d{1,14}$'
+    DeviceConnectivityStatus:
+      type: object
+      properties:
+        connectivityStatus:
+          type: string
+          enum:
+            - CONNECTED_DATA
+            - CONNECTED_SMS
+            - NOT_CONNECTED
+          description: Current device connectivity state
+        networkGeneration:
+          type: string
+          enum:
+            - 5G
+            - 5G_NSA
+            - 4G
+            - 3G
+          description: Current network generation
+        roaming:
+          type: boolean
+          description: Whether the device is currently roaming
+    DeviceRoamingStatus:
+      type: object
+      properties:
+        roaming:
+          type: boolean
+          description: Whether the device is roaming
+        countryCode:
+          type: string
+          description: Country code of the roaming network
+        countryName:
+          type: string
+          description: Country name of the roaming network
+    NumberVerificationRequest:
+      type: object
+      required:
+        - phoneNumber
+      properties:
+        phoneNumber:
+          type: string
+          description: E.164 format phone number to verify
+          pattern: '^\+[1-9]\d{1,14}$'
+    NumberVerificationResponse:
+      type: object
+      properties:
+        devicePhoneNumberVerified:
+          type: boolean
+          description: Whether the device is using the specified phone number
+    CreateSessionRequest:
+      type: object
+      required:
+        - phoneNumber
+        - qosProfile
+        - duration
+      properties:
+        phoneNumber:
+          type: string
+          description: E.164 format phone number for the device
+        qosProfile:
+          type: string
+          enum:
+            - LOW_LATENCY
+            - THROUGHPUT_S
+            - THROUGHPUT_M
+            - THROUGHPUT_L
+            - VOICE
+          description: QoS profile to apply
+        duration:
+          type: integer
+          description: Session duration in seconds
+          minimum: 60
+          maximum: 86400
+    SessionInfo:
+      type: object
+      properties:
+        sessionId:
+          type: string
+          description: Unique QoD session identifier
+        qosProfile:
+          type: string
+          enum:
+            - LOW_LATENCY
+            - THROUGHPUT_S
+            - THROUGHPUT_M
+            - THROUGHPUT_L
+            - VOICE
+          description: Applied QoS profile
+        qosStatus:
+          type: string
+          enum:
+            - REQUESTED
+            - AVAILABLE
+            - UNAVAILABLE
+          description: Current session status
+        expiresAt:
+          type: string
+          format: date-time
+          description: Session expiration timestamp
+    NetworkMetrics:
+      type: object
+      properties:
+        networkGeneration:
+          type: string
+          enum:
+            - 5G
+            - 5G_NSA
+            - 4G
+            - 3G
+          description: Current network generation
+        signalStrength:
+          type: string
+          enum:
+            - EXCELLENT
+            - GOOD
+            - FAIR
+            - POOR
+          description: Device signal strength indicator
+        estimatedDownlinkThroughput:
+          type: number
+          format: float
+          description: Estimated downlink throughput in Mbps
+        estimatedLatency:
+          type: integer
+          description: Estimated round-trip latency in milliseconds
+        congestionLevel:
+          type: string
+          enum:
+            - LOW
+            - MEDIUM
+            - HIGH
+          description: Current network congestion level
+    ThreatAssessment:
+      type: object
+      properties:
+        riskLevel:
+          type: string
+          enum:
+            - LOW
+            - MEDIUM
+            - HIGH
+            - CRITICAL
+          description: Overall risk level for the device
+        anomalyScore:
+          type: number
+          format: float
+          minimum: 0
+          maximum: 1
+          description: ML-generated anomaly score between 0 and 1
+        threats:
+          type: array
+          items:
+            type: string
+            enum:
+              - UNUSUAL_LOCATION
+              - ABNORMAL_DATA_USAGE
+              - KNOWN_MALWARE_TRAFFIC
+              - SIM_CLONING
+              - ROAMING_ANOMALY
+              - CALL_PATTERN_ANOMALY
+          description: List of detected threat types
+    ErrorResponse:
+      type: object
+      properties:
+        status:
+          type: integer
+          description: HTTP status code
+        code:
+          type: string
+          description: CAMARA error code
+        message:
+          type: string
+          description: Error description

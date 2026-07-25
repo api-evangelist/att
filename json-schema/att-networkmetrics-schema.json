@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/NetworkMetrics",
+  "title": "NetworkMetrics",
+  "type": "object",
+  "properties": {
+    "networkGeneration": {
+      "type": "string",
+      "description": "Current network generation for the device",
+      "enum": [
+        "5G",
+        "5G_NSA",
+        "4G",
+        "3G"
+      ],
+      "example": "5G"
+    },
+    "signalStrength": {
+      "type": "string",
+      "description": "Signal quality indicator",
+      "enum": [
+        "EXCELLENT",
+        "GOOD",
+        "FAIR",
+        "POOR"
+      ],
+      "example": "GOOD"
+    },
+    "estimatedDownlinkThroughput": {
+      "type": "integer",
+      "description": "Estimated downlink throughput in Mbps",
+      "example": 250
+    },
+    "estimatedUplinkThroughput": {
+      "type": "integer",
+      "description": "Estimated uplink throughput in Mbps",
+      "example": 50
+    },
+    "estimatedLatency": {
+      "type": "integer",
+      "description": "Estimated round-trip latency in milliseconds",
+      "example": 15
+    },
+    "congestionLevel": {
+      "type": "string",
+      "description": "Current network congestion level",
+      "enum": [
+        "LOW",
+        "MEDIUM",
+        "HIGH"
+      ],
+      "example": "LOW"
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "operationId": "getDeviceRoamingStatus",
+  "method": "POST",
+  "path": "/roaming",
+  "summary": "AT&T Get Device Roaming Status",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "name": "GetDeviceRoamingStatusRequestExample",
+      "example": {
+        "device": {
+          "phoneNumber": "+12125551234"
+        }
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "GetDeviceRoamingStatus200Example",
+      "example": {
+        "roaming": false,
+        "countryCode": null,
+        "countryName": null
+      }
+    }
+  ]
+}

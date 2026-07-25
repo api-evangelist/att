@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/att/refs/heads/main/json-schema/mobility-threat-anomaly-detection-api-threat-subscription-request-schema.json",
+  "title": "ThreatSubscriptionRequest",
+  "description": "ThreatSubscriptionRequest schema",
+  "type": "object",
+  "required": [
+    "device",
+    "notificationUrl"
+  ],
+  "properties": {
+    "device": {
+      "type": "object",
+      "properties": {
+        "phoneNumber": {
+          "type": "string",
+          "description": "Mobile phone number in E.164 format",
+          "example": "+12125551234"
+        }
+      }
+    },
+    "notificationUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "Webhook URL for threat alert notifications",
+      "example": "https://webhook.example.com/threats"
+    },
+    "minRiskLevel": {
+      "type": "string",
+      "description": "Minimum risk level to trigger notifications",
+      "enum": [
+        "LOW",
+        "MEDIUM",
+        "HIGH",
+        "CRITICAL"
+      ],
+      "example": "MEDIUM"
+    },
+    "notificationAuthToken": {
+      "type": "string",
+      "description": "Bearer token for webhook authentication",
+      "example": "webhook-token-abc123"
+    }
+  }
+}

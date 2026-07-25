@@ -1,0 +1,8 @@
+{
+  "device": {
+    "phoneNumber": "+12125551234"
+  },
+  "notificationUrl": "https://webhook.example.com/threats",
+  "minRiskLevel": "MEDIUM",
+  "notificationAuthToken": "webhook-token-abc123"
+}

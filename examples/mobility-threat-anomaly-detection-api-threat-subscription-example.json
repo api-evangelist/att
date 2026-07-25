@@ -1,0 +1,8 @@
+{
+  "subscriptionId": "sub-threat-500123",
+  "device": {
+    "phoneNumber": "+12125551234"
+  },
+  "minRiskLevel": "MEDIUM",
+  "status": "ACTIVE"
+}

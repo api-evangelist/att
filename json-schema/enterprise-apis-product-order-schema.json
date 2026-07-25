@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://devex-web.att.com/schemas/enterprise/product-order",
+  "title": "Product Order",
+  "description": "AT&T enterprise product order status and details",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "externalId": {
+      "type": "string"
+    },
+    "state": {
+      "type": "string",
+      "enum": [
+        "acknowledged",
+        "inProgress",
+        "pending",
+        "held",
+        "cancelled",
+        "completed",
+        "failed",
+        "partial"
+      ]
+    },
+    "orderDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "completionDate": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    }
+  }
+}

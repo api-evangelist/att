@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-structure.org/meta/extended/v0/#",
+  "$id": "https://devex-web.att.com/schemas/enterprise/service-qualification-response",
+  "title": "Service Qualification Response",
+  "description": "Results of AT&T wireline service qualification check",
+  "type": "object",
+  "properties": {
+    "qualificationId": {
+      "type": "string"
+    },
+    "qualificationDate": {
+      "type": "string"
+    },
+    "serviceQualificationItems": {
+      "type": "array"
+    }
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SessionInfo",
+  "title": "SessionInfo",
+  "type": "object",
+  "properties": {
+    "sessionId": {
+      "type": "string",
+      "description": "Unique identifier for the QoD session",
+      "example": "session-a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+    },
+    "device": {
+      "$ref": "#/components/schemas/Device"
+    },
+    "qosProfile": {
+      "type": "string",
+      "description": "QoS profile applied to this session",
+      "enum": [
+        "LOW_LATENCY",
+        "THROUGHPUT_S",
+        "THROUGHPUT_M",
+        "THROUGHPUT_L",
+        "VOICE"
+      ],
+      "example": "LOW_LATENCY"
+    },
+    "duration": {
+      "type": "integer",
+      "description": "Session duration in seconds",
+      "example": 3600
+    },
+    "startedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Session start timestamp",
+      "example": "2026-04-19T14:30:00Z"
+    },
+    "expiresAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Session expiry timestamp",
+      "example": "2026-04-19T15:30:00Z"
+    },
+    "qosStatus": {
+      "type": "string",
+      "description": "Current QoS provisioning status",
+      "enum": [
+        "REQUESTED",
+        "AVAILABLE",
+        "UNAVAILABLE"
+      ],
+      "example": "AVAILABLE"
+    }
+  }
+}

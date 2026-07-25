@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/att/refs/heads/main/json-schema/mobility-threat-anomaly-detection-api-threat-subscription-schema.json",
+  "title": "ThreatSubscription",
+  "description": "ThreatSubscription schema",
+  "type": "object",
+  "properties": {
+    "subscriptionId": {
+      "type": "string",
+      "description": "Unique subscription identifier",
+      "example": "sub-threat-500123"
+    },
+    "device": {
+      "type": "object",
+      "properties": {
+        "phoneNumber": {
+          "type": "string",
+          "description": "Mobile phone number in E.164 format",
+          "example": "+12125551234"
+        }
+      }
+    },
+    "minRiskLevel": {
+      "type": "string",
+      "description": "Minimum risk level triggering notifications",
+      "example": "MEDIUM"
+    },
+    "status": {
+      "type": "string",
+      "description": "Subscription status",
+      "enum": [
+        "ACTIVE",
+        "INACTIVE"
+      ],
+      "example": "ACTIVE"
+    }
+  }
+}

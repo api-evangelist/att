@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SimSwapDateRequest",
+  "title": "SimSwapDateRequest",
+  "type": "object",
+  "required": [
+    "phoneNumber"
+  ],
+  "properties": {
+    "phoneNumber": {
+      "type": "string",
+      "description": "Mobile phone number in E.164 format",
+      "example": "+12125551234"
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ThreatSubscription",
+  "title": "ThreatSubscription",
+  "type": "object",
+  "properties": {
+    "subscriptionId": {
+      "type": "string",
+      "description": "Unique subscription identifier",
+      "example": "sub-threat-500123"
+    },
+    "device": {
+      "$ref": "#/components/schemas/Device"
+    },
+    "minRiskLevel": {
+      "type": "string",
+      "description": "Minimum risk level triggering notifications",
+      "example": "MEDIUM"
+    },
+    "status": {
+      "type": "string",
+      "description": "Subscription status",
+      "enum": [
+        "ACTIVE",
+        "INACTIVE"
+      ],
+      "example": "ACTIVE"
+    }
+  }
+}

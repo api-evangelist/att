@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/att/refs/heads/main/json-structure/sim-swap-api-sim-swap-date-response-structure.json",
+  "description": "SimSwapDateResponse schema",
+  "type": "object",
+  "properties": {
+    "latestSimChange": {
+      "type": "datetime",
+      "nullable": true,
+      "description": "Date and time of the most recent SIM swap, or null if no swap has been detected recently.",
+      "example": null
+    }
+  },
+  "name": "SimSwapDateResponse"
+}

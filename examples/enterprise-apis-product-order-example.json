@@ -1,0 +1,7 @@
+{
+  "id": "example_id",
+  "externalId": "example_externalId",
+  "state": "acknowledged",
+  "orderDate": "2026-04-19T10:00:00Z",
+  "completionDate": "2026-04-19T10:00:00Z"
+}

@@ -1,0 +1,59 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "att": "https://att.dev/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "Device": "att:Device",
+    "DeviceConnectivityRequest": "att:DeviceConnectivityRequest",
+    "DeviceConnectivityStatus": "att:DeviceConnectivityStatus",
+    "DeviceRoamingRequest": "att:DeviceRoamingRequest",
+    "DeviceRoamingStatus": "att:DeviceRoamingStatus",
+    "phoneNumber": {
+      "@id": "att:phoneNumber",
+      "@type": "xsd:string"
+    },
+    "ipv4Address": {
+      "@id": "att:ipv4Address",
+      "@type": "@id"
+    },
+    "publicAddress": {
+      "@id": "att:publicAddress",
+      "@type": "xsd:string"
+    },
+    "privateAddress": {
+      "@id": "att:privateAddress",
+      "@type": "xsd:string"
+    },
+    "publicPort": {
+      "@id": "att:publicPort",
+      "@type": "xsd:integer"
+    },
+    "networkAccessIdentifier": {
+      "@id": "att:networkAccessIdentifier",
+      "@type": "xsd:string"
+    },
+    "device": {
+      "@id": "att:device",
+      "@type": "@id"
+    },
+    "connectivityStatus": {
+      "@id": "att:connectivityStatus",
+      "@type": "xsd:string"
+    },
+    "roaming": {
+      "@id": "att:roaming",
+      "@type": "xsd:boolean"
+    },
+    "countryCode": {
+      "@id": "att:countryCode",
+      "@type": "xsd:integer"
+    },
+    "countryName": {
+      "@id": "att:countryName",
+      "@container": "@set",
+      "@type": "xsd:string"
+    }
+  }
+}

@@ -1,29 +1,599 @@
 aid: att
-url: https://raw.githubusercontent.com/api-evangelist/att/refs/heads/main/apis.yml
 name: AT&T
+description: 'AT&T Inc. is a multinational telecommunications holding company providing wireless and wireline communications,
+  broadband, and business networking to consumers and enterprises. Its developer surface spans four programs: the legacy
+  AT&T Developer Program (SMS, MMS, in-app messaging, speech and OAuth), the MVNX APIs for mobile virtual network operators,
+  the Alliance enterprise wireline APIs for service qualification and ordering, and the invite-only Network API Accelerator
+  Program exposing GSMA CAMARA network APIs — SIM swap, device status, number verification, quality on demand, network insights
+  and mobility threat detection.'
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: enterprise
+  onboarding: approval
+  trial: false
+  try_now: false
+  public: false
+  label: Enterprise · Requires approval
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-25'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/att.png
 tags:
+- 5G
+- Broadband
+- CAMARA
+- Connectivity
+- Device Status
+- Edge Computing
+- Enterprise
+- Fortune 100
+- Messaging
+- Mobile
+- Network
+- Network APIs
+- SIM Swap
+- Speech
 - Telecommunications
 - Wireless
-- Broadband
-- Mobile
-- Fortune 100
-description: One of the largest telecommunications companies in the world providing
-  wireless, broadband, and business networking services. Serves millions of consumers
-  and enterprises across the United States with extensive 5G and fiber networks.
-created: '2026-05-05'
-modified: '2026-05-05'
+- Wireline
+url: https://raw.githubusercontent.com/api-evangelist/att/refs/heads/main/apis.yml
+created: '2025-05-02'
+modified: '2026-07-25'
 specificationVersion: '0.19'
-apis: []
+apis:
+- aid: att:att-oauth-api
+  name: AT&T OAuth 2.0 API
+  description: AT&T OAuth 2.0 authentication API providing access tokens for all AT&T REST APIs. Supports Authorization
+    Code, Client Credentials, and Refresh Token grant types. Scopes include ADS, MMS, SMS, SPEECH, STTC, and TTS.
+  humanURL: https://developer.att.com/oauth-2
+  baseURL: https://api.att.com
+  tags:
+  - OAuth
+  - Authentication
+  - Authorization
+  - Security
+  properties:
+  - type: Documentation
+    url: https://developer.att.com/oauth-2/docs
+  - type: Authentication
+    url: https://developer.att.com/oauth-2/docs
+- aid: att:att-alliance-wireline-apis
+  name: AT&T Alliance Wireline APIs
+  description: Wireline business APIs enabling partners to expedite quoting, service qualification, and ordering of AT&T
+    wireline products. Includes Quick Quote, Product Catalog, Service Qualification, Price Offer, Wireline Ordering, Order
+    Status, AIAB (AT&T Internet Air for Business) Ordering, and Address Search APIs.
+  humanURL: https://devex-web.att.com/alliance
+  baseURL: https://devex-web.att.com
+  tags:
+  - Wireline
+  - Enterprise
+  - Ordering
+  - Service Qualification
+  - Quoting
+  properties:
+  - type: Documentation
+    url: https://devex-web.att.com/alliance
+  - type: GettingStarted
+    url: https://devex-web.att.com/order/docs/get-started-with-ordering-api
+- aid: att:att-authentication-api
+  name: AT&T Authentication API
+  description: The Authentication API from AT&T — 1 operation(s) for authentication.
+  humanURL: https://developer.att.com/sms
+  baseURL: https://api.att.com
+  tags:
+  - Authentication
+  properties:
+  - type: OpenAPI
+    url: openapi/att-authentication-api-openapi.yml
+  - &id005
+    type: Documentation
+    url: https://developer.att.com/sms/docs
+  - &id006
+    type: APIReference
+    url: https://developer.att.com/sms/docs/v2
+  - &id001
+    type: Authentication
+    url: https://developer.att.com/oauth-2/docs
+  - &id007
+    type: GettingStarted
+    url: https://developer.att.com/sms
+- aid: att:att-balance-management-api
+  name: AT&T Balance Management API
+  description: The Balance Management API from AT&T — 1 operation(s) for balance management.
+  humanURL: https://devex-web.att.com/mvnx
+  baseURL: https://devex-web.att.com
+  tags:
+  - Balance Management
+  properties:
+  - type: OpenAPI
+    url: openapi/att-balance-management-api-openapi.yml
+  - &id002
+    type: Documentation
+    url: https://devex-web.att.com/mvnx/docs/mvnx-quickstart
+  - &id003
+    type: GettingStarted
+    url: https://devex-web.att.com/mvnx/docs/mvnx-quickstart
+  - *id001
+- aid: att:att-device-management-api
+  name: AT&T Device Management API
+  description: The Device Management API from AT&T — 2 operation(s) for device management.
+  humanURL: https://devex-web.att.com/mvnx
+  baseURL: https://devex-web.att.com
+  tags:
+  - Device Management
+  properties:
+  - type: OpenAPI
+    url: openapi/att-device-management-api-openapi.yml
+  - *id002
+  - *id003
+  - *id001
+- aid: att:att-geographic-sites-api
+  name: AT&T Geographic Sites API
+  description: The Geographic Sites API from AT&T — 1 operation(s) for geographic sites.
+  humanURL: https://devex-web.att.com/mvnx
+  baseURL: https://devex-web.att.com
+  tags:
+  - Geographic Sites
+  properties:
+  - type: OpenAPI
+    url: openapi/att-geographic-sites-api-openapi.yml
+  - *id002
+  - *id003
+  - *id001
+- aid: att:att-inbox-management-api
+  name: AT&T Inbox Management API
+  description: The Inbox Management API from AT&T — 2 operation(s) for inbox management.
+  humanURL: https://developer.att.com/in-app-messaging/docs
+  baseURL: https://api.att.com
+  tags:
+  - Inbox Management
+  properties:
+  - type: OpenAPI
+    url: openapi/att-inbox-management-api-openapi.yml
+  - &id004
+    type: Documentation
+    url: https://developer.att.com/in-app-messaging/docs
+  - *id001
+- aid: att:att-messages-api
+  name: AT&T Messages API
+  description: The Messages API from AT&T — 2 operation(s) for messages.
+  humanURL: https://developer.att.com/in-app-messaging/docs
+  baseURL: https://api.att.com
+  tags:
+  - Messages
+  properties:
+  - type: OpenAPI
+    url: openapi/att-messages-api-openapi.yml
+  - *id004
+  - *id001
+- aid: att:att-number-management-api
+  name: AT&T Number Management API
+  description: The Number Management API from AT&T — 2 operation(s) for number management.
+  humanURL: https://devex-web.att.com/mvnx
+  baseURL: https://devex-web.att.com
+  tags:
+  - Number Management
+  properties:
+  - type: OpenAPI
+    url: openapi/att-number-management-api-openapi.yml
+  - *id002
+  - *id003
+  - *id001
+- aid: att:att-porting-api
+  name: AT&T Porting API
+  description: The Porting API from AT&T — 3 operation(s) for porting.
+  humanURL: https://devex-web.att.com/mvnx
+  baseURL: https://devex-web.att.com
+  tags:
+  - Porting
+  properties:
+  - type: OpenAPI
+    url: openapi/att-porting-api-openapi.yml
+  - *id002
+  - *id003
+  - *id001
+- aid: att:att-product-orders-api
+  name: AT&T Product Orders API
+  description: The Product Orders API from AT&T — 1 operation(s) for product orders.
+  humanURL: https://devex-web.att.com/mvnx
+  baseURL: https://devex-web.att.com
+  tags:
+  - Product Orders
+  properties:
+  - type: OpenAPI
+    url: openapi/att-product-orders-api-openapi.yml
+  - *id002
+  - *id003
+  - *id001
+- aid: att:att-service-management-api
+  name: AT&T Service Management API
+  description: The Service Management API from AT&T — 1 operation(s) for service management.
+  humanURL: https://devex-web.att.com/mvnx
+  baseURL: https://devex-web.att.com
+  tags:
+  - Service Management
+  properties:
+  - type: OpenAPI
+    url: openapi/att-service-management-api-openapi.yml
+  - *id002
+  - *id003
+  - *id001
+- aid: att:att-sms-messaging-api
+  name: AT&T SMS Messaging API
+  description: The SMS Messaging API from AT&T — 3 operation(s) for sms messaging.
+  humanURL: https://developer.att.com/sms
+  baseURL: https://api.att.com
+  tags:
+  - SMS Messaging
+  properties:
+  - type: OpenAPI
+    url: openapi/att-sms-messaging-api-openapi.yml
+  - *id005
+  - *id006
+  - *id001
+  - *id007
+- aid: att:att-subscriber-management-api
+  name: AT&T Subscriber Management API
+  description: The Subscriber Management API from AT&T — 1 operation(s) for subscriber management.
+  humanURL: https://devex-web.att.com/mvnx
+  baseURL: https://devex-web.att.com
+  tags:
+  - Subscriber Management
+  properties:
+  - type: OpenAPI
+    url: openapi/att-subscriber-management-api-openapi.yml
+  - *id002
+  - *id003
+  - *id001
+- aid: att:att-mvno-apis
+  name: AT&T MVNO APIs
+  description: TM Forum-aligned APIs for mobile virtual network operators (MVNOs) on the AT&T network. The MVNX API suite
+    covers subscriber activation, number portability, device management, service lifecycle management, and balance management
+    following TMF open standards.
+  humanURL: https://devex-web.att.com/mvnx
+  baseURL: https://devex-web.att.com
+  tags:
+  - MVNO
+  - TM Forum
+  - Subscriber Management
+  - Porting
+  properties:
+  - type: Documentation
+    url: https://devex-web.att.com/mvnx/docs/mvnx-quickstart
+  - type: GettingStarted
+    url: https://devex-web.att.com/mvnx/docs/mvnx-quickstart
+- aid: att:att-cloud-voice-apis
+  name: AT&T Cloud Voice APIs
+  description: REST APIs for AT&T Business Voice and Cloud Voice services enabling partners to manage service ordering,
+    provisioning, and administration for AT&T's enterprise voice and cloud communication products.
+  humanURL: https://devex-web.att.com/business-voice-cloud-voice
+  baseURL: https://devex-web.att.com
+  tags:
+  - Voice
+  - Cloud
+  - Business
+  - UCaaS
+  properties:
+  - type: Documentation
+    url: https://devex-web.att.com/business-voice-cloud-voice
+- aid: att:att-ebonding-apis
+  name: AT&T eBonding APIs
+  description: Seamless API integration with AT&T's wireless and wireline IT and ordering systems. eBonding APIs enable
+    enterprise partners and resellers to integrate their BSS/OSS systems directly with AT&T's backend systems for automated
+    order management and status updates.
+  humanURL: https://devex-web.att.com/ebonding-common
+  baseURL: https://devex-web.att.com
+  tags:
+  - eBonding
+  - Enterprise
+  - BSS
+  - OSS
+  - Integration
+  properties:
+  - type: Documentation
+    url: https://devex-web.att.com/ebonding-common
+- aid: att:att-order-management-api
+  name: AT&T Order Management API
+  description: Track and manage existing orders
+  humanURL: https://devex-web.att.com/alliance
+  baseURL: https://devex-web.att.com
+  tags:
+  - Order Management
+  properties:
+  - type: OpenAPI
+    url: openapi/att-order-management-api-openapi.yml
+  - &id008
+    type: Documentation
+    url: https://devex-web.att.com/alliance
+  - &id009
+    type: GettingStarted
+    url: https://devex-web.att.com/order/docs/get-started-with-ordering-api
+  - *id001
+- aid: att:att-product-ordering-api
+  name: AT&T Product Ordering API
+  description: Place and manage service orders
+  humanURL: https://devex-web.att.com/alliance
+  baseURL: https://devex-web.att.com
+  tags:
+  - Product Ordering
+  properties:
+  - type: OpenAPI
+    url: openapi/att-product-ordering-api-openapi.yml
+  - *id008
+  - *id009
+  - *id001
+- aid: att:att-service-qualification-api
+  name: AT&T Service Qualification API
+  description: Check service availability at a location
+  humanURL: https://devex-web.att.com/alliance
+  baseURL: https://devex-web.att.com
+  tags:
+  - Service Qualification
+  properties:
+  - type: OpenAPI
+    url: openapi/att-service-qualification-api-openapi.yml
+  - *id008
+  - *id009
+  - *id001
+- aid: att:att-device-connectivity-api
+  name: AT&T Device Connectivity API
+  description: The Device Connectivity API from AT&T — 1 operation(s) for device connectivity.
+  humanURL: https://devex-web.att.com/developer-hub/
+  baseURL: https://api.att.com/camara/device-status/v1
+  tags:
+  - Device Connectivity
+  properties:
+  - type: OpenAPI
+    url: openapi/att-device-connectivity-api-openapi.yml
+  - type: Documentation
+    url: https://devex-web.att.com/developer-hub/
+  - type: GettingStarted
+    url: https://devex-web.att.com/developer-hub/docs/network-api-accelerator-program
+- aid: att:att-device-roaming-api
+  name: AT&T Device Roaming API
+  description: The Device Roaming API from AT&T — 1 operation(s) for device roaming.
+  humanURL: https://devex-web.att.com/developer-hub/
+  baseURL: https://api.att.com/camara/device-status/v1
+  tags:
+  - Device Roaming
+  properties:
+  - type: OpenAPI
+    url: openapi/att-device-roaming-api-openapi.yml
+  - type: Documentation
+    url: https://devex-web.att.com/developer-hub/
+  - type: GettingStarted
+    url: https://devex-web.att.com/developer-hub/docs/network-api-accelerator-program
+- aid: att:att-network-metrics-api
+  name: AT&T Network Metrics API
+  description: The Network Metrics API from AT&T — 1 operation(s) for network metrics.
+  humanURL: https://devex-web.att.com/developer-hub/
+  baseURL: https://api.att.com/network/insights/v1
+  tags:
+  - Network Metrics
+  properties:
+  - type: OpenAPI
+    url: openapi/att-network-metrics-api-openapi.yml
+  - type: Documentation
+    url: https://devex-web.att.com/developer-hub/
+  - type: GettingStarted
+    url: https://devex-web.att.com/developer-hub/docs/network-api-accelerator-program
+- aid: att:att-number-verification-api
+  name: AT&T Number Verification API
+  description: The Number Verification API from AT&T — 1 operation(s) for number verification.
+  humanURL: https://devex-web.att.com/developer-hub/
+  baseURL: https://api.att.com/camara/number-verification/v1
+  tags:
+  - Number Verification
+  properties:
+  - type: OpenAPI
+    url: openapi/att-number-verification-api-openapi.yml
+  - type: Documentation
+    url: https://devex-web.att.com/developer-hub/
+  - type: GettingStarted
+    url: https://devex-web.att.com/developer-hub/docs/network-api-accelerator-program
+- aid: att:att-qod-sessions-api
+  name: AT&T Quality on Demand API
+  description: The QoD Sessions API from AT&T — 2 operation(s) for qod sessions.
+  humanURL: https://devex-web.att.com/developer-hub/
+  baseURL: https://api.att.com/camara/qod/v1
+  tags:
+  - QoD Sessions
+  properties:
+  - type: OpenAPI
+    url: openapi/att-qod-sessions-api-openapi.yml
+  - type: Documentation
+    url: https://devex-web.att.com/developer-hub/
+  - type: GettingStarted
+    url: https://devex-web.att.com/developer-hub/docs/network-api-accelerator-program
+- aid: att:att-sim-swap-api
+  name: AT&T SIM Swap API
+  description: The SIM Swap API from AT&T — 2 operation(s) for sim swap.
+  humanURL: https://devex-web.att.com/developer-hub/
+  baseURL: https://api.att.com/camara/sim-swap/v1
+  tags:
+  - SIM Swap
+  properties:
+  - type: OpenAPI
+    url: openapi/att-sim-swap-api-openapi.yml
+  - type: Documentation
+    url: https://devex-web.att.com/developer-hub/
+  - type: GettingStarted
+    url: https://devex-web.att.com/developer-hub/docs/network-api-accelerator-program
+- aid: att:att-threat-detection-api
+  name: AT&T Threat Detection API
+  description: The Threat Detection API from AT&T — 1 operation(s) for threat detection.
+  humanURL: https://devex-web.att.com/developer-hub/
+  baseURL: https://api.att.com/network/threat-detection/v1
+  tags:
+  - Threat Detection
+  properties:
+  - type: OpenAPI
+    url: openapi/att-threat-detection-api-openapi.yml
+  - type: Documentation
+    url: https://devex-web.att.com/developer-hub/
+  - type: GettingStarted
+    url: https://devex-web.att.com/developer-hub/docs/network-api-accelerator-program
+- aid: att:att-threat-subscriptions-api
+  name: AT&T Threat Subscriptions API
+  description: The Threat Subscriptions API from AT&T — 1 operation(s) for threat subscriptions.
+  humanURL: https://devex-web.att.com/developer-hub/
+  baseURL: https://api.att.com/network/threat-detection/v1
+  tags:
+  - Threat Subscriptions
+  properties:
+  - type: OpenAPI
+    url: openapi/att-threat-subscriptions-api-openapi.yml
+  - type: Documentation
+    url: https://devex-web.att.com/developer-hub/
+  - type: GettingStarted
+    url: https://devex-web.att.com/developer-hub/docs/network-api-accelerator-program
 common:
+- type: AgenticAccess
+  url: agentic-access/att-agentic-access.yml
 - type: DomainSecurity
   url: security/att-domain-security.yml
-- type: GitHubOrganization
-  url: https://github.com/att
-- type: LinkedIn
-  url: https://www.linkedin.com/company/att
+- type: Authentication
+  url: authentication/att-authentication.yml
+- type: OAuthScopes
+  url: scopes/att-scopes.yml
+- type: SpectralRules
+  url: rules/att-spectral-rules.yml
+- type: Vocabulary
+  url: vocabulary/att-vocabulary.yaml
+- type: GraphQL
+  url: graphql/att-graphql.md
 - type: Website
   url: https://www.att.com/
-- url: graphql/att-graphql.md
-  type: GraphQL
+- type: Portal
+  url: https://developer.att.com/s/
+- type: DeveloperPortal
+  url: https://devex-web.att.com/
+- type: DeveloperPortal
+  url: https://devex-web.att.com/developer-hub/
+- type: Documentation
+  url: https://developer.att.com/s/
+- type: Documentation
+  url: https://devex-web.att.com/developer-hub/
+- type: GettingStarted
+  url: https://devex-web.att.com/developer-hub/docs/network-api-accelerator-program
+- type: Authentication
+  url: https://developer.att.com/oauth-2/docs
+- type: Support
+  url: https://developer.att.com/support
+- type: FAQ
+  url: https://developer.att.com/support/faqs/att-developer-program-and-api-platform-faqs
+- type: Signup
+  url: https://developer.att.com/developer/manageMyAccount.jsp
+- type: Signup
+  url: https://devex-web.att.com/developer-hub/docs/network-api-accelerator-program
+- type: TermsOfService
+  url: https://www.att.com/gen/general?pid=11561
+- type: PrivacyPolicy
+  url: https://www.att.com/gen/privacy-policy?pid=2506
+- type: Blog
+  url: https://about.att.com/blogs
+- type: StatusPage
+  url: https://www.att.com/support/article/wireless/KM1000428
+- type: GitHubOrganization
+  url: https://github.com/att
+- type: GitHubOrganization
+  url: https://github.com/attdevsupport
+- type: X
+  url: https://x.com/att
+- type: LinkedIn
+  url: https://www.linkedin.com/company/att
+- type: YouTube
+  url: https://www.youtube.com/att
+- type: Features
+  data:
+  - name: CAMARA Industry-Standard APIs
+    description: Implements GSMA CAMARA open-source standard APIs including SIM Swap, Device Status, Number Verification,
+      and Quality on Demand for cross-carrier interoperability.
+  - name: Network API Accelerator Program
+    description: Invite-only early access program for developers to trial pre-release 5G network APIs and influence future
+      network capability development.
+  - name: 5G Network Capabilities
+    description: Exposes AT&T's 5G network intelligence including QoS on demand, network performance insights, and device
+      connectivity status.
+  - name: Fraud Prevention Network Signals
+    description: Network-based fraud signals including SIM swap detection, number verification, and mobility threat detection
+      to strengthen app security.
+- type: UseCases
+  data:
+  - name: SIM Swap Fraud Prevention
+    description: Detect recent SIM card changes to prevent account takeover attacks and strengthen multi-factor authentication
+      flows.
+  - name: Frictionless Mobile Authentication
+    description: Verify device phone numbers silently via the network without OTP codes, reducing authentication friction
+      in mobile apps.
+  - name: 5G Quality of Service Optimization
+    description: Request guaranteed bandwidth or low latency for real-time applications like video conferencing, AR/VR,
+      and industrial IoT.
+  - name: Device Connectivity Monitoring
+    description: Monitor device connectivity and roaming status to trigger location-aware application behaviors.
+  - name: Threat Detection and Security
+    description: Leverage AT&T network ML-based threat signals to detect anomalous device behavior and security incidents.
+  - name: Enterprise Digital Transformation
+    description: Automate wireline service ordering, qualification, and provisioning for enterprise customers through API
+      integration.
+  - name: Mobile App Authentication
+    description: Use AT&T network signals for frictionless authentication and fraud prevention in consumer and business
+      mobile applications.
+  - name: IoT and Edge Computing
+    description: Connect and manage IoT devices using AT&T's 5G and LTE networks with quality of service guarantees for
+      mission-critical applications.
+  - name: MVNO Launch and Operations
+    description: Launch and operate mobile virtual network services on AT&T's infrastructure using TM Forum-standard management
+      APIs.
+  - name: Workforce Communication
+    description: Integrate AT&T voice and messaging APIs into business workflows for employee and customer communication
+      automation.
+  - name: SMS Alerts and Notifications
+    description: Send security verification codes, appointment reminders, promotional offers, and customer feedback requests
+      via SMS short code.
+  - name: In-App Messaging Integration
+    description: Embed MMS and SMS messaging directly into mobile applications with full inbox management capabilities.
+  - name: Mobile Virtual Network Operations
+    description: Launch and operate MVNO services using AT&T's network with automated subscriber onboarding, porting, and
+      lifecycle management.
+  - name: Enterprise Wireline Ordering
+    description: Automate service qualification, quoting, and order submission for enterprise connectivity services.
+- type: Integrations
+  data:
+  - name: Aduna Network API Platform
+    description: AT&T's partnership with Aduna provides standardized access to AT&T 5G Network APIs with cross-carrier interoperability
+      for all three major U.S. carriers.
+  - name: Vonage (Ericsson)
+    description: Collaboration with Vonage to bring AT&T CAMARA network APIs to communications platform developers.
+  - name: GSMA CAMARA
+    description: Member of GSMA's CAMARA open-source project defining standardized telco network APIs for cross-operator
+      portability.
+  - name: Microsoft Azure
+    description: AT&T and Microsoft partnership for 5G and Azure-powered edge computing solutions for enterprise applications.
+  - name: Cisco
+    description: Integration with Cisco enterprise networking and collaboration solutions through AT&T's business services.
+  - name: IBM
+    description: AT&T and IBM partnership for AI-powered network management and cloud services integration.
+  - name: TM Forum Open APIs
+    description: MVNX and enterprise APIs follow TM Forum Open API standards for telecom BSS/OSS interoperability.
+  - name: IBM Worklight
+    description: AT&T API Platform Adapters for IBM Worklight mobile development platform.
+  - name: Salesforce Platform
+    description: AT&T Toolkit for Salesforce enabling speech and messaging API integration in Salesforce apps.
+  - name: TM Forum APIs
+    description: MVNX APIs align with TM Forum Open API standards including TMF 622, 637, 639, 640, 654, 674, 689, 702,
+      716, and 761.
+- type: Solutions
+  data:
+  - name: AT&T Business
+    description: Comprehensive connectivity, cloud, cybersecurity, and collaboration solutions for small, medium, and enterprise
+      businesses.
+  - name: FirstNet
+    description: Dedicated broadband network for America's first responders including priority access, preemption, and dedicated
+      coverage expansion.
+  - name: AT&T Wholesale
+    description: Network services for carriers, MVNOs, and resellers including voice, data, and roaming services on AT&T's
+      infrastructure.

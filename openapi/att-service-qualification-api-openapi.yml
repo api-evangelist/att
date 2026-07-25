@@ -1,0 +1,161 @@
+openapi: 3.0.3
+info:
+  title: AT&T Service Qualification API
+  description: Enterprise-grade APIs for AT&T wireline business services including service qualification, quoting, ordering, and provisioning. The Alliance API suite supports automated ordering of AVPN, IPBB, ATTPhone, ASE, and AT&T Internet Air for Business services.
+  version: 1.0.0
+  contact:
+    name: AT&T Alliance Developer Portal
+    url: https://devex-web.att.com/alliance
+  termsOfService: https://www.att.com/gen/general?pid=11561
+servers:
+- url: https://devex-web.att.com
+  description: AT&T Enterprise API Server
+security:
+- oauth2: []
+tags:
+- name: Service Qualification
+  description: Check service availability at a location
+paths:
+  /alliance/serviceQualification/v1/check:
+    post:
+      operationId: checkServiceQualification
+      summary: Check AT&T Service Qualification
+      description: Determine which AT&T wireline services (AVPN, IPBB, ATTPhone, ASE, Internet Air for Business) are available at a given location.
+      tags:
+      - Service Qualification
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ServiceQualificationRequest'
+            examples:
+              check:
+                summary: Check Service at Address
+                value:
+                  address:
+                    streetAddress: 208 S Akard St
+                    city: Dallas
+                    state: TX
+                    postalCode: '75202'
+                    country: US
+      responses:
+        '200':
+          description: Service qualification results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceQualificationResponse'
+              examples:
+                available:
+                  summary: Services Available
+                  value:
+                    qualificationId: qual_abc123
+                    qualificationDate: '2026-04-19'
+                    serviceQualificationItems:
+                    - id: item_001
+                      state: done
+                      serviceSpecification:
+                        name: AVPN
+                      eligibilityUnavailabilityReason: null
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    ServiceQualificationResponse:
+      type: object
+      properties:
+        qualificationId:
+          type: string
+          description: Unique qualification check identifier
+        qualificationDate:
+          type: string
+          format: date
+          description: Date the qualification was performed
+        serviceQualificationItems:
+          type: array
+          items:
+            $ref: '#/components/schemas/ServiceQualificationItem'
+    Address:
+      type: object
+      required:
+      - streetAddress
+      - city
+      - state
+      - postalCode
+      - country
+      properties:
+        streetAddress:
+          type: string
+          description: Street address line
+        city:
+          type: string
+          description: City name
+        state:
+          type: string
+          description: State abbreviation (US)
+        postalCode:
+          type: string
+          description: ZIP or postal code
+        country:
+          type: string
+          description: ISO 3166-1 alpha-2 country code
+    ServiceQualificationItem:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Item identifier
+        state:
+          type: string
+          enum:
+          - done
+          - terminatedWithError
+          description: Qualification state for this service
+        serviceSpecification:
+          type: object
+          properties:
+            name:
+              type: string
+              enum:
+              - AVPN
+              - IPBB
+              - ATTPhone
+              - ASE
+              - InternetAirBusiness
+              description: Service specification name
+        eligibilityUnavailabilityReason:
+          type: string
+          nullable: true
+          description: Reason service is unavailable (null if available)
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code
+        reason:
+          type: string
+          description: Error reason
+        message:
+          type: string
+          description: Detailed error message
+    ServiceQualificationRequest:
+      type: object
+      required:
+      - address
+      properties:
+        address:
+          $ref: '#/components/schemas/Address'
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://devex-web.att.com/oauth/token
+          scopes:
+            enterprise: Access AT&T enterprise connectivity APIs

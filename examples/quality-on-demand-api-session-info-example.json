@@ -1,0 +1,15 @@
+{
+  "sessionId": "session-a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+  "device": {
+    "phoneNumber": "+12125551234",
+    "ipv4Address": {
+      "publicAddress": "203.0.113.42",
+      "privateAddress": "10.0.0.5"
+    }
+  },
+  "qosProfile": "LOW_LATENCY",
+  "duration": 3600,
+  "startedAt": "2026-04-19T14:30:00Z",
+  "expiresAt": "2026-04-19T15:30:00Z",
+  "qosStatus": "AVAILABLE"
+}

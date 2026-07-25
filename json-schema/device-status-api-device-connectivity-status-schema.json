@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/att/refs/heads/main/json-schema/device-status-api-device-connectivity-status-schema.json",
+  "title": "DeviceConnectivityStatus",
+  "description": "DeviceConnectivityStatus schema",
+  "type": "object",
+  "properties": {
+    "connectivityStatus": {
+      "type": "string",
+      "description": "Current device connectivity state",
+      "enum": [
+        "CONNECTED_DATA",
+        "CONNECTED_SMS",
+        "NOT_CONNECTED"
+      ],
+      "example": "CONNECTED_DATA"
+    },
+    "roaming": {
+      "type": "boolean",
+      "description": "Whether the device is currently roaming",
+      "example": false
+    }
+  }
+}

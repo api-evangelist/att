@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ThreatIndicator",
+  "title": "ThreatIndicator",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "description": "Type of threat detected",
+      "enum": [
+        "UNUSUAL_LOCATION",
+        "ABNORMAL_DATA_USAGE",
+        "KNOWN_MALWARE_TRAFFIC",
+        "SIM_CLONING",
+        "ROAMING_ANOMALY",
+        "CALL_PATTERN_ANOMALY"
+      ],
+      "example": "UNUSUAL_LOCATION"
+    },
+    "severity": {
+      "type": "string",
+      "description": "Severity of the threat indicator",
+      "enum": [
+        "LOW",
+        "MEDIUM",
+        "HIGH",
+        "CRITICAL"
+      ],
+      "example": "MEDIUM"
+    },
+    "description": {
+      "type": "string",
+      "description": "Human-readable description of the threat",
+      "example": "Device location changed rapidly from expected home area"
+    },
+    "detectedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the threat indicator was detected",
+      "example": "2026-04-19T14:30:00Z"
+    }
+  }
+}

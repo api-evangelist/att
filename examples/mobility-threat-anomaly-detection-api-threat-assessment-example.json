@@ -1,0 +1,13 @@
+{
+  "riskLevel": "LOW",
+  "anomalyScore": 0.05,
+  "threats": [
+    {
+      "type": "UNUSUAL_LOCATION",
+      "severity": "MEDIUM",
+      "description": "Device location changed rapidly from expected home area",
+      "detectedAt": "2026-04-19T14:30:00Z"
+    }
+  ],
+  "assessedAt": "2026-04-19T14:30:00Z"
+}

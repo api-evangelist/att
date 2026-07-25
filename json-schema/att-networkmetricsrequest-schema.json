@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/NetworkMetricsRequest",
+  "title": "NetworkMetricsRequest",
+  "type": "object",
+  "required": [
+    "device"
+  ],
+  "properties": {
+    "device": {
+      "$ref": "#/components/schemas/Device"
+    }
+  }
+}

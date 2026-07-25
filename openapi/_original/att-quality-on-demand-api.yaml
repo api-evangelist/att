@@ -1,0 +1,347 @@
+openapi: 3.0.3
+info:
+  title: AT&T Quality on Demand API
+  description: >-
+    CAMARA-standard Quality of Service on Demand (QoD) API that allows applications
+    to temporarily request enhanced network quality for a specific device session.
+    Supports requesting prioritized throughput, reduced latency, or guaranteed
+    bandwidth for time-sensitive operations like video streaming, gaming, AR/VR,
+    remote surgery, or industrial automation on AT&T's 5G network.
+  version: '1.0'
+  contact:
+    url: https://devex-web.att.com/developer-hub/docs/network-api-accelerator-program
+  termsOfService: https://www.att.com/gen/general?pid=11561
+  x-generated-from: documentation
+  x-last-validated: '2026-04-19'
+servers:
+  - url: https://api.att.com/camara/qod/v1
+    description: AT&T CAMARA Quality on Demand API endpoint
+paths:
+  /sessions:
+    post:
+      operationId: createQodSession
+      summary: AT&T Create QoD Session
+      description: >-
+        Create a Quality of Service on Demand session for a device. Requests
+        enhanced network quality for a specified duration and QoS profile
+        (e.g., LOW_LATENCY, THROUGHPUT_S/M/L, VOICE). Returns a session ID
+        for monitoring and management.
+      tags:
+        - QoD Sessions
+      security:
+        - oauth2: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateSessionRequest'
+            examples:
+              CreateQodSessionRequestExample:
+                summary: Default createQodSession request
+                x-microcks-default: true
+                value:
+                  device:
+                    phoneNumber: '+12125551234'
+                  qosProfile: LOW_LATENCY
+                  duration: 3600
+                  notificationUrl: https://webhook.example.com/qod-events
+      responses:
+        '201':
+          description: QoD session successfully created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SessionInfo'
+              examples:
+                CreateQodSession201Example:
+                  summary: Default createQodSession 201 response
+                  x-microcks-default: true
+                  value:
+                    sessionId: session-a1b2c3d4-e5f6-7890-abcd-ef1234567890
+                    device:
+                      phoneNumber: '+12125551234'
+                    qosProfile: LOW_LATENCY
+                    duration: 3600
+                    startedAt: '2026-04-19T14:30:00Z'
+                    expiresAt: '2026-04-19T15:30:00Z'
+                    qosStatus: REQUESTED
+        '400':
+          description: Bad request - invalid parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorInfo'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorInfo'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorInfo'
+        '409':
+          description: Conflict - existing QoD session for this device
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorInfo'
+        '429':
+          description: Too many requests
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorInfo'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    get:
+      operationId: listQodSessions
+      summary: AT&T List QoD Sessions
+      description: >-
+        List active QoD sessions for the authenticated application. Returns
+        session details including status, QoS profile, and expiry.
+      tags:
+        - QoD Sessions
+      security:
+        - oauth2: []
+      responses:
+        '200':
+          description: QoD sessions list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SessionInfo'
+              examples:
+                ListQodSessions200Example:
+                  summary: Default listQodSessions 200 response
+                  x-microcks-default: true
+                  value:
+                    - sessionId: session-a1b2c3d4-e5f6-7890-abcd-ef1234567890
+                      qosProfile: LOW_LATENCY
+                      qosStatus: AVAILABLE
+                      expiresAt: '2026-04-19T15:30:00Z'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorInfo'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /sessions/{sessionId}:
+    get:
+      operationId: getQodSession
+      summary: AT&T Get QoD Session
+      description: >-
+        Retrieve details of a specific Quality of Service on Demand session,
+        including its current status, QoS profile, and expiry time.
+      tags:
+        - QoD Sessions
+      security:
+        - oauth2: []
+      parameters:
+        - name: sessionId
+          in: path
+          required: true
+          description: Unique QoD session identifier
+          schema:
+            type: string
+            example: session-a1b2c3d4-e5f6-7890-abcd-ef1234567890
+      responses:
+        '200':
+          description: QoD session details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SessionInfo'
+              examples:
+                GetQodSession200Example:
+                  summary: Default getQodSession 200 response
+                  x-microcks-default: true
+                  value:
+                    sessionId: session-a1b2c3d4-e5f6-7890-abcd-ef1234567890
+                    device:
+                      phoneNumber: '+12125551234'
+                    qosProfile: LOW_LATENCY
+                    duration: 3600
+                    startedAt: '2026-04-19T14:30:00Z'
+                    expiresAt: '2026-04-19T15:30:00Z'
+                    qosStatus: AVAILABLE
+        '404':
+          description: Session not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorInfo'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorInfo'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    delete:
+      operationId: deleteQodSession
+      summary: AT&T Delete QoD Session
+      description: >-
+        Terminate an active Quality of Service on Demand session before its
+        natural expiry. Returns network quality to normal levels.
+      tags:
+        - QoD Sessions
+      security:
+        - oauth2: []
+      parameters:
+        - name: sessionId
+          in: path
+          required: true
+          description: Unique QoD session identifier
+          schema:
+            type: string
+            example: session-a1b2c3d4-e5f6-7890-abcd-ef1234567890
+      responses:
+        '204':
+          description: QoD session successfully terminated
+        '404':
+          description: Session not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorInfo'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorInfo'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: AT&T OAuth 2.0 for CAMARA network APIs
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.att.com/oauth/v4/token
+          scopes: {}
+  schemas:
+    Device:
+      type: object
+      description: Device identifier for QoD session
+      properties:
+        phoneNumber:
+          type: string
+          description: Mobile phone number in E.164 format
+          example: '+12125551234'
+        ipv4Address:
+          type: object
+          description: Device IPv4 address
+          properties:
+            publicAddress:
+              type: string
+              description: Public IPv4 address
+              example: 203.0.113.42
+            privateAddress:
+              type: string
+              description: Private IPv4 address
+              example: 10.0.0.5
+    CreateSessionRequest:
+      type: object
+      required:
+        - device
+        - qosProfile
+      properties:
+        device:
+          $ref: '#/components/schemas/Device'
+        qosProfile:
+          type: string
+          description: Requested QoS profile
+          enum:
+            - LOW_LATENCY
+            - THROUGHPUT_S
+            - THROUGHPUT_M
+            - THROUGHPUT_L
+            - VOICE
+          example: LOW_LATENCY
+        duration:
+          type: integer
+          description: Session duration in seconds (default and max vary by profile)
+          minimum: 1
+          maximum: 86400
+          example: 3600
+        notificationUrl:
+          type: string
+          format: uri
+          description: Webhook URL to receive QoS status change notifications
+          example: https://webhook.example.com/qod-events
+        notificationAuthToken:
+          type: string
+          description: Bearer token for webhook notification authentication
+          example: webhook-token-abc123
+    SessionInfo:
+      type: object
+      properties:
+        sessionId:
+          type: string
+          description: Unique identifier for the QoD session
+          example: session-a1b2c3d4-e5f6-7890-abcd-ef1234567890
+        device:
+          $ref: '#/components/schemas/Device'
+        qosProfile:
+          type: string
+          description: QoS profile applied to this session
+          enum:
+            - LOW_LATENCY
+            - THROUGHPUT_S
+            - THROUGHPUT_M
+            - THROUGHPUT_L
+            - VOICE
+          example: LOW_LATENCY
+        duration:
+          type: integer
+          description: Session duration in seconds
+          example: 3600
+        startedAt:
+          type: string
+          format: date-time
+          description: Session start timestamp
+          example: '2026-04-19T14:30:00Z'
+        expiresAt:
+          type: string
+          format: date-time
+          description: Session expiry timestamp
+          example: '2026-04-19T15:30:00Z'
+        qosStatus:
+          type: string
+          description: Current QoS provisioning status
+          enum:
+            - REQUESTED
+            - AVAILABLE
+            - UNAVAILABLE
+          example: AVAILABLE
+    ErrorInfo:
+      type: object
+      properties:
+        status:
+          type: integer
+          description: HTTP status code
+          example: 400
+        code:
+          type: string
+          description: CAMARA error code
+          example: INVALID_ARGUMENT
+        message:
+          type: string
+          description: Human-readable error message
+          example: Invalid QoS profile specified

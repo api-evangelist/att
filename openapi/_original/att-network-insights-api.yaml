@@ -1,0 +1,176 @@
+openapi: 3.0.3
+info:
+  title: AT&T Network Insights API
+  description: >-
+    Delivers performance metrics and device-level network data, providing
+    developers with insights into network conditions, signal quality, and
+    performance indicators for connected devices on the AT&T network. Part of
+    the AT&T Network API Accelerator Program.
+  version: '1.0'
+  contact:
+    url: https://devex-web.att.com/developer-hub/docs/network-api-accelerator-program
+  termsOfService: https://www.att.com/gen/general?pid=11561
+  x-generated-from: documentation
+  x-last-validated: '2026-04-19'
+servers:
+  - url: https://api.att.com/network/insights/v1
+    description: AT&T Network Insights API endpoint
+paths:
+  /metrics:
+    post:
+      operationId: getNetworkMetrics
+      summary: AT&T Get Network Performance Metrics
+      description: >-
+        Retrieve current network performance metrics for a specific device or
+        location. Returns signal strength, network generation (4G/5G),
+        throughput estimates, and latency indicators.
+      tags:
+        - Network Metrics
+      security:
+        - oauth2: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NetworkMetricsRequest'
+            examples:
+              GetNetworkMetricsRequestExample:
+                summary: Default getNetworkMetrics request
+                x-microcks-default: true
+                value:
+                  device:
+                    phoneNumber: '+12125551234'
+      responses:
+        '200':
+          description: Network metrics retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NetworkMetrics'
+              examples:
+                GetNetworkMetrics200Example:
+                  summary: Default getNetworkMetrics 200 response
+                  x-microcks-default: true
+                  value:
+                    networkGeneration: 5G
+                    signalStrength: GOOD
+                    estimatedDownlinkThroughput: 250
+                    estimatedUplinkThroughput: 50
+                    estimatedLatency: 15
+                    congestionLevel: LOW
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorInfo'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorInfo'
+        '404':
+          description: Device not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorInfo'
+        '429':
+          description: Too many requests
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorInfo'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: AT&T OAuth 2.0 for network APIs
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.att.com/oauth/v4/token
+          scopes: {}
+  schemas:
+    Device:
+      type: object
+      description: Device identifier for network metrics queries
+      properties:
+        phoneNumber:
+          type: string
+          description: Mobile phone number in E.164 format
+          example: '+12125551234'
+        ipv4Address:
+          type: object
+          description: Device IP address (alternative to phoneNumber)
+          properties:
+            publicAddress:
+              type: string
+              example: 203.0.113.42
+    NetworkMetricsRequest:
+      type: object
+      required:
+        - device
+      properties:
+        device:
+          $ref: '#/components/schemas/Device'
+    NetworkMetrics:
+      type: object
+      properties:
+        networkGeneration:
+          type: string
+          description: Current network generation for the device
+          enum:
+            - 5G
+            - 5G_NSA
+            - 4G
+            - 3G
+          example: 5G
+        signalStrength:
+          type: string
+          description: Signal quality indicator
+          enum:
+            - EXCELLENT
+            - GOOD
+            - FAIR
+            - POOR
+          example: GOOD
+        estimatedDownlinkThroughput:
+          type: integer
+          description: Estimated downlink throughput in Mbps
+          example: 250
+        estimatedUplinkThroughput:
+          type: integer
+          description: Estimated uplink throughput in Mbps
+          example: 50
+        estimatedLatency:
+          type: integer
+          description: Estimated round-trip latency in milliseconds
+          example: 15
+        congestionLevel:
+          type: string
+          description: Current network congestion level
+          enum:
+            - LOW
+            - MEDIUM
+            - HIGH
+          example: LOW
+    ErrorInfo:
+      type: object
+      properties:
+        status:
+          type: integer
+          description: HTTP status code
+          example: 400
+        code:
+          type: string
+          description: Error code
+          example: INVALID_ARGUMENT
+        message:
+          type: string
+          description: Human-readable error message
+          example: Invalid device identifier

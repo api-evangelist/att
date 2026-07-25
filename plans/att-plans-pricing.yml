@@ -1,0 +1,74 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: AT&T
+providerId: att
+created: '2026-05-04'
+modified: '2026-07-25'
+reconciled: false
+tags:
+- 5G
+- B2B
+- CAMARA
+- Connectivity
+- Edge Computing
+- Enterprise
+- Network APIs
+- Telecommunications
+description: AT&T does not publish public API pricing. Access to the wireless messaging, MVNO, enterprise wireline
+  and CAMARA network APIs is negotiated through partner / B2B contracts with AT&T enterprise sales. The Network
+  API Accelerator Program that fronts the CAMARA network APIs is invite-only and pre-GA.
+notes: Pre-release / invite-only program. Public price list does not exist as of the modified date. Expect commercial
+  terms similar to other CAMARA carriers (per-call or volume-tier pricing) once the program reaches GA.
+sources:
+- https://developer.att.com/
+- https://www.att.com/business/
+plans:
+- id: att-partner
+  name: Partner / B2B Contract
+  type: enterprise
+  description: Custom pricing through enterprise sales / partner program.
+  entries:
+  - label: Annual contract (custom)
+    name: annual
+    type: subscription
+    metric: year
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: custom
+    userMultiplied: false
+  elements:
+  - name: Negotiated contracts
+  - name: Volume discounts
+  - name: Service-level agreements
+  - name: Dedicated account team
+  - name: 'Partner program: https://developer.att.com/'
+- id: att-accelerator
+  name: Network API Accelerator (Invite-Only)
+  type: enterprise
+  description: Pre-release access to CAMARA network APIs through AT&T's Network API Accelerator Program. Commercials
+    negotiated bilaterally.
+  entries:
+  - label: Pre-Release API Access
+    name: api_access
+    type: subscription
+    metric: varies
+    limit: -1
+    timeFrame: month
+    geo: US
+    unit: 1
+    price: custom (invite-only program; contact AT&T)
+    userMultiplied: false
+  elements:
+  - name: Device Status API (CAMARA)
+  - name: SIM Swap Detection API (CAMARA)
+  - name: Number Verification API (CAMARA)
+  - name: Quality on Demand API (CAMARA)
+  - name: Network Insights API
+  - name: Mobility Threat Detection API
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
+  url: https://apievangelist.com

@@ -1,0 +1,150 @@
+openapi: 3.0.3
+info:
+  title: AT&T Threat Subscriptions API
+  description: CAMARA-standard API that checks the connectivity status of user equipment, including roaming information. Enables applications to determine if a device is reachable, connected, and whether it is roaming on a partner network. Part of the AT&T Network API Accelerator Program.
+  version: '1.0'
+  contact:
+    url: https://devex-web.att.com/developer-hub/docs/network-api-accelerator-program
+  termsOfService: https://www.att.com/gen/general?pid=11561
+  x-generated-from: documentation
+  x-last-validated: '2026-04-19'
+servers:
+- url: https://api.att.com/network/threat-detection/v1
+  description: AT&T Mobility Threat and Anomaly Detection API endpoint
+tags:
+- name: Threat Subscriptions
+paths:
+  /threats/subscribe:
+    post:
+      operationId: subscribeToThreatAlerts
+      summary: AT&T Subscribe to Threat Alerts
+      description: Subscribe to real-time threat and anomaly detection alerts for a device or set of devices. Notifications are delivered to the specified webhook URL when threat conditions are detected.
+      tags:
+      - Threat Subscriptions
+      security:
+      - oauth2: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ThreatSubscriptionRequest'
+            examples:
+              SubscribeToThreatAlertsRequestExample:
+                summary: Default subscribeToThreatAlerts request
+                x-microcks-default: true
+                value:
+                  device:
+                    phoneNumber: '+12125551234'
+                  notificationUrl: https://webhook.example.com/threats
+                  minRiskLevel: MEDIUM
+      responses:
+        '201':
+          description: Threat alert subscription created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ThreatSubscription'
+              examples:
+                SubscribeToThreatAlerts201Example:
+                  summary: Default subscribeToThreatAlerts 201 response
+                  x-microcks-default: true
+                  value:
+                    subscriptionId: sub-threat-500123
+                    device:
+                      phoneNumber: '+12125551234'
+                    minRiskLevel: MEDIUM
+                    status: ACTIVE
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorInfo'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorInfo'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    ErrorInfo:
+      type: object
+      properties:
+        status:
+          type: integer
+          description: HTTP status code
+          example: 400
+        code:
+          type: string
+          description: Error code
+          example: INVALID_ARGUMENT
+        message:
+          type: string
+          description: Human-readable error message
+          example: Invalid device identifier
+    ThreatSubscriptionRequest:
+      type: object
+      required:
+      - device
+      - notificationUrl
+      properties:
+        device:
+          $ref: '#/components/schemas/Device'
+        notificationUrl:
+          type: string
+          format: uri
+          description: Webhook URL for threat alert notifications
+          example: https://webhook.example.com/threats
+        minRiskLevel:
+          type: string
+          description: Minimum risk level to trigger notifications
+          enum:
+          - LOW
+          - MEDIUM
+          - HIGH
+          - CRITICAL
+          example: MEDIUM
+        notificationAuthToken:
+          type: string
+          description: Bearer token for webhook authentication
+          example: webhook-token-abc123
+    Device:
+      type: object
+      properties:
+        phoneNumber:
+          type: string
+          description: Mobile phone number in E.164 format
+          example: '+12125551234'
+    ThreatSubscription:
+      type: object
+      properties:
+        subscriptionId:
+          type: string
+          description: Unique subscription identifier
+          example: sub-threat-500123
+        device:
+          $ref: '#/components/schemas/Device'
+        minRiskLevel:
+          type: string
+          description: Minimum risk level triggering notifications
+          example: MEDIUM
+        status:
+          type: string
+          description: Subscription status
+          enum:
+          - ACTIVE
+          - INACTIVE
+          example: ACTIVE
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: AT&T OAuth 2.0 for CAMARA network APIs
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.att.com/oauth/v4/token
+          scopes: {}

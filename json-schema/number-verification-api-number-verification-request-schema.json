@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/att/refs/heads/main/json-schema/number-verification-api-number-verification-request-schema.json",
+  "title": "NumberVerificationRequest",
+  "description": "NumberVerificationRequest schema",
+  "type": "object",
+  "required": [
+    "phoneNumber"
+  ],
+  "properties": {
+    "phoneNumber": {
+      "type": "string",
+      "description": "Phone number in E.164 format to verify against the requesting device",
+      "example": "+12125551234"
+    }
+  }
+}

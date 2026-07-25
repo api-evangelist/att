@@ -1,0 +1,807 @@
+vocabulary: 1.0.0
+info:
+  provider: AT&T
+  description: Unified taxonomy of AT&T's developer APIs spanning wireless messaging, in-app messaging, MVNO operations,
+    enterprise wireline connectivity, and the CAMARA 5G network APIs.
+  version: 1.0.0
+  updated: '2026-07-25'
+operational:
+  apis:
+  - namespace: att-sim-swap
+    name: AT&T SIM Swap API
+    version: '1.0'
+    baseUrl: https://api.att.com/camara/sim-swap/v1
+    status: active
+  - namespace: att-device-status
+    name: AT&T Device Status API
+    version: '1.0'
+    baseUrl: https://api.att.com/camara/device-status/v1
+    status: active
+  - namespace: att-number-verification
+    name: AT&T Number Verification API
+    version: '1.0'
+    baseUrl: https://api.att.com/camara/number-verification/v1
+    status: active
+  - namespace: att-qod
+    name: AT&T Quality on Demand API
+    version: '1.0'
+    baseUrl: https://api.att.com/camara/qod/v1
+    status: active
+  - namespace: att-network-insights
+    name: AT&T Network Insights API
+    version: '1.0'
+    baseUrl: https://api.att.com/network/insights/v1
+    status: active
+  - namespace: att-mtad
+    name: AT&T Mobility Threat and Anomaly Detection API
+    version: '1.0'
+    baseUrl: https://api.att.com/network/threat-detection/v1
+    status: active
+  - namespace: att-sms
+    name: AT&T SMS API
+    version: '3.0'
+    baseUrl: https://api.att.com
+    status: active
+  - namespace: att-iam
+    name: AT&T In-App Messaging API
+    version: '2.0'
+    baseUrl: https://api.att.com
+    status: active
+  - namespace: att-mvnx
+    name: AT&T MVNX API
+    version: 4.0.0
+    baseUrl: https://devex-web.att.com
+    status: active
+  - namespace: att-alliance
+    name: AT&T Alliance Wireline APIs
+    version: '1.0'
+    baseUrl: https://devex-web.att.com
+    status: active
+  - namespace: att-wireless-apis
+    name: AT&T Wireless APIs
+    version: '1.0'
+    baseUrl: https://api.att.com
+    status: active
+  - namespace: att-enterprise-connectivity
+    name: AT&T Enterprise Connectivity APIs
+    version: '1.0'
+    baseUrl: https://devex-web.att.com/alliance
+    status: active
+  - namespace: att-mvno-apis
+    name: AT&T MVNO APIs
+    version: '1.0'
+    baseUrl: https://devex-web.att.com/mvnx
+    status: active
+  - namespace: att-cloud-voice
+    name: AT&T Cloud Voice APIs
+    version: '1.0'
+    baseUrl: https://devex-web.att.com
+    status: active
+  - namespace: att-ebonding
+    name: AT&T eBonding APIs
+    version: '1.0'
+    baseUrl: https://devex-web.att.com/ebonding-common
+    status: active
+  resources:
+  - name: sms-messages
+    apis:
+    - att-sms
+    actions:
+    - send
+    - get-delivery-status
+    - receive
+  - name: in-app-messages
+    apis:
+    - att-iam
+    actions:
+    - send
+    - list
+    - get
+    - update
+    - delete
+  - name: inbox
+    apis:
+    - att-iam
+    actions:
+    - create-index
+    - sync-delta
+  - name: subscribers
+    apis:
+    - att-mvnx
+    actions:
+    - activate
+    - get-profile
+    - list
+  - name: phone-numbers
+    apis:
+    - att-mvnx
+    actions:
+    - reserve
+    - release
+  - name: portability-orders
+    apis:
+    - att-mvnx
+    actions:
+    - create
+    - list
+    - get
+    - update
+    - cancel
+  - name: devices
+    apis:
+    - att-mvnx
+    actions:
+    - list
+    - get
+    - update
+  - name: balance
+    apis:
+    - att-mvnx
+    actions:
+    - topup
+    - adjust
+  - name: services
+    apis:
+    - att-mvnx
+    actions:
+    - create
+    - get
+    - list
+    - update
+    - delete
+  - name: geographic-sites
+    apis:
+    - att-mvnx
+    actions:
+    - list
+  - name: sms-messages
+    apis:
+    - att-wireless-apis
+    actions:
+    - send
+    - get-delivery-status
+    - get-inbound
+  - name: oauth-tokens
+    apis:
+    - att-wireless-apis
+    actions:
+    - create
+  - name: sim-swap
+    apis:
+    - att-network-apis
+    actions:
+    - check
+    - retrieve-date
+  - name: device-connectivity
+    apis:
+    - att-network-apis
+    actions:
+    - get
+  - name: device-roaming
+    apis:
+    - att-network-apis
+    actions:
+    - get
+  - name: number-verification
+    apis:
+    - att-network-apis
+    actions:
+    - verify
+  - name: qod-sessions
+    apis:
+    - att-network-apis
+    actions:
+    - create
+    - list
+    - get
+    - delete
+  - name: network-metrics
+    apis:
+    - att-network-apis
+    actions:
+    - get
+  - name: threat-assessment
+    apis:
+    - att-network-apis
+    actions:
+    - get
+  - name: service-qualification
+    apis:
+    - att-enterprise-connectivity
+    actions:
+    - check
+  - name: product-orders
+    apis:
+    - att-enterprise-connectivity
+    actions:
+    - create
+    - list
+    - get
+  - name: sim-swap
+    apis:
+    - att-sim-swap
+    actions:
+    - check
+    - retrieve-date
+  - name: device-connectivity
+    apis:
+    - att-device-status
+    actions:
+    - get
+  - name: device-roaming
+    apis:
+    - att-device-status
+    actions:
+    - get
+  - name: number-verification
+    apis:
+    - att-number-verification
+    actions:
+    - verify
+  - name: qod-sessions
+    apis:
+    - att-qod
+    actions:
+    - create
+    - list
+    - get
+    - delete
+  - name: network-metrics
+    apis:
+    - att-network-insights
+    actions:
+    - get
+  - name: device-threats
+    apis:
+    - att-mtad
+    actions:
+    - get
+    - subscribe
+  actions:
+  - name: send
+    methods:
+    - POST
+    pattern: write
+  - name: list
+    methods:
+    - GET
+    pattern: read
+  - name: get
+    methods:
+    - GET
+    pattern: read
+  - name: create
+    methods:
+    - POST
+    pattern: write
+  - name: update
+    methods:
+    - PATCH
+    - PUT
+    pattern: write
+  - name: delete
+    methods:
+    - DELETE
+    pattern: destructive
+  - name: cancel
+    methods:
+    - POST
+    pattern: write
+  - name: reserve
+    methods:
+    - POST
+    pattern: write
+  - name: topup
+    methods:
+    - POST
+    pattern: write
+  - name: sync-delta
+    methods:
+    - GET
+    pattern: query
+  - name: activate
+    methods:
+    - POST
+    pattern: write
+  - name: check
+    methods:
+    - POST
+    pattern: query
+  - name: verify
+    methods:
+    - POST
+    pattern: query
+  - name: get
+    methods:
+    - GET
+    - POST
+    pattern: read
+  - name: retrieve-date
+    methods:
+    - POST
+    pattern: query
+  - name: get-delivery-status
+    methods:
+    - GET
+    pattern: read
+  - name: get-inbound
+    methods:
+    - GET
+    pattern: read
+  - name: subscribe
+    methods:
+    - POST
+    pattern: write
+  schemas:
+    security:
+    - name: SimSwapCheckRequest
+      description: Request for SIM swap detection
+      properties:
+      - phoneNumber
+      - maxAge
+    - name: SimSwapCheckResponse
+      description: SIM swap detection result
+      properties:
+      - swapped
+    - name: NumberVerificationRequest
+      description: Phone number verification request
+      properties:
+      - phoneNumber
+    - name: NumberVerificationResponse
+      description: Number verification result
+      properties:
+      - devicePhoneNumberVerified
+    - name: ThreatAssessment
+      description: Device threat assessment with risk level and indicators
+      properties:
+      - riskLevel
+      - anomalyScore
+      - threats
+    connectivity:
+    - name: DeviceConnectivityStatus
+      description: Device network connectivity state
+      properties:
+      - connectivityStatus
+      - roaming
+    - name: DeviceRoamingStatus
+      description: Device roaming information
+      properties:
+      - roaming
+      - countryCode
+      - countryName
+    - name: NetworkMetrics
+      description: Network performance metrics for a device
+      properties:
+      - networkGeneration
+      - signalStrength
+      - estimatedDownlinkThroughput
+      - estimatedLatency
+      - congestionLevel
+    qos:
+    - name: CreateSessionRequest
+      description: QoD session creation request
+      properties:
+      - device
+      - qosProfile
+      - duration
+    - name: SessionInfo
+      description: QoD session details and status
+      properties:
+      - sessionId
+      - qosProfile
+      - qosStatus
+      - expiresAt
+  parameters:
+    identifiers:
+    - name: phoneNumber
+      type: string
+      description: E.164 format phone number
+      apis:
+      - att-sim-swap
+      - att-device-status
+      - att-number-verification
+      - att-qod
+      - att-network-insights
+      - att-mtad
+    - name: sessionId
+      type: string
+      description: QoD session identifier
+      apis:
+      - att-qod
+    filters:
+    - name: maxAge
+      type: integer
+      description: Maximum age in hours for SIM swap lookback
+      apis:
+      - att-sim-swap
+  enums:
+    connectivity-status:
+    - CONNECTED_DATA
+    - CONNECTED_SMS
+    - NOT_CONNECTED
+    qos-profiles:
+    - LOW_LATENCY
+    - THROUGHPUT_S
+    - THROUGHPUT_M
+    - THROUGHPUT_L
+    - VOICE
+    qos-status:
+    - REQUESTED
+    - AVAILABLE
+    - UNAVAILABLE
+    signal-strength:
+    - EXCELLENT
+    - GOOD
+    - FAIR
+    - POOR
+    network-generation:
+    - 5G
+    - 5G_NSA
+    - 4G
+    - 3G
+    congestion-level:
+    - LOW
+    - MEDIUM
+    - HIGH
+    risk-level:
+    - LOW
+    - MEDIUM
+    - HIGH
+    - CRITICAL
+    threat-types:
+    - UNUSUAL_LOCATION
+    - ABNORMAL_DATA_USAGE
+    - KNOWN_MALWARE_TRAFFIC
+    - SIM_CLONING
+    - ROAMING_ANOMALY
+    - CALL_PATTERN_ANOMALY
+  authentication:
+    schemes:
+    - name: OAuth 2.0 Client Credentials
+      type: oauth2
+      flows:
+      - client_credentials
+      apis:
+      - att-sim-swap
+      - att-device-status
+      - att-number-verification
+      - att-qod
+      - att-network-insights
+      - att-mtad
+capability:
+  workflows:
+  - name: Network Security
+    description: Network-based fraud prevention and authentication using SIM Swap and Number Verification
+    apisComposed:
+    - att-sim-swap
+    - att-number-verification
+    toolCount: 3
+    personas:
+    - Security Developer
+    - Identity Developer
+    domains:
+    - Security
+    - Authentication
+  - name: Network Performance
+    description: 5G connectivity monitoring and QoS optimization using Device Status and Quality on Demand
+    apisComposed:
+    - att-device-status
+    - att-qod
+    toolCount: 6
+    personas:
+    - App Developer
+    - IoT Engineer
+    domains:
+    - Network Performance
+    - Connectivity
+  - name: Messaging
+    description: SMS notifications and in-app messaging for mobile apps and enterprise systems
+    apisComposed:
+    - att-sms
+    - att-iam
+    toolCount: 8
+    personas:
+    - App Developer
+    - Enterprise Developer
+    domains:
+    - Messaging
+    - Mobile
+  - name: MVNO Operations
+    description: Complete MVNO subscriber lifecycle and number portability management
+    apisComposed:
+    - att-mvnx
+    toolCount: 8
+    personas:
+    - MVNO Operator
+    - Telecom Engineer
+    domains:
+    - MVNO
+    - Telecommunications
+  - name: Wireless Messaging
+    description: SMS messaging and OAuth authentication for consumer and business applications
+    apisComposed:
+    - att-wireless-apis
+    toolCount: 3
+    personas:
+    - App Developer
+    - Enterprise Developer
+    domains:
+    - Messaging
+    - Authentication
+  personas:
+  - id: app-developer
+    name: App Developer
+    description: Mobile or web application developer embedding messaging into consumer apps
+    workflows:
+    - Messaging
+  - id: enterprise-developer
+    name: Enterprise Developer
+    description: Developer building enterprise notification, alerting, or communication systems
+    workflows:
+    - Messaging
+  - id: mvno-operator
+    name: MVNO Operator
+    description: MVNO business operator managing AT&T-powered mobile subscribers and services
+    workflows:
+    - MVNO Operations
+  - id: telecom-engineer
+    name: Telecom Engineer
+    description: Engineer integrating AT&T network services with BSS/OSS systems via TM Forum APIs
+    workflows:
+    - MVNO Operations
+  - id: app-developer
+    name: App Developer
+    description: Mobile or web developer building consumer applications on AT&T APIs
+    workflows:
+    - Wireless Messaging
+  - id: enterprise-developer
+    name: Enterprise Developer
+    description: Developer integrating AT&T enterprise connectivity and eBonding APIs
+    workflows:
+    - Wireless Messaging
+  - id: security-developer
+    name: Security Developer
+    description: Developer building fraud prevention and identity verification using AT&T network signals
+    workflows:
+    - Network Security
+  - id: identity-developer
+    name: Identity Developer
+    description: Developer implementing frictionless mobile authentication via AT&T network
+    workflows:
+    - Network Security
+  - id: mvno-operator
+    name: MVNO Operator
+    description: Mobile virtual network operator managing subscribers on AT&T infrastructure
+    workflows: []
+  - id: telecom-engineer
+    name: Telecom Engineer
+    description: Engineer integrating enterprise wireline services and eBonding systems
+    workflows: []
+  - id: security-developer
+    name: Security Developer
+    description: Developer building fraud prevention and identity verification using network signals
+    workflows:
+    - Network Security
+  - id: identity-developer
+    name: Identity Developer
+    description: Developer implementing passwordless or frictionless mobile authentication
+    workflows:
+    - Network Security
+  - id: app-developer
+    name: App Developer
+    description: Mobile or web developer building connectivity-aware applications
+    workflows:
+    - Network Performance
+  - id: iot-engineer
+    name: IoT Engineer
+    description: Engineer managing IoT device connectivity and optimizing 5G performance for industrial applications
+    workflows:
+    - Network Performance
+  domains:
+  - name: Messaging
+    description: SMS and MMS messaging services for consumer and enterprise applications
+    resources:
+    - sms-messages
+    - in-app-messages
+    - inbox
+  - name: MVNO
+    description: Mobile virtual network operator services on AT&T infrastructure
+    resources:
+    - subscribers
+    - phone-numbers
+    - portability-orders
+    - devices
+    - balance
+    - services
+  - name: Mobile
+    description: Mobile network connectivity and subscriber management
+  - name: Messaging
+    description: SMS and in-app messaging services
+    resources:
+    - sms-messages
+  - name: Security
+    description: Network-based fraud detection and threat intelligence
+    resources:
+    - sim-swap
+    - number-verification
+    - threat-assessment
+  - name: Authentication
+    description: OAuth and network-based authentication
+    resources:
+    - oauth-tokens
+    - number-verification
+  - name: Connectivity
+    description: Device status, roaming, and QoS management
+    resources:
+    - device-connectivity
+    - device-roaming
+    - qod-sessions
+    - network-metrics
+  - name: Enterprise
+    description: Wireline service ordering and qualification
+    resources:
+    - service-qualification
+    - product-orders
+  - name: Security
+    description: Network-based security signals for fraud detection and identity verification
+    resources:
+    - sim-swap
+    - number-verification
+    - device-threats
+  - name: Authentication
+    description: Mobile network-based authentication without OTP
+    resources:
+    - number-verification
+  - name: Network Performance
+    description: 5G network quality monitoring and on-demand QoS enhancement
+    resources:
+    - qod-sessions
+    - network-metrics
+    - device-connectivity
+    - device-roaming
+  namespaces:
+    consumed:
+    - att-sim-swap
+    - att-device-status
+    - att-number-verification
+    - att-qod
+    - att-network-insights
+    - att-mtad
+    rest:
+    - namespace: att-network-security-api
+      port: 8080
+    - namespace: att-network-performance-api
+      port: 8081
+    mcp:
+    - namespace: att-network-security-mcp
+      port: 9090
+    - namespace: att-network-performance-mcp
+      port: 9091
+  binds:
+  - name: ATT_SMS_ACCESS_TOKEN
+    description: OAuth 2.0 bearer token for AT&T SMS API
+    workflows:
+    - Messaging
+  - name: ATT_IAM_ACCESS_TOKEN
+    description: OAuth 2.0 bearer token for AT&T In-App Messaging API (user consent)
+    workflows:
+    - Messaging
+  - name: ATT_MVNX_CLIENT_ID
+    description: Client ID for AT&T MVNX API authentication
+    workflows:
+    - MVNO Operations
+  - name: ATT_NETWORK_API_TOKEN
+    description: OAuth 2.0 bearer token for all AT&T CAMARA network APIs
+    workflows:
+    - Network Security
+    - Network Performance
+crossReference:
+- resource: balance
+  operations:
+  - topupBalance
+  workflows:
+  - MVNO Operations
+  personas:
+  - MVNO Operator
+- resource: device-connectivity
+  operations:
+  - getDeviceConnectivityStatus
+  workflows:
+  - Network Performance
+  personas:
+  - App Developer
+  - IoT Engineer
+- resource: device-roaming
+  operations:
+  - getDeviceRoamingStatus
+  workflows:
+  - Network Performance
+  personas:
+  - App Developer
+- resource: devices
+  operations:
+  - getResource
+  - listResources
+  - updateResource
+  workflows:
+  - MVNO Operations
+  personas:
+  - MVNO Operator
+- resource: in-app-messages
+  operations:
+  - deleteMessage
+  - getMessage
+  - listMessages
+  - sendMessage
+  - updateMessage
+  workflows:
+  - Messaging
+  personas:
+  - App Developer
+- resource: inbox
+  operations:
+  - createMessageIndex
+  - getInboxDelta
+  workflows:
+  - Messaging
+  personas:
+  - App Developer
+- resource: number-verification
+  operations:
+  - verifyPhoneNumber
+  workflows:
+  - Network Security
+  personas:
+  - Identity Developer
+  - Security Developer
+- resource: portability-orders
+  operations:
+  - cancelPortabilityOrder
+  - createPortabilityOrder
+  - getPortabilityOrder
+  - listPortabilityOrders
+  - updatePortabilityOrder
+  workflows:
+  - MVNO Operations
+  personas:
+  - MVNO Operator
+  - Telecom Engineer
+- resource: qod-sessions
+  operations:
+  - createQodSession
+  - deleteQodSession
+  - getQodSession
+  - listQodSessions
+  workflows:
+  - Network Performance
+  personas:
+  - App Developer
+  - IoT Engineer
+- resource: sim-swap
+  operations:
+  - checkSimSwap
+  - retrieveSimSwapDate
+  workflows:
+  - Network Security
+  personas:
+  - Security Developer
+- resource: sms-messages
+  operations:
+  - getInboundSms
+  - getSmsDeliveryStatus
+  - sendSms
+  workflows:
+  - Messaging
+  - Wireless Messaging
+  personas:
+  - App Developer
+  - Enterprise Developer
+- resource: subscribers
+  operations:
+  - createProductOrder
+  - getSubscriberProfile
+  workflows:
+  - MVNO Operations
+  personas:
+  - MVNO Operator
+  - Telecom Engineer

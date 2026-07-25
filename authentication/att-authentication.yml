@@ -1,0 +1,65 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/_original/att-device-status-api.yaml, openapi/_original/att-enterprise-connectivity-apis.yaml, openapi/_original/att-in-app-messaging-api.yaml,
+  openapi/_original/att-mobility-threat-anomaly-detection-api.yaml, openapi/_original/att-mvnx-api.yaml, openapi/_original/att-network-apis.yaml,
+  openapi/_original/att-network-insights-api.yaml, openapi/_original/att-number-verification-api.yaml, openapi/_original/att-quality-on-demand-api.yaml,
+  openapi/_original/att-sim-swap-api.yaml, openapi/_original/att-sms-api.yaml
+summary:
+  types:
+  - apiKey
+  - oauth2
+  api_key_in:
+  - header
+  oauth2_flows:
+  - authorizationCode
+  - clientCredentials
+schemes:
+- name: oauth2
+  type: oauth2
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://api.att.com/oauth/v4/authorize
+    tokenUrl: https://api.att.com/oauth/v4/token
+    scopes: 2
+  description: AT&T OAuth 2.0 with user consent via authorization code flow
+  sources:
+  - openapi/_original/att-in-app-messaging-api.yaml
+- name: clientId
+  type: apiKey
+  in: header
+  parameter: X-Client-Id
+  description: Client ID enforcement policy for MVNX API authentication
+  sources:
+  - openapi/_original/att-mvnx-api.yaml
+- name: oauth2
+  type: oauth2
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://api.att.com/oauth/v4/token
+    scopes: 6
+  description: AT&T OAuth 2.0 authentication using client credentials grant
+  sources:
+  - openapi/_original/att-sms-api.yaml
+- name: oauth2
+  type: oauth2
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://devex-web.att.com/oauth/token
+    scopes: 1
+  sources:
+  - openapi/_original/att-enterprise-connectivity-apis.yaml
+  - openapi/_original/att-network-apis.yaml
+- name: oauth2
+  type: oauth2
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://api.att.com/oauth/v4/token
+    scopes: 0
+  description: AT&T OAuth 2.0 for CAMARA network APIs
+  sources:
+  - openapi/_original/att-device-status-api.yaml
+  - openapi/_original/att-mobility-threat-anomaly-detection-api.yaml
+  - openapi/_original/att-network-insights-api.yaml
+  - openapi/_original/att-number-verification-api.yaml
+  - openapi/_original/att-quality-on-demand-api.yaml
+  - openapi/_original/att-sim-swap-api.yaml

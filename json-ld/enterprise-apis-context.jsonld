@@ -1,0 +1,22 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "@vocab": "https://api.att.com/vocab/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "address": "https://api.att.com/vocab/address",
+    "qualificationId": "https://api.att.com/vocab/qualificationId",
+    "qualificationDate": "https://api.att.com/vocab/qualificationDate",
+    "serviceQualificationItems": "https://api.att.com/vocab/serviceQualificationItems",
+    "externalId": "https://api.att.com/vocab/externalId",
+    "description": "https://api.att.com/vocab/description",
+    "requestedStartDate": "https://api.att.com/vocab/requestedStartDate",
+    "orderItem": "https://api.att.com/vocab/orderItem",
+    "id": "https://api.att.com/vocab/id",
+    "state": "https://api.att.com/vocab/state",
+    "orderDate": {
+      "@id": "https://api.att.com/vocab/orderDate",
+      "@type": "xsd:dateTime"
+    },
+    "completionDate": "https://api.att.com/vocab/completionDate"
+  }
+}

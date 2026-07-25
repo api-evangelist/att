@@ -1,0 +1,181 @@
+openapi: 3.0.3
+info:
+  title: AT&T Threat Detection API
+  description: CAMARA-standard API that checks the connectivity status of user equipment, including roaming information. Enables applications to determine if a device is reachable, connected, and whether it is roaming on a partner network. Part of the AT&T Network API Accelerator Program.
+  version: '1.0'
+  contact:
+    url: https://devex-web.att.com/developer-hub/docs/network-api-accelerator-program
+  termsOfService: https://www.att.com/gen/general?pid=11561
+  x-generated-from: documentation
+  x-last-validated: '2026-04-19'
+servers:
+- url: https://api.att.com/network/threat-detection/v1
+  description: AT&T Mobility Threat and Anomaly Detection API endpoint
+tags:
+- name: Threat Detection
+paths:
+  /threats:
+    post:
+      operationId: getDeviceThreats
+      summary: AT&T Get Device Threat Assessment
+      description: Retrieve a threat and anomaly assessment for a specific mobile device based on AT&T's machine learning network analysis. Returns threat indicators, anomaly scores, and risk levels detected for the device.
+      tags:
+      - Threat Detection
+      security:
+      - oauth2: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ThreatAssessmentRequest'
+            examples:
+              GetDeviceThreatsRequestExample:
+                summary: Default getDeviceThreats request
+                x-microcks-default: true
+                value:
+                  device:
+                    phoneNumber: '+12125551234'
+      responses:
+        '200':
+          description: Threat assessment retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ThreatAssessment'
+              examples:
+                GetDeviceThreats200Example:
+                  summary: Default getDeviceThreats 200 response
+                  x-microcks-default: true
+                  value:
+                    riskLevel: LOW
+                    anomalyScore: 0.05
+                    threats: []
+                    assessedAt: '2026-04-19T14:30:00Z'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorInfo'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorInfo'
+        '404':
+          description: Device not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorInfo'
+        '429':
+          description: Too many requests
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorInfo'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    ThreatIndicator:
+      type: object
+      properties:
+        type:
+          type: string
+          description: Type of threat detected
+          enum:
+          - UNUSUAL_LOCATION
+          - ABNORMAL_DATA_USAGE
+          - KNOWN_MALWARE_TRAFFIC
+          - SIM_CLONING
+          - ROAMING_ANOMALY
+          - CALL_PATTERN_ANOMALY
+          example: UNUSUAL_LOCATION
+        severity:
+          type: string
+          description: Severity of the threat indicator
+          enum:
+          - LOW
+          - MEDIUM
+          - HIGH
+          - CRITICAL
+          example: MEDIUM
+        description:
+          type: string
+          description: Human-readable description of the threat
+          example: Device location changed rapidly from expected home area
+        detectedAt:
+          type: string
+          format: date-time
+          description: When the threat indicator was detected
+          example: '2026-04-19T14:30:00Z'
+    ThreatAssessmentRequest:
+      type: object
+      required:
+      - device
+      properties:
+        device:
+          $ref: '#/components/schemas/Device'
+    ThreatAssessment:
+      type: object
+      properties:
+        riskLevel:
+          type: string
+          description: Overall risk level for the device
+          enum:
+          - LOW
+          - MEDIUM
+          - HIGH
+          - CRITICAL
+          example: LOW
+        anomalyScore:
+          type: number
+          format: double
+          description: Normalized anomaly score from 0.0 (normal) to 1.0 (highly anomalous)
+          minimum: 0.0
+          maximum: 1.0
+          example: 0.05
+        threats:
+          type: array
+          description: List of detected threat indicators
+          items:
+            $ref: '#/components/schemas/ThreatIndicator'
+        assessedAt:
+          type: string
+          format: date-time
+          description: Timestamp of the threat assessment
+          example: '2026-04-19T14:30:00Z'
+    Device:
+      type: object
+      properties:
+        phoneNumber:
+          type: string
+          description: Mobile phone number in E.164 format
+          example: '+12125551234'
+    ErrorInfo:
+      type: object
+      properties:
+        status:
+          type: integer
+          description: HTTP status code
+          example: 400
+        code:
+          type: string
+          description: Error code
+          example: INVALID_ARGUMENT
+        message:
+          type: string
+          description: Human-readable error message
+          example: Invalid device identifier
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: AT&T OAuth 2.0 for CAMARA network APIs
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.att.com/oauth/v4/token
+          scopes: {}

@@ -1,0 +1,34 @@
+{
+  "operationId": "subscribeToThreatAlerts",
+  "method": "POST",
+  "path": "/threats/subscribe",
+  "summary": "AT&T Subscribe to Threat Alerts",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "name": "SubscribeToThreatAlertsRequestExample",
+      "example": {
+        "device": {
+          "phoneNumber": "+12125551234"
+        },
+        "notificationUrl": "https://webhook.example.com/threats",
+        "minRiskLevel": "MEDIUM"
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "201",
+      "contentType": "application/json",
+      "name": "SubscribeToThreatAlerts201Example",
+      "example": {
+        "subscriptionId": "sub-threat-500123",
+        "device": {
+          "phoneNumber": "+12125551234"
+        },
+        "minRiskLevel": "MEDIUM",
+        "status": "ACTIVE"
+      }
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CreateSessionRequest",
+  "title": "CreateSessionRequest",
+  "type": "object",
+  "required": [
+    "device",
+    "qosProfile"
+  ],
+  "properties": {
+    "device": {
+      "$ref": "#/components/schemas/Device"
+    },
+    "qosProfile": {
+      "type": "string",
+      "description": "Requested QoS profile",
+      "enum": [
+        "LOW_LATENCY",
+        "THROUGHPUT_S",
+        "THROUGHPUT_M",
+        "THROUGHPUT_L",
+        "VOICE"
+      ],
+      "example": "LOW_LATENCY"
+    },
+    "duration": {
+      "type": "integer",
+      "description": "Session duration in seconds (default and max vary by profile)",
+      "minimum": 1,
+      "maximum": 86400,
+      "example": 3600
+    },
+    "notificationUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "Webhook URL to receive QoS status change notifications",
+      "example": "https://webhook.example.com/qod-events"
+    },
+    "notificationAuthToken": {
+      "type": "string",
+      "description": "Bearer token for webhook notification authentication",
+      "example": "webhook-token-abc123"
+    }
+  }
+}

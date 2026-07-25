@@ -1,0 +1,30 @@
+{
+  "operationId": "getDeviceThreats",
+  "method": "POST",
+  "path": "/threats",
+  "summary": "AT&T Get Device Threat Assessment",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "name": "GetDeviceThreatsRequestExample",
+      "example": {
+        "device": {
+          "phoneNumber": "+12125551234"
+        }
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "GetDeviceThreats200Example",
+      "example": {
+        "riskLevel": "LOW",
+        "anomalyScore": 0.05,
+        "threats": [],
+        "assessedAt": "2026-04-19T14:30:00Z"
+      }
+    }
+  ]
+}

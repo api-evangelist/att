@@ -1,0 +1,64 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "att": "https://att.dev/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "Device": "att:Device",
+    "CreateSessionRequest": "att:CreateSessionRequest",
+    "SessionInfo": "att:SessionInfo",
+    "phoneNumber": {
+      "@id": "att:phoneNumber",
+      "@type": "xsd:string"
+    },
+    "ipv4Address": {
+      "@id": "att:ipv4Address",
+      "@type": "@id"
+    },
+    "publicAddress": {
+      "@id": "att:publicAddress",
+      "@type": "xsd:string"
+    },
+    "privateAddress": {
+      "@id": "att:privateAddress",
+      "@type": "xsd:string"
+    },
+    "device": {
+      "@id": "att:device",
+      "@type": "@id"
+    },
+    "qosProfile": {
+      "@id": "att:qosProfile",
+      "@type": "xsd:string"
+    },
+    "duration": {
+      "@id": "att:duration",
+      "@type": "xsd:integer"
+    },
+    "notificationUrl": {
+      "@id": "att:notificationUrl",
+      "@type": "@id"
+    },
+    "notificationAuthToken": {
+      "@id": "att:notificationAuthToken",
+      "@type": "xsd:string"
+    },
+    "sessionId": {
+      "@id": "att:sessionId",
+      "@type": "xsd:string"
+    },
+    "startedAt": {
+      "@id": "att:startedAt",
+      "@type": "xsd:dateTime"
+    },
+    "expiresAt": {
+      "@id": "att:expiresAt",
+      "@type": "xsd:dateTime"
+    },
+    "qosStatus": {
+      "@id": "att:qosStatus",
+      "@type": "xsd:string"
+    }
+  }
+}

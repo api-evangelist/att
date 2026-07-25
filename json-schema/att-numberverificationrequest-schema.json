@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/NumberVerificationRequest",
+  "title": "NumberVerificationRequest",
+  "type": "object",
+  "required": [
+    "phoneNumber"
+  ],
+  "properties": {
+    "phoneNumber": {
+      "type": "string",
+      "description": "Phone number in E.164 format to verify against the requesting device",
+      "example": "+12125551234"
+    }
+  }
+}
