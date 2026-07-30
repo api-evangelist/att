@@ -451,6 +451,8 @@ apis:
   - type: GettingStarted
     url: https://devex-web.att.com/developer-hub/docs/network-api-accelerator-program
 common:
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/att/overview
 - type: AgenticAccess
   url: agentic-access/att-agentic-access.yml
 - type: DomainSecurity
