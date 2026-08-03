@@ -1,0 +1,270 @@
+{
+  "info": {
+    "_postman_id": "a9ea8f89-3da5-4aea-b176-2fe8d48e9adf",
+    "name": "AT&T Threat Subscriptions API",
+    "description": "CAMARA-standard API that checks the connectivity status of user equipment, including roaming information. Enables applications to determine if a device is reachable, connected, and whether it is roaming on a partner network. Part of the AT&T Network API Accelerator Program.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:06:52.000Z",
+    "updatedAt": "2026-07-28T01:06:53.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-a9ea8f89-3da5-4aea-b176-2fe8d48e9adf"
+  },
+  "item": [
+    {
+      "name": "threats",
+      "item": [
+        {
+          "name": "subscribe",
+          "item": [
+            {
+              "name": "AT&T Subscribe to Threat Alerts",
+              "id": "c1d5bf34-2d6f-4d9a-b055-a9a62a956dd6",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "accessTokenUrl",
+                      "value": "https://api.att.com/oauth/v4/token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "client_credentials",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"device\": {\n    \"phoneNumber\": \"<string>\"\n  },\n  \"notificationUrl\": \"<uri>\",\n  \"minRiskLevel\": \"LOW\",\n  \"notificationAuthToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/threats/subscribe",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "threats",
+                    "subscribe"
+                  ]
+                },
+                "description": "Subscribe to real-time threat and anomaly detection alerts for a device or set of devices. Notifications are delivered to the specified webhook URL when threat conditions are detected."
+              },
+              "response": [
+                {
+                  "id": "5b9c539b-2841-4dbd-85bd-6cf21c65d2cb",
+                  "name": "Threat alert subscription created",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"device\": {\n    \"phoneNumber\": \"<string>\"\n  },\n  \"notificationUrl\": \"<uri>\",\n  \"minRiskLevel\": \"LOW\",\n  \"notificationAuthToken\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/threats/subscribe",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "threats",
+                        "subscribe"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"subscriptionId\": \"<string>\",\n  \"device\": {\n    \"phoneNumber\": \"<string>\"\n  },\n  \"minRiskLevel\": \"<string>\",\n  \"status\": \"INACTIVE\"\n}",
+                  "createdAt": "2026-07-28T01:06:53.000Z",
+                  "updatedAt": "2026-07-28T01:06:53.000Z",
+                  "uid": "35240-5b9c539b-2841-4dbd-85bd-6cf21c65d2cb"
+                },
+                {
+                  "id": "2936058d-6b22-48fb-9c00-ab13fcaf69c2",
+                  "name": "Bad request",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"device\": {\n    \"phoneNumber\": \"<string>\"\n  },\n  \"notificationUrl\": \"<uri>\",\n  \"minRiskLevel\": \"LOW\",\n  \"notificationAuthToken\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/threats/subscribe",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "threats",
+                        "subscribe"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"status\": \"<integer>\",\n  \"code\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:06:53.000Z",
+                  "updatedAt": "2026-07-28T01:06:53.000Z",
+                  "uid": "35240-2936058d-6b22-48fb-9c00-ab13fcaf69c2"
+                },
+                {
+                  "id": "12b2c853-0739-4d5f-a3f4-b2fc1e9690e1",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"device\": {\n    \"phoneNumber\": \"<string>\"\n  },\n  \"notificationUrl\": \"<uri>\",\n  \"minRiskLevel\": \"LOW\",\n  \"notificationAuthToken\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/threats/subscribe",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "threats",
+                        "subscribe"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"status\": \"<integer>\",\n  \"code\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:06:53.000Z",
+                  "updatedAt": "2026-07-28T01:06:53.000Z",
+                  "uid": "35240-12b2c853-0739-4d5f-a3f4-b2fc1e9690e1"
+                }
+              ],
+              "createdAt": "2026-07-28T01:06:53.000Z",
+              "updatedAt": "2026-07-28T01:06:53.000Z",
+              "uid": "35240-c1d5bf34-2d6f-4d9a-b055-a9a62a956dd6"
+            }
+          ],
+          "id": "80ec24a0-9f3a-4390-a221-f6269935543e",
+          "createdAt": "2026-07-28T01:06:53.000Z",
+          "updatedAt": "2026-07-28T01:06:53.000Z",
+          "uid": "35240-80ec24a0-9f3a-4390-a221-f6269935543e"
+        }
+      ],
+      "id": "c9d3e89f-34ac-4c0f-b539-535c65aeed37",
+      "createdAt": "2026-07-28T01:06:53.000Z",
+      "updatedAt": "2026-07-28T01:06:53.000Z",
+      "uid": "35240-c9d3e89f-34ac-4c0f-b539-535c65aeed37"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.att.com/network/threat-detection/v1"
+    }
+  ]
+}

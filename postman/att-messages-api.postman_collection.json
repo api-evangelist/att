@@ -1,0 +1,1197 @@
+{
+  "info": {
+    "_postman_id": "2419cf55-f276-4fba-a053-7bc5c1b3076d",
+    "name": "AT&T Messages API",
+    "description": "A messaging API enabling applications to send, receive, update, and delete MMS and SMS messages on behalf of AT&T users with explicit OAuth consent. Supports messages to phone numbers, short codes, and email addresses across AT&T and other carriers with full inbox management and delta synchronization.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:05:52.000Z",
+    "updatedAt": "2026-07-28T01:05:52.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-2419cf55-f276-4fba-a053-7bc5c1b3076d"
+  },
+  "item": [
+    {
+      "name": "myMessages",
+      "item": [
+        {
+          "name": "v2",
+          "item": [
+            {
+              "name": "messages",
+              "item": [
+                {
+                  "name": "{messageId}",
+                  "item": [
+                    {
+                      "name": "AT&T Get Message Details",
+                      "id": "fc1605e9-aace-405b-b301-5a9139f691b2",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "oauth2",
+                          "oauth2": [
+                            {
+                              "key": "scope",
+                              "value": "IMMN MIM",
+                              "type": "string"
+                            },
+                            {
+                              "key": "accessTokenUrl",
+                              "value": "https://api.att.com/oauth/v4/token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "authUrl",
+                              "value": "https://api.att.com/oauth/v4/authorize",
+                              "type": "string"
+                            },
+                            {
+                              "key": "grant_type",
+                              "value": "authorization_code",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/myMessages/v2/messages/:messageId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "myMessages",
+                            "v2",
+                            "messages",
+                            ":messageId"
+                          ],
+                          "variable": [
+                            {
+                              "id": "418867a4-2aab-4f14-af8e-7c6ba4786d8b",
+                              "key": "messageId",
+                              "value": "<string>",
+                              "description": "(Required) Unique message identifier"
+                            }
+                          ]
+                        },
+                        "description": "Retrieve the full details and content of a specific message by its ID, including text content, attachments, sender, recipients, and metadata."
+                      },
+                      "response": [
+                        {
+                          "id": "b77a67d5-9ed8-4f2b-851a-3b7f9f1aa91e",
+                          "name": "Message details successfully retrieved",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/myMessages/v2/messages/:messageId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "myMessages",
+                                "v2",
+                                "messages",
+                                ":messageId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "messageId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": {\n    \"messageId\": \"<string>\",\n    \"from\": \"<string>\",\n    \"recipients\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"isUnread\": \"<boolean>\",\n    \"isIncoming\": \"<boolean>\",\n    \"type\": \"MMS\",\n    \"typeCode\": \"<string>\",\n    \"timeStamp\": \"<dateTime>\",\n    \"text\": \"<string>\",\n    \"subject\": \"<string>\"\n  }\n}",
+                          "createdAt": "2026-07-28T01:05:53.000Z",
+                          "updatedAt": "2026-07-28T01:05:53.000Z",
+                          "uid": "35240-b77a67d5-9ed8-4f2b-851a-3b7f9f1aa91e"
+                        },
+                        {
+                          "id": "7a186fa6-3022-4f39-ad7d-cd28693c5c55",
+                          "name": "Unauthorized",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/myMessages/v2/messages/:messageId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "myMessages",
+                                "v2",
+                                "messages",
+                                ":messageId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "messageId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"RequestError\": {\n    \"ServiceException\": {\n      \"MessageId\": \"<string>\",\n      \"Text\": \"<string>\",\n      \"Variables\": \"<string>\"\n    }\n  }\n}",
+                          "createdAt": "2026-07-28T01:05:53.000Z",
+                          "updatedAt": "2026-07-28T01:05:53.000Z",
+                          "uid": "35240-7a186fa6-3022-4f39-ad7d-cd28693c5c55"
+                        },
+                        {
+                          "id": "c86c6114-35ad-4200-ad6a-6a390c1bc614",
+                          "name": "Message not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/myMessages/v2/messages/:messageId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "myMessages",
+                                "v2",
+                                "messages",
+                                ":messageId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "messageId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"RequestError\": {\n    \"ServiceException\": {\n      \"MessageId\": \"<string>\",\n      \"Text\": \"<string>\",\n      \"Variables\": \"<string>\"\n    }\n  }\n}",
+                          "createdAt": "2026-07-28T01:05:53.000Z",
+                          "updatedAt": "2026-07-28T01:05:53.000Z",
+                          "uid": "35240-c86c6114-35ad-4200-ad6a-6a390c1bc614"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:05:52.000Z",
+                      "updatedAt": "2026-07-28T01:05:52.000Z",
+                      "uid": "35240-fc1605e9-aace-405b-b301-5a9139f691b2"
+                    },
+                    {
+                      "name": "AT&T Update Message Properties",
+                      "id": "12b7b6ae-5d58-4fb4-ac44-710a38ea85e6",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "oauth2",
+                          "oauth2": [
+                            {
+                              "key": "scope",
+                              "value": "IMMN MIM",
+                              "type": "string"
+                            },
+                            {
+                              "key": "accessTokenUrl",
+                              "value": "https://api.att.com/oauth/v4/token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "authUrl",
+                              "value": "https://api.att.com/oauth/v4/authorize",
+                              "type": "string"
+                            },
+                            {
+                              "key": "grant_type",
+                              "value": "authorization_code",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"message\": {\n    \"isUnread\": \"<boolean>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/myMessages/v2/messages/:messageId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "myMessages",
+                            "v2",
+                            "messages",
+                            ":messageId"
+                          ],
+                          "variable": [
+                            {
+                              "id": "9be29662-fd87-45e2-b140-f64e422eaab6",
+                              "key": "messageId",
+                              "value": "<string>",
+                              "description": "(Required) Unique message identifier"
+                            }
+                          ]
+                        },
+                        "description": "Update the properties of a message, such as marking it as read or unread. Only the isUnread field can be modified."
+                      },
+                      "response": [
+                        {
+                          "id": "81bb34bc-aafb-41b7-9633-f2a8cfcb9f77",
+                          "name": "Message successfully updated",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"message\": {\n    \"isUnread\": \"<boolean>\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/myMessages/v2/messages/:messageId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "myMessages",
+                                "v2",
+                                "messages",
+                                ":messageId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "messageId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T01:05:53.000Z",
+                          "updatedAt": "2026-07-28T01:05:53.000Z",
+                          "uid": "35240-81bb34bc-aafb-41b7-9633-f2a8cfcb9f77"
+                        },
+                        {
+                          "id": "3f7121f0-454a-4ad4-b115-639276356736",
+                          "name": "Unauthorized",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"message\": {\n    \"isUnread\": \"<boolean>\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/myMessages/v2/messages/:messageId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "myMessages",
+                                "v2",
+                                "messages",
+                                ":messageId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "messageId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"RequestError\": {\n    \"ServiceException\": {\n      \"MessageId\": \"<string>\",\n      \"Text\": \"<string>\",\n      \"Variables\": \"<string>\"\n    }\n  }\n}",
+                          "createdAt": "2026-07-28T01:05:53.000Z",
+                          "updatedAt": "2026-07-28T01:05:53.000Z",
+                          "uid": "35240-3f7121f0-454a-4ad4-b115-639276356736"
+                        },
+                        {
+                          "id": "8e28c01e-b95b-46e8-a2ec-467710f10105",
+                          "name": "Message not found",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"message\": {\n    \"isUnread\": \"<boolean>\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/myMessages/v2/messages/:messageId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "myMessages",
+                                "v2",
+                                "messages",
+                                ":messageId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "messageId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"RequestError\": {\n    \"ServiceException\": {\n      \"MessageId\": \"<string>\",\n      \"Text\": \"<string>\",\n      \"Variables\": \"<string>\"\n    }\n  }\n}",
+                          "createdAt": "2026-07-28T01:05:53.000Z",
+                          "updatedAt": "2026-07-28T01:05:53.000Z",
+                          "uid": "35240-8e28c01e-b95b-46e8-a2ec-467710f10105"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:05:52.000Z",
+                      "updatedAt": "2026-07-28T01:05:52.000Z",
+                      "uid": "35240-12b7b6ae-5d58-4fb4-ac44-710a38ea85e6"
+                    },
+                    {
+                      "name": "AT&T Delete Message",
+                      "id": "ab814034-9e94-4907-9e83-015e99433ea1",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "oauth2",
+                          "oauth2": [
+                            {
+                              "key": "scope",
+                              "value": "IMMN MIM",
+                              "type": "string"
+                            },
+                            {
+                              "key": "accessTokenUrl",
+                              "value": "https://api.att.com/oauth/v4/token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "authUrl",
+                              "value": "https://api.att.com/oauth/v4/authorize",
+                              "type": "string"
+                            },
+                            {
+                              "key": "grant_type",
+                              "value": "authorization_code",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/myMessages/v2/messages/:messageId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "myMessages",
+                            "v2",
+                            "messages",
+                            ":messageId"
+                          ],
+                          "variable": [
+                            {
+                              "id": "32192461-b603-45e7-a501-5e5feb7e7db1",
+                              "key": "messageId",
+                              "value": "<string>",
+                              "description": "(Required) Unique message identifier"
+                            }
+                          ]
+                        },
+                        "description": "Permanently delete a specific message from the user's inbox by its ID. This action cannot be undone."
+                      },
+                      "response": [
+                        {
+                          "id": "d5a76d64-305a-48ec-89fe-98038cfe9aa1",
+                          "name": "Message successfully deleted",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/myMessages/v2/messages/:messageId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "myMessages",
+                                "v2",
+                                "messages",
+                                ":messageId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "messageId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T01:05:53.000Z",
+                          "updatedAt": "2026-07-28T01:05:53.000Z",
+                          "uid": "35240-d5a76d64-305a-48ec-89fe-98038cfe9aa1"
+                        },
+                        {
+                          "id": "c66734a0-abdc-498a-8a5f-877bf58e6b60",
+                          "name": "Unauthorized",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/myMessages/v2/messages/:messageId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "myMessages",
+                                "v2",
+                                "messages",
+                                ":messageId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "messageId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"RequestError\": {\n    \"ServiceException\": {\n      \"MessageId\": \"<string>\",\n      \"Text\": \"<string>\",\n      \"Variables\": \"<string>\"\n    }\n  }\n}",
+                          "createdAt": "2026-07-28T01:05:53.000Z",
+                          "updatedAt": "2026-07-28T01:05:53.000Z",
+                          "uid": "35240-c66734a0-abdc-498a-8a5f-877bf58e6b60"
+                        },
+                        {
+                          "id": "cec2ef6e-122a-44d4-be97-d1277050b530",
+                          "name": "Message not found",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/myMessages/v2/messages/:messageId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "myMessages",
+                                "v2",
+                                "messages",
+                                ":messageId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "messageId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"RequestError\": {\n    \"ServiceException\": {\n      \"MessageId\": \"<string>\",\n      \"Text\": \"<string>\",\n      \"Variables\": \"<string>\"\n    }\n  }\n}",
+                          "createdAt": "2026-07-28T01:05:53.000Z",
+                          "updatedAt": "2026-07-28T01:05:53.000Z",
+                          "uid": "35240-cec2ef6e-122a-44d4-be97-d1277050b530"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:05:52.000Z",
+                      "updatedAt": "2026-07-28T01:05:52.000Z",
+                      "uid": "35240-ab814034-9e94-4907-9e83-015e99433ea1"
+                    }
+                  ],
+                  "id": "9591ca89-0327-42e4-9dff-35a28b7a51cd",
+                  "createdAt": "2026-07-28T01:05:52.000Z",
+                  "updatedAt": "2026-07-28T01:05:52.000Z",
+                  "uid": "35240-9591ca89-0327-42e4-9dff-35a28b7a51cd"
+                },
+                {
+                  "name": "AT&T Send MMS or SMS Message",
+                  "id": "377c6984-b3be-4f27-986c-3d9dc3638985",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "scope",
+                          "value": "IMMN MIM",
+                          "type": "string"
+                        },
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://api.att.com/oauth/v4/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "authUrl",
+                          "value": "https://api.att.com/oauth/v4/authorize",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "authorization_code",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"messageRequest\": {\n    \"addresses\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"text\": \"<string>\",\n    \"subject\": \"<string>\",\n    \"group\": \"<boolean>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/myMessages/v2/messages",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "myMessages",
+                        "v2",
+                        "messages"
+                      ]
+                    },
+                    "description": "Send an MMS or SMS message on behalf of the authenticated user to one or more recipients. Supports SMS (up to 160 characters) and MMS (up to 1 MB with up to 21 attachments). Supports cross-carrier delivery and group messaging."
+                  },
+                  "response": [
+                    {
+                      "id": "789f97c9-18e1-4c2a-9c98-c63828cc288f",
+                      "name": "Message successfully sent",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"messageRequest\": {\n    \"addresses\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"text\": \"<string>\",\n    \"subject\": \"<string>\",\n    \"group\": \"<boolean>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/myMessages/v2/messages",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "myMessages",
+                            "v2",
+                            "messages"
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"resourceURL\": \"<uri>\"\n}",
+                      "createdAt": "2026-07-28T01:05:53.000Z",
+                      "updatedAt": "2026-07-28T01:05:53.000Z",
+                      "uid": "35240-789f97c9-18e1-4c2a-9c98-c63828cc288f"
+                    },
+                    {
+                      "id": "80079afb-1a60-4154-860a-d8abde67e319",
+                      "name": "Bad request - invalid parameters",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"messageRequest\": {\n    \"addresses\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"text\": \"<string>\",\n    \"subject\": \"<string>\",\n    \"group\": \"<boolean>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/myMessages/v2/messages",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "myMessages",
+                            "v2",
+                            "messages"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"RequestError\": {\n    \"ServiceException\": {\n      \"MessageId\": \"<string>\",\n      \"Text\": \"<string>\",\n      \"Variables\": \"<string>\"\n    }\n  }\n}",
+                      "createdAt": "2026-07-28T01:05:53.000Z",
+                      "updatedAt": "2026-07-28T01:05:53.000Z",
+                      "uid": "35240-80079afb-1a60-4154-860a-d8abde67e319"
+                    },
+                    {
+                      "id": "308c7465-da43-4151-9dd0-9b92a53bebe3",
+                      "name": "Unauthorized - invalid or expired token",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"messageRequest\": {\n    \"addresses\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"text\": \"<string>\",\n    \"subject\": \"<string>\",\n    \"group\": \"<boolean>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/myMessages/v2/messages",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "myMessages",
+                            "v2",
+                            "messages"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"RequestError\": {\n    \"ServiceException\": {\n      \"MessageId\": \"<string>\",\n      \"Text\": \"<string>\",\n      \"Variables\": \"<string>\"\n    }\n  }\n}",
+                      "createdAt": "2026-07-28T01:05:53.000Z",
+                      "updatedAt": "2026-07-28T01:05:53.000Z",
+                      "uid": "35240-308c7465-da43-4151-9dd0-9b92a53bebe3"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:05:52.000Z",
+                  "updatedAt": "2026-07-28T01:05:52.000Z",
+                  "uid": "35240-377c6984-b3be-4f27-986c-3d9dc3638985"
+                },
+                {
+                  "name": "AT&T List Messages",
+                  "id": "0ad9364c-c7b5-44f9-a4fe-a432912b9196",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "scope",
+                          "value": "IMMN MIM",
+                          "type": "string"
+                        },
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://api.att.com/oauth/v4/token",
+                          "type": "string"
+                        },
+                        {
+                          "key": "authUrl",
+                          "value": "https://api.att.com/oauth/v4/authorize",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "authorization_code",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/myMessages/v2/messages?limit=<integer>&offset=<integer>&isUnread=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "myMessages",
+                        "v2",
+                        "messages"
+                      ],
+                      "query": [
+                        {
+                          "description": "Maximum number of messages to return",
+                          "key": "limit",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of messages to skip for pagination",
+                          "key": "offset",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Filter to only unread messages when true",
+                          "key": "isUnread",
+                          "value": "<boolean>"
+                        }
+                      ]
+                    },
+                    "description": "Retrieve a list of messages from the authenticated user's inbox. Supports filtering by message type, read status, and time range. Returns message metadata without the full message content."
+                  },
+                  "response": [
+                    {
+                      "id": "4faade0b-0118-41a5-b35e-0bc57588878b",
+                      "name": "Message list successfully retrieved",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/myMessages/v2/messages?limit=<integer>&offset=<integer>&isUnread=<boolean>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "myMessages",
+                            "v2",
+                            "messages"
+                          ],
+                          "query": [
+                            {
+                              "description": "Maximum number of messages to return",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Number of messages to skip for pagination",
+                              "key": "offset",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Filter to only unread messages when true",
+                              "key": "isUnread",
+                              "value": "<boolean>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"messageResultSet\": {\n    \"messages\": [\n      {\n        \"messageId\": \"<string>\",\n        \"from\": \"<string>\",\n        \"recipients\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"isUnread\": \"<boolean>\",\n        \"isIncoming\": \"<boolean>\",\n        \"type\": \"TEXT\",\n        \"typeCode\": \"<string>\",\n        \"timeStamp\": \"<dateTime>\"\n      },\n      {\n        \"messageId\": \"<string>\",\n        \"from\": \"<string>\",\n        \"recipients\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"isUnread\": \"<boolean>\",\n        \"isIncoming\": \"<boolean>\",\n        \"type\": \"TEXT\",\n        \"typeCode\": \"<string>\",\n        \"timeStamp\": \"<dateTime>\"\n      }\n    ],\n    \"totalCount\": \"<integer>\",\n    \"offset\": \"<integer>\",\n    \"limit\": \"<integer>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:05:53.000Z",
+                      "updatedAt": "2026-07-28T01:05:53.000Z",
+                      "uid": "35240-4faade0b-0118-41a5-b35e-0bc57588878b"
+                    },
+                    {
+                      "id": "f58bbe19-d2b8-44d5-a83b-1e6aa7ed8ccc",
+                      "name": "Unauthorized",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/myMessages/v2/messages?limit=<integer>&offset=<integer>&isUnread=<boolean>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "myMessages",
+                            "v2",
+                            "messages"
+                          ],
+                          "query": [
+                            {
+                              "description": "Maximum number of messages to return",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Number of messages to skip for pagination",
+                              "key": "offset",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Filter to only unread messages when true",
+                              "key": "isUnread",
+                              "value": "<boolean>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"RequestError\": {\n    \"ServiceException\": {\n      \"MessageId\": \"<string>\",\n      \"Text\": \"<string>\",\n      \"Variables\": \"<string>\"\n    }\n  }\n}",
+                      "createdAt": "2026-07-28T01:05:53.000Z",
+                      "updatedAt": "2026-07-28T01:05:53.000Z",
+                      "uid": "35240-f58bbe19-d2b8-44d5-a83b-1e6aa7ed8ccc"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:05:52.000Z",
+                  "updatedAt": "2026-07-28T01:05:52.000Z",
+                  "uid": "35240-0ad9364c-c7b5-44f9-a4fe-a432912b9196"
+                }
+              ],
+              "id": "c728418a-20aa-42b5-9ca2-5fa84b4d0d1f",
+              "createdAt": "2026-07-28T01:05:52.000Z",
+              "updatedAt": "2026-07-28T01:05:52.000Z",
+              "uid": "35240-c728418a-20aa-42b5-9ca2-5fa84b4d0d1f"
+            }
+          ],
+          "id": "0280dac6-ccb8-4b08-9cc8-3d4d188336b9",
+          "createdAt": "2026-07-28T01:05:52.000Z",
+          "updatedAt": "2026-07-28T01:05:52.000Z",
+          "uid": "35240-0280dac6-ccb8-4b08-9cc8-3d4d188336b9"
+        }
+      ],
+      "id": "81b6284a-23e8-434b-a6ac-0c0d841613b7",
+      "createdAt": "2026-07-28T01:05:52.000Z",
+      "updatedAt": "2026-07-28T01:05:52.000Z",
+      "uid": "35240-81b6284a-23e8-434b-a6ac-0c0d841613b7"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.att.com"
+    }
+  ]
+}

@@ -1,0 +1,242 @@
+{
+  "info": {
+    "_postman_id": "4906284c-7e17-4c1c-9f99-63bcfab2b5af",
+    "name": "AT&T Service Qualification API",
+    "description": "Enterprise-grade APIs for AT&T wireline business services including service qualification, quoting, ordering, and provisioning. The Alliance API suite supports automated ordering of AVPN, IPBB, ATTPhone, ASE, and AT&T Internet Air for Business services.\n\nContact Support:\n Name: AT&T Alliance Developer Portal",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:06:37.000Z",
+    "updatedAt": "2026-07-28T01:06:37.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-4906284c-7e17-4c1c-9f99-63bcfab2b5af"
+  },
+  "item": [
+    {
+      "name": "alliance",
+      "item": [
+        {
+          "name": "serviceQualification",
+          "item": [
+            {
+              "name": "v1",
+              "item": [
+                {
+                  "name": "check",
+                  "item": [
+                    {
+                      "name": "Check AT&T Service Qualification",
+                      "id": "eecfd9de-5392-49ff-a8d7-c20a1ff24706",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"address\": {\n    \"streetAddress\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"country\": \"<string>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/alliance/serviceQualification/v1/check",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "alliance",
+                            "serviceQualification",
+                            "v1",
+                            "check"
+                          ]
+                        },
+                        "description": "Determine which AT&T wireline services (AVPN, IPBB, ATTPhone, ASE, Internet Air for Business) are available at a given location."
+                      },
+                      "response": [
+                        {
+                          "id": "00d24d81-f0b1-437f-854f-99771b7a4b85",
+                          "name": "Service qualification results",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"address\": {\n    \"streetAddress\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"country\": \"<string>\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/alliance/serviceQualification/v1/check",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "alliance",
+                                "serviceQualification",
+                                "v1",
+                                "check"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"qualificationId\": \"<string>\",\n  \"qualificationDate\": \"<date>\",\n  \"serviceQualificationItems\": [\n    {\n      \"id\": \"<string>\",\n      \"state\": \"terminatedWithError\",\n      \"serviceSpecification\": {\n        \"name\": \"ASE\"\n      },\n      \"eligibilityUnavailabilityReason\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"state\": \"terminatedWithError\",\n      \"serviceSpecification\": {\n        \"name\": \"ASE\"\n      },\n      \"eligibilityUnavailabilityReason\": \"<string>\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:06:37.000Z",
+                          "updatedAt": "2026-07-28T01:06:37.000Z",
+                          "uid": "35240-00d24d81-f0b1-437f-854f-99771b7a4b85"
+                        },
+                        {
+                          "id": "ef5ce5c3-4775-4116-934f-fde0483fb582",
+                          "name": "Invalid request",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"address\": {\n    \"streetAddress\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"country\": \"<string>\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/alliance/serviceQualification/v1/check",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "alliance",
+                                "serviceQualification",
+                                "v1",
+                                "check"
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"<string>\",\n  \"reason\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T01:06:37.000Z",
+                          "updatedAt": "2026-07-28T01:06:37.000Z",
+                          "uid": "35240-ef5ce5c3-4775-4116-934f-fde0483fb582"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:06:37.000Z",
+                      "updatedAt": "2026-07-28T01:06:37.000Z",
+                      "uid": "35240-eecfd9de-5392-49ff-a8d7-c20a1ff24706"
+                    }
+                  ],
+                  "id": "d6596ad2-52d4-4fab-acc4-ec751aadfbb9",
+                  "createdAt": "2026-07-28T01:06:37.000Z",
+                  "updatedAt": "2026-07-28T01:06:37.000Z",
+                  "uid": "35240-d6596ad2-52d4-4fab-acc4-ec751aadfbb9"
+                }
+              ],
+              "id": "aa60b295-6e94-43f8-9d00-ea10f837903d",
+              "createdAt": "2026-07-28T01:06:37.000Z",
+              "updatedAt": "2026-07-28T01:06:37.000Z",
+              "uid": "35240-aa60b295-6e94-43f8-9d00-ea10f837903d"
+            }
+          ],
+          "id": "446f4559-ef6c-4db9-a630-b588784cc594",
+          "createdAt": "2026-07-28T01:06:37.000Z",
+          "updatedAt": "2026-07-28T01:06:37.000Z",
+          "uid": "35240-446f4559-ef6c-4db9-a630-b588784cc594"
+        }
+      ],
+      "id": "09f4565d-134d-48e0-89e3-0d5c37d2fbab",
+      "createdAt": "2026-07-28T01:06:37.000Z",
+      "updatedAt": "2026-07-28T01:06:37.000Z",
+      "uid": "35240-09f4565d-134d-48e0-89e3-0d5c37d2fbab"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "enterprise",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://devex-web.att.com/oauth/token",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://devex-web.att.com"
+    }
+  ]
+}

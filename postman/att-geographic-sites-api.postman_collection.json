@@ -1,0 +1,155 @@
+{
+  "info": {
+    "_postman_id": "5db5f2ab-373a-4f2d-9486-10e88902f7fc",
+    "name": "AT&T Geographic Sites API",
+    "description": "A messaging API enabling applications to send, receive, update, and delete MMS and SMS messages on behalf of AT&T users with explicit OAuth consent. Supports messages to phone numbers, short codes, and email addresses across AT&T and other carriers with full inbox management and delta synchronization.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:05:45.000Z",
+    "updatedAt": "2026-07-28T01:05:45.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-5db5f2ab-373a-4f2d-9486-10e88902f7fc"
+  },
+  "item": [
+    {
+      "name": "geographicSite",
+      "item": [
+        {
+          "name": "AT&T List Geographic Sites",
+          "id": "4062eef9-e6c8-4339-9d75-ef140b7c8c07",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/geographicSite?serviceType=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "geographicSite"
+              ],
+              "query": [
+                {
+                  "description": "Filter by service type",
+                  "key": "serviceType",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Inquire about available market service areas and geographic sites for MVNO operations. Corresponds to TMF 674 Geographic Site Management API."
+          },
+          "response": [
+            {
+              "id": "73d2ef1f-8294-43e2-8831-9041bc0dc854",
+              "name": "Geographic sites successfully retrieved",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/geographicSite?serviceType=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "geographicSite"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter by service type",
+                      "key": "serviceType",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"href\": \"<uri>\",\n    \"status\": \"<string>\"\n  },\n  {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"href\": \"<uri>\",\n    \"status\": \"<string>\"\n  }\n]",
+              "createdAt": "2026-07-28T01:05:46.000Z",
+              "updatedAt": "2026-07-28T01:05:46.000Z",
+              "uid": "35240-73d2ef1f-8294-43e2-8831-9041bc0dc854"
+            },
+            {
+              "id": "21667b18-91c2-4eb9-a88f-e5d611cff3e2",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/geographicSite?serviceType=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "geographicSite"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter by service type",
+                      "key": "serviceType",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<string>\",\n  \"reason\": \"<string>\",\n  \"message\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:05:46.000Z",
+              "updatedAt": "2026-07-28T01:05:46.000Z",
+              "uid": "35240-21667b18-91c2-4eb9-a88f-e5d611cff3e2"
+            }
+          ],
+          "createdAt": "2026-07-28T01:05:46.000Z",
+          "updatedAt": "2026-07-28T01:05:46.000Z",
+          "uid": "35240-4062eef9-e6c8-4339-9d75-ef140b7c8c07"
+        }
+      ],
+      "id": "5c41a6be-5288-4ba4-a871-da84154a9152",
+      "createdAt": "2026-07-28T01:05:46.000Z",
+      "updatedAt": "2026-07-28T01:05:46.000Z",
+      "uid": "35240-5c41a6be-5288-4ba4-a871-da84154a9152"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://devex-web.att.com"
+    }
+  ]
+}

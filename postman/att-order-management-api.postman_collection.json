@@ -1,0 +1,329 @@
+{
+  "info": {
+    "_postman_id": "ebb87157-ca2d-43e3-8fa3-dad9f1ddb45a",
+    "name": "AT&T Order Management API",
+    "description": "Enterprise-grade APIs for AT&T wireline business services including service qualification, quoting, ordering, and provisioning. The Alliance API suite supports automated ordering of AVPN, IPBB, ATTPhone, ASE, and AT&T Internet Air for Business services.\n\nContact Support:\n Name: AT&T Alliance Developer Portal",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:06:35.000Z",
+    "updatedAt": "2026-07-28T01:06:35.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-ebb87157-ca2d-43e3-8fa3-dad9f1ddb45a"
+  },
+  "item": [
+    {
+      "name": "alliance",
+      "item": [
+        {
+          "name": "productOrder",
+          "item": [
+            {
+              "name": "v1",
+              "item": [
+                {
+                  "name": "{orderId}",
+                  "item": [
+                    {
+                      "name": "Get AT&T Enterprise Product Order",
+                      "id": "ec4f4ba6-39de-40f4-876f-99bd73f32a92",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/alliance/productOrder/v1/:orderId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "alliance",
+                            "productOrder",
+                            "v1",
+                            ":orderId"
+                          ],
+                          "variable": [
+                            {
+                              "id": "8069d18a-664e-4716-8096-c0163c52a3ec",
+                              "key": "orderId",
+                              "value": "<string>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Retrieve the current status and details of a specific product order."
+                      },
+                      "response": [
+                        {
+                          "id": "099c90b2-f884-464d-a250-96396a640dcd",
+                          "name": "Product order details",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/alliance/productOrder/v1/:orderId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "alliance",
+                                "productOrder",
+                                "v1",
+                                ":orderId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "orderId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"externalId\": \"<string>\",\n  \"state\": \"acknowledged\",\n  \"orderDate\": \"<dateTime>\",\n  \"completionDate\": \"<dateTime>\"\n}",
+                          "createdAt": "2026-07-28T01:06:35.000Z",
+                          "updatedAt": "2026-07-28T01:06:35.000Z",
+                          "uid": "35240-099c90b2-f884-464d-a250-96396a640dcd"
+                        },
+                        {
+                          "id": "61e13830-4883-4051-8d09-c09726aa7778",
+                          "name": "Order not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/alliance/productOrder/v1/:orderId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "alliance",
+                                "productOrder",
+                                "v1",
+                                ":orderId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "orderId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"<string>\",\n  \"reason\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T01:06:35.000Z",
+                          "updatedAt": "2026-07-28T01:06:35.000Z",
+                          "uid": "35240-61e13830-4883-4051-8d09-c09726aa7778"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:06:35.000Z",
+                      "updatedAt": "2026-07-28T01:06:35.000Z",
+                      "uid": "35240-ec4f4ba6-39de-40f4-876f-99bd73f32a92"
+                    }
+                  ],
+                  "id": "8d7d4825-b9b4-4002-a171-3a400b329588",
+                  "createdAt": "2026-07-28T01:06:35.000Z",
+                  "updatedAt": "2026-07-28T01:06:35.000Z",
+                  "uid": "35240-8d7d4825-b9b4-4002-a171-3a400b329588"
+                },
+                {
+                  "name": "List AT&T Enterprise Product Orders",
+                  "id": "d0cc2494-1332-4e0f-a310-7ba9074b8da9",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/alliance/productOrder/v1?state=pending&requestedStartDate.gt=<date>&externalId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "alliance",
+                        "productOrder",
+                        "v1"
+                      ],
+                      "query": [
+                        {
+                          "description": "Filter by order state",
+                          "key": "state",
+                          "value": "pending"
+                        },
+                        {
+                          "description": "Filter orders with requested start date after this date",
+                          "key": "requestedStartDate.gt",
+                          "value": "<date>"
+                        },
+                        {
+                          "description": "Filter by external order ID",
+                          "key": "externalId",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "description": "Retrieve a list of product orders with optional filtering by state, date range, or external ID."
+                  },
+                  "response": [
+                    {
+                      "id": "7ac63dc8-c278-4d27-bec8-cadfe31d6c1c",
+                      "name": "List of product orders",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/alliance/productOrder/v1?state=pending&requestedStartDate.gt=<date>&externalId=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "alliance",
+                            "productOrder",
+                            "v1"
+                          ],
+                          "query": [
+                            {
+                              "description": "Filter by order state",
+                              "key": "state",
+                              "value": "pending"
+                            },
+                            {
+                              "description": "Filter orders with requested start date after this date",
+                              "key": "requestedStartDate.gt",
+                              "value": "<date>"
+                            },
+                            {
+                              "description": "Filter by external order ID",
+                              "key": "externalId",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"id\": \"<string>\",\n    \"externalId\": \"<string>\",\n    \"state\": \"pending\",\n    \"orderDate\": \"<dateTime>\",\n    \"completionDate\": \"<dateTime>\"\n  },\n  {\n    \"id\": \"<string>\",\n    \"externalId\": \"<string>\",\n    \"state\": \"pendingCancellation\",\n    \"orderDate\": \"<dateTime>\",\n    \"completionDate\": \"<dateTime>\"\n  }\n]",
+                      "createdAt": "2026-07-28T01:06:35.000Z",
+                      "updatedAt": "2026-07-28T01:06:35.000Z",
+                      "uid": "35240-7ac63dc8-c278-4d27-bec8-cadfe31d6c1c"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:06:35.000Z",
+                  "updatedAt": "2026-07-28T01:06:35.000Z",
+                  "uid": "35240-d0cc2494-1332-4e0f-a310-7ba9074b8da9"
+                }
+              ],
+              "id": "e06b68dd-5cea-4878-aecc-4cf8e1382347",
+              "createdAt": "2026-07-28T01:06:35.000Z",
+              "updatedAt": "2026-07-28T01:06:35.000Z",
+              "uid": "35240-e06b68dd-5cea-4878-aecc-4cf8e1382347"
+            }
+          ],
+          "id": "ed07b1ac-06da-4dcf-8228-496d525a37da",
+          "createdAt": "2026-07-28T01:06:35.000Z",
+          "updatedAt": "2026-07-28T01:06:35.000Z",
+          "uid": "35240-ed07b1ac-06da-4dcf-8228-496d525a37da"
+        }
+      ],
+      "id": "af834e2b-d8c4-4b00-8aeb-d30edd6243f5",
+      "createdAt": "2026-07-28T01:06:35.000Z",
+      "updatedAt": "2026-07-28T01:06:35.000Z",
+      "uid": "35240-af834e2b-d8c4-4b00-8aeb-d30edd6243f5"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "enterprise",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://devex-web.att.com/oauth/token",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://devex-web.att.com"
+    }
+  ]
+}

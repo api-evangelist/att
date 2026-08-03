@@ -1,0 +1,893 @@
+{
+  "info": {
+    "_postman_id": "370ef953-d2b4-402e-9819-3d9f80ce2ee3",
+    "name": "AT&T SMS Messaging API",
+    "description": "A messaging API enabling applications to send, receive, update, and delete MMS and SMS messages on behalf of AT&T users with explicit OAuth consent. Supports messages to phone numbers, short codes, and email addresses across AT&T and other carriers with full inbox management and delta synchronization.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:06:20.000Z",
+    "updatedAt": "2026-07-28T01:06:21.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-370ef953-d2b4-402e-9819-3d9f80ce2ee3"
+  },
+  "item": [
+    {
+      "name": "sms",
+      "item": [
+        {
+          "name": "v3",
+          "item": [
+            {
+              "name": "messaging",
+              "item": [
+                {
+                  "name": "outbox",
+                  "item": [
+                    {
+                      "name": "{messageId}",
+                      "item": [
+                        {
+                          "name": "AT&T Get SMS Delivery Status",
+                          "id": "521a6e4b-ab77-4541-8c64-e7716a018835",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "oauth2",
+                              "oauth2": [
+                                {
+                                  "key": "scope",
+                                  "value": "IMMN MIM",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "accessTokenUrl",
+                                  "value": "https://api.att.com/oauth/v4/token",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "authUrl",
+                                  "value": "https://api.att.com/oauth/v4/authorize",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "grant_type",
+                                  "value": "authorization_code",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/sms/v3/messaging/outbox/:messageId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "sms",
+                                "v3",
+                                "messaging",
+                                "outbox",
+                                ":messageId"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "954bc05d-7280-41d8-b8bc-59cc7e0c0460",
+                                  "key": "messageId",
+                                  "value": "<string>",
+                                  "description": "(Required) The unique message identifier returned by the Send SMS operation"
+                                }
+                              ]
+                            },
+                            "description": "Retrieve the delivery status of a previously sent SMS message using its message ID. Returns delivery status such as DeliveredToNetwork, DeliveredToTerminal, or DeliveryImpossible."
+                          },
+                          "response": [
+                            {
+                              "id": "b2bfc132-3f8d-4314-aeff-769e2f0af92e",
+                              "name": "Delivery status successfully retrieved",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/sms/v3/messaging/outbox/:messageId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "sms",
+                                    "v3",
+                                    "messaging",
+                                    "outbox",
+                                    ":messageId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "messageId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"deliveryInfoList\": {\n    \"deliveryInfo\": [\n      {\n        \"address\": \"<string>\",\n        \"deliveryStatus\": \"DeliveredToNetwork\"\n      },\n      {\n        \"address\": \"<string>\",\n        \"deliveryStatus\": \"MessageWaiting\"\n      }\n    ],\n    \"resourceURL\": \"<uri>\"\n  }\n}",
+                              "createdAt": "2026-07-28T01:06:21.000Z",
+                              "updatedAt": "2026-07-28T01:06:21.000Z",
+                              "uid": "35240-b2bfc132-3f8d-4314-aeff-769e2f0af92e"
+                            },
+                            {
+                              "id": "94cbca00-a5cb-4f18-a33c-2261bffc0442",
+                              "name": "Unauthorized",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/sms/v3/messaging/outbox/:messageId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "sms",
+                                    "v3",
+                                    "messaging",
+                                    "outbox",
+                                    ":messageId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "messageId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"RequestError\": {\n    \"ServiceException\": {\n      \"MessageId\": \"<string>\",\n      \"Text\": \"<string>\",\n      \"Variables\": \"<string>\"\n    }\n  }\n}",
+                              "createdAt": "2026-07-28T01:06:21.000Z",
+                              "updatedAt": "2026-07-28T01:06:21.000Z",
+                              "uid": "35240-94cbca00-a5cb-4f18-a33c-2261bffc0442"
+                            },
+                            {
+                              "id": "a249e7bf-bc1d-41d6-ab3f-054f01321adb",
+                              "name": "Message not found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/sms/v3/messaging/outbox/:messageId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "sms",
+                                    "v3",
+                                    "messaging",
+                                    "outbox",
+                                    ":messageId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "messageId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"RequestError\": {\n    \"ServiceException\": {\n      \"MessageId\": \"<string>\",\n      \"Text\": \"<string>\",\n      \"Variables\": \"<string>\"\n    }\n  }\n}",
+                              "createdAt": "2026-07-28T01:06:21.000Z",
+                              "updatedAt": "2026-07-28T01:06:21.000Z",
+                              "uid": "35240-a249e7bf-bc1d-41d6-ab3f-054f01321adb"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T01:06:21.000Z",
+                          "updatedAt": "2026-07-28T01:06:21.000Z",
+                          "uid": "35240-521a6e4b-ab77-4541-8c64-e7716a018835"
+                        }
+                      ],
+                      "id": "899d22bf-ea7b-4c33-8cb6-0f545ce4a09a",
+                      "createdAt": "2026-07-28T01:06:21.000Z",
+                      "updatedAt": "2026-07-28T01:06:21.000Z",
+                      "uid": "35240-899d22bf-ea7b-4c33-8cb6-0f545ce4a09a"
+                    },
+                    {
+                      "name": "AT&T Send SMS Message",
+                      "id": "f8e0aa35-701d-4d8f-84df-c69f5485835e",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "oauth2",
+                          "oauth2": [
+                            {
+                              "key": "scope",
+                              "value": "IMMN MIM",
+                              "type": "string"
+                            },
+                            {
+                              "key": "accessTokenUrl",
+                              "value": "https://api.att.com/oauth/v4/token",
+                              "type": "string"
+                            },
+                            {
+                              "key": "authUrl",
+                              "value": "https://api.att.com/oauth/v4/authorize",
+                              "type": "string"
+                            },
+                            {
+                              "key": "grant_type",
+                              "value": "authorization_code",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"outboundSMSRequest\": {\n    \"address\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"message\": \"<string>\",\n    \"notifyDeliveryStatus\": \"<boolean>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/sms/v3/messaging/outbox",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sms",
+                            "v3",
+                            "messaging",
+                            "outbox"
+                          ]
+                        },
+                        "description": "Send an SMS message to one or more recipients using a registered AT&T short code. Supports up to 50 recipients per request and messages up to 4096 characters. Optionally request delivery status notifications via callback."
+                      },
+                      "response": [
+                        {
+                          "id": "9bf13d1c-f300-46f5-a884-a30ae4e6e1c6",
+                          "name": "SMS message successfully queued for delivery",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"outboundSMSRequest\": {\n    \"address\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"message\": \"<string>\",\n    \"notifyDeliveryStatus\": \"<boolean>\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/sms/v3/messaging/outbox",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "sms",
+                                "v3",
+                                "messaging",
+                                "outbox"
+                              ]
+                            }
+                          },
+                          "status": "Created",
+                          "code": 201,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"outboundSMSResponse\": {\n    \"messageId\": \"<string>\",\n    \"resourceReference\": {\n      \"resourceURL\": \"<uri>\"\n    }\n  }\n}",
+                          "createdAt": "2026-07-28T01:06:21.000Z",
+                          "updatedAt": "2026-07-28T01:06:21.000Z",
+                          "uid": "35240-9bf13d1c-f300-46f5-a884-a30ae4e6e1c6"
+                        },
+                        {
+                          "id": "b0f50817-5a83-4d24-8109-ff50c27dc1af",
+                          "name": "Bad request - invalid parameters or message format",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"outboundSMSRequest\": {\n    \"address\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"message\": \"<string>\",\n    \"notifyDeliveryStatus\": \"<boolean>\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/sms/v3/messaging/outbox",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "sms",
+                                "v3",
+                                "messaging",
+                                "outbox"
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"RequestError\": {\n    \"ServiceException\": {\n      \"MessageId\": \"<string>\",\n      \"Text\": \"<string>\",\n      \"Variables\": \"<string>\"\n    }\n  }\n}",
+                          "createdAt": "2026-07-28T01:06:21.000Z",
+                          "updatedAt": "2026-07-28T01:06:21.000Z",
+                          "uid": "35240-b0f50817-5a83-4d24-8109-ff50c27dc1af"
+                        },
+                        {
+                          "id": "e25b40b6-35ac-435c-bca0-5207165e67e9",
+                          "name": "Unauthorized - invalid or expired token",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"outboundSMSRequest\": {\n    \"address\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"message\": \"<string>\",\n    \"notifyDeliveryStatus\": \"<boolean>\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/sms/v3/messaging/outbox",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "sms",
+                                "v3",
+                                "messaging",
+                                "outbox"
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"RequestError\": {\n    \"ServiceException\": {\n      \"MessageId\": \"<string>\",\n      \"Text\": \"<string>\",\n      \"Variables\": \"<string>\"\n    }\n  }\n}",
+                          "createdAt": "2026-07-28T01:06:21.000Z",
+                          "updatedAt": "2026-07-28T01:06:21.000Z",
+                          "uid": "35240-e25b40b6-35ac-435c-bca0-5207165e67e9"
+                        },
+                        {
+                          "id": "54d60414-0301-41f7-820b-658a7accc186",
+                          "name": "Forbidden - insufficient permissions or scope",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"outboundSMSRequest\": {\n    \"address\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"message\": \"<string>\",\n    \"notifyDeliveryStatus\": \"<boolean>\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/sms/v3/messaging/outbox",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "sms",
+                                "v3",
+                                "messaging",
+                                "outbox"
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"RequestError\": {\n    \"ServiceException\": {\n      \"MessageId\": \"<string>\",\n      \"Text\": \"<string>\",\n      \"Variables\": \"<string>\"\n    }\n  }\n}",
+                          "createdAt": "2026-07-28T01:06:21.000Z",
+                          "updatedAt": "2026-07-28T01:06:21.000Z",
+                          "uid": "35240-54d60414-0301-41f7-820b-658a7accc186"
+                        },
+                        {
+                          "id": "f7f55d52-72ed-4755-8340-d3dd68f4c78a",
+                          "name": "Too many requests - rate limit exceeded",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"outboundSMSRequest\": {\n    \"address\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"message\": \"<string>\",\n    \"notifyDeliveryStatus\": \"<boolean>\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/sms/v3/messaging/outbox",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "sms",
+                                "v3",
+                                "messaging",
+                                "outbox"
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"RequestError\": {\n    \"ServiceException\": {\n      \"MessageId\": \"<string>\",\n      \"Text\": \"<string>\",\n      \"Variables\": \"<string>\"\n    }\n  }\n}",
+                          "createdAt": "2026-07-28T01:06:21.000Z",
+                          "updatedAt": "2026-07-28T01:06:21.000Z",
+                          "uid": "35240-f7f55d52-72ed-4755-8340-d3dd68f4c78a"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:06:21.000Z",
+                      "updatedAt": "2026-07-28T01:06:21.000Z",
+                      "uid": "35240-f8e0aa35-701d-4d8f-84df-c69f5485835e"
+                    }
+                  ],
+                  "id": "92eba0d2-fe7d-4869-9fc5-74c747fdfd14",
+                  "createdAt": "2026-07-28T01:06:21.000Z",
+                  "updatedAt": "2026-07-28T01:06:21.000Z",
+                  "uid": "35240-92eba0d2-fe7d-4869-9fc5-74c747fdfd14"
+                },
+                {
+                  "name": "inbox",
+                  "item": [
+                    {
+                      "name": "{registrationId}",
+                      "item": [
+                        {
+                          "name": "AT&T Get Inbound SMS Messages",
+                          "id": "83c99cc7-80a3-4dc2-a9e1-e73450201ef6",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "oauth2",
+                              "oauth2": [
+                                {
+                                  "key": "scope",
+                                  "value": "IMMN MIM",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "accessTokenUrl",
+                                  "value": "https://api.att.com/oauth/v4/token",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "authUrl",
+                                  "value": "https://api.att.com/oauth/v4/authorize",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "grant_type",
+                                  "value": "authorization_code",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/sms/v3/messaging/inbox/:registrationId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "sms",
+                                "v3",
+                                "messaging",
+                                "inbox",
+                                ":registrationId"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "a1b6035c-59d5-4c35-972d-92d0683e0931",
+                                  "key": "registrationId",
+                                  "value": "<string>",
+                                  "description": "(Required) The short code registration ID from the AT&T developer account"
+                                }
+                              ]
+                            },
+                            "description": "Poll for inbound SMS messages sent to the registered short code. Returns messages received since last poll. Short code registration ID is obtained from the AT&T developer account."
+                          },
+                          "response": [
+                            {
+                              "id": "c0698e22-a166-4ed5-93a8-2915ea43e200",
+                              "name": "Inbound messages successfully retrieved",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/sms/v3/messaging/inbox/:registrationId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "sms",
+                                    "v3",
+                                    "messaging",
+                                    "inbox",
+                                    ":registrationId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "registrationId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"inboundSMSMessageList\": {\n    \"inboundSMSMessage\": [\n      {\n        \"messageId\": \"<string>\",\n        \"message\": \"<string>\",\n        \"senderAddress\": \"<string>\",\n        \"destinationAddress\": \"<string>\",\n        \"dateTime\": \"<dateTime>\"\n      },\n      {\n        \"messageId\": \"<string>\",\n        \"message\": \"<string>\",\n        \"senderAddress\": \"<string>\",\n        \"destinationAddress\": \"<string>\",\n        \"dateTime\": \"<dateTime>\"\n      }\n    ],\n    \"numberOfMessagesInThisBatch\": \"<integer>\",\n    \"resourceURL\": \"<uri>\",\n    \"totalNumberOfPendingMessages\": \"<integer>\"\n  }\n}",
+                              "createdAt": "2026-07-28T01:06:21.000Z",
+                              "updatedAt": "2026-07-28T01:06:21.000Z",
+                              "uid": "35240-c0698e22-a166-4ed5-93a8-2915ea43e200"
+                            },
+                            {
+                              "id": "f11b4703-32df-4563-b8a8-f9023b8a6fdd",
+                              "name": "Unauthorized",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/sms/v3/messaging/inbox/:registrationId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "sms",
+                                    "v3",
+                                    "messaging",
+                                    "inbox",
+                                    ":registrationId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "registrationId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"RequestError\": {\n    \"ServiceException\": {\n      \"MessageId\": \"<string>\",\n      \"Text\": \"<string>\",\n      \"Variables\": \"<string>\"\n    }\n  }\n}",
+                              "createdAt": "2026-07-28T01:06:21.000Z",
+                              "updatedAt": "2026-07-28T01:06:21.000Z",
+                              "uid": "35240-f11b4703-32df-4563-b8a8-f9023b8a6fdd"
+                            },
+                            {
+                              "id": "d27dfa5d-51ba-42fd-b080-a71d4b8bed26",
+                              "name": "Registration ID not found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/sms/v3/messaging/inbox/:registrationId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "sms",
+                                    "v3",
+                                    "messaging",
+                                    "inbox",
+                                    ":registrationId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "registrationId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"RequestError\": {\n    \"ServiceException\": {\n      \"MessageId\": \"<string>\",\n      \"Text\": \"<string>\",\n      \"Variables\": \"<string>\"\n    }\n  }\n}",
+                              "createdAt": "2026-07-28T01:06:21.000Z",
+                              "updatedAt": "2026-07-28T01:06:21.000Z",
+                              "uid": "35240-d27dfa5d-51ba-42fd-b080-a71d4b8bed26"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T01:06:21.000Z",
+                          "updatedAt": "2026-07-28T01:06:21.000Z",
+                          "uid": "35240-83c99cc7-80a3-4dc2-a9e1-e73450201ef6"
+                        }
+                      ],
+                      "id": "b01e6cc6-8ef7-465d-9879-f11c81675c66",
+                      "createdAt": "2026-07-28T01:06:21.000Z",
+                      "updatedAt": "2026-07-28T01:06:21.000Z",
+                      "uid": "35240-b01e6cc6-8ef7-465d-9879-f11c81675c66"
+                    }
+                  ],
+                  "id": "64790070-7d03-4d14-8ae4-56ef32b2c18b",
+                  "createdAt": "2026-07-28T01:06:21.000Z",
+                  "updatedAt": "2026-07-28T01:06:21.000Z",
+                  "uid": "35240-64790070-7d03-4d14-8ae4-56ef32b2c18b"
+                }
+              ],
+              "id": "bcb2d479-f30a-45ad-986f-7226674c331b",
+              "createdAt": "2026-07-28T01:06:21.000Z",
+              "updatedAt": "2026-07-28T01:06:21.000Z",
+              "uid": "35240-bcb2d479-f30a-45ad-986f-7226674c331b"
+            }
+          ],
+          "id": "0b88c32e-5626-4655-9c66-9a22dcd52431",
+          "createdAt": "2026-07-28T01:06:21.000Z",
+          "updatedAt": "2026-07-28T01:06:21.000Z",
+          "uid": "35240-0b88c32e-5626-4655-9c66-9a22dcd52431"
+        }
+      ],
+      "id": "1ee8e86b-55e5-40b0-bb71-01851c8fbbde",
+      "createdAt": "2026-07-28T01:06:21.000Z",
+      "updatedAt": "2026-07-28T01:06:21.000Z",
+      "uid": "35240-1ee8e86b-55e5-40b0-bb71-01851c8fbbde"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.att.com"
+    }
+  ]
+}

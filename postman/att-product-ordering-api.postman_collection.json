@@ -1,0 +1,230 @@
+{
+  "info": {
+    "_postman_id": "88fff9b6-b8e6-487f-a2a5-b485b3bc4cd2",
+    "name": "AT&T Product Ordering API",
+    "description": "Enterprise-grade APIs for AT&T wireline business services including service qualification, quoting, ordering, and provisioning. The Alliance API suite supports automated ordering of AVPN, IPBB, ATTPhone, ASE, and AT&T Internet Air for Business services.\n\nContact Support:\n Name: AT&T Alliance Developer Portal",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:06:36.000Z",
+    "updatedAt": "2026-07-28T01:06:36.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-88fff9b6-b8e6-487f-a2a5-b485b3bc4cd2"
+  },
+  "item": [
+    {
+      "name": "alliance",
+      "item": [
+        {
+          "name": "productOrder",
+          "item": [
+            {
+              "name": "v1",
+              "item": [
+                {
+                  "name": "Create AT&T Enterprise Product Order",
+                  "id": "c96365cd-9e77-4e4a-8bc5-14c841429773",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"orderItem\": [\n    {\n      \"id\": \"<string>\",\n      \"action\": \"modify\",\n      \"productOffering\": {\n        \"name\": \"<string>\"\n      }\n    },\n    {\n      \"id\": \"<string>\",\n      \"action\": \"modify\",\n      \"productOffering\": {\n        \"name\": \"<string>\"\n      }\n    }\n  ],\n  \"externalId\": \"<string>\",\n  \"description\": \"<string>\",\n  \"requestedStartDate\": \"<date>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/alliance/productOrder/v1",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "alliance",
+                        "productOrder",
+                        "v1"
+                      ]
+                    },
+                    "description": "Submit a product order for AT&T wireline business services including AVPN, IPBB, ATTPhone, ASE, or Internet Air for Business."
+                  },
+                  "response": [
+                    {
+                      "id": "70b15e96-23e1-44e2-844c-e6252f6c15aa",
+                      "name": "Product order created",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"orderItem\": [\n    {\n      \"id\": \"<string>\",\n      \"action\": \"modify\",\n      \"productOffering\": {\n        \"name\": \"<string>\"\n      }\n    },\n    {\n      \"id\": \"<string>\",\n      \"action\": \"modify\",\n      \"productOffering\": {\n        \"name\": \"<string>\"\n      }\n    }\n  ],\n  \"externalId\": \"<string>\",\n  \"description\": \"<string>\",\n  \"requestedStartDate\": \"<date>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/alliance/productOrder/v1",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "alliance",
+                            "productOrder",
+                            "v1"
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"externalId\": \"<string>\",\n  \"state\": \"partial\",\n  \"orderDate\": \"<dateTime>\",\n  \"completionDate\": \"<dateTime>\"\n}",
+                      "createdAt": "2026-07-28T01:06:36.000Z",
+                      "updatedAt": "2026-07-28T01:06:36.000Z",
+                      "uid": "35240-70b15e96-23e1-44e2-844c-e6252f6c15aa"
+                    },
+                    {
+                      "id": "be66c2af-9c1a-46b5-b95b-a39e1a764acf",
+                      "name": "Invalid request",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"orderItem\": [\n    {\n      \"id\": \"<string>\",\n      \"action\": \"modify\",\n      \"productOffering\": {\n        \"name\": \"<string>\"\n      }\n    },\n    {\n      \"id\": \"<string>\",\n      \"action\": \"modify\",\n      \"productOffering\": {\n        \"name\": \"<string>\"\n      }\n    }\n  ],\n  \"externalId\": \"<string>\",\n  \"description\": \"<string>\",\n  \"requestedStartDate\": \"<date>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/alliance/productOrder/v1",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "alliance",
+                            "productOrder",
+                            "v1"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<string>\",\n  \"reason\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:06:36.000Z",
+                      "updatedAt": "2026-07-28T01:06:36.000Z",
+                      "uid": "35240-be66c2af-9c1a-46b5-b95b-a39e1a764acf"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:06:36.000Z",
+                  "updatedAt": "2026-07-28T01:06:36.000Z",
+                  "uid": "35240-c96365cd-9e77-4e4a-8bc5-14c841429773"
+                }
+              ],
+              "id": "221f0df9-a6f6-44d3-ac7f-73624c076ba7",
+              "createdAt": "2026-07-28T01:06:36.000Z",
+              "updatedAt": "2026-07-28T01:06:36.000Z",
+              "uid": "35240-221f0df9-a6f6-44d3-ac7f-73624c076ba7"
+            }
+          ],
+          "id": "b953055d-af67-436e-a84c-87250e964d55",
+          "createdAt": "2026-07-28T01:06:36.000Z",
+          "updatedAt": "2026-07-28T01:06:36.000Z",
+          "uid": "35240-b953055d-af67-436e-a84c-87250e964d55"
+        }
+      ],
+      "id": "adeaa99c-3ba1-4255-8af1-ccd2303ae3b4",
+      "createdAt": "2026-07-28T01:06:36.000Z",
+      "updatedAt": "2026-07-28T01:06:36.000Z",
+      "uid": "35240-adeaa99c-3ba1-4255-8af1-ccd2303ae3b4"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "enterprise",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://devex-web.att.com/oauth/token",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://devex-web.att.com"
+    }
+  ]
+}

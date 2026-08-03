@@ -1,0 +1,558 @@
+{
+  "info": {
+    "_postman_id": "f9bf5065-3d40-40c9-8703-e9f41966f0ce",
+    "name": "AT&T Device Management API",
+    "description": "A messaging API enabling applications to send, receive, update, and delete MMS and SMS messages on behalf of AT&T users with explicit OAuth consent. Supports messages to phone numbers, short codes, and email addresses across AT&T and other carriers with full inbox management and delta synchronization.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:05:44.000Z",
+    "updatedAt": "2026-07-28T01:05:45.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-f9bf5065-3d40-40c9-8703-e9f41966f0ce"
+  },
+  "item": [
+    {
+      "name": "resource",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "AT&T Get Device or SIM Status",
+              "id": "f72c5d19-ff1a-453c-bda0-92bc5bcb81cd",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/resource/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "resource",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "f9ec3951-ce31-4b0f-834b-77133cb5db53",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) Resource (device or SIM) ID"
+                    }
+                  ]
+                },
+                "description": "Retrieve the current status and details of a specific device or SIM card. Corresponds to TMF 639 Resource Inventory API."
+              },
+              "response": [
+                {
+                  "id": "1ba7d4d2-db85-4668-9775-e45147a76bf1",
+                  "name": "Resource details retrieved",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/resource/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "resource",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"resourceType\": \"device\",\n  \"status\": \"active\",\n  \"serialNumber\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:05:45.000Z",
+                  "updatedAt": "2026-07-28T01:05:45.000Z",
+                  "uid": "35240-1ba7d4d2-db85-4668-9775-e45147a76bf1"
+                },
+                {
+                  "id": "3c5bb3cb-9f7e-4961-a340-27930db321d1",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/resource/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "resource",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<string>\",\n  \"reason\": \"<string>\",\n  \"message\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:05:45.000Z",
+                  "updatedAt": "2026-07-28T01:05:45.000Z",
+                  "uid": "35240-3c5bb3cb-9f7e-4961-a340-27930db321d1"
+                },
+                {
+                  "id": "b59e80de-8da7-4d69-8d6e-b050f907ecaf",
+                  "name": "Resource not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/resource/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "resource",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<string>\",\n  \"reason\": \"<string>\",\n  \"message\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:05:45.000Z",
+                  "updatedAt": "2026-07-28T01:05:45.000Z",
+                  "uid": "35240-b59e80de-8da7-4d69-8d6e-b050f907ecaf"
+                }
+              ],
+              "createdAt": "2026-07-28T01:05:45.000Z",
+              "updatedAt": "2026-07-28T01:05:45.000Z",
+              "uid": "35240-f72c5d19-ff1a-453c-bda0-92bc5bcb81cd"
+            },
+            {
+              "name": "AT&T Update Resource (Reset Voicemail Password)",
+              "id": "77096d20-0719-40fa-b5ae-d7ac82fac2ba",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"resourceCharacteristic\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/resource/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "resource",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "73a0c016-9f7f-4eb8-8fcc-6c1be0be1952",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) Resource ID"
+                    }
+                  ]
+                },
+                "description": "Update a resource attribute, such as resetting the voicemail password for a subscriber's device. Corresponds to TMF 702 Resource Activation and Configuration API."
+              },
+              "response": [
+                {
+                  "id": "b37f8539-7d09-4f02-be06-9ed31eb419bc",
+                  "name": "Resource successfully updated",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"resourceCharacteristic\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/resource/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "resource",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"resourceType\": \"device\",\n  \"status\": \"active\",\n  \"serialNumber\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:05:45.000Z",
+                  "updatedAt": "2026-07-28T01:05:45.000Z",
+                  "uid": "35240-b37f8539-7d09-4f02-be06-9ed31eb419bc"
+                },
+                {
+                  "id": "2c0c5d94-1537-4506-bcee-6c1628f9ffdb",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"resourceCharacteristic\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/resource/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "resource",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<string>\",\n  \"reason\": \"<string>\",\n  \"message\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:05:45.000Z",
+                  "updatedAt": "2026-07-28T01:05:45.000Z",
+                  "uid": "35240-2c0c5d94-1537-4506-bcee-6c1628f9ffdb"
+                },
+                {
+                  "id": "266ddde4-3f58-44e9-a2ae-1466d2e5520e",
+                  "name": "Resource not found",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"resourceCharacteristic\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/resource/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "resource",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<string>\",\n  \"reason\": \"<string>\",\n  \"message\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:05:45.000Z",
+                  "updatedAt": "2026-07-28T01:05:45.000Z",
+                  "uid": "35240-266ddde4-3f58-44e9-a2ae-1466d2e5520e"
+                }
+              ],
+              "createdAt": "2026-07-28T01:05:45.000Z",
+              "updatedAt": "2026-07-28T01:05:45.000Z",
+              "uid": "35240-77096d20-0719-40fa-b5ae-d7ac82fac2ba"
+            }
+          ],
+          "id": "cc933daa-9141-4183-8e87-38598d38db07",
+          "createdAt": "2026-07-28T01:05:45.000Z",
+          "updatedAt": "2026-07-28T01:05:45.000Z",
+          "uid": "35240-cc933daa-9141-4183-8e87-38598d38db07"
+        },
+        {
+          "name": "AT&T List Devices and SIMs",
+          "id": "aefec90e-acf5-4c28-93d8-abf07ba33cb8",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/resource?relatedParty.id=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "resource"
+              ],
+              "query": [
+                {
+                  "description": "Filter resources by subscriber ID",
+                  "key": "relatedParty.id",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Retrieve device details and SIM information for subscribers. Corresponds to TMF 639 Resource Inventory API."
+          },
+          "response": [
+            {
+              "id": "61f7abc8-f80e-4c5f-a6d8-fbd470669cd0",
+              "name": "Resources successfully retrieved",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/resource?relatedParty.id=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "resource"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter resources by subscriber ID",
+                      "key": "relatedParty.id",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"resourceType\": \"device\",\n    \"status\": \"suspended\",\n    \"serialNumber\": \"<string>\"\n  },\n  {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"resourceType\": \"device\",\n    \"status\": \"active\",\n    \"serialNumber\": \"<string>\"\n  }\n]",
+              "createdAt": "2026-07-28T01:05:45.000Z",
+              "updatedAt": "2026-07-28T01:05:45.000Z",
+              "uid": "35240-61f7abc8-f80e-4c5f-a6d8-fbd470669cd0"
+            },
+            {
+              "id": "363e0ea8-4853-439f-bd95-8f8308aa32e8",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/resource?relatedParty.id=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "resource"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter resources by subscriber ID",
+                      "key": "relatedParty.id",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<string>\",\n  \"reason\": \"<string>\",\n  \"message\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:05:45.000Z",
+              "updatedAt": "2026-07-28T01:05:45.000Z",
+              "uid": "35240-363e0ea8-4853-439f-bd95-8f8308aa32e8"
+            }
+          ],
+          "createdAt": "2026-07-28T01:05:45.000Z",
+          "updatedAt": "2026-07-28T01:05:45.000Z",
+          "uid": "35240-aefec90e-acf5-4c28-93d8-abf07ba33cb8"
+        }
+      ],
+      "id": "269b1ba5-648a-4540-973c-5bf74805d810",
+      "createdAt": "2026-07-28T01:05:45.000Z",
+      "updatedAt": "2026-07-28T01:05:45.000Z",
+      "uid": "35240-269b1ba5-648a-4540-973c-5bf74805d810"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://devex-web.att.com"
+    }
+  ]
+}

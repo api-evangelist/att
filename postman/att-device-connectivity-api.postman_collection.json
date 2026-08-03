@@ -1,0 +1,425 @@
+{
+  "info": {
+    "_postman_id": "103a8a8c-c423-4dcb-9c76-d70025a52abd",
+    "name": "AT&T Device Connectivity API",
+    "description": "CAMARA-standard API that checks the connectivity status of user equipment, including roaming information. Enables applications to determine if a device is reachable, connected, and whether it is roaming on a partner network. Part of the AT&T Network API Accelerator Program.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:06:38.000Z",
+    "updatedAt": "2026-07-28T01:06:38.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-103a8a8c-c423-4dcb-9c76-d70025a52abd"
+  },
+  "item": [
+    {
+      "name": "connectivity",
+      "item": [
+        {
+          "name": "AT&T Get Device Connectivity Status",
+          "id": "d9dc450d-c983-45b4-9e0d-733e8b86dbe0",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.att.com/oauth/v4/token",
+                  "type": "string"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"device\": {\n    \"phoneNumber\": \"<string>\",\n    \"ipv4Address\": {\n      \"publicAddress\": \"<string>\",\n      \"privateAddress\": \"<string>\",\n      \"publicPort\": \"<integer>\"\n    },\n    \"networkAccessIdentifier\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/connectivity",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "connectivity"
+              ]
+            },
+            "description": "Get the current connectivity status of a device identified by its phone number or IP address. Returns whether the device is connected to the AT&T network, the connection type, and whether the device is roaming."
+          },
+          "response": [
+            {
+              "id": "6f838d6c-5da0-4c48-bfac-808ed702b818",
+              "name": "Device connectivity status retrieved",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"device\": {\n    \"phoneNumber\": \"<string>\",\n    \"ipv4Address\": {\n      \"publicAddress\": \"<string>\",\n      \"privateAddress\": \"<string>\",\n      \"publicPort\": \"<integer>\"\n    },\n    \"networkAccessIdentifier\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/connectivity",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "connectivity"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"connectivityStatus\": \"CONNECTED_DATA\",\n  \"roaming\": \"<boolean>\"\n}",
+              "createdAt": "2026-07-28T01:06:38.000Z",
+              "updatedAt": "2026-07-28T01:06:38.000Z",
+              "uid": "35240-6f838d6c-5da0-4c48-bfac-808ed702b818"
+            },
+            {
+              "id": "284fa6b7-7b23-4ca6-9a10-ef1ed279ee6e",
+              "name": "Bad request - invalid device identifier",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"device\": {\n    \"phoneNumber\": \"<string>\",\n    \"ipv4Address\": {\n      \"publicAddress\": \"<string>\",\n      \"privateAddress\": \"<string>\",\n      \"publicPort\": \"<integer>\"\n    },\n    \"networkAccessIdentifier\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/connectivity",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "connectivity"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"status\": \"<integer>\",\n  \"code\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:06:38.000Z",
+              "updatedAt": "2026-07-28T01:06:38.000Z",
+              "uid": "35240-284fa6b7-7b23-4ca6-9a10-ef1ed279ee6e"
+            },
+            {
+              "id": "88f18b7f-2ccc-474e-bca2-e6dc165a2e69",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"device\": {\n    \"phoneNumber\": \"<string>\",\n    \"ipv4Address\": {\n      \"publicAddress\": \"<string>\",\n      \"privateAddress\": \"<string>\",\n      \"publicPort\": \"<integer>\"\n    },\n    \"networkAccessIdentifier\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/connectivity",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "connectivity"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"status\": \"<integer>\",\n  \"code\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:06:38.000Z",
+              "updatedAt": "2026-07-28T01:06:38.000Z",
+              "uid": "35240-88f18b7f-2ccc-474e-bca2-e6dc165a2e69"
+            },
+            {
+              "id": "6eea3570-aa9c-4aa8-91b6-e0f479201e7e",
+              "name": "Forbidden",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"device\": {\n    \"phoneNumber\": \"<string>\",\n    \"ipv4Address\": {\n      \"publicAddress\": \"<string>\",\n      \"privateAddress\": \"<string>\",\n      \"publicPort\": \"<integer>\"\n    },\n    \"networkAccessIdentifier\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/connectivity",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "connectivity"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"status\": \"<integer>\",\n  \"code\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:06:38.000Z",
+              "updatedAt": "2026-07-28T01:06:38.000Z",
+              "uid": "35240-6eea3570-aa9c-4aa8-91b6-e0f479201e7e"
+            },
+            {
+              "id": "0da5bd69-4ff9-4ea1-8f3d-6492c1b1b695",
+              "name": "Device not found or not AT&T subscriber",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"device\": {\n    \"phoneNumber\": \"<string>\",\n    \"ipv4Address\": {\n      \"publicAddress\": \"<string>\",\n      \"privateAddress\": \"<string>\",\n      \"publicPort\": \"<integer>\"\n    },\n    \"networkAccessIdentifier\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/connectivity",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "connectivity"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"status\": \"<integer>\",\n  \"code\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:06:38.000Z",
+              "updatedAt": "2026-07-28T01:06:38.000Z",
+              "uid": "35240-0da5bd69-4ff9-4ea1-8f3d-6492c1b1b695"
+            },
+            {
+              "id": "86c17ed0-48ef-448c-b72f-e7d4377ae15c",
+              "name": "Too many requests",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"device\": {\n    \"phoneNumber\": \"<string>\",\n    \"ipv4Address\": {\n      \"publicAddress\": \"<string>\",\n      \"privateAddress\": \"<string>\",\n      \"publicPort\": \"<integer>\"\n    },\n    \"networkAccessIdentifier\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/connectivity",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "connectivity"
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"status\": \"<integer>\",\n  \"code\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:06:38.000Z",
+              "updatedAt": "2026-07-28T01:06:38.000Z",
+              "uid": "35240-86c17ed0-48ef-448c-b72f-e7d4377ae15c"
+            }
+          ],
+          "createdAt": "2026-07-28T01:06:38.000Z",
+          "updatedAt": "2026-07-28T01:06:38.000Z",
+          "uid": "35240-d9dc450d-c983-45b4-9e0d-733e8b86dbe0"
+        }
+      ],
+      "id": "e8583fbc-e75a-4136-b36e-0017c9fc1ced",
+      "createdAt": "2026-07-28T01:06:38.000Z",
+      "updatedAt": "2026-07-28T01:06:38.000Z",
+      "uid": "35240-e8583fbc-e75a-4136-b36e-0017c9fc1ced"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.att.com/camara/device-status/v1"
+    }
+  ]
+}

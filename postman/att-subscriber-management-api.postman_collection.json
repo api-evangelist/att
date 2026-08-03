@@ -1,0 +1,207 @@
+{
+  "info": {
+    "_postman_id": "8ff7284c-1d1b-4f8a-b09c-f7e4030916a6",
+    "name": "AT&T Subscriber Management API",
+    "description": "A messaging API enabling applications to send, receive, update, and delete MMS and SMS messages on behalf of AT&T users with explicit OAuth consent. Supports messages to phone numbers, short codes, and email addresses across AT&T and other carriers with full inbox management and delta synchronization.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:06:34.000Z",
+    "updatedAt": "2026-07-28T01:06:34.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-8ff7284c-1d1b-4f8a-b09c-f7e4030916a6"
+  },
+  "item": [
+    {
+      "name": "product",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "AT&T Get Subscriber Profile",
+              "id": "6d7d4863-9e61-44dd-8e35-2f171f26df14",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/product/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "product",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "51eaac38-b44b-423f-9df3-254511063c95",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) Subscriber or product ID"
+                    }
+                  ]
+                },
+                "description": "Retrieve the product (subscriber profile) details for a specific subscriber including their plan, features, and service options. Corresponds to TMF 637 Product Inventory Management API."
+              },
+              "response": [
+                {
+                  "id": "5ad95028-ae87-43da-88fd-87647942486f",
+                  "name": "Subscriber profile retrieved",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/product/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "product",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"href\": \"<uri>\",\n  \"status\": \"terminated\",\n  \"productOffering\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:06:34.000Z",
+                  "updatedAt": "2026-07-28T01:06:34.000Z",
+                  "uid": "35240-5ad95028-ae87-43da-88fd-87647942486f"
+                },
+                {
+                  "id": "af8b9601-0dff-4491-9e89-c0781de80d9e",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/product/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "product",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<string>\",\n  \"reason\": \"<string>\",\n  \"message\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:06:34.000Z",
+                  "updatedAt": "2026-07-28T01:06:34.000Z",
+                  "uid": "35240-af8b9601-0dff-4491-9e89-c0781de80d9e"
+                },
+                {
+                  "id": "cb3e732a-16b6-4da2-b4cd-42b2bf6e4d03",
+                  "name": "Subscriber not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/product/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "product",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<string>\",\n  \"reason\": \"<string>\",\n  \"message\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:06:34.000Z",
+                  "updatedAt": "2026-07-28T01:06:34.000Z",
+                  "uid": "35240-cb3e732a-16b6-4da2-b4cd-42b2bf6e4d03"
+                }
+              ],
+              "createdAt": "2026-07-28T01:06:34.000Z",
+              "updatedAt": "2026-07-28T01:06:34.000Z",
+              "uid": "35240-6d7d4863-9e61-44dd-8e35-2f171f26df14"
+            }
+          ],
+          "id": "326471b2-bf8c-4108-9a79-1935d6fd1798",
+          "createdAt": "2026-07-28T01:06:34.000Z",
+          "updatedAt": "2026-07-28T01:06:34.000Z",
+          "uid": "35240-326471b2-bf8c-4108-9a79-1935d6fd1798"
+        }
+      ],
+      "id": "c12ceed0-6c11-4272-b2dd-4bd0c07d5d1d",
+      "createdAt": "2026-07-28T01:06:34.000Z",
+      "updatedAt": "2026-07-28T01:06:34.000Z",
+      "uid": "35240-c12ceed0-6c11-4272-b2dd-4bd0c07d5d1d"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://devex-web.att.com"
+    }
+  ]
+}

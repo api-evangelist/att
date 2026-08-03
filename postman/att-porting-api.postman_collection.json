@@ -1,0 +1,993 @@
+{
+  "info": {
+    "_postman_id": "fa0ce2fd-18f0-437a-ac45-f427b0b0e728",
+    "name": "AT&T Porting API",
+    "description": "A messaging API enabling applications to send, receive, update, and delete MMS and SMS messages on behalf of AT&T users with explicit OAuth consent. Supports messages to phone numbers, short codes, and email addresses across AT&T and other carriers with full inbox management and delta synchronization.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:06:17.000Z",
+    "updatedAt": "2026-07-28T01:06:17.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-fa0ce2fd-18f0-437a-ac45-f427b0b0e728"
+  },
+  "item": [
+    {
+      "name": "portabilityOrder",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "AT&T Get Port Order Status",
+              "id": "4e27009c-03ea-4d82-8fd1-971a12a0d55b",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/portabilityOrder/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "portabilityOrder",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "203b071b-6bc9-449c-9b75-1cf6a40b49c4",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) Port order ID"
+                    }
+                  ]
+                },
+                "description": "Retrieve the status and details of a specific number portability order. Corresponds to TMF 689 Number Portability API."
+              },
+              "response": [
+                {
+                  "id": "6720bcea-05e2-4a8e-a462-b5d5bec4cdf0",
+                  "name": "Port order details retrieved",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/portabilityOrder/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "portabilityOrder",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"href\": \"<uri>\",\n  \"state\": \"inProgress\",\n  \"requestedCompletionDate\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-07-28T01:06:18.000Z",
+                  "updatedAt": "2026-07-28T01:06:18.000Z",
+                  "uid": "35240-6720bcea-05e2-4a8e-a462-b5d5bec4cdf0"
+                },
+                {
+                  "id": "407fdbc2-06bc-4979-b1ff-7d009e25a132",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/portabilityOrder/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "portabilityOrder",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<string>\",\n  \"reason\": \"<string>\",\n  \"message\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:06:18.000Z",
+                  "updatedAt": "2026-07-28T01:06:18.000Z",
+                  "uid": "35240-407fdbc2-06bc-4979-b1ff-7d009e25a132"
+                },
+                {
+                  "id": "eed629cb-c2a2-4883-a9ba-148103c8b95c",
+                  "name": "Port order not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/portabilityOrder/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "portabilityOrder",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<string>\",\n  \"reason\": \"<string>\",\n  \"message\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:06:18.000Z",
+                  "updatedAt": "2026-07-28T01:06:18.000Z",
+                  "uid": "35240-eed629cb-c2a2-4883-a9ba-148103c8b95c"
+                }
+              ],
+              "createdAt": "2026-07-28T01:06:18.000Z",
+              "updatedAt": "2026-07-28T01:06:18.000Z",
+              "uid": "35240-4e27009c-03ea-4d82-8fd1-971a12a0d55b"
+            },
+            {
+              "name": "AT&T Update Port Order",
+              "id": "4e564ecd-06b6-4c75-9482-49c847e6d0ec",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requestedCompletionDate\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/portabilityOrder/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "portabilityOrder",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "7d902fc5-efef-4a61-b850-67b81d9da270",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) Port order ID"
+                    }
+                  ]
+                },
+                "description": "Update details of an in-progress number portability order. Corresponds to TMF 689 Number Portability API."
+              },
+              "response": [
+                {
+                  "id": "165fdd66-224e-498d-92b8-a6564e268970",
+                  "name": "Port order successfully updated",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"requestedCompletionDate\": \"<dateTime>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/portabilityOrder/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "portabilityOrder",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"href\": \"<uri>\",\n  \"state\": \"inProgress\",\n  \"requestedCompletionDate\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-07-28T01:06:18.000Z",
+                  "updatedAt": "2026-07-28T01:06:18.000Z",
+                  "uid": "35240-165fdd66-224e-498d-92b8-a6564e268970"
+                },
+                {
+                  "id": "41adb702-7685-417d-9a13-b81d25bffe7f",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"requestedCompletionDate\": \"<dateTime>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/portabilityOrder/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "portabilityOrder",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<string>\",\n  \"reason\": \"<string>\",\n  \"message\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:06:18.000Z",
+                  "updatedAt": "2026-07-28T01:06:18.000Z",
+                  "uid": "35240-41adb702-7685-417d-9a13-b81d25bffe7f"
+                },
+                {
+                  "id": "e806a1c3-d2a7-4f18-b829-60dbb667da29",
+                  "name": "Port order not found",
+                  "originalRequest": {
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"requestedCompletionDate\": \"<dateTime>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/portabilityOrder/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "portabilityOrder",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<string>\",\n  \"reason\": \"<string>\",\n  \"message\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:06:18.000Z",
+                  "updatedAt": "2026-07-28T01:06:18.000Z",
+                  "uid": "35240-e806a1c3-d2a7-4f18-b829-60dbb667da29"
+                }
+              ],
+              "createdAt": "2026-07-28T01:06:18.000Z",
+              "updatedAt": "2026-07-28T01:06:18.000Z",
+              "uid": "35240-4e564ecd-06b6-4c75-9482-49c847e6d0ec"
+            }
+          ],
+          "id": "afd0c10a-71b0-4557-b045-dcf57ececa97",
+          "createdAt": "2026-07-28T01:06:18.000Z",
+          "updatedAt": "2026-07-28T01:06:18.000Z",
+          "uid": "35240-afd0c10a-71b0-4557-b045-dcf57ececa97"
+        },
+        {
+          "name": "AT&T Create Port Order",
+          "id": "252d48d9-4643-41dc-8989-67e2b50601dd",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"portabilityOrderItem\": [\n    {\n      \"msisdn\": \"<string>\",\n      \"portingType\": \"FULL\",\n      \"currentCarrier\": \"<string>\"\n    },\n    {\n      \"msisdn\": \"<string>\",\n      \"portingType\": \"FULL\",\n      \"currentCarrier\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/portabilityOrder",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "portabilityOrder"
+              ]
+            },
+            "description": "Create a number portability order to port a subscriber's existing phone number to the AT&T MVNO network. Corresponds to TMF 689 Number Portability API."
+          },
+          "response": [
+            {
+              "id": "aadead43-8cc1-4135-80df-365ac6a978cf",
+              "name": "Port order successfully created",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"portabilityOrderItem\": [\n    {\n      \"msisdn\": \"<string>\",\n      \"portingType\": \"FULL\",\n      \"currentCarrier\": \"<string>\"\n    },\n    {\n      \"msisdn\": \"<string>\",\n      \"portingType\": \"FULL\",\n      \"currentCarrier\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/portabilityOrder",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "portabilityOrder"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"href\": \"<uri>\",\n  \"state\": \"inProgress\",\n  \"requestedCompletionDate\": \"<dateTime>\"\n}",
+              "createdAt": "2026-07-28T01:06:18.000Z",
+              "updatedAt": "2026-07-28T01:06:18.000Z",
+              "uid": "35240-aadead43-8cc1-4135-80df-365ac6a978cf"
+            },
+            {
+              "id": "b1c8466b-536c-43c4-8c08-c545e0abead5",
+              "name": "Bad request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"portabilityOrderItem\": [\n    {\n      \"msisdn\": \"<string>\",\n      \"portingType\": \"FULL\",\n      \"currentCarrier\": \"<string>\"\n    },\n    {\n      \"msisdn\": \"<string>\",\n      \"portingType\": \"FULL\",\n      \"currentCarrier\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/portabilityOrder",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "portabilityOrder"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<string>\",\n  \"reason\": \"<string>\",\n  \"message\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:06:18.000Z",
+              "updatedAt": "2026-07-28T01:06:18.000Z",
+              "uid": "35240-b1c8466b-536c-43c4-8c08-c545e0abead5"
+            },
+            {
+              "id": "31544dbf-7d78-4eb9-99b9-b7a713f364bf",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"portabilityOrderItem\": [\n    {\n      \"msisdn\": \"<string>\",\n      \"portingType\": \"FULL\",\n      \"currentCarrier\": \"<string>\"\n    },\n    {\n      \"msisdn\": \"<string>\",\n      \"portingType\": \"FULL\",\n      \"currentCarrier\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/portabilityOrder",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "portabilityOrder"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<string>\",\n  \"reason\": \"<string>\",\n  \"message\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:06:18.000Z",
+              "updatedAt": "2026-07-28T01:06:18.000Z",
+              "uid": "35240-31544dbf-7d78-4eb9-99b9-b7a713f364bf"
+            }
+          ],
+          "createdAt": "2026-07-28T01:06:18.000Z",
+          "updatedAt": "2026-07-28T01:06:18.000Z",
+          "uid": "35240-252d48d9-4643-41dc-8989-67e2b50601dd"
+        },
+        {
+          "name": "AT&T List Port Orders",
+          "id": "a3ce203f-4994-4700-9832-b1e8a0fe6438",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/portabilityOrder?state=inProgress&limit=<integer>&offset=<integer>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "portabilityOrder"
+              ],
+              "query": [
+                {
+                  "description": "Filter by port order state",
+                  "key": "state",
+                  "value": "inProgress"
+                },
+                {
+                  "description": "Maximum number of records to return",
+                  "key": "limit",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Pagination offset",
+                  "key": "offset",
+                  "value": "<integer>"
+                }
+              ]
+            },
+            "description": "Retrieve a list of number portability orders. Supports filtering by state, date range, and subscriber. Corresponds to TMF 689 Number Portability API."
+          },
+          "response": [
+            {
+              "id": "6db4ceb5-6c75-4b0b-a8c1-4babc1180129",
+              "name": "Port orders successfully retrieved",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/portabilityOrder?state=inProgress&limit=<integer>&offset=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "portabilityOrder"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter by port order state",
+                      "key": "state",
+                      "value": "inProgress"
+                    },
+                    {
+                      "description": "Maximum number of records to return",
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Pagination offset",
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"id\": \"<string>\",\n    \"href\": \"<uri>\",\n    \"state\": \"failed\",\n    \"requestedCompletionDate\": \"<dateTime>\"\n  },\n  {\n    \"id\": \"<string>\",\n    \"href\": \"<uri>\",\n    \"state\": \"cancelled\",\n    \"requestedCompletionDate\": \"<dateTime>\"\n  }\n]",
+              "createdAt": "2026-07-28T01:06:18.000Z",
+              "updatedAt": "2026-07-28T01:06:18.000Z",
+              "uid": "35240-6db4ceb5-6c75-4b0b-a8c1-4babc1180129"
+            },
+            {
+              "id": "b348500e-b4fe-4dd4-8ca3-43a8a842ad10",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/portabilityOrder?state=inProgress&limit=<integer>&offset=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "portabilityOrder"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter by port order state",
+                      "key": "state",
+                      "value": "inProgress"
+                    },
+                    {
+                      "description": "Maximum number of records to return",
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Pagination offset",
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<string>\",\n  \"reason\": \"<string>\",\n  \"message\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:06:18.000Z",
+              "updatedAt": "2026-07-28T01:06:18.000Z",
+              "uid": "35240-b348500e-b4fe-4dd4-8ca3-43a8a842ad10"
+            }
+          ],
+          "createdAt": "2026-07-28T01:06:18.000Z",
+          "updatedAt": "2026-07-28T01:06:18.000Z",
+          "uid": "35240-a3ce203f-4994-4700-9832-b1e8a0fe6438"
+        }
+      ],
+      "id": "c7fd0c7a-04a8-437c-a611-caa7d0e40b81",
+      "createdAt": "2026-07-28T01:06:18.000Z",
+      "updatedAt": "2026-07-28T01:06:18.000Z",
+      "uid": "35240-c7fd0c7a-04a8-437c-a611-caa7d0e40b81"
+    },
+    {
+      "name": "cancelPortabilityOrder",
+      "item": [
+        {
+          "name": "AT&T Cancel Port Order",
+          "id": "8bab92ec-3a8d-47d9-8dda-d5d1c8d86aa7",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"portabilityOrder\": {\n    \"id\": \"<string>\"\n  },\n  \"cancellationReason\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/cancelPortabilityOrder",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "cancelPortabilityOrder"
+              ]
+            },
+            "description": "Cancel an in-progress number portability order. Corresponds to TMF 689 Number Portability API."
+          },
+          "response": [
+            {
+              "id": "0ff679d5-f193-4035-90b9-177e2f9ede3c",
+              "name": "Port order cancellation submitted",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"portabilityOrder\": {\n    \"id\": \"<string>\"\n  },\n  \"cancellationReason\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/cancelPortabilityOrder",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "cancelPortabilityOrder"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"state\": \"<string>\",\n  \"portabilityOrder\": {\n    \"id\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:06:18.000Z",
+              "updatedAt": "2026-07-28T01:06:18.000Z",
+              "uid": "35240-0ff679d5-f193-4035-90b9-177e2f9ede3c"
+            },
+            {
+              "id": "c3880906-4c0c-41d6-81f8-885208b73ea9",
+              "name": "Bad request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"portabilityOrder\": {\n    \"id\": \"<string>\"\n  },\n  \"cancellationReason\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/cancelPortabilityOrder",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "cancelPortabilityOrder"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<string>\",\n  \"reason\": \"<string>\",\n  \"message\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:06:18.000Z",
+              "updatedAt": "2026-07-28T01:06:18.000Z",
+              "uid": "35240-c3880906-4c0c-41d6-81f8-885208b73ea9"
+            },
+            {
+              "id": "f77121cd-2c47-41c6-9c02-aca99803c778",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"portabilityOrder\": {\n    \"id\": \"<string>\"\n  },\n  \"cancellationReason\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/cancelPortabilityOrder",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "cancelPortabilityOrder"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<string>\",\n  \"reason\": \"<string>\",\n  \"message\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:06:18.000Z",
+              "updatedAt": "2026-07-28T01:06:18.000Z",
+              "uid": "35240-f77121cd-2c47-41c6-9c02-aca99803c778"
+            }
+          ],
+          "createdAt": "2026-07-28T01:06:18.000Z",
+          "updatedAt": "2026-07-28T01:06:18.000Z",
+          "uid": "35240-8bab92ec-3a8d-47d9-8dda-d5d1c8d86aa7"
+        }
+      ],
+      "id": "f530b40a-1ee0-40d5-9002-216cd2d16108",
+      "createdAt": "2026-07-28T01:06:18.000Z",
+      "updatedAt": "2026-07-28T01:06:18.000Z",
+      "uid": "35240-f530b40a-1ee0-40d5-9002-216cd2d16108"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://devex-web.att.com"
+    }
+  ]
+}

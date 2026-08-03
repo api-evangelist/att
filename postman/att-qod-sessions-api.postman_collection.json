@@ -1,0 +1,953 @@
+{
+  "info": {
+    "_postman_id": "059aee93-2d26-491b-bfe4-8136f05c9090",
+    "name": "AT&T Quality on Demand API",
+    "description": "CAMARA-standard API that checks the connectivity status of user equipment, including roaming information. Enables applications to determine if a device is reachable, connected, and whether it is roaming on a partner network. Part of the AT&T Network API Accelerator Program.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:06:45.000Z",
+    "updatedAt": "2026-07-28T01:06:45.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-059aee93-2d26-491b-bfe4-8136f05c9090"
+  },
+  "item": [
+    {
+      "name": "sessions",
+      "item": [
+        {
+          "name": "{sessionId}",
+          "item": [
+            {
+              "name": "AT&T Get QoD Session",
+              "id": "c2002ee5-d07e-4875-8812-05abf03c6f5d",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "accessTokenUrl",
+                      "value": "https://api.att.com/oauth/v4/token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "client_credentials",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/sessions/:sessionId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "sessions",
+                    ":sessionId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "65252964-92ef-4b67-a5df-2eb26e26c055",
+                      "key": "sessionId",
+                      "value": "<string>",
+                      "description": "(Required) Unique QoD session identifier"
+                    }
+                  ]
+                },
+                "description": "Retrieve details of a specific Quality of Service on Demand session, including its current status, QoS profile, and expiry time."
+              },
+              "response": [
+                {
+                  "id": "b487c7f7-f4bd-4558-9351-61dd59055305",
+                  "name": "QoD session details",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/sessions/:sessionId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sessions",
+                        ":sessionId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "sessionId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"sessionId\": \"<string>\",\n  \"device\": {\n    \"phoneNumber\": \"<string>\",\n    \"ipv4Address\": {\n      \"publicAddress\": \"<string>\",\n      \"privateAddress\": \"<string>\"\n    }\n  },\n  \"qosProfile\": \"THROUGHPUT_S\",\n  \"duration\": \"<integer>\",\n  \"startedAt\": \"<dateTime>\",\n  \"expiresAt\": \"<dateTime>\",\n  \"qosStatus\": \"AVAILABLE\"\n}",
+                  "createdAt": "2026-07-28T01:06:45.000Z",
+                  "updatedAt": "2026-07-28T01:06:45.000Z",
+                  "uid": "35240-b487c7f7-f4bd-4558-9351-61dd59055305"
+                },
+                {
+                  "id": "793a9be0-ef3b-4694-82ef-232493def5d3",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/sessions/:sessionId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sessions",
+                        ":sessionId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "sessionId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"status\": \"<integer>\",\n  \"code\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:06:45.000Z",
+                  "updatedAt": "2026-07-28T01:06:45.000Z",
+                  "uid": "35240-793a9be0-ef3b-4694-82ef-232493def5d3"
+                },
+                {
+                  "id": "bf55bd7c-e704-4064-a878-97a7253053a2",
+                  "name": "Session not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/sessions/:sessionId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sessions",
+                        ":sessionId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "sessionId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"status\": \"<integer>\",\n  \"code\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:06:45.000Z",
+                  "updatedAt": "2026-07-28T01:06:45.000Z",
+                  "uid": "35240-bf55bd7c-e704-4064-a878-97a7253053a2"
+                }
+              ],
+              "createdAt": "2026-07-28T01:06:45.000Z",
+              "updatedAt": "2026-07-28T01:06:45.000Z",
+              "uid": "35240-c2002ee5-d07e-4875-8812-05abf03c6f5d"
+            },
+            {
+              "name": "AT&T Delete QoD Session",
+              "id": "d3a42358-d99c-43dc-a5f6-ea9e3577cd23",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "accessTokenUrl",
+                      "value": "https://api.att.com/oauth/v4/token",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "client_credentials",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/sessions/:sessionId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "sessions",
+                    ":sessionId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "68a2cb63-e675-418b-953e-ac858f5d279d",
+                      "key": "sessionId",
+                      "value": "<string>",
+                      "description": "(Required) Unique QoD session identifier"
+                    }
+                  ]
+                },
+                "description": "Terminate an active Quality of Service on Demand session before its natural expiry. Returns network quality to normal levels."
+              },
+              "response": [
+                {
+                  "id": "923d3013-d136-41b7-bf50-6703abe6fa7e",
+                  "name": "QoD session successfully terminated",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/sessions/:sessionId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sessions",
+                        ":sessionId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "sessionId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T01:06:45.000Z",
+                  "updatedAt": "2026-07-28T01:06:45.000Z",
+                  "uid": "35240-923d3013-d136-41b7-bf50-6703abe6fa7e"
+                },
+                {
+                  "id": "b84fcc77-22d6-4ba7-a5e9-21e820e72e40",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/sessions/:sessionId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sessions",
+                        ":sessionId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "sessionId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"status\": \"<integer>\",\n  \"code\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:06:45.000Z",
+                  "updatedAt": "2026-07-28T01:06:45.000Z",
+                  "uid": "35240-b84fcc77-22d6-4ba7-a5e9-21e820e72e40"
+                },
+                {
+                  "id": "f55e6462-0428-4d83-aada-67a0d4faf58b",
+                  "name": "Session not found",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/sessions/:sessionId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sessions",
+                        ":sessionId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "sessionId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"status\": \"<integer>\",\n  \"code\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:06:45.000Z",
+                  "updatedAt": "2026-07-28T01:06:45.000Z",
+                  "uid": "35240-f55e6462-0428-4d83-aada-67a0d4faf58b"
+                }
+              ],
+              "createdAt": "2026-07-28T01:06:45.000Z",
+              "updatedAt": "2026-07-28T01:06:45.000Z",
+              "uid": "35240-d3a42358-d99c-43dc-a5f6-ea9e3577cd23"
+            }
+          ],
+          "id": "f43c53b5-b389-4d90-b83c-ce03993a25db",
+          "createdAt": "2026-07-28T01:06:45.000Z",
+          "updatedAt": "2026-07-28T01:06:45.000Z",
+          "uid": "35240-f43c53b5-b389-4d90-b83c-ce03993a25db"
+        },
+        {
+          "name": "AT&T Create QoD Session",
+          "id": "269c3a8f-b6e6-4cf4-9e93-2577450c0ba3",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.att.com/oauth/v4/token",
+                  "type": "string"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"device\": {\n    \"phoneNumber\": \"<string>\",\n    \"ipv4Address\": {\n      \"publicAddress\": \"<string>\",\n      \"privateAddress\": \"<string>\"\n    }\n  },\n  \"qosProfile\": \"VOICE\",\n  \"duration\": \"<integer>\",\n  \"notificationUrl\": \"<uri>\",\n  \"notificationAuthToken\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/sessions",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "sessions"
+              ]
+            },
+            "description": "Create a Quality of Service on Demand session for a device. Requests enhanced network quality for a specified duration and QoS profile (e.g., LOW_LATENCY, THROUGHPUT_S/M/L, VOICE). Returns a session ID for monitoring and management."
+          },
+          "response": [
+            {
+              "id": "e43d5014-4c62-4a3b-952c-99f313c2911f",
+              "name": "QoD session successfully created",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"device\": {\n    \"phoneNumber\": \"<string>\",\n    \"ipv4Address\": {\n      \"publicAddress\": \"<string>\",\n      \"privateAddress\": \"<string>\"\n    }\n  },\n  \"qosProfile\": \"VOICE\",\n  \"duration\": \"<integer>\",\n  \"notificationUrl\": \"<uri>\",\n  \"notificationAuthToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/sessions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "sessions"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"sessionId\": \"<string>\",\n  \"device\": {\n    \"phoneNumber\": \"<string>\",\n    \"ipv4Address\": {\n      \"publicAddress\": \"<string>\",\n      \"privateAddress\": \"<string>\"\n    }\n  },\n  \"qosProfile\": \"THROUGHPUT_S\",\n  \"duration\": \"<integer>\",\n  \"startedAt\": \"<dateTime>\",\n  \"expiresAt\": \"<dateTime>\",\n  \"qosStatus\": \"AVAILABLE\"\n}",
+              "createdAt": "2026-07-28T01:06:45.000Z",
+              "updatedAt": "2026-07-28T01:06:45.000Z",
+              "uid": "35240-e43d5014-4c62-4a3b-952c-99f313c2911f"
+            },
+            {
+              "id": "895f6dbf-c513-4966-8825-e2a0edef0aa9",
+              "name": "Bad request - invalid parameters",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"device\": {\n    \"phoneNumber\": \"<string>\",\n    \"ipv4Address\": {\n      \"publicAddress\": \"<string>\",\n      \"privateAddress\": \"<string>\"\n    }\n  },\n  \"qosProfile\": \"VOICE\",\n  \"duration\": \"<integer>\",\n  \"notificationUrl\": \"<uri>\",\n  \"notificationAuthToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/sessions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "sessions"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"status\": \"<integer>\",\n  \"code\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:06:45.000Z",
+              "updatedAt": "2026-07-28T01:06:45.000Z",
+              "uid": "35240-895f6dbf-c513-4966-8825-e2a0edef0aa9"
+            },
+            {
+              "id": "27c86faf-edf7-4272-a4fb-28b99d76d634",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"device\": {\n    \"phoneNumber\": \"<string>\",\n    \"ipv4Address\": {\n      \"publicAddress\": \"<string>\",\n      \"privateAddress\": \"<string>\"\n    }\n  },\n  \"qosProfile\": \"VOICE\",\n  \"duration\": \"<integer>\",\n  \"notificationUrl\": \"<uri>\",\n  \"notificationAuthToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/sessions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "sessions"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"status\": \"<integer>\",\n  \"code\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:06:45.000Z",
+              "updatedAt": "2026-07-28T01:06:45.000Z",
+              "uid": "35240-27c86faf-edf7-4272-a4fb-28b99d76d634"
+            },
+            {
+              "id": "6f6c67ae-d7bd-49aa-bee9-2ce428399faa",
+              "name": "Forbidden",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"device\": {\n    \"phoneNumber\": \"<string>\",\n    \"ipv4Address\": {\n      \"publicAddress\": \"<string>\",\n      \"privateAddress\": \"<string>\"\n    }\n  },\n  \"qosProfile\": \"VOICE\",\n  \"duration\": \"<integer>\",\n  \"notificationUrl\": \"<uri>\",\n  \"notificationAuthToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/sessions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "sessions"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"status\": \"<integer>\",\n  \"code\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:06:45.000Z",
+              "updatedAt": "2026-07-28T01:06:45.000Z",
+              "uid": "35240-6f6c67ae-d7bd-49aa-bee9-2ce428399faa"
+            },
+            {
+              "id": "3f255d21-2435-43f8-a9ab-83aa40c2a6d3",
+              "name": "Conflict - existing QoD session for this device",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"device\": {\n    \"phoneNumber\": \"<string>\",\n    \"ipv4Address\": {\n      \"publicAddress\": \"<string>\",\n      \"privateAddress\": \"<string>\"\n    }\n  },\n  \"qosProfile\": \"VOICE\",\n  \"duration\": \"<integer>\",\n  \"notificationUrl\": \"<uri>\",\n  \"notificationAuthToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/sessions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "sessions"
+                  ]
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"status\": \"<integer>\",\n  \"code\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:06:45.000Z",
+              "updatedAt": "2026-07-28T01:06:45.000Z",
+              "uid": "35240-3f255d21-2435-43f8-a9ab-83aa40c2a6d3"
+            },
+            {
+              "id": "5e32358f-10dc-45f3-b4c2-e29622eca185",
+              "name": "Too many requests",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"device\": {\n    \"phoneNumber\": \"<string>\",\n    \"ipv4Address\": {\n      \"publicAddress\": \"<string>\",\n      \"privateAddress\": \"<string>\"\n    }\n  },\n  \"qosProfile\": \"VOICE\",\n  \"duration\": \"<integer>\",\n  \"notificationUrl\": \"<uri>\",\n  \"notificationAuthToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/sessions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "sessions"
+                  ]
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"status\": \"<integer>\",\n  \"code\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:06:45.000Z",
+              "updatedAt": "2026-07-28T01:06:45.000Z",
+              "uid": "35240-5e32358f-10dc-45f3-b4c2-e29622eca185"
+            }
+          ],
+          "createdAt": "2026-07-28T01:06:45.000Z",
+          "updatedAt": "2026-07-28T01:06:45.000Z",
+          "uid": "35240-269c3a8f-b6e6-4cf4-9e93-2577450c0ba3"
+        },
+        {
+          "name": "AT&T List QoD Sessions",
+          "id": "c8f2718a-1c16-4969-8ab5-cabae2b85385",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.att.com/oauth/v4/token",
+                  "type": "string"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/sessions",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "sessions"
+              ]
+            },
+            "description": "List active QoD sessions for the authenticated application. Returns session details including status, QoS profile, and expiry."
+          },
+          "response": [
+            {
+              "id": "740cd8a2-410d-4ea3-b493-33da62dd137a",
+              "name": "QoD sessions list",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/sessions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "sessions"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"sessionId\": \"<string>\",\n    \"device\": {\n      \"phoneNumber\": \"<string>\",\n      \"ipv4Address\": {\n        \"publicAddress\": \"<string>\",\n        \"privateAddress\": \"<string>\"\n      }\n    },\n    \"qosProfile\": \"THROUGHPUT_L\",\n    \"duration\": \"<integer>\",\n    \"startedAt\": \"<dateTime>\",\n    \"expiresAt\": \"<dateTime>\",\n    \"qosStatus\": \"AVAILABLE\"\n  },\n  {\n    \"sessionId\": \"<string>\",\n    \"device\": {\n      \"phoneNumber\": \"<string>\",\n      \"ipv4Address\": {\n        \"publicAddress\": \"<string>\",\n        \"privateAddress\": \"<string>\"\n      }\n    },\n    \"qosProfile\": \"THROUGHPUT_S\",\n    \"duration\": \"<integer>\",\n    \"startedAt\": \"<dateTime>\",\n    \"expiresAt\": \"<dateTime>\",\n    \"qosStatus\": \"AVAILABLE\"\n  }\n]",
+              "createdAt": "2026-07-28T01:06:45.000Z",
+              "updatedAt": "2026-07-28T01:06:45.000Z",
+              "uid": "35240-740cd8a2-410d-4ea3-b493-33da62dd137a"
+            },
+            {
+              "id": "565345d9-0be3-4e1a-9223-2421e384d8c0",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/sessions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "sessions"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"status\": \"<integer>\",\n  \"code\": \"<string>\",\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:06:45.000Z",
+              "updatedAt": "2026-07-28T01:06:45.000Z",
+              "uid": "35240-565345d9-0be3-4e1a-9223-2421e384d8c0"
+            }
+          ],
+          "createdAt": "2026-07-28T01:06:45.000Z",
+          "updatedAt": "2026-07-28T01:06:45.000Z",
+          "uid": "35240-c8f2718a-1c16-4969-8ab5-cabae2b85385"
+        }
+      ],
+      "id": "0f9b1b5d-6998-4eae-bd64-b78b561b71d8",
+      "createdAt": "2026-07-28T01:06:45.000Z",
+      "updatedAt": "2026-07-28T01:06:45.000Z",
+      "uid": "35240-0f9b1b5d-6998-4eae-bd64-b78b561b71d8"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.att.com/camara/qod/v1"
+    }
+  ]
+}

@@ -1,0 +1,353 @@
+{
+  "info": {
+    "_postman_id": "fb9b69b8-f979-4243-87d5-e4037ce9773c",
+    "name": "AT&T Authentication API",
+    "description": "A messaging API enabling applications to send, receive, update, and delete MMS and SMS messages on behalf of AT&T users with explicit OAuth consent. Supports messages to phone numbers, short codes, and email addresses across AT&T and other carriers with full inbox management and delta synchronization.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:05:43.000Z",
+    "updatedAt": "2026-07-28T01:05:43.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-fb9b69b8-f979-4243-87d5-e4037ce9773c"
+  },
+  "item": [
+    {
+      "name": "oauth",
+      "item": [
+        {
+          "name": "v4",
+          "item": [
+            {
+              "name": "token",
+              "item": [
+                {
+                  "name": "AT&T Get OAuth Access Token",
+                  "id": "7c97d665-17a7-4b9b-b63d-cc3f65f6d3e7",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) The App Key from your AT&T developer account",
+                          "key": "client_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) The App Secret from your AT&T developer account",
+                          "key": "client_secret",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) OAuth grant type",
+                          "key": "grant_type",
+                          "value": "authorization_code"
+                        },
+                        {
+                          "description": "(Required) Space-separated list of API scopes (e.g. SMS, MMS, SPEECH)",
+                          "key": "scope",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Authorization code (required for authorization_code grant type)",
+                          "key": "code",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Refresh token (required for refresh_token grant type)",
+                          "key": "refresh_token",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/oauth/v4/token",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "oauth",
+                        "v4",
+                        "token"
+                      ]
+                    },
+                    "description": "Obtain an OAuth 2.0 access token using client credentials grant type. The token is required for all subsequent API calls."
+                  },
+                  "response": [
+                    {
+                      "id": "66036b1f-ac2a-4ad3-9587-c6dbd3ed083b",
+                      "name": "Access token successfully obtained",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/x-www-form-urlencoded"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "urlencoded",
+                          "urlencoded": [
+                            {
+                              "description": "(Required) The App Key from your AT&T developer account",
+                              "key": "client_id",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) The App Secret from your AT&T developer account",
+                              "key": "client_secret",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) OAuth grant type",
+                              "key": "grant_type",
+                              "value": "authorization_code"
+                            },
+                            {
+                              "description": "(Required) Space-separated list of API scopes (e.g. SMS, MMS, SPEECH)",
+                              "key": "scope",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Authorization code (required for authorization_code grant type)",
+                              "key": "code",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Refresh token (required for refresh_token grant type)",
+                              "key": "refresh_token",
+                              "value": "<string>"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/oauth/v4/token",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "oauth",
+                            "v4",
+                            "token"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"access_token\": \"<string>\",\n  \"expires_in\": \"<integer>\",\n  \"refresh_token\": \"<string>\",\n  \"token_type\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:05:43.000Z",
+                      "updatedAt": "2026-07-28T01:05:43.000Z",
+                      "uid": "35240-66036b1f-ac2a-4ad3-9587-c6dbd3ed083b"
+                    },
+                    {
+                      "id": "f51e9956-cce0-40ba-8e3a-8b21407814eb",
+                      "name": "Bad request - invalid parameters",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/x-www-form-urlencoded"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "urlencoded",
+                          "urlencoded": [
+                            {
+                              "description": "(Required) The App Key from your AT&T developer account",
+                              "key": "client_id",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) The App Secret from your AT&T developer account",
+                              "key": "client_secret",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) OAuth grant type",
+                              "key": "grant_type",
+                              "value": "authorization_code"
+                            },
+                            {
+                              "description": "(Required) Space-separated list of API scopes (e.g. SMS, MMS, SPEECH)",
+                              "key": "scope",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Authorization code (required for authorization_code grant type)",
+                              "key": "code",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Refresh token (required for refresh_token grant type)",
+                              "key": "refresh_token",
+                              "value": "<string>"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/oauth/v4/token",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "oauth",
+                            "v4",
+                            "token"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"RequestError\": {\n    \"ServiceException\": {\n      \"MessageId\": \"<string>\",\n      \"Text\": \"<string>\",\n      \"Variables\": \"<string>\"\n    }\n  }\n}",
+                      "createdAt": "2026-07-28T01:05:43.000Z",
+                      "updatedAt": "2026-07-28T01:05:43.000Z",
+                      "uid": "35240-f51e9956-cce0-40ba-8e3a-8b21407814eb"
+                    },
+                    {
+                      "id": "4e3b020c-e5f0-4bf9-9064-eb186521c51c",
+                      "name": "Unauthorized - invalid credentials",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/x-www-form-urlencoded"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "urlencoded",
+                          "urlencoded": [
+                            {
+                              "description": "(Required) The App Key from your AT&T developer account",
+                              "key": "client_id",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) The App Secret from your AT&T developer account",
+                              "key": "client_secret",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) OAuth grant type",
+                              "key": "grant_type",
+                              "value": "authorization_code"
+                            },
+                            {
+                              "description": "(Required) Space-separated list of API scopes (e.g. SMS, MMS, SPEECH)",
+                              "key": "scope",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Authorization code (required for authorization_code grant type)",
+                              "key": "code",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Refresh token (required for refresh_token grant type)",
+                              "key": "refresh_token",
+                              "value": "<string>"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/oauth/v4/token",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "oauth",
+                            "v4",
+                            "token"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"RequestError\": {\n    \"ServiceException\": {\n      \"MessageId\": \"<string>\",\n      \"Text\": \"<string>\",\n      \"Variables\": \"<string>\"\n    }\n  }\n}",
+                      "createdAt": "2026-07-28T01:05:43.000Z",
+                      "updatedAt": "2026-07-28T01:05:43.000Z",
+                      "uid": "35240-4e3b020c-e5f0-4bf9-9064-eb186521c51c"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:05:43.000Z",
+                  "updatedAt": "2026-07-28T01:05:43.000Z",
+                  "uid": "35240-7c97d665-17a7-4b9b-b63d-cc3f65f6d3e7"
+                }
+              ],
+              "id": "ecfcf27e-b28e-449b-b8a7-ffba848142b4",
+              "createdAt": "2026-07-28T01:05:43.000Z",
+              "updatedAt": "2026-07-28T01:05:43.000Z",
+              "uid": "35240-ecfcf27e-b28e-449b-b8a7-ffba848142b4"
+            }
+          ],
+          "id": "230d2df6-2d52-4ac8-98fe-7540d6d00f74",
+          "createdAt": "2026-07-28T01:05:43.000Z",
+          "updatedAt": "2026-07-28T01:05:43.000Z",
+          "uid": "35240-230d2df6-2d52-4ac8-98fe-7540d6d00f74"
+        }
+      ],
+      "id": "51c0958d-d5d7-4f8b-8387-036fafd0aa45",
+      "createdAt": "2026-07-28T01:05:43.000Z",
+      "updatedAt": "2026-07-28T01:05:43.000Z",
+      "uid": "35240-51c0958d-d5d7-4f8b-8387-036fafd0aa45"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.att.com"
+    }
+  ]
+}

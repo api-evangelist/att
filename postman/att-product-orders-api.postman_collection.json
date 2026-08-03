@@ -1,0 +1,227 @@
+{
+  "info": {
+    "_postman_id": "12d19749-969b-4112-848e-f062ade7e2bd",
+    "name": "AT&T Product Orders API",
+    "description": "A messaging API enabling applications to send, receive, update, and delete MMS and SMS messages on behalf of AT&T users with explicit OAuth consent. Supports messages to phone numbers, short codes, and email addresses across AT&T and other carriers with full inbox management and delta synchronization.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:06:18.000Z",
+    "updatedAt": "2026-07-28T01:06:18.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-12d19749-969b-4112-848e-f062ade7e2bd"
+  },
+  "item": [
+    {
+      "name": "productOrder",
+      "item": [
+        {
+          "name": "AT&T Create Product Order (Subscriber Activation)",
+          "id": "e053c780-5bed-433d-8655-34bd698ab612",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"externalId\": \"<string>\",\n  \"orderItem\": [\n    {\n      \"action\": \"add\",\n      \"product\": {\n        \"productOffering\": {\n          \"id\": \"<string>\"\n        }\n      }\n    },\n    {\n      \"action\": \"modify\",\n      \"product\": {\n        \"productOffering\": {\n          \"id\": \"<string>\"\n        }\n      }\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/productOrder",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "productOrder"
+              ]
+            },
+            "description": "Activate a new subscriber on the AT&T MVNO network. Creates a product order for subscriber activation including device provisioning and number assignment. Corresponds to TMF 622 Product Ordering Management API."
+          },
+          "response": [
+            {
+              "id": "a8d0ba2c-e9cc-4f10-8557-3a6eeaba2743",
+              "name": "Product order successfully created",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"externalId\": \"<string>\",\n  \"orderItem\": [\n    {\n      \"action\": \"add\",\n      \"product\": {\n        \"productOffering\": {\n          \"id\": \"<string>\"\n        }\n      }\n    },\n    {\n      \"action\": \"modify\",\n      \"product\": {\n        \"productOffering\": {\n          \"id\": \"<string>\"\n        }\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/productOrder",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "productOrder"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"href\": \"<uri>\",\n  \"state\": \"failed\",\n  \"externalId\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:06:19.000Z",
+              "updatedAt": "2026-07-28T01:06:19.000Z",
+              "uid": "35240-a8d0ba2c-e9cc-4f10-8557-3a6eeaba2743"
+            },
+            {
+              "id": "8ae59f62-348b-43a5-a582-2f7bc97de5f6",
+              "name": "Bad request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"externalId\": \"<string>\",\n  \"orderItem\": [\n    {\n      \"action\": \"add\",\n      \"product\": {\n        \"productOffering\": {\n          \"id\": \"<string>\"\n        }\n      }\n    },\n    {\n      \"action\": \"modify\",\n      \"product\": {\n        \"productOffering\": {\n          \"id\": \"<string>\"\n        }\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/productOrder",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "productOrder"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<string>\",\n  \"reason\": \"<string>\",\n  \"message\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:06:19.000Z",
+              "updatedAt": "2026-07-28T01:06:19.000Z",
+              "uid": "35240-8ae59f62-348b-43a5-a582-2f7bc97de5f6"
+            },
+            {
+              "id": "d759c120-26d7-4633-8fb3-4fc79ffc2572",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"externalId\": \"<string>\",\n  \"orderItem\": [\n    {\n      \"action\": \"add\",\n      \"product\": {\n        \"productOffering\": {\n          \"id\": \"<string>\"\n        }\n      }\n    },\n    {\n      \"action\": \"modify\",\n      \"product\": {\n        \"productOffering\": {\n          \"id\": \"<string>\"\n        }\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/productOrder",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "productOrder"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<string>\",\n  \"reason\": \"<string>\",\n  \"message\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:06:19.000Z",
+              "updatedAt": "2026-07-28T01:06:19.000Z",
+              "uid": "35240-d759c120-26d7-4633-8fb3-4fc79ffc2572"
+            }
+          ],
+          "createdAt": "2026-07-28T01:06:19.000Z",
+          "updatedAt": "2026-07-28T01:06:19.000Z",
+          "uid": "35240-e053c780-5bed-433d-8655-34bd698ab612"
+        }
+      ],
+      "id": "f8744eaa-8962-468e-9107-54e4b97d5bf6",
+      "createdAt": "2026-07-28T01:06:19.000Z",
+      "updatedAt": "2026-07-28T01:06:19.000Z",
+      "uid": "35240-f8744eaa-8962-468e-9107-54e4b97d5bf6"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://devex-web.att.com"
+    }
+  ]
+}

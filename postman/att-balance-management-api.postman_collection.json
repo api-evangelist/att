@@ -1,0 +1,227 @@
+{
+  "info": {
+    "_postman_id": "4634c6e3-feb5-48e9-9c68-c24b68dcffca",
+    "name": "AT&T Balance Management API",
+    "description": "A messaging API enabling applications to send, receive, update, and delete MMS and SMS messages on behalf of AT&T users with explicit OAuth consent. Supports messages to phone numbers, short codes, and email addresses across AT&T and other carriers with full inbox management and delta synchronization.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:05:43.000Z",
+    "updatedAt": "2026-07-28T01:05:44.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-4634c6e3-feb5-48e9-9c68-c24b68dcffca"
+  },
+  "item": [
+    {
+      "name": "topupBalance",
+      "item": [
+        {
+          "name": "AT&T Create Balance Top-Up",
+          "id": "9af5ddb5-2de4-4a2a-b243-f7769ea62ea2",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"channel\": {\n    \"name\": \"<string>\"\n  },\n  \"product\": {\n    \"id\": \"<string>\"\n  },\n  \"amount\": {\n    \"units\": \"<number>\",\n    \"currency\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/topupBalance",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "topupBalance"
+              ]
+            },
+            "description": "Add data or voice balance to a subscriber's account. Corresponds to TMF 654 Prepay Balance Management API."
+          },
+          "response": [
+            {
+              "id": "25716147-39b5-4f36-9a4c-a5875d7a776d",
+              "name": "Balance top-up successfully processed",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"channel\": {\n    \"name\": \"<string>\"\n  },\n  \"product\": {\n    \"id\": \"<string>\"\n  },\n  \"amount\": {\n    \"units\": \"<number>\",\n    \"currency\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/topupBalance",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "topupBalance"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"href\": \"<uri>\",\n  \"status\": \"inProgress\"\n}",
+              "createdAt": "2026-07-28T01:05:44.000Z",
+              "updatedAt": "2026-07-28T01:05:44.000Z",
+              "uid": "35240-25716147-39b5-4f36-9a4c-a5875d7a776d"
+            },
+            {
+              "id": "395aa695-98ed-4e50-99b5-1552b74963a2",
+              "name": "Bad request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"channel\": {\n    \"name\": \"<string>\"\n  },\n  \"product\": {\n    \"id\": \"<string>\"\n  },\n  \"amount\": {\n    \"units\": \"<number>\",\n    \"currency\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/topupBalance",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "topupBalance"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<string>\",\n  \"reason\": \"<string>\",\n  \"message\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:05:44.000Z",
+              "updatedAt": "2026-07-28T01:05:44.000Z",
+              "uid": "35240-395aa695-98ed-4e50-99b5-1552b74963a2"
+            },
+            {
+              "id": "dd88caf5-3c1e-44b6-8891-6b0161e56215",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"channel\": {\n    \"name\": \"<string>\"\n  },\n  \"product\": {\n    \"id\": \"<string>\"\n  },\n  \"amount\": {\n    \"units\": \"<number>\",\n    \"currency\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/topupBalance",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "topupBalance"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<string>\",\n  \"reason\": \"<string>\",\n  \"message\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:05:44.000Z",
+              "updatedAt": "2026-07-28T01:05:44.000Z",
+              "uid": "35240-dd88caf5-3c1e-44b6-8891-6b0161e56215"
+            }
+          ],
+          "createdAt": "2026-07-28T01:05:44.000Z",
+          "updatedAt": "2026-07-28T01:05:44.000Z",
+          "uid": "35240-9af5ddb5-2de4-4a2a-b243-f7769ea62ea2"
+        }
+      ],
+      "id": "4cbe989f-5a31-417d-b3ce-0f0b05f26c42",
+      "createdAt": "2026-07-28T01:05:44.000Z",
+      "updatedAt": "2026-07-28T01:05:44.000Z",
+      "uid": "35240-4cbe989f-5a31-417d-b3ce-0f0b05f26c42"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://devex-web.att.com"
+    }
+  ]
+}
