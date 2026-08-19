@@ -1,0 +1,209 @@
+{
+  "item": [
+    {
+      "id": "5eb0688a-301a-4782-84ba-89df202cf27b",
+      "name": "Balance Management",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "360e6b43-1009-47be-ae5f-9de320124bc1",
+          "name": "AT&T Create Balance Top-Up",
+          "request": {
+            "name": "AT&T Create Balance Top-Up",
+            "description": {
+              "content": "Add data or voice balance to a subscriber's account. Corresponds to TMF 654 Prepay Balance Management API.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "topupBalance"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"channel\": {\n    \"name\": \"<string>\"\n  },\n  \"product\": {\n    \"id\": \"<string>\"\n  },\n  \"amount\": {\n    \"units\": \"<number>\",\n    \"currency\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "827da421-5c57-4956-b814-ecab7bd6b42b",
+              "name": "Balance top-up successfully processed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "topupBalance"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"channel\": {\n    \"name\": \"API\"\n  },\n  \"product\": {\n    \"id\": \"sub-a1b2c3d4\"\n  },\n  \"amount\": {\n    \"units\": 10,\n    \"currency\": \"USD\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"topup-500123\",\n  \"href\": \"https://devex-web.att.com/topupBalance/topup-500123\",\n  \"status\": \"completed\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bd0d8b2c-cdf2-4eaf-a00d-cf7f5f7bd558",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "topupBalance"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"channel\": {\n    \"name\": \"API\"\n  },\n  \"product\": {\n    \"id\": \"sub-a1b2c3d4\"\n  },\n  \"amount\": {\n    \"units\": 10,\n    \"currency\": \"USD\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"400\",\n  \"reason\": \"Bad Request\",\n  \"message\": \"Invalid input parameter value\",\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "24bc8f47-5234-44a6-9ce9-ad2e69f47084",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "topupBalance"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"channel\": {\n    \"name\": \"API\"\n  },\n  \"product\": {\n    \"id\": \"sub-a1b2c3d4\"\n  },\n  \"amount\": {\n    \"units\": 10,\n    \"currency\": \"USD\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"400\",\n  \"reason\": \"Bad Request\",\n  \"message\": \"Invalid input parameter value\",\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://devex-web.att.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "76569563-25ce-448a-92c0-319255bfa2c1",
+    "name": "AT&T Balance Management API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "A messaging API enabling applications to send, receive, update, and delete MMS and SMS messages on behalf of AT&T users with explicit OAuth consent. Supports messages to phone numbers, short codes, and email addresses across AT&T and other carriers with full inbox management and delta synchronization.",
+      "type": "text/plain"
+    }
+  }
+}

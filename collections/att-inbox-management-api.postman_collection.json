@@ -1,0 +1,396 @@
+{
+  "item": [
+    {
+      "id": "672de958-04b0-47c4-a7c2-209b56a855ec",
+      "name": "Inbox Management",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0072b460-c9b2-4f8e-8a78-4cb7d76a7905",
+          "name": "AT&T Create Message Index Cache",
+          "request": {
+            "name": "AT&T Create Message Index Cache",
+            "description": {
+              "content": "Create or refresh the server-side message index cache for the authenticated user. This index must be created before delta synchronization can be used. Returns a state object for subsequent delta sync calls.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "myMessages",
+                "v2",
+                "messages",
+                "index"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "IMMN MIM"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.att.com/oauth/v4/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://api.att.com/oauth/v4/authorize"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e38298fc-4d9e-4af8-95dd-34225710291f",
+              "name": "Message index successfully created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "myMessages",
+                    "v2",
+                    "messages",
+                    "index"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"messageIndexInfo\": {\n    \"state\": \"state-a1b2c3d4\",\n    \"status\": \"INITIALIZED\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "73d17918-c821-4152-8d79-c483a10bceea",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "myMessages",
+                    "v2",
+                    "messages",
+                    "index"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"RequestError\": {\n    \"ServiceException\": {\n      \"MessageId\": \"SVC0002\",\n      \"Text\": \"Invalid input value for message part\",\n      \"Variables\": \"address\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bfa72e26-b368-49b6-90fc-4c88f852f413",
+          "name": "AT&T Get Inbox Changes (Delta Sync)",
+          "request": {
+            "name": "AT&T Get Inbox Changes (Delta Sync)",
+            "description": {
+              "content": "Retrieve changes to the user's inbox since the last synchronization using a state token. Returns added, updated, and deleted messages since the previous state. Requires a message index to be created first.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "myMessages",
+                "v2",
+                "delta"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "state",
+                  "value": "<string>",
+                  "description": "(Required) State token from the previous delta sync or index creation"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "IMMN MIM"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.att.com/oauth/v4/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://api.att.com/oauth/v4/authorize"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "3ecf54e3-d7e4-4176-a011-2077f974f3ac",
+              "name": "Delta changes successfully retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "myMessages",
+                    "v2",
+                    "delta"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "state",
+                      "value": "state-a1b2c3d4"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"deltaResponse\": {\n    \"addedMessages\": [\n      {\n        \"messageId\": \"msg-500789\",\n        \"from\": \"tel:+12125551234\",\n        \"isUnread\": true,\n        \"type\": \"TEXT\",\n        \"timeStamp\": \"2026-04-19T15:00:00Z\"\n      }\n    ],\n    \"updatedMessages\": [],\n    \"deletedMessages\": [],\n    \"state\": \"state-e5f6g7h8\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "431b404c-0010-4d64-9c4a-2997e7f4912d",
+              "name": "Bad request - invalid state token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "myMessages",
+                    "v2",
+                    "delta"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "state",
+                      "value": "state-a1b2c3d4"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"RequestError\": {\n    \"ServiceException\": {\n      \"MessageId\": \"SVC0002\",\n      \"Text\": \"Invalid input value for message part\",\n      \"Variables\": \"address\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "12b6f8af-fe8a-4206-927c-159e1361ceeb",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "myMessages",
+                    "v2",
+                    "delta"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "state",
+                      "value": "state-a1b2c3d4"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"RequestError\": {\n    \"ServiceException\": {\n      \"MessageId\": \"SVC0002\",\n      \"Text\": \"Invalid input value for message part\",\n      \"Variables\": \"address\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.att.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "71dedee5-7f57-46c7-99f8-5030f576c788",
+    "name": "AT&T Inbox Management API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "A messaging API enabling applications to send, receive, update, and delete MMS and SMS messages on behalf of AT&T users with explicit OAuth consent. Supports messages to phone numbers, short codes, and email addresses across AT&T and other carriers with full inbox management and delta synchronization.",
+      "type": "text/plain"
+    }
+  }
+}

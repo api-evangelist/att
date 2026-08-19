@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AT&T Balance Management API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Balance Management",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "AT&T Create Balance Top-Up",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://devex-web.att.com/topupBalance",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add data or voice balance to a subscriber's account. Corresponds to TMF 654 Prepay Balance Management API."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

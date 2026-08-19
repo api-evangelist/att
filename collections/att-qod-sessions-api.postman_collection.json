@@ -1,0 +1,951 @@
+{
+  "item": [
+    {
+      "id": "850ce90f-f6ac-4c23-b1d8-5e5e0bbf632e",
+      "name": "QoD Sessions",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7e9203fc-c330-432c-9b6a-b6a176251ce6",
+          "name": "AT&T Create QoD Session",
+          "request": {
+            "name": "AT&T Create QoD Session",
+            "description": {
+              "content": "Create a Quality of Service on Demand session for a device. Requests enhanced network quality for a specified duration and QoS profile (e.g., LOW_LATENCY, THROUGHPUT_S/M/L, VOICE). Returns a session ID for monitoring and management.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sessions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.att.com/oauth/v4/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"device\": {\n    \"phoneNumber\": \"<string>\",\n    \"ipv4Address\": {\n      \"publicAddress\": \"<string>\",\n      \"privateAddress\": \"<string>\"\n    }\n  },\n  \"qosProfile\": \"<string>\",\n  \"duration\": \"<integer>\",\n  \"notificationUrl\": \"<uri>\",\n  \"notificationAuthToken\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "69033617-b03e-480c-9d00-15c70a392d80",
+              "name": "QoD session successfully created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sessions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"device\": {\n    \"phoneNumber\": \"+12125551234\"\n  },\n  \"qosProfile\": \"LOW_LATENCY\",\n  \"duration\": 3600,\n  \"notificationUrl\": \"https://webhook.example.com/qod-events\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"sessionId\": \"session-a1b2c3d4-e5f6-7890-abcd-ef1234567890\",\n  \"device\": {\n    \"phoneNumber\": \"+12125551234\"\n  },\n  \"qosProfile\": \"LOW_LATENCY\",\n  \"duration\": 3600,\n  \"startedAt\": \"2026-04-19T14:30:00Z\",\n  \"expiresAt\": \"2026-04-19T15:30:00Z\",\n  \"qosStatus\": \"REQUESTED\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "05b2b01e-8805-4914-94d8-bb754a54a57f",
+              "name": "Bad request - invalid parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sessions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"device\": {\n    \"phoneNumber\": \"+12125551234\"\n  },\n  \"qosProfile\": \"LOW_LATENCY\",\n  \"duration\": 3600,\n  \"notificationUrl\": \"https://webhook.example.com/qod-events\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 400,\n  \"code\": \"INVALID_ARGUMENT\",\n  \"message\": \"Invalid QoS profile specified\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "52411dcb-9e69-4d8b-b279-22bfb051965b",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sessions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"device\": {\n    \"phoneNumber\": \"+12125551234\"\n  },\n  \"qosProfile\": \"LOW_LATENCY\",\n  \"duration\": 3600,\n  \"notificationUrl\": \"https://webhook.example.com/qod-events\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 400,\n  \"code\": \"INVALID_ARGUMENT\",\n  \"message\": \"Invalid QoS profile specified\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d4144357-c88b-4cb9-8b70-0b6e949b01c8",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sessions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"device\": {\n    \"phoneNumber\": \"+12125551234\"\n  },\n  \"qosProfile\": \"LOW_LATENCY\",\n  \"duration\": 3600,\n  \"notificationUrl\": \"https://webhook.example.com/qod-events\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 400,\n  \"code\": \"INVALID_ARGUMENT\",\n  \"message\": \"Invalid QoS profile specified\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f379cf23-30b0-4e30-8b3f-1143f0a3d3c6",
+              "name": "Conflict - existing QoD session for this device",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sessions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"device\": {\n    \"phoneNumber\": \"+12125551234\"\n  },\n  \"qosProfile\": \"LOW_LATENCY\",\n  \"duration\": 3600,\n  \"notificationUrl\": \"https://webhook.example.com/qod-events\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 400,\n  \"code\": \"INVALID_ARGUMENT\",\n  \"message\": \"Invalid QoS profile specified\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2f25892b-c434-4453-af95-a71b77e0bad1",
+              "name": "Too many requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sessions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"device\": {\n    \"phoneNumber\": \"+12125551234\"\n  },\n  \"qosProfile\": \"LOW_LATENCY\",\n  \"duration\": 3600,\n  \"notificationUrl\": \"https://webhook.example.com/qod-events\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 400,\n  \"code\": \"INVALID_ARGUMENT\",\n  \"message\": \"Invalid QoS profile specified\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "de52e76a-8197-4686-b2d5-03bb44e3316d",
+          "name": "AT&T List QoD Sessions",
+          "request": {
+            "name": "AT&T List QoD Sessions",
+            "description": {
+              "content": "List active QoD sessions for the authenticated application. Returns session details including status, QoS profile, and expiry.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sessions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.att.com/oauth/v4/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e9edf091-0191-4c4c-b729-42a7ad034fec",
+              "name": "QoD sessions list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sessions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"sessionId\": \"session-a1b2c3d4-e5f6-7890-abcd-ef1234567890\",\n    \"qosProfile\": \"LOW_LATENCY\",\n    \"qosStatus\": \"AVAILABLE\",\n    \"expiresAt\": \"2026-04-19T15:30:00Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b1b0544d-7e05-4e35-a8aa-fcd0ccca3664",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sessions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 400,\n  \"code\": \"INVALID_ARGUMENT\",\n  \"message\": \"Invalid QoS profile specified\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "540ed8f8-8ca6-4c2f-94fc-26afaab4c0a8",
+          "name": "AT&T Get QoD Session",
+          "request": {
+            "name": "AT&T Get QoD Session",
+            "description": {
+              "content": "Retrieve details of a specific Quality of Service on Demand session, including its current status, QoS profile, and expiry time.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sessions",
+                ":sessionId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "sessionId",
+                  "description": "(Required) Unique QoD session identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.att.com/oauth/v4/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "20ae670f-e6f8-4b74-aca7-3ba466aa57dc",
+              "name": "QoD session details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sessions",
+                    ":sessionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sessionId",
+                      "description": "(Required) Unique QoD session identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"sessionId\": \"session-a1b2c3d4-e5f6-7890-abcd-ef1234567890\",\n  \"device\": {\n    \"phoneNumber\": \"+12125551234\"\n  },\n  \"qosProfile\": \"LOW_LATENCY\",\n  \"duration\": 3600,\n  \"startedAt\": \"2026-04-19T14:30:00Z\",\n  \"expiresAt\": \"2026-04-19T15:30:00Z\",\n  \"qosStatus\": \"AVAILABLE\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8605b877-efaa-406a-af62-a2167e5f65de",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sessions",
+                    ":sessionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sessionId",
+                      "description": "(Required) Unique QoD session identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 400,\n  \"code\": \"INVALID_ARGUMENT\",\n  \"message\": \"Invalid QoS profile specified\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b2e66721-1ee5-416f-9db8-a3a935fabf34",
+              "name": "Session not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sessions",
+                    ":sessionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sessionId",
+                      "description": "(Required) Unique QoD session identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 400,\n  \"code\": \"INVALID_ARGUMENT\",\n  \"message\": \"Invalid QoS profile specified\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "925d44fc-06de-439f-8775-30dbd127e465",
+          "name": "AT&T Delete QoD Session",
+          "request": {
+            "name": "AT&T Delete QoD Session",
+            "description": {
+              "content": "Terminate an active Quality of Service on Demand session before its natural expiry. Returns network quality to normal levels.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sessions",
+                ":sessionId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "sessionId",
+                  "description": "(Required) Unique QoD session identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.att.com/oauth/v4/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "bceca5e6-d56a-4285-a5e1-051d5cd616fd",
+              "name": "QoD session successfully terminated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sessions",
+                    ":sessionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sessionId",
+                      "description": "(Required) Unique QoD session identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fbc35ac3-5bb3-4b89-aa41-6bda570b137c",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sessions",
+                    ":sessionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sessionId",
+                      "description": "(Required) Unique QoD session identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 400,\n  \"code\": \"INVALID_ARGUMENT\",\n  \"message\": \"Invalid QoS profile specified\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7cfa4d50-bd30-4d63-b632-7f583e9535ae",
+              "name": "Session not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sessions",
+                    ":sessionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sessionId",
+                      "description": "(Required) Unique QoD session identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 400,\n  \"code\": \"INVALID_ARGUMENT\",\n  \"message\": \"Invalid QoS profile specified\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.att.com/camara/qod/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "694812e0-1911-4269-9c71-127632dea336",
+    "name": "AT&T Quality on Demand API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "CAMARA-standard API that checks the connectivity status of user equipment, including roaming information. Enables applications to determine if a device is reachable, connected, and whether it is roaming on a partner network. Part of the AT&T Network API Accelerator Program.",
+      "type": "text/plain"
+    }
+  }
+}

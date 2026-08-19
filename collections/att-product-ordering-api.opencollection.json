@@ -1,0 +1,44 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AT&T Product Ordering API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://devex-web.att.com/oauth/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Product Ordering",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create AT&T Enterprise Product Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://devex-web.att.com/alliance/productOrder/v1",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Submit a product order for AT&T wireline business services including AVPN, IPBB, ATTPhone, ASE, or Internet Air for Business."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

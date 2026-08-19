@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AT&T Service Management API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Service Management",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "AT&T Get Service (HLR Registration)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://devex-web.att.com/service/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Service ID"
+              }
+            ]
+          },
+          "docs": "Confirm HLR (Home Location Register) registration status for a subscriber's service. Corresponds to TMF 640 Service Activation and Configuration API."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

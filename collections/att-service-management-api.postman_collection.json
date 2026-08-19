@@ -1,0 +1,208 @@
+{
+  "item": [
+    {
+      "id": "9b550fbe-ff9e-49ef-b613-7938324db60f",
+      "name": "Service Management",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9df6fc4a-962b-4791-b893-b7502111451d",
+          "name": "AT&T Get Service (HLR Registration)",
+          "request": {
+            "name": "AT&T Get Service (HLR Registration)",
+            "description": {
+              "content": "Confirm HLR (Home Location Register) registration status for a subscriber's service. Corresponds to TMF 640 Service Activation and Configuration API.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "service",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Service ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cb449b50-4586-4b89-a5b5-1063280a706a",
+              "name": "Service details retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "service",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Service ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"svc-500123\",\n  \"href\": \"https://devex-web.att.com/service/svc-500123\",\n  \"state\": \"active\",\n  \"serviceType\": \"MOBILE\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "551b8d22-2b80-4768-9496-ef0a05ee8aa8",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "service",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Service ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"400\",\n  \"reason\": \"Bad Request\",\n  \"message\": \"Invalid input parameter value\",\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2a0f1ca3-1010-421d-a3fe-9bcaab51c761",
+              "name": "Service not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "service",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Service ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"400\",\n  \"reason\": \"Bad Request\",\n  \"message\": \"Invalid input parameter value\",\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://devex-web.att.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "d5578602-36e3-49f7-b690-9d99bb104809",
+    "name": "AT&T Service Management API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "A messaging API enabling applications to send, receive, update, and delete MMS and SMS messages on behalf of AT&T users with explicit OAuth consent. Supports messages to phone numbers, short codes, and email addresses across AT&T and other carriers with full inbox management and delta synchronization.",
+      "type": "text/plain"
+    }
+  }
+}

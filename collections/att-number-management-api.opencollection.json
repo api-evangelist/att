@@ -1,0 +1,56 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AT&T Number Management API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Number Management",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "AT&T Reserve Subscriber Number",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://devex-web.att.com/resourceReservation",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Reserve one or more phone numbers for subscriber assignment prior to activation. Corresponds to TMF 716 Resource Reservation Management API."
+        },
+        {
+          "info": {
+            "name": "AT&T Release Reserved Numbers",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://devex-web.att.com/resourceReservation/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Reservation ID to release"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Release previously reserved phone numbers back to the available pool. Corresponds to TMF 716 Resource Reservation Management API."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

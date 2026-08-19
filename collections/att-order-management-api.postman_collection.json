@@ -1,0 +1,317 @@
+{
+  "item": [
+    {
+      "id": "8b3e87ea-4db5-4d68-b41a-59bf0d4740c4",
+      "name": "Order Management",
+      "description": {
+        "content": "Track and manage existing orders",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "db73c933-e540-4596-ae9b-1f7dcd44c0fe",
+          "name": "List AT&T Enterprise Product Orders",
+          "request": {
+            "name": "List AT&T Enterprise Product Orders",
+            "description": {
+              "content": "Retrieve a list of product orders with optional filtering by state, date range, or external ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "alliance",
+                "productOrder",
+                "v1"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "state",
+                  "value": "<string>",
+                  "description": "Filter by order state"
+                },
+                {
+                  "disabled": false,
+                  "key": "requestedStartDate.gt",
+                  "value": "<date>",
+                  "description": "Filter orders with requested start date after this date"
+                },
+                {
+                  "disabled": false,
+                  "key": "externalId",
+                  "value": "<string>",
+                  "description": "Filter by external order ID"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "aff39a1d-60b7-4dc0-8c81-c10f3323f25a",
+              "name": "List of product orders",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "alliance",
+                    "productOrder",
+                    "v1"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "requestedStartDate.gt",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "externalId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"ord_xyz789\",\n    \"externalId\": \"ext_order_001\",\n    \"state\": \"inProgress\",\n    \"orderDate\": \"2026-04-19T10:00:00Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "73122373-39e0-4092-902f-186bd45bf721",
+          "name": "Get AT&T Enterprise Product Order",
+          "request": {
+            "name": "Get AT&T Enterprise Product Order",
+            "description": {
+              "content": "Retrieve the current status and details of a specific product order.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "alliance",
+                "productOrder",
+                "v1",
+                ":orderId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orderId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "31bb7265-c191-46d7-9ecc-a9968e3064e2",
+              "name": "Product order details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "alliance",
+                    "productOrder",
+                    "v1",
+                    ":orderId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orderId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"ord_xyz789\",\n  \"externalId\": \"ext_order_001\",\n  \"state\": \"inProgress\",\n  \"orderDate\": \"2026-04-19T10:00:00Z\",\n  \"completionDate\": null\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5137d3b4-8398-49f6-809e-daa7093ea539",
+              "name": "Order not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "alliance",
+                    "productOrder",
+                    "v1",
+                    ":orderId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orderId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"reason\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://devex-web.att.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "enterprise"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://devex-web.att.com/oauth/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "5a8bc688-93b4-4e81-8d92-713f35847b9b",
+    "name": "AT&T Order Management API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Enterprise-grade APIs for AT&T wireline business services including service qualification, quoting, ordering, and provisioning. The Alliance API suite supports automated ordering of AVPN, IPBB, ATTPhone, ASE, and AT&T Internet Air for Business services.\n\nContact Support:\n Name: AT&T Alliance Developer Portal",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AT&T Device Connectivity API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Device Connectivity",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "AT&T Get Device Connectivity Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.att.com/camara/device-status/v1/connectivity",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.att.com/oauth/v4/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Get the current connectivity status of a device identified by its phone number or IP address. Returns whether the device is connected to the AT&T network, the connection type, and whether the device is roaming."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

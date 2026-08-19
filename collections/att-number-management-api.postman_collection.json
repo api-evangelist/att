@@ -1,0 +1,422 @@
+{
+  "item": [
+    {
+      "id": "f58af8e8-fa2d-4b21-b356-068e7f20d07d",
+      "name": "Number Management",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7d091550-cc4f-4ecd-bd7c-784ffff0ba79",
+          "name": "AT&T Reserve Subscriber Number",
+          "request": {
+            "name": "AT&T Reserve Subscriber Number",
+            "description": {
+              "content": "Reserve one or more phone numbers for subscriber assignment prior to activation. Corresponds to TMF 716 Resource Reservation Management API.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "resourceReservation"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"resourceCapacity\": [\n    {\n      \"resourcePool\": {\n        \"id\": \"<string>\"\n      },\n      \"capacityAmount\": \"<integer>\"\n    },\n    {\n      \"resourcePool\": {\n        \"id\": \"<string>\"\n      },\n      \"capacityAmount\": \"<integer>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2e1de221-adf0-4e3d-beee-d1ee2fad6206",
+              "name": "Number reservation successfully created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "resourceReservation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"resourceCapacity\": [\n    {\n      \"resourcePool\": {\n        \"id\": \"pool-212-area\"\n      },\n      \"capacityAmount\": 1\n    }\n  ],\n  \"reservationItem\": [\n    {\n      \"quantity\": 1,\n      \"resourceCapacity\": {\n        \"capacityDemandAmount\": 1\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"reservation-500123\",\n  \"href\": \"https://devex-web.att.com/resourceReservation/reservation-500123\",\n  \"reservationState\": \"completed\",\n  \"reservedResource\": [\n    {\n      \"value\": \"+12125559999\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "22e45589-d455-4b78-a886-2a0a6f254222",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "resourceReservation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"resourceCapacity\": [\n    {\n      \"resourcePool\": {\n        \"id\": \"pool-212-area\"\n      },\n      \"capacityAmount\": 1\n    }\n  ],\n  \"reservationItem\": [\n    {\n      \"quantity\": 1,\n      \"resourceCapacity\": {\n        \"capacityDemandAmount\": 1\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"400\",\n  \"reason\": \"Bad Request\",\n  \"message\": \"Invalid input parameter value\",\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "645bc8a9-5450-4908-9266-b71d457645e5",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "resourceReservation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"resourceCapacity\": [\n    {\n      \"resourcePool\": {\n        \"id\": \"pool-212-area\"\n      },\n      \"capacityAmount\": 1\n    }\n  ],\n  \"reservationItem\": [\n    {\n      \"quantity\": 1,\n      \"resourceCapacity\": {\n        \"capacityDemandAmount\": 1\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"400\",\n  \"reason\": \"Bad Request\",\n  \"message\": \"Invalid input parameter value\",\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "38f4bfc0-9efb-4e30-bc33-88cf7ce57916",
+          "name": "AT&T Release Reserved Numbers",
+          "request": {
+            "name": "AT&T Release Reserved Numbers",
+            "description": {
+              "content": "Release previously reserved phone numbers back to the available pool. Corresponds to TMF 716 Resource Reservation Management API.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "resourceReservation",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Reservation ID to release"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"reservationState\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e317a7cf-5376-4e06-ab82-9c5f25164e82",
+              "name": "Reservation successfully updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "resourceReservation",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Reservation ID to release"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reservationState\": \"cancelled\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"reservation-500123\",\n  \"reservationState\": \"cancelled\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0e5e0fd7-1bfa-4589-bd5d-d3ab436d615e",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "resourceReservation",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Reservation ID to release"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reservationState\": \"cancelled\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"400\",\n  \"reason\": \"Bad Request\",\n  \"message\": \"Invalid input parameter value\",\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1b028400-53af-4278-8675-9cb4bb614bcb",
+              "name": "Reservation not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "resourceReservation",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Reservation ID to release"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reservationState\": \"cancelled\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"400\",\n  \"reason\": \"Bad Request\",\n  \"message\": \"Invalid input parameter value\",\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://devex-web.att.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "b2f17bbd-8023-41df-bda0-7258b5b563cc",
+    "name": "AT&T Number Management API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "A messaging API enabling applications to send, receive, update, and delete MMS and SMS messages on behalf of AT&T users with explicit OAuth consent. Supports messages to phone numbers, short codes, and email addresses across AT&T and other carriers with full inbox management and delta synchronization.",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AT&T Threat Detection API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Threat Detection",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "AT&T Get Device Threat Assessment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.att.com/network/threat-detection/v1/threats",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.att.com/oauth/v4/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieve a threat and anomaly assessment for a specific mobile device based on AT&T's machine learning network analysis. Returns threat indicators, anomaly scores, and risk levels detected for the device."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AT&T Product Orders API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Product Orders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "AT&T Create Product Order (Subscriber Activation)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://devex-web.att.com/productOrder",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Activate a new subscriber on the AT&T MVNO network. Creates a product order for subscriber activation including device provisioning and number assignment. Corresponds to TMF 622 Product Ordering Management API."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

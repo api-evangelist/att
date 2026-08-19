@@ -1,0 +1,121 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AT&T Porting API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Porting",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "AT&T List Port Orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://devex-web.att.com/portabilityOrder",
+            "params": [
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "Filter by port order state"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of records to return"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Pagination offset"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of number portability orders. Supports filtering by state, date range, and subscriber. Corresponds to TMF 689 Number Portability API."
+        },
+        {
+          "info": {
+            "name": "AT&T Create Port Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://devex-web.att.com/portabilityOrder",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a number portability order to port a subscriber's existing phone number to the AT&T MVNO network. Corresponds to TMF 689 Number Portability API."
+        },
+        {
+          "info": {
+            "name": "AT&T Get Port Order Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://devex-web.att.com/portabilityOrder/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Port order ID"
+              }
+            ]
+          },
+          "docs": "Retrieve the status and details of a specific number portability order. Corresponds to TMF 689 Number Portability API."
+        },
+        {
+          "info": {
+            "name": "AT&T Update Port Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://devex-web.att.com/portabilityOrder/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Port order ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update details of an in-progress number portability order. Corresponds to TMF 689 Number Portability API."
+        },
+        {
+          "info": {
+            "name": "AT&T Cancel Port Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://devex-web.att.com/cancelPortabilityOrder",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Cancel an in-progress number portability order. Corresponds to TMF 689 Number Portability API."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

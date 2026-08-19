@@ -1,0 +1,296 @@
+{
+  "item": [
+    {
+      "id": "80242991-5df2-4327-9040-12a491361459",
+      "name": "Device Roaming",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2df89b13-8caa-48cd-8ebe-caddbc15c3fe",
+          "name": "AT&T Get Device Roaming Status",
+          "request": {
+            "name": "AT&T Get Device Roaming Status",
+            "description": {
+              "content": "Check whether a device is currently roaming on a partner network outside of the AT&T home network. Returns the roaming status and optionally the country the device is roaming in.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "roaming"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.att.com/oauth/v4/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"device\": {\n    \"phoneNumber\": \"<string>\",\n    \"ipv4Address\": {\n      \"publicAddress\": \"<string>\",\n      \"privateAddress\": \"<string>\",\n      \"publicPort\": \"<integer>\"\n    },\n    \"networkAccessIdentifier\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "585cb5be-d27a-4e3c-9ec3-7facf55db668",
+              "name": "Device roaming status retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "roaming"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"device\": {\n    \"phoneNumber\": \"+12125551234\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"roaming\": false,\n  \"countryCode\": null,\n  \"countryName\": null\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "337b28dc-7a94-4681-b152-93fc5e6a1ca2",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "roaming"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"device\": {\n    \"phoneNumber\": \"+12125551234\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 400,\n  \"code\": \"INVALID_ARGUMENT\",\n  \"message\": \"Invalid device identifier provided\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "301951ab-ce56-4fa5-99f3-cf7381b693c6",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "roaming"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"device\": {\n    \"phoneNumber\": \"+12125551234\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 400,\n  \"code\": \"INVALID_ARGUMENT\",\n  \"message\": \"Invalid device identifier provided\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "02c26c46-cf20-4b2e-88ad-4d40bf984016",
+              "name": "Device not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "roaming"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"device\": {\n    \"phoneNumber\": \"+12125551234\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 400,\n  \"code\": \"INVALID_ARGUMENT\",\n  \"message\": \"Invalid device identifier provided\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.att.com/camara/device-status/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "5edcfe8f-f798-46b8-a66c-ec5429f5a8eb",
+    "name": "AT&T Device Roaming API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "CAMARA-standard API that checks the connectivity status of user equipment, including roaming information. Enables applications to determine if a device is reachable, connected, and whether it is roaming on a partner network. Part of the AT&T Network API Accelerator Program.",
+      "type": "text/plain"
+    }
+  }
+}

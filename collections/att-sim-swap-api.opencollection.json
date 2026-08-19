@@ -1,0 +1,66 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AT&T SIM Swap API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "SIM Swap",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "AT&T Check SIM Swap",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.att.com/camara/sim-swap/v1/check",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.att.com/oauth/v4/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Check whether the SIM card associated with a mobile phone number has been swapped within a specified time period. Returns true/false indicating whether a SIM swap has been detected, optionally with the swap timestamp."
+        },
+        {
+          "info": {
+            "name": "AT&T Retrieve SIM Swap Date",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.att.com/camara/sim-swap/v1/retrieve-date",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.att.com/oauth/v4/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieve the date and time of the most recent SIM swap for a mobile phone number. Returns the timestamp of the last SIM card change or null if no recent swap has been detected."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

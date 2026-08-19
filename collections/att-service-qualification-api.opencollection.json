@@ -1,0 +1,44 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AT&T Service Qualification API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://devex-web.att.com/oauth/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Service Qualification",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Check AT&T Service Qualification",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://devex-web.att.com/alliance/serviceQualification/v1/check",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Determine which AT&T wireline services (AVPN, IPBB, ATTPhone, ASE, Internet Air for Business) are available at a given location."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

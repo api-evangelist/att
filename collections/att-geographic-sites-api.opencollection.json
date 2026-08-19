@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AT&T Geographic Sites API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Geographic Sites",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "AT&T List Geographic Sites",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://devex-web.att.com/geographicSite",
+            "params": [
+              {
+                "name": "serviceType",
+                "value": "",
+                "type": "query",
+                "description": "Filter by service type"
+              }
+            ]
+          },
+          "docs": "Inquire about available market service areas and geographic sites for MVNO operations. Corresponds to TMF 674 Geographic Site Management API."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

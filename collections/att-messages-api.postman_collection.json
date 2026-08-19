@@ -1,0 +1,1170 @@
+{
+  "item": [
+    {
+      "id": "533e93c6-3686-47c5-9ea9-9e7a857585e8",
+      "name": "Messages",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9b9fe86a-f7c7-415a-ad17-e04aa0e6913f",
+          "name": "AT&T Send MMS or SMS Message",
+          "request": {
+            "name": "AT&T Send MMS or SMS Message",
+            "description": {
+              "content": "Send an MMS or SMS message on behalf of the authenticated user to one or more recipients. Supports SMS (up to 160 characters) and MMS (up to 1 MB with up to 21 attachments). Supports cross-carrier delivery and group messaging.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "myMessages",
+                "v2",
+                "messages"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "IMMN MIM"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.att.com/oauth/v4/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://api.att.com/oauth/v4/authorize"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"messageRequest\": {\n    \"addresses\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"text\": \"<string>\",\n    \"subject\": \"<string>\",\n    \"group\": \"<boolean>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "62286667-3247-43bc-8826-74e458c88601",
+              "name": "Message successfully sent",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "myMessages",
+                    "v2",
+                    "messages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"messageRequest\": {\n    \"addresses\": [\n      \"tel:+12125551234\"\n    ],\n    \"text\": \"Hello from the AT&T In-App Messaging API!\",\n    \"subject\": \"Greeting\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"msg-500123\",\n  \"resourceURL\": \"https://api.att.com/myMessages/v2/messages/msg-500123\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2ccd78ee-4b28-4d74-8492-91b6c653bf74",
+              "name": "Bad request - invalid parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "myMessages",
+                    "v2",
+                    "messages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"messageRequest\": {\n    \"addresses\": [\n      \"tel:+12125551234\"\n    ],\n    \"text\": \"Hello from the AT&T In-App Messaging API!\",\n    \"subject\": \"Greeting\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"RequestError\": {\n    \"ServiceException\": {\n      \"MessageId\": \"SVC0002\",\n      \"Text\": \"Invalid input value for message part\",\n      \"Variables\": \"address\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ebe0f8ef-9a3d-4f60-b818-9cabe6b941ed",
+              "name": "Unauthorized - invalid or expired token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "myMessages",
+                    "v2",
+                    "messages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"messageRequest\": {\n    \"addresses\": [\n      \"tel:+12125551234\"\n    ],\n    \"text\": \"Hello from the AT&T In-App Messaging API!\",\n    \"subject\": \"Greeting\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"RequestError\": {\n    \"ServiceException\": {\n      \"MessageId\": \"SVC0002\",\n      \"Text\": \"Invalid input value for message part\",\n      \"Variables\": \"address\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8ec3d404-4177-47ba-bc93-f5da216b2a5c",
+          "name": "AT&T List Messages",
+          "request": {
+            "name": "AT&T List Messages",
+            "description": {
+              "content": "Retrieve a list of messages from the authenticated user's inbox. Supports filtering by message type, read status, and time range. Returns message metadata without the full message content.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "myMessages",
+                "v2",
+                "messages"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Maximum number of messages to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "Number of messages to skip for pagination"
+                },
+                {
+                  "disabled": false,
+                  "key": "isUnread",
+                  "value": "<boolean>",
+                  "description": "Filter to only unread messages when true"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "IMMN MIM"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.att.com/oauth/v4/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://api.att.com/oauth/v4/authorize"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2bf337bc-d887-403c-8003-0e01d8e7ad99",
+              "name": "Message list successfully retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "myMessages",
+                    "v2",
+                    "messages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "isUnread",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"messageResultSet\": {\n    \"messages\": [\n      {\n        \"messageId\": \"msg-500123\",\n        \"from\": \"tel:+12125551234\",\n        \"recipients\": [\n          \"tel:+12125559999\"\n        ],\n        \"isUnread\": false,\n        \"isIncoming\": true,\n        \"type\": \"TEXT\",\n        \"typeCode\": \"1\",\n        \"timeStamp\": \"2026-04-19T14:30:00Z\"\n      }\n    ],\n    \"totalCount\": 1,\n    \"offset\": 0,\n    \"limit\": 50\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9d8f1cc8-4cbd-4a19-a8e2-f77229c171ac",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "myMessages",
+                    "v2",
+                    "messages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "isUnread",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"RequestError\": {\n    \"ServiceException\": {\n      \"MessageId\": \"SVC0002\",\n      \"Text\": \"Invalid input value for message part\",\n      \"Variables\": \"address\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "07ebaa7e-1457-4103-a439-8fcee3b9b9ba",
+          "name": "AT&T Get Message Details",
+          "request": {
+            "name": "AT&T Get Message Details",
+            "description": {
+              "content": "Retrieve the full details and content of a specific message by its ID, including text content, attachments, sender, recipients, and metadata.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "myMessages",
+                "v2",
+                "messages",
+                ":messageId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "messageId",
+                  "description": "(Required) Unique message identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "IMMN MIM"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.att.com/oauth/v4/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://api.att.com/oauth/v4/authorize"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0a42c90c-952c-4244-83b8-cdc1b89860aa",
+              "name": "Message details successfully retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "myMessages",
+                    "v2",
+                    "messages",
+                    ":messageId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "messageId",
+                      "description": "(Required) Unique message identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": {\n    \"messageId\": \"msg-500123\",\n    \"from\": \"tel:+12125551234\",\n    \"recipients\": [\n      \"tel:+12125559999\"\n    ],\n    \"text\": \"Hello from the AT&T In-App Messaging API!\",\n    \"subject\": \"Greeting\",\n    \"isUnread\": false,\n    \"isIncoming\": true,\n    \"type\": \"TEXT\",\n    \"typeCode\": \"1\",\n    \"timeStamp\": \"2026-04-19T14:30:00Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "eea38fa2-27c9-419f-957d-a378cffa6640",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "myMessages",
+                    "v2",
+                    "messages",
+                    ":messageId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "messageId",
+                      "description": "(Required) Unique message identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"RequestError\": {\n    \"ServiceException\": {\n      \"MessageId\": \"SVC0002\",\n      \"Text\": \"Invalid input value for message part\",\n      \"Variables\": \"address\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b86863ea-e84e-494c-8932-5ebccb60708f",
+              "name": "Message not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "myMessages",
+                    "v2",
+                    "messages",
+                    ":messageId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "messageId",
+                      "description": "(Required) Unique message identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"RequestError\": {\n    \"ServiceException\": {\n      \"MessageId\": \"SVC0002\",\n      \"Text\": \"Invalid input value for message part\",\n      \"Variables\": \"address\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e30ab428-e7f1-4783-a57d-7c6bb967968e",
+          "name": "AT&T Update Message Properties",
+          "request": {
+            "name": "AT&T Update Message Properties",
+            "description": {
+              "content": "Update the properties of a message, such as marking it as read or unread. Only the isUnread field can be modified.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "myMessages",
+                "v2",
+                "messages",
+                ":messageId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "messageId",
+                  "description": "(Required) Unique message identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "IMMN MIM"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.att.com/oauth/v4/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://api.att.com/oauth/v4/authorize"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"message\": {\n    \"isUnread\": \"<boolean>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "55fe02ea-c0bc-4d6d-96ff-8d5c54834764",
+              "name": "Message successfully updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "myMessages",
+                    "v2",
+                    "messages",
+                    ":messageId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "messageId",
+                      "description": "(Required) Unique message identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"message\": {\n    \"isUnread\": false\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"msg-500123\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fdded441-6f74-40ea-8fd5-5c1b29362fbb",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "myMessages",
+                    "v2",
+                    "messages",
+                    ":messageId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "messageId",
+                      "description": "(Required) Unique message identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"message\": {\n    \"isUnread\": false\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"RequestError\": {\n    \"ServiceException\": {\n      \"MessageId\": \"SVC0002\",\n      \"Text\": \"Invalid input value for message part\",\n      \"Variables\": \"address\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "887b9ca7-0943-4353-b86a-775b69e1a26e",
+              "name": "Message not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "myMessages",
+                    "v2",
+                    "messages",
+                    ":messageId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "messageId",
+                      "description": "(Required) Unique message identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"message\": {\n    \"isUnread\": false\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"RequestError\": {\n    \"ServiceException\": {\n      \"MessageId\": \"SVC0002\",\n      \"Text\": \"Invalid input value for message part\",\n      \"Variables\": \"address\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "57165500-7923-4057-9262-4cc280fa2f22",
+          "name": "AT&T Delete Message",
+          "request": {
+            "name": "AT&T Delete Message",
+            "description": {
+              "content": "Permanently delete a specific message from the user's inbox by its ID. This action cannot be undone.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "myMessages",
+                "v2",
+                "messages",
+                ":messageId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "messageId",
+                  "description": "(Required) Unique message identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "IMMN MIM"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.att.com/oauth/v4/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://api.att.com/oauth/v4/authorize"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b3d15554-b984-4f4d-9fdf-313e8abb91e5",
+              "name": "Message successfully deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "myMessages",
+                    "v2",
+                    "messages",
+                    ":messageId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "messageId",
+                      "description": "(Required) Unique message identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "22e24b37-f0aa-44d6-8c1e-64f406959432",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "myMessages",
+                    "v2",
+                    "messages",
+                    ":messageId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "messageId",
+                      "description": "(Required) Unique message identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"RequestError\": {\n    \"ServiceException\": {\n      \"MessageId\": \"SVC0002\",\n      \"Text\": \"Invalid input value for message part\",\n      \"Variables\": \"address\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ff5b74a8-ee8f-437f-adb5-76c0d0ab4aef",
+              "name": "Message not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "myMessages",
+                    "v2",
+                    "messages",
+                    ":messageId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "messageId",
+                      "description": "(Required) Unique message identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"RequestError\": {\n    \"ServiceException\": {\n      \"MessageId\": \"SVC0002\",\n      \"Text\": \"Invalid input value for message part\",\n      \"Variables\": \"address\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.att.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "b99d9e2f-073f-4aa7-a32a-323dc991a2a8",
+    "name": "AT&T Messages API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "A messaging API enabling applications to send, receive, update, and delete MMS and SMS messages on behalf of AT&T users with explicit OAuth consent. Supports messages to phone numbers, short codes, and email addresses across AT&T and other carriers with full inbox management and delta synchronization.",
+      "type": "text/plain"
+    }
+  }
+}

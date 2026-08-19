@@ -1,0 +1,837 @@
+{
+  "item": [
+    {
+      "id": "64fd078c-125d-4d45-8a82-fd155e519e57",
+      "name": "SMS Messaging",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d1d37b56-997b-4cd4-8479-1422f9d83cf3",
+          "name": "AT&T Send SMS Message",
+          "request": {
+            "name": "AT&T Send SMS Message",
+            "description": {
+              "content": "Send an SMS message to one or more recipients using a registered AT&T short code. Supports up to 50 recipients per request and messages up to 4096 characters. Optionally request delivery status notifications via callback.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sms",
+                "v3",
+                "messaging",
+                "outbox"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "IMMN MIM"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.att.com/oauth/v4/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://api.att.com/oauth/v4/authorize"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"outboundSMSRequest\": {\n    \"address\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"message\": \"<string>\",\n    \"notifyDeliveryStatus\": \"<boolean>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4978c05e-41f2-40c4-90d2-dc5da0acca1e",
+              "name": "SMS message successfully queued for delivery",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sms",
+                    "v3",
+                    "messaging",
+                    "outbox"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"outboundSMSRequest\": {\n    \"address\": [\n      \"tel:+12125551234\"\n    ],\n    \"message\": \"Your verification code is 482910. Valid for 10 minutes.\",\n    \"notifyDeliveryStatus\": true\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"outboundSMSResponse\": {\n    \"messageId\": \"msg-500123\",\n    \"resourceReference\": {\n      \"resourceURL\": \"https://api.att.com/sms/v3/messaging/outbox/msg-500123\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fbbff74d-b7d2-44a9-804a-b70bf176a74f",
+              "name": "Bad request - invalid parameters or message format",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sms",
+                    "v3",
+                    "messaging",
+                    "outbox"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"outboundSMSRequest\": {\n    \"address\": [\n      \"tel:+12125551234\"\n    ],\n    \"message\": \"Your verification code is 482910. Valid for 10 minutes.\",\n    \"notifyDeliveryStatus\": true\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"RequestError\": {\n    \"ServiceException\": {\n      \"MessageId\": \"SVC0002\",\n      \"Text\": \"Invalid input value for message part\",\n      \"Variables\": \"address\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "18d4dfc2-a4c6-4c5a-b69a-3cebdf713bb0",
+              "name": "Unauthorized - invalid or expired token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sms",
+                    "v3",
+                    "messaging",
+                    "outbox"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"outboundSMSRequest\": {\n    \"address\": [\n      \"tel:+12125551234\"\n    ],\n    \"message\": \"Your verification code is 482910. Valid for 10 minutes.\",\n    \"notifyDeliveryStatus\": true\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"RequestError\": {\n    \"ServiceException\": {\n      \"MessageId\": \"SVC0002\",\n      \"Text\": \"Invalid input value for message part\",\n      \"Variables\": \"address\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "608c4b83-62ae-49e2-acc7-dd9d9bdc3e5e",
+              "name": "Forbidden - insufficient permissions or scope",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sms",
+                    "v3",
+                    "messaging",
+                    "outbox"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"outboundSMSRequest\": {\n    \"address\": [\n      \"tel:+12125551234\"\n    ],\n    \"message\": \"Your verification code is 482910. Valid for 10 minutes.\",\n    \"notifyDeliveryStatus\": true\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"RequestError\": {\n    \"ServiceException\": {\n      \"MessageId\": \"SVC0002\",\n      \"Text\": \"Invalid input value for message part\",\n      \"Variables\": \"address\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ed8f5305-3d06-47a8-b830-b2031b4c7065",
+              "name": "Too many requests - rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sms",
+                    "v3",
+                    "messaging",
+                    "outbox"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"outboundSMSRequest\": {\n    \"address\": [\n      \"tel:+12125551234\"\n    ],\n    \"message\": \"Your verification code is 482910. Valid for 10 minutes.\",\n    \"notifyDeliveryStatus\": true\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"RequestError\": {\n    \"ServiceException\": {\n      \"MessageId\": \"SVC0002\",\n      \"Text\": \"Invalid input value for message part\",\n      \"Variables\": \"address\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "91396355-33f8-4be5-8b35-e186fe13d67e",
+          "name": "AT&T Get SMS Delivery Status",
+          "request": {
+            "name": "AT&T Get SMS Delivery Status",
+            "description": {
+              "content": "Retrieve the delivery status of a previously sent SMS message using its message ID. Returns delivery status such as DeliveredToNetwork, DeliveredToTerminal, or DeliveryImpossible.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sms",
+                "v3",
+                "messaging",
+                "outbox",
+                ":messageId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "messageId",
+                  "description": "(Required) The unique message identifier returned by the Send SMS operation"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "IMMN MIM"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.att.com/oauth/v4/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://api.att.com/oauth/v4/authorize"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "fb42a9e6-9c37-4a84-89cc-bc8c4512e222",
+              "name": "Delivery status successfully retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sms",
+                    "v3",
+                    "messaging",
+                    "outbox",
+                    ":messageId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "messageId",
+                      "description": "(Required) The unique message identifier returned by the Send SMS operation"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"deliveryInfoList\": {\n    \"deliveryInfo\": [\n      {\n        \"address\": \"tel:+12125551234\",\n        \"deliveryStatus\": \"DeliveredToTerminal\"\n      }\n    ],\n    \"resourceURL\": \"https://api.att.com/sms/v3/messaging/outbox/msg-500123\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ddf50fdc-b09e-429a-b982-7dd886b87260",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sms",
+                    "v3",
+                    "messaging",
+                    "outbox",
+                    ":messageId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "messageId",
+                      "description": "(Required) The unique message identifier returned by the Send SMS operation"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"RequestError\": {\n    \"ServiceException\": {\n      \"MessageId\": \"SVC0002\",\n      \"Text\": \"Invalid input value for message part\",\n      \"Variables\": \"address\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d503ef3e-75b3-43af-8776-f40779277a1c",
+              "name": "Message not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sms",
+                    "v3",
+                    "messaging",
+                    "outbox",
+                    ":messageId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "messageId",
+                      "description": "(Required) The unique message identifier returned by the Send SMS operation"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"RequestError\": {\n    \"ServiceException\": {\n      \"MessageId\": \"SVC0002\",\n      \"Text\": \"Invalid input value for message part\",\n      \"Variables\": \"address\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "803d9da1-a67d-49df-aff7-ebc9cd98356d",
+          "name": "AT&T Get Inbound SMS Messages",
+          "request": {
+            "name": "AT&T Get Inbound SMS Messages",
+            "description": {
+              "content": "Poll for inbound SMS messages sent to the registered short code. Returns messages received since last poll. Short code registration ID is obtained from the AT&T developer account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sms",
+                "v3",
+                "messaging",
+                "inbox",
+                ":registrationId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "registrationId",
+                  "description": "(Required) The short code registration ID from the AT&T developer account"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "scope",
+                  "value": "IMMN MIM"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.att.com/oauth/v4/token"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://api.att.com/oauth/v4/authorize"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1e8bad98-4c01-42b5-b980-3ffbede2451c",
+              "name": "Inbound messages successfully retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sms",
+                    "v3",
+                    "messaging",
+                    "inbox",
+                    ":registrationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "registrationId",
+                      "description": "(Required) The short code registration ID from the AT&T developer account"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"inboundSMSMessageList\": {\n    \"inboundSMSMessage\": [\n      {\n        \"messageId\": \"msg-500456\",\n        \"message\": \"STOP\",\n        \"senderAddress\": \"tel:+12125551234\",\n        \"destinationAddress\": \"12345\",\n        \"dateTime\": \"2026-04-19T14:30:00Z\"\n      }\n    ],\n    \"numberOfMessagesInThisBatch\": 1,\n    \"resourceURL\": \"https://api.att.com/sms/v3/messaging/inbox/REG-500123\",\n    \"totalNumberOfPendingMessages\": 0\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "27225c46-179b-40d1-a325-6bfcd54df0cb",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sms",
+                    "v3",
+                    "messaging",
+                    "inbox",
+                    ":registrationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "registrationId",
+                      "description": "(Required) The short code registration ID from the AT&T developer account"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"RequestError\": {\n    \"ServiceException\": {\n      \"MessageId\": \"SVC0002\",\n      \"Text\": \"Invalid input value for message part\",\n      \"Variables\": \"address\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6ae235c2-ab41-4b67-914a-058498990218",
+              "name": "Registration ID not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sms",
+                    "v3",
+                    "messaging",
+                    "inbox",
+                    ":registrationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "registrationId",
+                      "description": "(Required) The short code registration ID from the AT&T developer account"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"RequestError\": {\n    \"ServiceException\": {\n      \"MessageId\": \"SVC0002\",\n      \"Text\": \"Invalid input value for message part\",\n      \"Variables\": \"address\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.att.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "5656e0d0-2f1c-4869-b306-89f2847439d7",
+    "name": "AT&T SMS Messaging API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "A messaging API enabling applications to send, receive, update, and delete MMS and SMS messages on behalf of AT&T users with explicit OAuth consent. Supports messages to phone numbers, short codes, and email addresses across AT&T and other carriers with full inbox management and delta synchronization.",
+      "type": "text/plain"
+    }
+  }
+}

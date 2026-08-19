@@ -1,0 +1,249 @@
+{
+  "item": [
+    {
+      "id": "f42c4eb2-8053-437c-80b5-11a548518902",
+      "name": "Threat Subscriptions",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e2fcf6b9-88a0-434a-9ace-05066a64e00b",
+          "name": "AT&T Subscribe to Threat Alerts",
+          "request": {
+            "name": "AT&T Subscribe to Threat Alerts",
+            "description": {
+              "content": "Subscribe to real-time threat and anomaly detection alerts for a device or set of devices. Notifications are delivered to the specified webhook URL when threat conditions are detected.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "threats",
+                "subscribe"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.att.com/oauth/v4/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"device\": {\n    \"phoneNumber\": \"<string>\"\n  },\n  \"notificationUrl\": \"<uri>\",\n  \"minRiskLevel\": \"<string>\",\n  \"notificationAuthToken\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bf84439e-7146-48c6-9332-36d7d62b4ed3",
+              "name": "Threat alert subscription created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "threats",
+                    "subscribe"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"device\": {\n    \"phoneNumber\": \"+12125551234\"\n  },\n  \"notificationUrl\": \"https://webhook.example.com/threats\",\n  \"minRiskLevel\": \"MEDIUM\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"subscriptionId\": \"sub-threat-500123\",\n  \"device\": {\n    \"phoneNumber\": \"+12125551234\"\n  },\n  \"minRiskLevel\": \"MEDIUM\",\n  \"status\": \"ACTIVE\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2711be87-852c-48fd-81f6-254ea2a1f344",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "threats",
+                    "subscribe"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"device\": {\n    \"phoneNumber\": \"+12125551234\"\n  },\n  \"notificationUrl\": \"https://webhook.example.com/threats\",\n  \"minRiskLevel\": \"MEDIUM\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 400,\n  \"code\": \"INVALID_ARGUMENT\",\n  \"message\": \"Invalid device identifier\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d1404b83-156c-4ef8-9f05-fc9608c8c6fd",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "threats",
+                    "subscribe"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"device\": {\n    \"phoneNumber\": \"+12125551234\"\n  },\n  \"notificationUrl\": \"https://webhook.example.com/threats\",\n  \"minRiskLevel\": \"MEDIUM\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 400,\n  \"code\": \"INVALID_ARGUMENT\",\n  \"message\": \"Invalid device identifier\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.att.com/network/threat-detection/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "75ab57df-237a-47ed-ac92-6bff84bb4e7f",
+    "name": "AT&T Threat Subscriptions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "CAMARA-standard API that checks the connectivity status of user equipment, including roaming information. Enables applications to determine if a device is reachable, connected, and whether it is roaming on a partner network. Part of the AT&T Network API Accelerator Program.",
+      "type": "text/plain"
+    }
+  }
+}

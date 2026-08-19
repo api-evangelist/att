@@ -1,0 +1,79 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AT&T Device Management API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Device Management",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "AT&T List Devices and SIMs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://devex-web.att.com/resource",
+            "params": [
+              {
+                "name": "relatedParty.id",
+                "value": "",
+                "type": "query",
+                "description": "Filter resources by subscriber ID"
+              }
+            ]
+          },
+          "docs": "Retrieve device details and SIM information for subscribers. Corresponds to TMF 639 Resource Inventory API."
+        },
+        {
+          "info": {
+            "name": "AT&T Get Device or SIM Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://devex-web.att.com/resource/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Resource (device or SIM) ID"
+              }
+            ]
+          },
+          "docs": "Retrieve the current status and details of a specific device or SIM card. Corresponds to TMF 639 Resource Inventory API."
+        },
+        {
+          "info": {
+            "name": "AT&T Update Resource (Reset Voicemail Password)",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://devex-web.att.com/resource/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Resource ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a resource attribute, such as resetting the voicemail password for a subscriber's device. Corresponds to TMF 702 Resource Activation and Configuration API."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,205 @@
+{
+  "item": [
+    {
+      "id": "ccca8045-351c-4140-86b8-9d9237d2a395",
+      "name": "Product Ordering",
+      "description": {
+        "content": "Place and manage service orders",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5bee1cb0-7b26-40c6-97e1-ad2daa673f99",
+          "name": "Create AT&T Enterprise Product Order",
+          "request": {
+            "name": "Create AT&T Enterprise Product Order",
+            "description": {
+              "content": "Submit a product order for AT&T wireline business services including AVPN, IPBB, ATTPhone, ASE, or Internet Air for Business.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "alliance",
+                "productOrder",
+                "v1"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"orderItem\": [\n    {\n      \"id\": \"<string>\",\n      \"action\": \"<string>\",\n      \"productOffering\": {\n        \"name\": \"<string>\"\n      }\n    },\n    {\n      \"id\": \"<string>\",\n      \"action\": \"<string>\",\n      \"productOffering\": {\n        \"name\": \"<string>\"\n      }\n    }\n  ],\n  \"externalId\": \"<string>\",\n  \"description\": \"<string>\",\n  \"requestedStartDate\": \"<date>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e8c0d833-94fc-4561-a3e7-61890b5cd630",
+              "name": "Product order created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "alliance",
+                    "productOrder",
+                    "v1"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"externalId\": \"ext_order_001\",\n  \"description\": \"AVPN service order for Dallas HQ\",\n  \"requestedStartDate\": \"2026-05-01\",\n  \"orderItem\": [\n    {\n      \"id\": \"item_001\",\n      \"action\": \"add\",\n      \"productOffering\": {\n        \"name\": \"AVPN\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"ord_xyz789\",\n  \"externalId\": \"ext_order_001\",\n  \"state\": \"acknowledged\",\n  \"orderDate\": \"2026-04-19T10:00:00Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c90b3b1e-60ce-472b-9fa7-381f5a4ded94",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "alliance",
+                    "productOrder",
+                    "v1"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"externalId\": \"ext_order_001\",\n  \"description\": \"AVPN service order for Dallas HQ\",\n  \"requestedStartDate\": \"2026-05-01\",\n  \"orderItem\": [\n    {\n      \"id\": \"item_001\",\n      \"action\": \"add\",\n      \"productOffering\": {\n        \"name\": \"AVPN\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"reason\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://devex-web.att.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "enterprise"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://devex-web.att.com/oauth/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "31c04b1f-5905-4cbf-91da-692d71d91bc7",
+    "name": "AT&T Product Ordering API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Enterprise-grade APIs for AT&T wireline business services including service qualification, quoting, ordering, and provisioning. The Alliance API suite supports automated ordering of AVPN, IPBB, ATTPhone, ASE, and AT&T Internet Air for Business services.\n\nContact Support:\n Name: AT&T Alliance Developer Portal",
+      "type": "text/plain"
+    }
+  }
+}

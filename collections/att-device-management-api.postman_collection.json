@@ -1,0 +1,543 @@
+{
+  "item": [
+    {
+      "id": "9113300e-9a5f-4665-b2f9-6bc848f552d9",
+      "name": "Device Management",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1764cf21-136f-4952-a9f9-3ffc72c31140",
+          "name": "AT&T List Devices and SIMs",
+          "request": {
+            "name": "AT&T List Devices and SIMs",
+            "description": {
+              "content": "Retrieve device details and SIM information for subscribers. Corresponds to TMF 639 Resource Inventory API.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "resource"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "relatedParty.id",
+                  "value": "<string>",
+                  "description": "Filter resources by subscriber ID"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cd7adbe9-161d-4812-b0ca-8d8bc7d91140",
+              "name": "Resources successfully retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "resource"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "relatedParty.id",
+                      "value": "sub-a1b2c3d4"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"resource-500123\",\n    \"name\": \"Samsung Galaxy S25\",\n    \"resourceType\": \"device\",\n    \"status\": \"active\",\n    \"serialNumber\": \"IMEI-123456789012345\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "372cbe45-94b8-435f-8061-efc70c2e1503",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "resource"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "relatedParty.id",
+                      "value": "sub-a1b2c3d4"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"400\",\n  \"reason\": \"Bad Request\",\n  \"message\": \"Invalid input parameter value\",\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4cef4d66-732c-4d3d-9369-d5da316798ed",
+          "name": "AT&T Get Device or SIM Status",
+          "request": {
+            "name": "AT&T Get Device or SIM Status",
+            "description": {
+              "content": "Retrieve the current status and details of a specific device or SIM card. Corresponds to TMF 639 Resource Inventory API.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "resource",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Resource (device or SIM) ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9ea33075-5ae3-4ade-baca-4e8d3a0391f0",
+              "name": "Resource details retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "resource",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Resource (device or SIM) ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"resource-500123\",\n  \"name\": \"Samsung Galaxy S25\",\n  \"resourceType\": \"device\",\n  \"status\": \"active\",\n  \"serialNumber\": \"IMEI-123456789012345\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4d7b21aa-b5a3-4df3-868a-ed7595b2727f",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "resource",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Resource (device or SIM) ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"400\",\n  \"reason\": \"Bad Request\",\n  \"message\": \"Invalid input parameter value\",\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "613e0f5b-5c08-47f0-92c1-830d0440cf60",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "resource",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Resource (device or SIM) ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"400\",\n  \"reason\": \"Bad Request\",\n  \"message\": \"Invalid input parameter value\",\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0c8b3ee7-da15-47db-b3da-5e502fd08ce9",
+          "name": "AT&T Update Resource (Reset Voicemail Password)",
+          "request": {
+            "name": "AT&T Update Resource (Reset Voicemail Password)",
+            "description": {
+              "content": "Update a resource attribute, such as resetting the voicemail password for a subscriber's device. Corresponds to TMF 702 Resource Activation and Configuration API.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "resource",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Resource ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"resourceCharacteristic\": [\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9606a59b-a578-42b8-8ba3-7546957c4396",
+              "name": "Resource successfully updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "resource",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Resource ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"resourceCharacteristic\": [\n    {\n      \"name\": \"voicemailPassword\",\n      \"value\": \"1234\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"resource-500123\",\n  \"status\": \"active\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "84b6063f-3052-4dab-a203-1c878c204233",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "resource",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Resource ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"resourceCharacteristic\": [\n    {\n      \"name\": \"voicemailPassword\",\n      \"value\": \"1234\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"400\",\n  \"reason\": \"Bad Request\",\n  \"message\": \"Invalid input parameter value\",\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ce9c9d7e-0dc6-4a48-8065-2732937ebbaa",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "resource",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Resource ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"resourceCharacteristic\": [\n    {\n      \"name\": \"voicemailPassword\",\n      \"value\": \"1234\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"400\",\n  \"reason\": \"Bad Request\",\n  \"message\": \"Invalid input parameter value\",\n  \"status\": \"400\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://devex-web.att.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "0df1dcd2-ac3d-4eb9-a905-f515bbb96fde",
+    "name": "AT&T Device Management API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "A messaging API enabling applications to send, receive, update, and delete MMS and SMS messages on behalf of AT&T users with explicit OAuth consent. Supports messages to phone numbers, short codes, and email addresses across AT&T and other carriers with full inbox management and delta synchronization.",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,118 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AT&T Quality on Demand API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "QoD Sessions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "AT&T List QoD Sessions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.att.com/camara/qod/v1/sessions",
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.att.com/oauth/v4/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "List active QoD sessions for the authenticated application. Returns session details including status, QoS profile, and expiry."
+        },
+        {
+          "info": {
+            "name": "AT&T Create QoD Session",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.att.com/camara/qod/v1/sessions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.att.com/oauth/v4/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Create a Quality of Service on Demand session for a device. Requests enhanced network quality for a specified duration and QoS profile (e.g., LOW_LATENCY, THROUGHPUT_S/M/L, VOICE). Returns a session ID for monitoring and management."
+        },
+        {
+          "info": {
+            "name": "AT&T Get QoD Session",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.att.com/camara/qod/v1/sessions/:sessionId",
+            "params": [
+              {
+                "name": "sessionId",
+                "value": "",
+                "type": "path",
+                "description": "Unique QoD session identifier"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.att.com/oauth/v4/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieve details of a specific Quality of Service on Demand session, including its current status, QoS profile, and expiry time."
+        },
+        {
+          "info": {
+            "name": "AT&T Delete QoD Session",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.att.com/camara/qod/v1/sessions/:sessionId",
+            "params": [
+              {
+                "name": "sessionId",
+                "value": "",
+                "type": "path",
+                "description": "Unique QoD session identifier"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.att.com/oauth/v4/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Terminate an active Quality of Service on Demand session before its natural expiry. Returns network quality to normal levels."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

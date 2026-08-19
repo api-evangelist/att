@@ -1,0 +1,42 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AT&T Device Roaming API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Device Roaming",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "AT&T Get Device Roaming Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.att.com/camara/device-status/v1/roaming",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.att.com/oauth/v4/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Check whether a device is currently roaming on a partner network outside of the AT&T home network. Returns the roaming status and optionally the country the device is roaming in."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

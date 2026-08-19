@@ -1,0 +1,175 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AT&T Messages API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Messages",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "AT&T List Messages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.att.com/myMessages/v2/messages",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of messages to return"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of messages to skip for pagination"
+              },
+              {
+                "name": "isUnread",
+                "value": "",
+                "type": "query",
+                "description": "Filter to only unread messages when true"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://api.att.com/oauth/v4/authorize",
+              "accessTokenUrl": "https://api.att.com/oauth/v4/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieve a list of messages from the authenticated user's inbox. Supports filtering by message type, read status, and time range. Returns message metadata without the full message content."
+        },
+        {
+          "info": {
+            "name": "AT&T Send MMS or SMS Message",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.att.com/myMessages/v2/messages",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://api.att.com/oauth/v4/authorize",
+              "accessTokenUrl": "https://api.att.com/oauth/v4/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Send an MMS or SMS message on behalf of the authenticated user to one or more recipients. Supports SMS (up to 160 characters) and MMS (up to 1 MB with up to 21 attachments). Supports cross-carrier delivery and group messaging."
+        },
+        {
+          "info": {
+            "name": "AT&T Get Message Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.att.com/myMessages/v2/messages/:messageId",
+            "params": [
+              {
+                "name": "messageId",
+                "value": "",
+                "type": "path",
+                "description": "Unique message identifier"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://api.att.com/oauth/v4/authorize",
+              "accessTokenUrl": "https://api.att.com/oauth/v4/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieve the full details and content of a specific message by its ID, including text content, attachments, sender, recipients, and metadata."
+        },
+        {
+          "info": {
+            "name": "AT&T Update Message Properties",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.att.com/myMessages/v2/messages/:messageId",
+            "params": [
+              {
+                "name": "messageId",
+                "value": "",
+                "type": "path",
+                "description": "Unique message identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://api.att.com/oauth/v4/authorize",
+              "accessTokenUrl": "https://api.att.com/oauth/v4/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Update the properties of a message, such as marking it as read or unread. Only the isUnread field can be modified."
+        },
+        {
+          "info": {
+            "name": "AT&T Delete Message",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.att.com/myMessages/v2/messages/:messageId",
+            "params": [
+              {
+                "name": "messageId",
+                "value": "",
+                "type": "path",
+                "description": "Unique message identifier"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://api.att.com/oauth/v4/authorize",
+              "accessTokenUrl": "https://api.att.com/oauth/v4/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Permanently delete a specific message from the user's inbox by its ID. This action cannot be undone."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

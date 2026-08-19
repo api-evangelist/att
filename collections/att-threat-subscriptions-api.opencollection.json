@@ -1,0 +1,42 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AT&T Threat Subscriptions API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Threat Subscriptions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "AT&T Subscribe to Threat Alerts",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.att.com/network/threat-detection/v1/threats/subscribe",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.att.com/oauth/v4/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Subscribe to real-time threat and anomaly detection alerts for a device or set of devices. Notifications are delivered to the specified webhook URL when threat conditions are detected."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

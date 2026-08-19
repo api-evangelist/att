@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AT&T Subscriber Management API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Subscriber Management",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "AT&T Get Subscriber Profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://devex-web.att.com/product/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Subscriber or product ID"
+              }
+            ]
+          },
+          "docs": "Retrieve the product (subscriber profile) details for a specific subscriber including their plan, features, and service options. Corresponds to TMF 637 Product Inventory Management API."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

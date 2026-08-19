@@ -1,0 +1,208 @@
+{
+  "item": [
+    {
+      "id": "982835f9-a25c-42f9-9814-2ec8d6d874ca",
+      "name": "Service Qualification",
+      "description": {
+        "content": "Check service availability at a location",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d690704b-4246-429c-a2ca-7c447a3697ae",
+          "name": "Check AT&T Service Qualification",
+          "request": {
+            "name": "Check AT&T Service Qualification",
+            "description": {
+              "content": "Determine which AT&T wireline services (AVPN, IPBB, ATTPhone, ASE, Internet Air for Business) are available at a given location.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "alliance",
+                "serviceQualification",
+                "v1",
+                "check"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"address\": {\n    \"streetAddress\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"country\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "735843b2-d5e5-49c1-8615-95509fcdc918",
+              "name": "Service qualification results",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "alliance",
+                    "serviceQualification",
+                    "v1",
+                    "check"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"address\": {\n    \"streetAddress\": \"208 S Akard St\",\n    \"city\": \"Dallas\",\n    \"state\": \"TX\",\n    \"postalCode\": \"75202\",\n    \"country\": \"US\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"qualificationId\": \"qual_abc123\",\n  \"qualificationDate\": \"2026-04-19\",\n  \"serviceQualificationItems\": [\n    {\n      \"id\": \"item_001\",\n      \"state\": \"done\",\n      \"serviceSpecification\": {\n        \"name\": \"AVPN\"\n      },\n      \"eligibilityUnavailabilityReason\": null\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a3f81507-f2c5-45ce-85a8-0d3a8df211f4",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "alliance",
+                    "serviceQualification",
+                    "v1",
+                    "check"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"address\": {\n    \"streetAddress\": \"208 S Akard St\",\n    \"city\": \"Dallas\",\n    \"state\": \"TX\",\n    \"postalCode\": \"75202\",\n    \"country\": \"US\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"reason\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://devex-web.att.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "enterprise"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://devex-web.att.com/oauth/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "8dede90e-c762-47b2-8636-01af85342621",
+    "name": "AT&T Service Qualification API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Enterprise-grade APIs for AT&T wireline business services including service qualification, quoting, ordering, and provisioning. The Alliance API suite supports automated ordering of AVPN, IPBB, ATTPhone, ASE, and AT&T Internet Air for Business services.\n\nContact Support:\n Name: AT&T Alliance Developer Portal",
+      "type": "text/plain"
+    }
+  }
+}

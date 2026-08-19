@@ -1,0 +1,101 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AT&T SMS Messaging API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "SMS Messaging",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "AT&T Send SMS Message",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.att.com/sms/v3/messaging/outbox",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://api.att.com/oauth/v4/authorize",
+              "accessTokenUrl": "https://api.att.com/oauth/v4/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Send an SMS message to one or more recipients using a registered AT&T short code. Supports up to 50 recipients per request and messages up to 4096 characters. Optionally request delivery status notifications via callback."
+        },
+        {
+          "info": {
+            "name": "AT&T Get SMS Delivery Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.att.com/sms/v3/messaging/outbox/:messageId",
+            "params": [
+              {
+                "name": "messageId",
+                "value": "",
+                "type": "path",
+                "description": "The unique message identifier returned by the Send SMS operation"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://api.att.com/oauth/v4/authorize",
+              "accessTokenUrl": "https://api.att.com/oauth/v4/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieve the delivery status of a previously sent SMS message using its message ID. Returns delivery status such as DeliveredToNetwork, DeliveredToTerminal, or DeliveryImpossible."
+        },
+        {
+          "info": {
+            "name": "AT&T Get Inbound SMS Messages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.att.com/sms/v3/messaging/inbox/:registrationId",
+            "params": [
+              {
+                "name": "registrationId",
+                "value": "",
+                "type": "path",
+                "description": "The short code registration ID from the AT&T developer account"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://api.att.com/oauth/v4/authorize",
+              "accessTokenUrl": "https://api.att.com/oauth/v4/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Poll for inbound SMS messages sent to the registered short code. Returns messages received since last poll. Short code registration ID is obtained from the AT&T developer account."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

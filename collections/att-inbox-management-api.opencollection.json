@@ -1,0 +1,68 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AT&T Inbox Management API",
+    "version": "2.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Inbox Management",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "AT&T Create Message Index Cache",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.att.com/myMessages/v2/messages/index",
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://api.att.com/oauth/v4/authorize",
+              "accessTokenUrl": "https://api.att.com/oauth/v4/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Create or refresh the server-side message index cache for the authenticated user. This index must be created before delta synchronization can be used. Returns a state object for subsequent delta sync calls."
+        },
+        {
+          "info": {
+            "name": "AT&T Get Inbox Changes (Delta Sync)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.att.com/myMessages/v2/delta",
+            "params": [
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "State token from the previous delta sync or index creation"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "authorization_code",
+              "authorizationUrl": "https://api.att.com/oauth/v4/authorize",
+              "accessTokenUrl": "https://api.att.com/oauth/v4/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Retrieve changes to the user's inbox since the last synchronization using a state token. Returns added, updated, and deleted messages since the previous state. Requires a message index to be created first."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
