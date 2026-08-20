@@ -51,6 +51,10 @@ apis:
   humanURL: https://developer.att.com/oauth-2
   baseURL: https://api.att.com
   tags:
+  - Authentication
+  - Authorization
+  - Security
+  tags_raw:
   - OAuth
   - Authentication
   - Authorization
@@ -163,6 +167,8 @@ apis:
   humanURL: https://developer.att.com/in-app-messaging/docs
   baseURL: https://api.att.com
   tags:
+  - Message
+  tags_raw:
   - Messages
   properties:
   - type: OpenAPI
