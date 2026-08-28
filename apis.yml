@@ -7,6 +7,18 @@ description: 'AT&T Inc. is a multinational telecommunications holding company pr
   Program exposing GSMA CAMARA network APIs — SIM swap, device status, number verification, quality on demand, network insights
   and mobility threat detection.'
 type: Index
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: enterprise
   onboarding: approval
