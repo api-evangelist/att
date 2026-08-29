@@ -1,0 +1,215 @@
+openapi: 3.2.0
+info:
+  title: AT&T 5G Network Quality on Demand API
+  description: CAMARA-standard 5G network APIs available through the AT&T Developer Hub and Network API Accelerator Program. Includes SIM Swap detection, Device Status, Number Verification, Quality on Demand, Network Insights, and Mobility Threat and Anomaly Detection APIs.
+  version: 1.0.0
+  contact:
+    name: AT&T Developer Hub
+    url: https://devex-web.att.com/developer-hub/
+  termsOfService: https://www.att.com/gen/general?pid=11561
+servers:
+- url: https://api.att.com/camara
+  description: AT&T CAMARA Network API Server
+security:
+- oauth2: []
+tags:
+- name: Quality on Demand
+  description: 5G QoS session management
+paths:
+  /qod/v1/sessions:
+    post:
+      operationId: createQodSession
+      summary: Create AT&T Quality on Demand Session
+      description: Create a Quality on Demand session to temporarily enhance QoS for a device on the AT&T 5G network.
+      tags:
+      - Quality on Demand
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateSessionRequest'
+            examples:
+              lowLatency:
+                summary: Low Latency Session
+                value:
+                  phoneNumber: '+12125551234'
+                  qosProfile: LOW_LATENCY
+                  duration: 3600
+      responses:
+        '201':
+          description: QoD session created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SessionInfo'
+              examples:
+                created:
+                  summary: Session Created
+                  value:
+                    sessionId: sess_abc123
+                    qosProfile: LOW_LATENCY
+                    qosStatus: REQUESTED
+                    expiresAt: '2026-04-19T11:00:00Z'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    get:
+      operationId: listQodSessions
+      summary: List AT&T Quality on Demand Sessions
+      description: Retrieve all active Quality on Demand sessions for the current application.
+      tags:
+      - Quality on Demand
+      responses:
+        '200':
+          description: List of active QoD sessions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SessionInfo'
+              examples:
+                sessions:
+                  summary: Active Sessions
+                  value:
+                  - sessionId: sess_abc123
+                    qosProfile: LOW_LATENCY
+                    qosStatus: AVAILABLE
+                    expiresAt: '2026-04-19T11:00:00Z'
+  /qod/v1/sessions/{sessionId}:
+    get:
+      operationId: getQodSession
+      summary: Get AT&T Quality on Demand Session
+      description: Retrieve the status and details of a specific Quality on Demand session.
+      tags:
+      - Quality on Demand
+      parameters:
+      - name: sessionId
+        in: path
+        required: true
+        schema:
+          type: string
+        examples:
+          example:
+            value: sess_abc123
+      responses:
+        '200':
+          description: QoD session details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SessionInfo'
+              examples:
+                active:
+                  summary: Active Session
+                  value:
+                    sessionId: sess_abc123
+                    qosProfile: LOW_LATENCY
+                    qosStatus: AVAILABLE
+                    expiresAt: '2026-04-19T11:00:00Z'
+        '404':
+          description: Session not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    delete:
+      operationId: deleteQodSession
+      summary: Delete AT&T Quality on Demand Session
+      description: Terminate an active Quality on Demand session and restore normal network quality for the device.
+      tags:
+      - Quality on Demand
+      parameters:
+      - name: sessionId
+        in: path
+        required: true
+        schema:
+          type: string
+        examples:
+          example:
+            value: sess_abc123
+      responses:
+        '204':
+          description: Session terminated successfully
+        '404':
+          description: Session not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    CreateSessionRequest:
+      type: object
+      required:
+      - phoneNumber
+      - qosProfile
+      - duration
+      properties:
+        phoneNumber:
+          type: string
+          description: E.164 format phone number for the device
+        qosProfile:
+          type: string
+          enum:
+          - LOW_LATENCY
+          - THROUGHPUT_S
+          - THROUGHPUT_M
+          - THROUGHPUT_L
+          - VOICE
+          description: QoS profile to apply
+        duration:
+          type: integer
+          description: Session duration in seconds
+          minimum: 60
+          maximum: 86400
+    ErrorResponse:
+      type: object
+      properties:
+        status:
+          type: integer
+          description: HTTP status code
+        code:
+          type: string
+          description: CAMARA error code
+        message:
+          type: string
+          description: Error description
+    SessionInfo:
+      type: object
+      properties:
+        sessionId:
+          type: string
+          description: Unique QoD session identifier
+        qosProfile:
+          type: string
+          enum:
+          - LOW_LATENCY
+          - THROUGHPUT_S
+          - THROUGHPUT_M
+          - THROUGHPUT_L
+          - VOICE
+          description: Applied QoS profile
+        qosStatus:
+          type: string
+          enum:
+          - REQUESTED
+          - AVAILABLE
+          - UNAVAILABLE
+          description: Current session status
+        expiresAt:
+          type: string
+          format: date-time
+          description: Session expiration timestamp
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.att.com/oauth/v4/token
+          scopes:
+            network: Access AT&T network APIs

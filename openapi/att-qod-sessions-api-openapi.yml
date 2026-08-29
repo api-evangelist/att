@@ -1,7 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: AT&T Quality on Demand API
-  description: CAMARA-standard API that checks the connectivity status of user equipment, including roaming information. Enables applications to determine if a device is reachable, connected, and whether it is roaming on a partner network. Part of the AT&T Network API Accelerator Program.
+  title: AT&T Quality on Demand QoD Sessions API
+  description: CAMARA-standard Quality of Service on Demand (QoD) API that allows applications to temporarily request enhanced network quality for a specific device session. Supports requesting prioritized throughput, reduced latency, or guaranteed bandwidth for time-sensitive operations like video streaming, gaming, AR/VR, remote surgery, or industrial automation on AT&T's 5G network.
   version: '1.0'
   contact:
     url: https://devex-web.att.com/developer-hub/docs/network-api-accelerator-program
@@ -215,6 +215,74 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    CreateSessionRequest:
+      type: object
+      required:
+      - device
+      - qosProfile
+      properties:
+        device:
+          $ref: '#/components/schemas/Device'
+        qosProfile:
+          type: string
+          description: Requested QoS profile
+          enum:
+          - LOW_LATENCY
+          - THROUGHPUT_S
+          - THROUGHPUT_M
+          - THROUGHPUT_L
+          - VOICE
+          example: LOW_LATENCY
+        duration:
+          type: integer
+          description: Session duration in seconds (default and max vary by profile)
+          minimum: 1
+          maximum: 86400
+          example: 3600
+        notificationUrl:
+          type: string
+          format: uri
+          description: Webhook URL to receive QoS status change notifications
+          example: https://webhook.example.com/qod-events
+        notificationAuthToken:
+          type: string
+          description: Bearer token for webhook notification authentication
+          example: webhook-token-abc123
+    ErrorInfo:
+      type: object
+      properties:
+        status:
+          type: integer
+          description: HTTP status code
+          example: 400
+        code:
+          type: string
+          description: CAMARA error code
+          example: INVALID_ARGUMENT
+        message:
+          type: string
+          description: Human-readable error message
+          example: Invalid QoS profile specified
+    Device:
+      type: object
+      description: Device identifier for QoD session
+      properties:
+        phoneNumber:
+          type: string
+          description: Mobile phone number in E.164 format
+          example: '+12125551234'
+        ipv4Address:
+          type: object
+          description: Device IPv4 address
+          properties:
+            publicAddress:
+              type: string
+              description: Public IPv4 address
+              example: 203.0.113.42
+            privateAddress:
+              type: string
+              description: Private IPv4 address
+              example: 10.0.0.5
     SessionInfo:
       type: object
       properties:
@@ -256,74 +324,6 @@ components:
           - AVAILABLE
           - UNAVAILABLE
           example: AVAILABLE
-    Device:
-      type: object
-      description: Device identifier for QoD session
-      properties:
-        phoneNumber:
-          type: string
-          description: Mobile phone number in E.164 format
-          example: '+12125551234'
-        ipv4Address:
-          type: object
-          description: Device IPv4 address
-          properties:
-            publicAddress:
-              type: string
-              description: Public IPv4 address
-              example: 203.0.113.42
-            privateAddress:
-              type: string
-              description: Private IPv4 address
-              example: 10.0.0.5
-    ErrorInfo:
-      type: object
-      properties:
-        status:
-          type: integer
-          description: HTTP status code
-          example: 400
-        code:
-          type: string
-          description: CAMARA error code
-          example: INVALID_ARGUMENT
-        message:
-          type: string
-          description: Human-readable error message
-          example: Invalid QoS profile specified
-    CreateSessionRequest:
-      type: object
-      required:
-      - device
-      - qosProfile
-      properties:
-        device:
-          $ref: '#/components/schemas/Device'
-        qosProfile:
-          type: string
-          description: Requested QoS profile
-          enum:
-          - LOW_LATENCY
-          - THROUGHPUT_S
-          - THROUGHPUT_M
-          - THROUGHPUT_L
-          - VOICE
-          example: LOW_LATENCY
-        duration:
-          type: integer
-          description: Session duration in seconds (default and max vary by profile)
-          minimum: 1
-          maximum: 86400
-          example: 3600
-        notificationUrl:
-          type: string
-          format: uri
-          description: Webhook URL to receive QoS status change notifications
-          example: https://webhook.example.com/qod-events
-        notificationAuthToken:
-          type: string
-          description: Bearer token for webhook notification authentication
-          example: webhook-token-abc123
   securitySchemes:
     oauth2:
       type: oauth2

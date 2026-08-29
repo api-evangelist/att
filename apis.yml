@@ -58,8 +58,10 @@ specificationVersion: '0.23'
 apis:
 - aid: att:att-oauth-api
   name: AT&T OAuth 2.0 API
-  description: AT&T OAuth 2.0 authentication API providing access tokens for all AT&T REST APIs. Supports Authorization
-    Code, Client Credentials, and Refresh Token grant types. Scopes include ADS, MMS, SMS, SPEECH, STTC, and TTS.
+  description: >-
+    AT&T OAuth 2.0 authentication API providing access tokens for all AT&T REST APIs. Supports Authorization
+    Code, Client Credentials, and Refresh Token grant types. Scopes include ADS, MMS, SMS, SPEECH, STTC,
+    and TTS.
   humanURL: https://developer.att.com/oauth-2
   baseURL: https://api.att.com
   tags:
@@ -78,9 +80,11 @@ apis:
     url: https://developer.att.com/oauth-2/docs
 - aid: att:att-alliance-wireline-apis
   name: AT&T Alliance Wireline APIs
-  description: Wireline business APIs enabling partners to expedite quoting, service qualification, and ordering of AT&T
-    wireline products. Includes Quick Quote, Product Catalog, Service Qualification, Price Offer, Wireline Ordering, Order
-    Status, AIAB (AT&T Internet Air for Business) Ordering, and Address Search APIs.
+  description: >-
+    Wireline business APIs enabling partners to expedite quoting, service qualification, and ordering
+    of AT&T wireline products. Includes Quick Quote, Product Catalog, Service Qualification, Price Offer,
+    Wireline Ordering, Order Status, AIAB (AT&T Internet Air for Business) Ordering, and Address Search
+    APIs.
   humanURL: https://devex-web.att.com/alliance
   baseURL: https://devex-web.att.com
   tags:
@@ -104,17 +108,13 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/att-authentication-api-openapi.yml
-  - &id005
-    type: Documentation
+  - type: Documentation
     url: https://developer.att.com/sms/docs
-  - &id006
-    type: APIReference
+  - type: APIReference
     url: https://developer.att.com/sms/docs/v2
-  - &id001
-    type: Authentication
+  - type: Authentication
     url: https://developer.att.com/oauth-2/docs
-  - &id007
-    type: GettingStarted
+  - type: GettingStarted
     url: https://developer.att.com/sms
 - aid: att:att-balance-management-api
   name: AT&T Balance Management API
@@ -126,13 +126,12 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/att-balance-management-api-openapi.yml
-  - &id002
-    type: Documentation
+  - type: Documentation
     url: https://devex-web.att.com/mvnx/docs/mvnx-quickstart
-  - &id003
-    type: GettingStarted
+  - type: GettingStarted
     url: https://devex-web.att.com/mvnx/docs/mvnx-quickstart
-  - *id001
+  - type: Authentication
+    url: https://developer.att.com/oauth-2/docs
 - aid: att:att-device-management-api
   name: AT&T Device Management API
   description: The Device Management API from AT&T — 2 operation(s) for device management.
@@ -143,9 +142,12 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/att-device-management-api-openapi.yml
-  - *id002
-  - *id003
-  - *id001
+  - type: Documentation
+    url: https://devex-web.att.com/mvnx/docs/mvnx-quickstart
+  - type: GettingStarted
+    url: https://devex-web.att.com/mvnx/docs/mvnx-quickstart
+  - type: Authentication
+    url: https://developer.att.com/oauth-2/docs
 - aid: att:att-geographic-sites-api
   name: AT&T Geographic Sites API
   description: The Geographic Sites API from AT&T — 1 operation(s) for geographic sites.
@@ -156,9 +158,12 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/att-geographic-sites-api-openapi.yml
-  - *id002
-  - *id003
-  - *id001
+  - type: Documentation
+    url: https://devex-web.att.com/mvnx/docs/mvnx-quickstart
+  - type: GettingStarted
+    url: https://devex-web.att.com/mvnx/docs/mvnx-quickstart
+  - type: Authentication
+    url: https://developer.att.com/oauth-2/docs
 - aid: att:att-inbox-management-api
   name: AT&T Inbox Management API
   description: The Inbox Management API from AT&T — 2 operation(s) for inbox management.
@@ -169,10 +174,10 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/att-inbox-management-api-openapi.yml
-  - &id004
-    type: Documentation
+  - type: Documentation
     url: https://developer.att.com/in-app-messaging/docs
-  - *id001
+  - type: Authentication
+    url: https://developer.att.com/oauth-2/docs
 - aid: att:att-messages-api
   name: AT&T Messages API
   description: The Messages API from AT&T — 2 operation(s) for messages.
@@ -185,8 +190,10 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/att-messages-api-openapi.yml
-  - *id004
-  - *id001
+  - type: Documentation
+    url: https://developer.att.com/in-app-messaging/docs
+  - type: Authentication
+    url: https://developer.att.com/oauth-2/docs
 - aid: att:att-number-management-api
   name: AT&T Number Management API
   description: The Number Management API from AT&T — 2 operation(s) for number management.
@@ -197,9 +204,12 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/att-number-management-api-openapi.yml
-  - *id002
-  - *id003
-  - *id001
+  - type: Documentation
+    url: https://devex-web.att.com/mvnx/docs/mvnx-quickstart
+  - type: GettingStarted
+    url: https://devex-web.att.com/mvnx/docs/mvnx-quickstart
+  - type: Authentication
+    url: https://developer.att.com/oauth-2/docs
 - aid: att:att-porting-api
   name: AT&T Porting API
   description: The Porting API from AT&T — 3 operation(s) for porting.
@@ -210,9 +220,12 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/att-porting-api-openapi.yml
-  - *id002
-  - *id003
-  - *id001
+  - type: Documentation
+    url: https://devex-web.att.com/mvnx/docs/mvnx-quickstart
+  - type: GettingStarted
+    url: https://devex-web.att.com/mvnx/docs/mvnx-quickstart
+  - type: Authentication
+    url: https://developer.att.com/oauth-2/docs
 - aid: att:att-product-orders-api
   name: AT&T Product Orders API
   description: The Product Orders API from AT&T — 1 operation(s) for product orders.
@@ -223,9 +236,12 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/att-product-orders-api-openapi.yml
-  - *id002
-  - *id003
-  - *id001
+  - type: Documentation
+    url: https://devex-web.att.com/mvnx/docs/mvnx-quickstart
+  - type: GettingStarted
+    url: https://devex-web.att.com/mvnx/docs/mvnx-quickstart
+  - type: Authentication
+    url: https://developer.att.com/oauth-2/docs
 - aid: att:att-service-management-api
   name: AT&T Service Management API
   description: The Service Management API from AT&T — 1 operation(s) for service management.
@@ -236,9 +252,12 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/att-service-management-api-openapi.yml
-  - *id002
-  - *id003
-  - *id001
+  - type: Documentation
+    url: https://devex-web.att.com/mvnx/docs/mvnx-quickstart
+  - type: GettingStarted
+    url: https://devex-web.att.com/mvnx/docs/mvnx-quickstart
+  - type: Authentication
+    url: https://developer.att.com/oauth-2/docs
 - aid: att:att-sms-messaging-api
   name: AT&T SMS Messaging API
   description: The SMS Messaging API from AT&T — 3 operation(s) for sms messaging.
@@ -249,10 +268,14 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/att-sms-messaging-api-openapi.yml
-  - *id005
-  - *id006
-  - *id001
-  - *id007
+  - type: Documentation
+    url: https://developer.att.com/sms/docs
+  - type: APIReference
+    url: https://developer.att.com/sms/docs/v2
+  - type: Authentication
+    url: https://developer.att.com/oauth-2/docs
+  - type: GettingStarted
+    url: https://developer.att.com/sms
 - aid: att:att-subscriber-management-api
   name: AT&T Subscriber Management API
   description: The Subscriber Management API from AT&T — 1 operation(s) for subscriber management.
@@ -263,14 +286,18 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/att-subscriber-management-api-openapi.yml
-  - *id002
-  - *id003
-  - *id001
+  - type: Documentation
+    url: https://devex-web.att.com/mvnx/docs/mvnx-quickstart
+  - type: GettingStarted
+    url: https://devex-web.att.com/mvnx/docs/mvnx-quickstart
+  - type: Authentication
+    url: https://developer.att.com/oauth-2/docs
 - aid: att:att-mvno-apis
   name: AT&T MVNO APIs
-  description: TM Forum-aligned APIs for mobile virtual network operators (MVNOs) on the AT&T network. The MVNX API suite
-    covers subscriber activation, number portability, device management, service lifecycle management, and balance management
-    following TMF open standards.
+  description: >-
+    TM Forum-aligned APIs for mobile virtual network operators (MVNOs) on the AT&T network. The MVNX API
+    suite covers subscriber activation, number portability, device management, service lifecycle management,
+    and balance management following TMF open standards.
   humanURL: https://devex-web.att.com/mvnx
   baseURL: https://devex-web.att.com
   tags:
@@ -285,7 +312,8 @@ apis:
     url: https://devex-web.att.com/mvnx/docs/mvnx-quickstart
 - aid: att:att-cloud-voice-apis
   name: AT&T Cloud Voice APIs
-  description: REST APIs for AT&T Business Voice and Cloud Voice services enabling partners to manage service ordering,
+  description: >-
+    REST APIs for AT&T Business Voice and Cloud Voice services enabling partners to manage service ordering,
     provisioning, and administration for AT&T's enterprise voice and cloud communication products.
   humanURL: https://devex-web.att.com/business-voice-cloud-voice
   baseURL: https://devex-web.att.com
@@ -299,9 +327,10 @@ apis:
     url: https://devex-web.att.com/business-voice-cloud-voice
 - aid: att:att-ebonding-apis
   name: AT&T eBonding APIs
-  description: Seamless API integration with AT&T's wireless and wireline IT and ordering systems. eBonding APIs enable
-    enterprise partners and resellers to integrate their BSS/OSS systems directly with AT&T's backend systems for automated
-    order management and status updates.
+  description: >-
+    Seamless API integration with AT&T's wireless and wireline IT and ordering systems. eBonding APIs
+    enable enterprise partners and resellers to integrate their BSS/OSS systems directly with AT&T's backend
+    systems for automated order management and status updates.
   humanURL: https://devex-web.att.com/ebonding-common
   baseURL: https://devex-web.att.com
   tags:
@@ -323,13 +352,12 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/att-order-management-api-openapi.yml
-  - &id008
-    type: Documentation
+  - type: Documentation
     url: https://devex-web.att.com/alliance
-  - &id009
-    type: GettingStarted
+  - type: GettingStarted
     url: https://devex-web.att.com/order/docs/get-started-with-ordering-api
-  - *id001
+  - type: Authentication
+    url: https://developer.att.com/oauth-2/docs
 - aid: att:att-product-ordering-api
   name: AT&T Product Ordering API
   description: Place and manage service orders
@@ -340,9 +368,12 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/att-product-ordering-api-openapi.yml
-  - *id008
-  - *id009
-  - *id001
+  - type: Documentation
+    url: https://devex-web.att.com/alliance
+  - type: GettingStarted
+    url: https://devex-web.att.com/order/docs/get-started-with-ordering-api
+  - type: Authentication
+    url: https://developer.att.com/oauth-2/docs
 - aid: att:att-service-qualification-api
   name: AT&T Service Qualification API
   description: Check service availability at a location
@@ -353,9 +384,12 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/att-service-qualification-api-openapi.yml
-  - *id008
-  - *id009
-  - *id001
+  - type: Documentation
+    url: https://devex-web.att.com/alliance
+  - type: GettingStarted
+    url: https://devex-web.att.com/order/docs/get-started-with-ordering-api
+  - type: Authentication
+    url: https://developer.att.com/oauth-2/docs
 - aid: att:att-device-connectivity-api
   name: AT&T Device Connectivity API
   description: The Device Connectivity API from AT&T — 1 operation(s) for device connectivity.
@@ -468,6 +502,56 @@ apis:
     url: https://devex-web.att.com/developer-hub/
   - type: GettingStarted
     url: https://devex-web.att.com/developer-hub/docs/network-api-accelerator-program
+- aid: att:att-device-status-api
+  name: AT&T Device Status API
+  description: Device connectivity and roaming status
+  humanURL: https://developer.att.com/oauth-2
+  baseURL: https://api.att.com
+  tags:
+  - Device Status
+  properties:
+  - type: OpenAPI
+    url: openapi/att-device-status-api-openapi.yml
+- aid: att:att-network-insights-api
+  name: AT&T Network Insights API
+  description: Network performance metrics
+  humanURL: https://developer.att.com/oauth-2
+  baseURL: https://api.att.com
+  tags:
+  - Network Insights
+  properties:
+  - type: OpenAPI
+    url: openapi/att-network-insights-api-openapi.yml
+- aid: att:att-oauth-api
+  name: AT&T O Auth API
+  description: AT&T OAuth 2.0 authentication
+  humanURL: https://developer.att.com/oauth-2
+  baseURL: https://api.att.com
+  tags:
+  - OAuth
+  properties:
+  - type: OpenAPI
+    url: openapi/att-oauth-api-openapi.yml
+- aid: att:att-quality-on-demand-api
+  name: AT&T Quality on Demand API
+  description: 5G QoS session management
+  humanURL: https://developer.att.com/oauth-2
+  baseURL: https://api.att.com
+  tags:
+  - Quality on Demand
+  properties:
+  - type: OpenAPI
+    url: openapi/att-quality-on-demand-api-openapi.yml
+- aid: att:att-sms-api
+  name: AT&T SMS API
+  description: Short Message Service operations
+  humanURL: https://developer.att.com/oauth-2
+  baseURL: https://api.att.com
+  tags:
+  - SMS
+  properties:
+  - type: OpenAPI
+    url: openapi/att-sms-api-openapi.yml
 common:
 - type: PostmanWorkspace
   url: https://www.postman.com/kinlaneapi/att/overview

@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: AT&T Device Roaming API
+  title: AT&T Device Status Device Roaming API
   description: CAMARA-standard API that checks the connectivity status of user equipment, including roaming information. Enables applications to determine if a device is reachable, connected, and whether it is roaming on a partner network. Part of the AT&T Network API Accelerator Program.
   version: '1.0'
   contact:
@@ -74,13 +74,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    DeviceRoamingRequest:
-      type: object
-      required:
-      - device
-      properties:
-        device:
-          $ref: '#/components/schemas/Device'
     Device:
       type: object
       description: Device identifier for connectivity status queries
@@ -109,6 +102,27 @@ components:
           type: string
           description: Network access identifier (alternative to phoneNumber)
           example: user@example.com
+    DeviceRoamingStatus:
+      type: object
+      properties:
+        roaming:
+          type: boolean
+          description: Whether the device is roaming
+          example: false
+        countryCode:
+          type:
+          - integer
+          - 'null'
+          description: Country code where device is roaming (ITU-T E.164)
+          example: null
+        countryName:
+          type:
+          - array
+          - 'null'
+          description: Country name(s) where device is roaming
+          items:
+            type: string
+          example: null
     ErrorInfo:
       type: object
       properties:
@@ -124,25 +138,13 @@ components:
           type: string
           description: Human-readable error message
           example: Invalid device identifier provided
-    DeviceRoamingStatus:
+    DeviceRoamingRequest:
       type: object
+      required:
+      - device
       properties:
-        roaming:
-          type: boolean
-          description: Whether the device is roaming
-          example: false
-        countryCode:
-          type: integer
-          nullable: true
-          description: Country code where device is roaming (ITU-T E.164)
-          example: null
-        countryName:
-          type: array
-          nullable: true
-          description: Country name(s) where device is roaming
-          items:
-            type: string
-          example: null
+        device:
+          $ref: '#/components/schemas/Device'
   securitySchemes:
     oauth2:
       type: oauth2

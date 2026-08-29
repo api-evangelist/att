@@ -1,0 +1,265 @@
+openapi: 3.2.0
+info:
+  title: AT&T Wireless SMS API
+  description: Developer APIs for AT&T's wireless network capabilities including SMS messaging, MMS messaging, OAuth authentication, speech-to-text, text-to-speech, in-app messaging, and advertising APIs for consumer and business applications.
+  version: 1.0.0
+  contact:
+    name: AT&T Developer Support
+    url: https://developer.att.com/support
+  termsOfService: https://www.att.com/gen/general?pid=11561
+servers:
+- url: https://api.att.com
+  description: AT&T API Production Server
+security:
+- oauth2: []
+tags:
+- name: SMS
+  description: Short Message Service operations
+paths:
+  /sms/v3/messaging/outbox:
+    post:
+      operationId: sendSms
+      summary: Send AT&T SMS Message
+      description: Send an SMS message to one or more recipients on the AT&T network.
+      tags:
+      - SMS
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SendSmsRequest'
+            examples:
+              singleRecipient:
+                summary: Single Recipient SMS
+                value:
+                  outboundSMSRequest:
+                    address:
+                    - tel:+12125551234
+                    message: Hello from AT&T Developer API
+      responses:
+        '201':
+          description: SMS sent successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SendSmsResponse'
+              examples:
+                success:
+                  summary: SMS Sent
+                  value:
+                    outboundSMSResponse:
+                      messageId: msg_abc123
+                      resourceReference:
+                        resourceURL: https://api.att.com/sms/v3/messaging/outbox/msg_abc123
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /sms/v3/messaging/outbox/{messageId}:
+    get:
+      operationId: getSmsDeliveryStatus
+      summary: Get AT&T SMS Delivery Status
+      description: Retrieve the delivery status of a previously sent SMS message.
+      tags:
+      - SMS
+      parameters:
+      - name: messageId
+        in: path
+        required: true
+        description: The unique identifier of the SMS message
+        schema:
+          type: string
+        examples:
+          example:
+            value: msg_abc123
+      responses:
+        '200':
+          description: Delivery status retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeliveryInfoResponse'
+              examples:
+                delivered:
+                  summary: Message Delivered
+                  value:
+                    deliveryInfoList:
+                      deliveryInfo:
+                      - address: tel:+12125551234
+                        deliveryStatus: DeliveredToTerminal
+        '404':
+          description: Message not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /sms/v3/messaging/inbox/{registrationId}:
+    get:
+      operationId: getInboundSms
+      summary: Get AT&T Inbound SMS Messages
+      description: Retrieve inbound SMS messages for a registered short code or long code.
+      tags:
+      - SMS
+      parameters:
+      - name: registrationId
+        in: path
+        required: true
+        description: The registration ID for the inbound message endpoint
+        schema:
+          type: string
+        examples:
+          example:
+            value: reg_xyz789
+      responses:
+        '200':
+          description: Inbound messages retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InboundSmsResponse'
+              examples:
+                messages:
+                  summary: Inbound Messages
+                  value:
+                    inboundSMSMessageList:
+                      inboundSMSMessage:
+                      - messageId: in_msg_001
+                        message: Reply text
+                        senderAddress: tel:+12125559876
+                        dateTime: '2026-04-19T10:00:00Z'
+        '404':
+          description: Registration not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    InboundSmsResponse:
+      type: object
+      properties:
+        inboundSMSMessageList:
+          type: object
+          properties:
+            inboundSMSMessage:
+              type: array
+              items:
+                $ref: '#/components/schemas/InboundSmsMessage'
+    SendSmsRequest:
+      type: object
+      required:
+      - outboundSMSRequest
+      properties:
+        outboundSMSRequest:
+          type: object
+          required:
+          - address
+          - message
+          properties:
+            address:
+              type: array
+              items:
+                type: string
+              description: 'List of recipient phone numbers in tel: URI format'
+            message:
+              type: string
+              maxLength: 160
+              description: SMS message text content
+            senderAddress:
+              type: string
+              description: Sender address or short code
+    SendSmsResponse:
+      type: object
+      properties:
+        outboundSMSResponse:
+          type: object
+          properties:
+            messageId:
+              type: string
+              description: Unique message identifier
+            resourceReference:
+              type: object
+              properties:
+                resourceURL:
+                  type: string
+                  format: uri
+                  description: URL to check message status
+    ErrorResponse:
+      type: object
+      properties:
+        RequestError:
+          type: object
+          properties:
+            ServiceException:
+              type: object
+              properties:
+                MessageId:
+                  type: string
+                Text:
+                  type: string
+                Variables:
+                  type: string
+    DeliveryInfoResponse:
+      type: object
+      properties:
+        deliveryInfoList:
+          type: object
+          properties:
+            deliveryInfo:
+              type: array
+              items:
+                $ref: '#/components/schemas/DeliveryInfo'
+    InboundSmsMessage:
+      type: object
+      properties:
+        messageId:
+          type: string
+          description: Unique message identifier
+        message:
+          type: string
+          description: SMS message text
+        senderAddress:
+          type: string
+          description: 'Sender phone number in tel: URI format'
+        destinationAddress:
+          type: string
+          description: Recipient address or short code
+        dateTime:
+          type: string
+          format: date-time
+          description: Message receipt timestamp
+    DeliveryInfo:
+      type: object
+      properties:
+        address:
+          type: string
+          description: Recipient address
+        deliveryStatus:
+          type: string
+          enum:
+          - DeliveredToTerminal
+          - DeliveryImpossible
+          - DeliveredToNetwork
+          - MessageWaiting
+          description: Message delivery status
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.att.com/oauth/v4/token
+          scopes:
+            SMS: Access SMS messaging APIs
+            MMS: Access MMS messaging APIs
+            SPEECH: Access speech recognition APIs
+            TTS: Access text-to-speech APIs
+            ADS: Access advertising APIs

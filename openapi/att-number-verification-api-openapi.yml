@@ -1,19 +1,66 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: AT&T Number Verification API
-  description: CAMARA-standard API that checks the connectivity status of user equipment, including roaming information. Enables applications to determine if a device is reachable, connected, and whether it is roaming on a partner network. Part of the AT&T Network API Accelerator Program.
-  version: '1.0'
-  contact:
-    url: https://devex-web.att.com/developer-hub/docs/network-api-accelerator-program
+  title: Att Number Verification API
   termsOfService: https://www.att.com/gen/general?pid=11561
-  x-generated-from: documentation
-  x-last-validated: '2026-04-19'
+  x-refined-note:
+  - x-generated-from differs across the merged source definitions and was not carried
+  - x-last-validated differs across the merged source definitions and was not carried
+  version: '1.0'
+  description: 'Operations tagged Number Verification across 2 of this provider''s published API definitions: att-network-apis.yaml, att-number-verification-api.yaml. Each path carries the servers of the definition it was published in.'
 servers:
+- url: https://api.att.com/camara
+  description: AT&T CAMARA Network API Server
 - url: https://api.att.com/camara/number-verification/v1
   description: AT&T CAMARA Number Verification API endpoint
 tags:
 - name: Number Verification
+  description: Silent phone number verification
 paths:
+  /number-verification/v1/verify:
+    post:
+      operationId: verifyPhoneNumber
+      summary: Verify AT&T Phone Number
+      description: Silently verify that a device is using a specific phone number via the AT&T network signal, without requiring user OTP entry.
+      tags:
+      - Number Verification
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NumberVerificationRequest'
+            examples:
+              verify:
+                summary: Verify Phone Number
+                value:
+                  phoneNumber: '+12125551234'
+      responses:
+        '200':
+          description: Phone number verification result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NumberVerificationResponse'
+              examples:
+                verified:
+                  summary: Phone Number Verified
+                  value:
+                    devicePhoneNumberVerified: true
+                notVerified:
+                  summary: Phone Number Not Verified
+                  value:
+                    devicePhoneNumberVerified: false
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+      - oauth2: []
+    servers:
+    - url: https://api.att.com/camara
+      description: AT&T CAMARA Network API Server
   /verify:
     post:
       operationId: verifyPhoneNumber
@@ -28,7 +75,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/NumberVerificationRequest'
+              $ref: '#/components/schemas/NumberVerificationRequest_2'
             examples:
               VerifyPhoneNumberRequestExample:
                 summary: Default verifyPhoneNumber request
@@ -41,7 +88,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/NumberVerificationResponse'
+                $ref: '#/components/schemas/NumberVerificationResponse_2'
               examples:
                 VerifyPhoneNumber200Example:
                   summary: Default verifyPhoneNumber 200 response
@@ -81,15 +128,47 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+    servers:
+    - url: https://api.att.com/camara/number-verification/v1
+      description: AT&T CAMARA Number Verification API endpoint
 components:
   schemas:
+    NumberVerificationRequest:
+      type: object
+      required:
+      - phoneNumber
+      properties:
+        phoneNumber:
+          type: string
+          description: E.164 format phone number to verify
+          pattern: ^\+[1-9]\d{1,14}$
+    ErrorResponse:
+      type: object
+      properties:
+        status:
+          type: integer
+          description: HTTP status code
+        code:
+          type: string
+          description: CAMARA error code
+        message:
+          type: string
+          description: Error description
     NumberVerificationResponse:
       type: object
       properties:
         devicePhoneNumberVerified:
           type: boolean
-          description: True if the device's network connection matches the provided phone number, false otherwise.
-          example: true
+          description: Whether the device is using the specified phone number
+    NumberVerificationRequest_2:
+      type: object
+      required:
+      - phoneNumber
+      properties:
+        phoneNumber:
+          type: string
+          description: Phone number in E.164 format to verify against the requesting device
+          example: '+12125551234'
     ErrorInfo:
       type: object
       properties:
@@ -105,20 +184,21 @@ components:
           type: string
           description: Human-readable error message
           example: Invalid phone number format. Must be E.164.
-    NumberVerificationRequest:
+    NumberVerificationResponse_2:
       type: object
-      required:
-      - phoneNumber
       properties:
-        phoneNumber:
-          type: string
-          description: Phone number in E.164 format to verify against the requesting device
-          example: '+12125551234'
+        devicePhoneNumberVerified:
+          type: boolean
+          description: True if the device's network connection matches the provided phone number, false otherwise.
+          example: true
   securitySchemes:
     oauth2:
       type: oauth2
-      description: AT&T OAuth 2.0 for CAMARA network APIs
       flows:
         clientCredentials:
           tokenUrl: https://api.att.com/oauth/v4/token
-          scopes: {}
+          scopes:
+            network: Access AT&T network APIs
+x-refined-from:
+- att-network-apis.yaml
+- att-number-verification-api.yaml

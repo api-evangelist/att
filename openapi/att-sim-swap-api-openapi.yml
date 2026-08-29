@@ -1,19 +1,114 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: AT&T SIM Swap API
-  description: CAMARA-standard API that checks the connectivity status of user equipment, including roaming information. Enables applications to determine if a device is reachable, connected, and whether it is roaming on a partner network. Part of the AT&T Network API Accelerator Program.
-  version: '1.0'
-  contact:
-    url: https://devex-web.att.com/developer-hub/docs/network-api-accelerator-program
+  title: Att SIM Swap API
   termsOfService: https://www.att.com/gen/general?pid=11561
-  x-generated-from: documentation
-  x-last-validated: '2026-04-19'
+  x-refined-note:
+  - x-generated-from differs across the merged source definitions and was not carried
+  - x-last-validated differs across the merged source definitions and was not carried
+  version: '1.0'
+  description: 'Operations tagged SIM Swap across 2 of this provider''s published API definitions: att-network-apis.yaml, att-sim-swap-api.yaml. Each path carries the servers of the definition it was published in.'
 servers:
+- url: https://api.att.com/camara
+  description: AT&T CAMARA Network API Server
 - url: https://api.att.com/camara/sim-swap/v1
   description: AT&T CAMARA SIM Swap API endpoint
 tags:
 - name: SIM Swap
+  description: SIM card change detection for fraud prevention
 paths:
+  /sim-swap/v1/check:
+    post:
+      operationId: checkSimSwap
+      summary: Check AT&T SIM Swap Status
+      description: Check whether a SIM swap has occurred for a phone number within a specified time period to detect fraud.
+      tags:
+      - SIM Swap
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SimSwapCheckRequest'
+            examples:
+              check:
+                summary: SIM Swap Check
+                value:
+                  phoneNumber: '+12125551234'
+                  maxAge: 240
+      responses:
+        '200':
+          description: SIM swap check result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SimSwapCheckResponse'
+              examples:
+                notSwapped:
+                  summary: No Recent SIM Swap
+                  value:
+                    swapped: false
+                swapped:
+                  summary: SIM Swap Detected
+                  value:
+                    swapped: true
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden - insufficient permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+      - oauth2: []
+    servers:
+    - url: https://api.att.com/camara
+      description: AT&T CAMARA Network API Server
+  /sim-swap/v1/retrieve-date:
+    post:
+      operationId: retrieveSimSwapDate
+      summary: Retrieve AT&T SIM Swap Date
+      description: Retrieve the most recent date when a SIM swap occurred for a given phone number.
+      tags:
+      - SIM Swap
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SimSwapDateRequest'
+            examples:
+              retrieve:
+                summary: Retrieve SIM Swap Date
+                value:
+                  phoneNumber: '+12125551234'
+      responses:
+        '200':
+          description: SIM swap date retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SimSwapDateResponse'
+              examples:
+                withDate:
+                  summary: SIM Swap Date Found
+                  value:
+                    latestSimChange: '2026-04-15T14:30:00Z'
+        '404':
+          description: No SIM swap records found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+      - oauth2: []
+    servers:
+    - url: https://api.att.com/camara
+      description: AT&T CAMARA Network API Server
   /check:
     post:
       operationId: checkSimSwap
@@ -28,7 +123,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/SimSwapCheckRequest'
+              $ref: '#/components/schemas/SimSwapCheckRequest_2'
             examples:
               CheckSimSwapRequestExample:
                 summary: Default checkSimSwap request
@@ -42,7 +137,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SimSwapCheckResponse'
+                $ref: '#/components/schemas/SimSwapCheckResponse_2'
               examples:
                 CheckSimSwap200Example:
                   summary: Default checkSimSwap 200 response
@@ -82,6 +177,9 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+    servers:
+    - url: https://api.att.com/camara/sim-swap/v1
+      description: AT&T CAMARA SIM Swap API endpoint
   /retrieve-date:
     post:
       operationId: retrieveSimSwapDate
@@ -96,7 +194,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/SimSwapDateRequest'
+              $ref: '#/components/schemas/SimSwapDateRequest_2'
             examples:
               RetrieveSimSwapDateRequestExample:
                 summary: Default retrieveSimSwapDate request
@@ -109,7 +207,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SimSwapDateResponse'
+                $ref: '#/components/schemas/SimSwapDateResponse_2'
               examples:
                 RetrieveSimSwapDate200Example:
                   summary: Default retrieveSimSwapDate 200 response
@@ -137,8 +235,50 @@ paths:
       x-microcks-operation:
         delay: 0
         dispatcher: FALLBACK
+    servers:
+    - url: https://api.att.com/camara/sim-swap/v1
+      description: AT&T CAMARA SIM Swap API endpoint
 components:
   schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        status:
+          type: integer
+          description: HTTP status code
+        code:
+          type: string
+          description: CAMARA error code
+        message:
+          type: string
+          description: Error description
+    SimSwapDateResponse:
+      type: object
+      properties:
+        latestSimChange:
+          type: string
+          format: date-time
+          description: Timestamp of most recent SIM swap
+    SimSwapCheckRequest:
+      type: object
+      required:
+      - phoneNumber
+      properties:
+        phoneNumber:
+          type: string
+          description: E.164 format phone number
+          pattern: ^\+[1-9]\d{1,14}$
+        maxAge:
+          type: integer
+          description: Maximum age in hours for SIM swap lookback period
+          minimum: 1
+          maximum: 2400
+    SimSwapCheckResponse:
+      type: object
+      properties:
+        swapped:
+          type: boolean
+          description: Whether a SIM swap occurred within the specified time period
     SimSwapDateRequest:
       type: object
       required:
@@ -146,18 +286,19 @@ components:
       properties:
         phoneNumber:
           type: string
-          description: Mobile phone number in E.164 format
-          example: '+12125551234'
-    SimSwapDateResponse:
+          description: E.164 format phone number
+          pattern: ^\+[1-9]\d{1,14}$
+    SimSwapDateResponse_2:
       type: object
       properties:
         latestSimChange:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
-          nullable: true
           description: Date and time of the most recent SIM swap, or null if no swap has been detected recently.
           example: null
-    SimSwapCheckRequest:
+    SimSwapCheckRequest_2:
       type: object
       required:
       - phoneNumber
@@ -172,7 +313,7 @@ components:
           minimum: 1
           maximum: 2400
           example: 240
-    SimSwapCheckResponse:
+    SimSwapCheckResponse_2:
       type: object
       properties:
         swapped:
@@ -194,11 +335,23 @@ components:
           type: string
           description: Human-readable error message
           example: Invalid phone number format. Must be E.164.
+    SimSwapDateRequest_2:
+      type: object
+      required:
+      - phoneNumber
+      properties:
+        phoneNumber:
+          type: string
+          description: Mobile phone number in E.164 format
+          example: '+12125551234'
   securitySchemes:
     oauth2:
       type: oauth2
-      description: AT&T OAuth 2.0 for CAMARA network APIs
       flows:
         clientCredentials:
           tokenUrl: https://api.att.com/oauth/v4/token
-          scopes: {}
+          scopes:
+            network: Access AT&T network APIs
+x-refined-from:
+- att-network-apis.yaml
+- att-sim-swap-api.yaml

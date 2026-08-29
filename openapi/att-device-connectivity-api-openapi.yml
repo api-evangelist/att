@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: AT&T Device Connectivity API
+  title: AT&T Device Status Device Connectivity API
   description: CAMARA-standard API that checks the connectivity status of user equipment, including roaming information. Enables applications to determine if a device is reachable, connected, and whether it is roaming on a partner network. Part of the AT&T Network API Accelerator Program.
   version: '1.0'
   contact:
@@ -85,13 +85,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    DeviceConnectivityRequest:
-      type: object
-      required:
-      - device
-      properties:
-        device:
-          $ref: '#/components/schemas/Device'
     DeviceConnectivityStatus:
       type: object
       properties:
@@ -107,6 +100,21 @@ components:
           type: boolean
           description: Whether the device is currently roaming
           example: false
+    ErrorInfo:
+      type: object
+      properties:
+        status:
+          type: integer
+          description: HTTP status code
+          example: 400
+        code:
+          type: string
+          description: CAMARA error code
+          example: INVALID_ARGUMENT
+        message:
+          type: string
+          description: Human-readable error message
+          example: Invalid device identifier provided
     Device:
       type: object
       description: Device identifier for connectivity status queries
@@ -135,21 +143,13 @@ components:
           type: string
           description: Network access identifier (alternative to phoneNumber)
           example: user@example.com
-    ErrorInfo:
+    DeviceConnectivityRequest:
       type: object
+      required:
+      - device
       properties:
-        status:
-          type: integer
-          description: HTTP status code
-          example: 400
-        code:
-          type: string
-          description: CAMARA error code
-          example: INVALID_ARGUMENT
-        message:
-          type: string
-          description: Human-readable error message
-          example: Invalid device identifier provided
+        device:
+          $ref: '#/components/schemas/Device'
   securitySchemes:
     oauth2:
       type: oauth2

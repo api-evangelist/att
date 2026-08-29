@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: AT&T Service Qualification API
+  title: AT&T Enterprise Connectivity Service Qualification API
   description: Enterprise-grade APIs for AT&T wireline business services including service qualification, quoting, ordering, and provisioning. The Alliance API suite supports automated ordering of AVPN, IPBB, ATTPhone, ASE, and AT&T Internet Air for Business services.
   version: 1.0.0
   contact:
@@ -104,6 +104,25 @@ components:
         country:
           type: string
           description: ISO 3166-1 alpha-2 country code
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code
+        reason:
+          type: string
+          description: Error reason
+        message:
+          type: string
+          description: Detailed error message
+    ServiceQualificationRequest:
+      type: object
+      required:
+      - address
+      properties:
+        address:
+          $ref: '#/components/schemas/Address'
     ServiceQualificationItem:
       type: object
       properties:
@@ -129,28 +148,10 @@ components:
               - InternetAirBusiness
               description: Service specification name
         eligibilityUnavailabilityReason:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
           description: Reason service is unavailable (null if available)
-    ErrorResponse:
-      type: object
-      properties:
-        code:
-          type: string
-          description: Error code
-        reason:
-          type: string
-          description: Error reason
-        message:
-          type: string
-          description: Detailed error message
-    ServiceQualificationRequest:
-      type: object
-      required:
-      - address
-      properties:
-        address:
-          $ref: '#/components/schemas/Address'
   securitySchemes:
     oauth2:
       type: oauth2

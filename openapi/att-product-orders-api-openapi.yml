@@ -1,11 +1,10 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: AT&T Product Orders API
-  description: A messaging API enabling applications to send, receive, update, and delete MMS and SMS messages on behalf of AT&T users with explicit OAuth consent. Supports messages to phone numbers, short codes, and email addresses across AT&T and other carriers with full inbox management and delta synchronization.
-  version: '2.0'
+  title: AT&T MVNX Product Orders API
+  description: TM Forum-aligned API suite for Mobile Virtual Network Operators (MVNOs) using AT&T's network infrastructure. Provides subscriber activation, number management, porting operations, device and SIM management, subscriber profile management, service lifecycle management, and balance/policy management. Follows TMF Open API standards including TMF 622, 637, 639, 640, 654, 674, 689, 702, 716, and 761.
+  version: 4.0.0
   contact:
-    url: https://developer.att.com/support
-  termsOfService: https://www.att.com/gen/general?pid=11561
+    url: https://devex-web.att.com/mvnx/docs/mvnx-contact-us
   x-generated-from: documentation
   x-last-validated: '2026-04-19'
 servers:
@@ -146,13 +145,8 @@ components:
                         type: string
                         example: offer-unlimited-basic
   securitySchemes:
-    oauth2:
-      type: oauth2
-      description: AT&T OAuth 2.0 with user consent via authorization code flow
-      flows:
-        authorizationCode:
-          authorizationUrl: https://api.att.com/oauth/v4/authorize
-          tokenUrl: https://api.att.com/oauth/v4/token
-          scopes:
-            IMMN: Send Message - send MMS and SMS messages on behalf of user
-            MIM: Message Inbox Management - read, update, and delete messages
+    clientId:
+      type: apiKey
+      in: header
+      name: X-Client-Id
+      description: Client ID enforcement policy for MVNX API authentication

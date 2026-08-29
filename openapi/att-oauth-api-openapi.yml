@@ -1,0 +1,146 @@
+openapi: 3.2.0
+info:
+  title: AT&T Wireless O Auth API
+  description: Developer APIs for AT&T's wireless network capabilities including SMS messaging, MMS messaging, OAuth authentication, speech-to-text, text-to-speech, in-app messaging, and advertising APIs for consumer and business applications.
+  version: 1.0.0
+  contact:
+    name: AT&T Developer Support
+    url: https://developer.att.com/support
+  termsOfService: https://www.att.com/gen/general?pid=11561
+servers:
+- url: https://api.att.com
+  description: AT&T API Production Server
+security:
+- oauth2: []
+tags:
+- name: OAuth
+  description: AT&T OAuth 2.0 authentication
+paths:
+  /oauth/v4/token:
+    post:
+      operationId: getAccessToken
+      summary: Get AT&T OAuth Access Token
+      description: Obtain an OAuth 2.0 access token for authenticating AT&T API requests.
+      tags:
+      - OAuth
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TokenRequest'
+            examples:
+              clientCredentials:
+                summary: Client Credentials Grant
+                value:
+                  grant_type: client_credentials
+                  client_id: your_client_id
+                  client_secret: your_client_secret
+                  scope: SMS
+      responses:
+        '200':
+          description: Access token issued successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenResponse'
+              examples:
+                success:
+                  summary: Successful Token Response
+                  value:
+                    access_token: eyJhbGciOiJSUzI1NiJ9.example
+                    token_type: bearer
+                    expires_in: 3600
+                    scope: SMS
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized - invalid client credentials
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    TokenRequest:
+      type: object
+      required:
+      - grant_type
+      - client_id
+      - client_secret
+      - scope
+      properties:
+        grant_type:
+          type: string
+          enum:
+          - client_credentials
+          - authorization_code
+          - refresh_token
+          description: OAuth 2.0 grant type
+        client_id:
+          type: string
+          description: AT&T Developer application client ID
+        client_secret:
+          type: string
+          description: AT&T Developer application client secret
+        scope:
+          type: string
+          description: Space-separated list of API scopes
+        code:
+          type: string
+          description: Authorization code (for authorization_code grant)
+        refresh_token:
+          type: string
+          description: Refresh token (for refresh_token grant)
+    ErrorResponse:
+      type: object
+      properties:
+        RequestError:
+          type: object
+          properties:
+            ServiceException:
+              type: object
+              properties:
+                MessageId:
+                  type: string
+                Text:
+                  type: string
+                Variables:
+                  type: string
+    TokenResponse:
+      type: object
+      properties:
+        access_token:
+          type: string
+          description: OAuth 2.0 access token
+        token_type:
+          type: string
+          enum:
+          - bearer
+          description: Token type
+        expires_in:
+          type: integer
+          description: Token expiration time in seconds
+        refresh_token:
+          type: string
+          description: Refresh token for obtaining new access tokens
+        scope:
+          type: string
+          description: Granted scopes
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.att.com/oauth/v4/token
+          scopes:
+            SMS: Access SMS messaging APIs
+            MMS: Access MMS messaging APIs
+            SPEECH: Access speech recognition APIs
+            TTS: Access text-to-speech APIs
+            ADS: Access advertising APIs

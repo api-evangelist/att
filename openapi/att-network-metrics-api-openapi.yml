@@ -1,7 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: AT&T Network Metrics API
-  description: CAMARA-standard API that checks the connectivity status of user equipment, including roaming information. Enables applications to determine if a device is reachable, connected, and whether it is roaming on a partner network. Part of the AT&T Network API Accelerator Program.
+  title: AT&T Network Insights Network Metrics API
+  description: Delivers performance metrics and device-level network data, providing developers with insights into network conditions, signal quality, and performance indicators for connected devices on the AT&T network. Part of the AT&T Network API Accelerator Program.
   version: '1.0'
   contact:
     url: https://devex-web.att.com/developer-hub/docs/network-api-accelerator-program
@@ -83,13 +83,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    NetworkMetricsRequest:
-      type: object
-      required:
-      - device
-      properties:
-        device:
-          $ref: '#/components/schemas/Device'
     NetworkMetrics:
       type: object
       properties:
@@ -131,21 +124,6 @@ components:
           - MEDIUM
           - HIGH
           example: LOW
-    Device:
-      type: object
-      description: Device identifier for network metrics queries
-      properties:
-        phoneNumber:
-          type: string
-          description: Mobile phone number in E.164 format
-          example: '+12125551234'
-        ipv4Address:
-          type: object
-          description: Device IP address (alternative to phoneNumber)
-          properties:
-            publicAddress:
-              type: string
-              example: 203.0.113.42
     ErrorInfo:
       type: object
       properties:
@@ -161,10 +139,32 @@ components:
           type: string
           description: Human-readable error message
           example: Invalid device identifier
+    NetworkMetricsRequest:
+      type: object
+      required:
+      - device
+      properties:
+        device:
+          $ref: '#/components/schemas/Device'
+    Device:
+      type: object
+      description: Device identifier for network metrics queries
+      properties:
+        phoneNumber:
+          type: string
+          description: Mobile phone number in E.164 format
+          example: '+12125551234'
+        ipv4Address:
+          type: object
+          description: Device IP address (alternative to phoneNumber)
+          properties:
+            publicAddress:
+              type: string
+              example: 203.0.113.42
   securitySchemes:
     oauth2:
       type: oauth2
-      description: AT&T OAuth 2.0 for CAMARA network APIs
+      description: AT&T OAuth 2.0 for network APIs
       flows:
         clientCredentials:
           tokenUrl: https://api.att.com/oauth/v4/token

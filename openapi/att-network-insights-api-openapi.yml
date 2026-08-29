@@ -1,0 +1,122 @@
+openapi: 3.2.0
+info:
+  title: AT&T 5G Network Network Insights API
+  description: CAMARA-standard 5G network APIs available through the AT&T Developer Hub and Network API Accelerator Program. Includes SIM Swap detection, Device Status, Number Verification, Quality on Demand, Network Insights, and Mobility Threat and Anomaly Detection APIs.
+  version: 1.0.0
+  contact:
+    name: AT&T Developer Hub
+    url: https://devex-web.att.com/developer-hub/
+  termsOfService: https://www.att.com/gen/general?pid=11561
+servers:
+- url: https://api.att.com/camara
+  description: AT&T CAMARA Network API Server
+security:
+- oauth2: []
+tags:
+- name: Network Insights
+  description: Network performance metrics
+paths:
+  /network/insights/v1/metrics:
+    post:
+      operationId: getNetworkMetrics
+      summary: Get AT&T Network Insights Metrics
+      description: Retrieve network performance metrics for a device including signal strength, throughput estimates, and congestion levels.
+      tags:
+      - Network Insights
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeviceStatusRequest'
+            examples:
+              metrics:
+                summary: Get Network Metrics
+                value:
+                  phoneNumber: '+12125551234'
+      responses:
+        '200':
+          description: Network metrics retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NetworkMetrics'
+              examples:
+                good5G:
+                  summary: Good 5G Performance
+                  value:
+                    networkGeneration: 5G
+                    signalStrength: GOOD
+                    estimatedDownlinkThroughput: 450.5
+                    estimatedLatency: 12
+                    congestionLevel: LOW
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    DeviceStatusRequest:
+      type: object
+      required:
+      - phoneNumber
+      properties:
+        phoneNumber:
+          type: string
+          description: E.164 format phone number
+          pattern: ^\+[1-9]\d{1,14}$
+    NetworkMetrics:
+      type: object
+      properties:
+        networkGeneration:
+          type: string
+          enum:
+          - 5G
+          - 5G_NSA
+          - 4G
+          - 3G
+          description: Current network generation
+        signalStrength:
+          type: string
+          enum:
+          - EXCELLENT
+          - GOOD
+          - FAIR
+          - POOR
+          description: Device signal strength indicator
+        estimatedDownlinkThroughput:
+          type: number
+          format: float
+          description: Estimated downlink throughput in Mbps
+        estimatedLatency:
+          type: integer
+          description: Estimated round-trip latency in milliseconds
+        congestionLevel:
+          type: string
+          enum:
+          - LOW
+          - MEDIUM
+          - HIGH
+          description: Current network congestion level
+    ErrorResponse:
+      type: object
+      properties:
+        status:
+          type: integer
+          description: HTTP status code
+        code:
+          type: string
+          description: CAMARA error code
+        message:
+          type: string
+          description: Error description
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.att.com/oauth/v4/token
+          scopes:
+            network: Access AT&T network APIs

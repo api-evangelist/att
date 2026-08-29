@@ -1,0 +1,162 @@
+openapi: 3.2.0
+info:
+  title: AT&T 5G Network Device Status API
+  description: CAMARA-standard 5G network APIs available through the AT&T Developer Hub and Network API Accelerator Program. Includes SIM Swap detection, Device Status, Number Verification, Quality on Demand, Network Insights, and Mobility Threat and Anomaly Detection APIs.
+  version: 1.0.0
+  contact:
+    name: AT&T Developer Hub
+    url: https://devex-web.att.com/developer-hub/
+  termsOfService: https://www.att.com/gen/general?pid=11561
+servers:
+- url: https://api.att.com/camara
+  description: AT&T CAMARA Network API Server
+security:
+- oauth2: []
+tags:
+- name: Device Status
+  description: Device connectivity and roaming status
+paths:
+  /device-status/v1/connectivity:
+    post:
+      operationId: getDeviceConnectivityStatus
+      summary: Get AT&T Device Connectivity Status
+      description: Check the current connectivity status of a device on the AT&T network, including whether the device is connected and the network generation.
+      tags:
+      - Device Status
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeviceStatusRequest'
+            examples:
+              check:
+                summary: Check Device Connectivity
+                value:
+                  phoneNumber: '+12125551234'
+      responses:
+        '200':
+          description: Device connectivity status retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceConnectivityStatus'
+              examples:
+                connected5G:
+                  summary: Device Connected on 5G
+                  value:
+                    connectivityStatus: CONNECTED_DATA
+                    networkGeneration: 5G
+                    roaming: false
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /device-status/v1/roaming:
+    post:
+      operationId: getDeviceRoamingStatus
+      summary: Get AT&T Device Roaming Status
+      description: Check whether a device is currently roaming on a partner network and retrieve the roaming location details.
+      tags:
+      - Device Status
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeviceStatusRequest'
+            examples:
+              check:
+                summary: Check Device Roaming
+                value:
+                  phoneNumber: '+12125551234'
+      responses:
+        '200':
+          description: Device roaming status retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceRoamingStatus'
+              examples:
+                notRoaming:
+                  summary: Device Not Roaming
+                  value:
+                    roaming: false
+                roaming:
+                  summary: Device Roaming
+                  value:
+                    roaming: true
+                    countryCode: '44'
+                    countryName: United Kingdom
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    DeviceConnectivityStatus:
+      type: object
+      properties:
+        connectivityStatus:
+          type: string
+          enum:
+          - CONNECTED_DATA
+          - CONNECTED_SMS
+          - NOT_CONNECTED
+          description: Current device connectivity state
+        networkGeneration:
+          type: string
+          enum:
+          - 5G
+          - 5G_NSA
+          - 4G
+          - 3G
+          description: Current network generation
+        roaming:
+          type: boolean
+          description: Whether the device is currently roaming
+    DeviceRoamingStatus:
+      type: object
+      properties:
+        roaming:
+          type: boolean
+          description: Whether the device is roaming
+        countryCode:
+          type: string
+          description: Country code of the roaming network
+        countryName:
+          type: string
+          description: Country name of the roaming network
+    DeviceStatusRequest:
+      type: object
+      required:
+      - phoneNumber
+      properties:
+        phoneNumber:
+          type: string
+          description: E.164 format phone number
+          pattern: ^\+[1-9]\d{1,14}$
+    ErrorResponse:
+      type: object
+      properties:
+        status:
+          type: integer
+          description: HTTP status code
+        code:
+          type: string
+          description: CAMARA error code
+        message:
+          type: string
+          description: Error description
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.att.com/oauth/v4/token
+          scopes:
+            network: Access AT&T network APIs

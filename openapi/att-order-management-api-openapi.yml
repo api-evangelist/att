@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: AT&T Order Management API
+  title: AT&T Enterprise Connectivity Order Management API
   description: Enterprise-grade APIs for AT&T wireline business services including service qualification, quoting, ordering, and provisioning. The Alliance API suite supports automated ordering of AVPN, IPBB, ATTPhone, ASE, and AT&T Internet Air for Business services.
   version: 1.0.0
   contact:
@@ -108,18 +108,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    ErrorResponse:
-      type: object
-      properties:
-        code:
-          type: string
-          description: Error code
-        reason:
-          type: string
-          description: Error reason
-        message:
-          type: string
-          description: Detailed error message
     ProductOrder:
       type: object
       properties:
@@ -148,10 +136,23 @@ components:
           format: date-time
           description: Order submission timestamp
         completionDate:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
-          nullable: true
           description: Order completion timestamp
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code
+        reason:
+          type: string
+          description: Error reason
+        message:
+          type: string
+          description: Detailed error message
   securitySchemes:
     oauth2:
       type: oauth2

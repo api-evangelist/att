@@ -1,8 +1,8 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: AT&T Authentication API
-  description: A messaging API enabling applications to send, receive, update, and delete MMS and SMS messages on behalf of AT&T users with explicit OAuth consent. Supports messages to phone numbers, short codes, and email addresses across AT&T and other carriers with full inbox management and delta synchronization.
-  version: '2.0'
+  title: AT&T SMS Authentication API
+  description: A RESTful API enabling established businesses to broadcast SMS short code messages to AT&T subscribers in the United States. Supports sending to up to 50 recipients per call and up to 1 million messaging API calls monthly. Includes delivery status polling, callbacks, and GSMA OneAPI-compatible endpoints.
+  version: '3.0'
   contact:
     url: https://developer.att.com/support
   termsOfService: https://www.att.com/gen/general?pid=11561
@@ -69,27 +69,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    ErrorResponse:
-      type: object
-      properties:
-        RequestError:
-          type: object
-          properties:
-            ServiceException:
-              type: object
-              properties:
-                MessageId:
-                  type: string
-                  description: Error message ID
-                  example: SVC0002
-                Text:
-                  type: string
-                  description: Human-readable error description
-                  example: Invalid input value for message part
-                Variables:
-                  type: string
-                  description: Additional error context variables
-                  example: address
     TokenRequest:
       type: object
       required:
@@ -126,6 +105,27 @@ components:
           type: string
           description: Refresh token (required for refresh_token grant type)
           example: f6e5d4c3b2a1f6e5d4c3b2a1f6e5d4c3
+    ErrorResponse:
+      type: object
+      properties:
+        RequestError:
+          type: object
+          properties:
+            ServiceException:
+              type: object
+              properties:
+                MessageId:
+                  type: string
+                  description: Error message ID
+                  example: SVC0002
+                Text:
+                  type: string
+                  description: Human-readable error description
+                  example: Invalid input value for message part
+                Variables:
+                  type: string
+                  description: Additional error context variables
+                  example: address
     TokenResponse:
       type: object
       properties:
@@ -148,11 +148,14 @@ components:
   securitySchemes:
     oauth2:
       type: oauth2
-      description: AT&T OAuth 2.0 with user consent via authorization code flow
+      description: AT&T OAuth 2.0 authentication using client credentials grant
       flows:
-        authorizationCode:
-          authorizationUrl: https://api.att.com/oauth/v4/authorize
+        clientCredentials:
           tokenUrl: https://api.att.com/oauth/v4/token
           scopes:
-            IMMN: Send Message - send MMS and SMS messages on behalf of user
-            MIM: Message Inbox Management - read, update, and delete messages
+            SMS: Access to SMS messaging APIs
+            MMS: Access to MMS messaging APIs
+            SPEECH: Access to Speech to Text APIs
+            TTS: Access to Text to Speech APIs
+            STTC: Access to Speech to Text Custom APIs
+            ADS: Access to Advertising APIs
