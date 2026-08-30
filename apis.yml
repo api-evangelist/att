@@ -528,6 +528,8 @@ apis:
   humanURL: https://developer.att.com/oauth-2
   baseURL: https://api.att.com
   tags:
+  - Authentication
+  tags_raw:
   - OAuth
   properties:
   - type: OpenAPI
