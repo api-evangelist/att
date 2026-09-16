@@ -98,24 +98,6 @@ apis:
     url: https://devex-web.att.com/alliance
   - type: GettingStarted
     url: https://devex-web.att.com/order/docs/get-started-with-ordering-api
-- aid: att:att-authentication-api
-  name: AT&T Authentication API
-  description: The Authentication API from AT&T — 1 operation(s) for authentication.
-  humanURL: https://developer.att.com/sms
-  baseURL: https://api.att.com
-  tags:
-  - Authentication
-  properties:
-  - type: OpenAPI
-    url: openapi/att-authentication-api-openapi.yml
-  - type: Documentation
-    url: https://developer.att.com/sms/docs
-  - type: APIReference
-    url: https://developer.att.com/sms/docs/v2
-  - type: Authentication
-    url: https://developer.att.com/oauth-2/docs
-  - type: GettingStarted
-    url: https://developer.att.com/sms
 - aid: att:att-balance-management-api
   name: AT&T Balance Management API
   description: The Balance Management API from AT&T — 1 operation(s) for balance management.
@@ -258,24 +240,6 @@ apis:
     url: https://devex-web.att.com/mvnx/docs/mvnx-quickstart
   - type: Authentication
     url: https://developer.att.com/oauth-2/docs
-- aid: att:att-sms-messaging-api
-  name: AT&T SMS Messaging API
-  description: The SMS Messaging API from AT&T — 3 operation(s) for sms messaging.
-  humanURL: https://developer.att.com/sms
-  baseURL: https://api.att.com
-  tags:
-  - SMS Messaging
-  properties:
-  - type: OpenAPI
-    url: openapi/att-sms-messaging-api-openapi.yml
-  - type: Documentation
-    url: https://developer.att.com/sms/docs
-  - type: APIReference
-    url: https://developer.att.com/sms/docs/v2
-  - type: Authentication
-    url: https://developer.att.com/oauth-2/docs
-  - type: GettingStarted
-    url: https://developer.att.com/sms
 - aid: att:att-subscriber-management-api
   name: AT&T Subscriber Management API
   description: The Subscriber Management API from AT&T — 1 operation(s) for subscriber management.
