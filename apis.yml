@@ -486,18 +486,6 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/att-network-insights-api-openapi.yml
-- aid: att:att-oauth-api
-  name: AT&T O Auth API
-  description: AT&T OAuth 2.0 authentication
-  humanURL: https://developer.att.com/oauth-2
-  baseURL: https://api.att.com
-  tags:
-  - Authentication
-  tags_raw:
-  - OAuth
-  properties:
-  - type: OpenAPI
-    url: openapi/att-oauth-api-openapi.yml
 - aid: att:att-quality-on-demand-api
   name: AT&T Quality on Demand API
   description: 5G QoS session management
@@ -518,6 +506,16 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/att-sms-api-openapi.yml
+- aid: att:att-oauth-api
+  name: AT&T O Auth API
+  description: AT&T OAuth 2.0 authentication
+  humanURL: https://developer.att.com/oauth-2
+  baseURL: https://api.att.com
+  tags:
+  - OAuth
+  properties:
+  - type: OpenAPI
+    url: openapi/att-oauth-api-openapi.yml
 common:
 - type: PostmanWorkspace
   url: https://www.postman.com/kinlaneapi/att/overview
