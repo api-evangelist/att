@@ -44,6 +44,24 @@ tags:
 - Fortune 100
 - Messaging
 - Mobile
+- Networks
+- Network APIs
+- SIM Swap
+- Speech
+- Telecommunications
+- Wireless
+- Wireline
+tags_raw:
+- 5G
+- Broadband
+- CAMARA
+- Connectivity
+- Device Status
+- Edge Computing
+- Enterprise
+- Fortune 100
+- Messaging
+- Mobile
 - Network
 - Network APIs
 - SIM Swap
@@ -512,6 +530,8 @@ apis:
   humanURL: https://developer.att.com/oauth-2
   baseURL: https://api.att.com
   tags:
+  - Authentication
+  tags_raw:
   - OAuth
   properties:
   - type: OpenAPI
