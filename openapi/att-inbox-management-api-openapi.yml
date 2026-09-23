@@ -105,6 +105,24 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    MessageIndexResponse:
+      type: object
+      properties:
+        messageIndexInfo:
+          type: object
+          properties:
+            state:
+              type: string
+              description: State token to use for delta synchronization
+              example: state-a1b2c3d4
+            status:
+              type: string
+              description: Index creation status
+              enum:
+              - INITIALIZED
+              - IN_PROGRESS
+              - COMPLETE
+              example: INITIALIZED
     DeltaResponse:
       type: object
       properties:
@@ -131,24 +149,6 @@ components:
               type: string
               description: New state token for next delta sync call
               example: state-e5f6g7h8
-    MessageIndexResponse:
-      type: object
-      properties:
-        messageIndexInfo:
-          type: object
-          properties:
-            state:
-              type: string
-              description: State token to use for delta synchronization
-              example: state-a1b2c3d4
-            status:
-              type: string
-              description: Index creation status
-              enum:
-              - INITIALIZED
-              - IN_PROGRESS
-              - COMPLETE
-              example: INITIALIZED
     MessageSummary:
       type: object
       properties:

@@ -6,15 +6,67 @@ info:
   - x-generated-from differs across the merged source definitions and was not carried
   - x-last-validated differs across the merged source definitions and was not carried
   version: '1.0'
-  description: 'Operations tagged Threat Detection across 2 of this provider''s published API definitions: att-mobility-threat-anomaly-detection-api.yaml, att-network-apis.yaml. Each path carries the servers of the definition it was published in.'
+  description: 'Operations tagged Threat Detection across 2 of this provider''s published API definitions: att-network-apis.yaml, att-mobility-threat-anomaly-detection-api.yaml. Each path carries the servers of the definition it was published in.'
 servers:
-- url: https://api.att.com/network/threat-detection/v1
-  description: AT&T Mobility Threat and Anomaly Detection API endpoint
 - url: https://api.att.com/camara
   description: AT&T CAMARA Network API Server
+- url: https://api.att.com/network/threat-detection/v1
+  description: AT&T Mobility Threat and Anomaly Detection API endpoint
 tags:
 - name: Threat Detection
+  description: Mobility threat and anomaly detection
 paths:
+  /network/threat-detection/v1/threats:
+    post:
+      operationId: getThreatAssessment
+      summary: Get AT&T Mobility Threat Assessment
+      description: Retrieve ML-based threat assessment for a device including risk level, anomaly score, and detected threat types.
+      tags:
+      - Threat Detection
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeviceStatusRequest'
+            examples:
+              assess:
+                summary: Assess Device Threats
+                value:
+                  phoneNumber: '+12125551234'
+      responses:
+        '200':
+          description: Threat assessment retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ThreatAssessment'
+              examples:
+                lowRisk:
+                  summary: Low Risk Device
+                  value:
+                    riskLevel: LOW
+                    anomalyScore: 0.05
+                    threats: []
+                highRisk:
+                  summary: High Risk Device
+                  value:
+                    riskLevel: HIGH
+                    anomalyScore: 0.87
+                    threats:
+                    - UNUSUAL_LOCATION
+                    - SIM_CLONING
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+      - oauth2: []
+    servers:
+    - url: https://api.att.com/camara
+      description: AT&T CAMARA Network API Server
   /threats:
     post:
       operationId: getDeviceThreats
@@ -43,7 +95,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ThreatAssessment'
+                $ref: '#/components/schemas/ThreatAssessment_2'
               examples:
                 GetDeviceThreats200Example:
                   summary: Default getDeviceThreats 200 response
@@ -83,66 +135,58 @@ paths:
     servers:
     - url: https://api.att.com/network/threat-detection/v1
       description: AT&T Mobility Threat and Anomaly Detection API endpoint
-  /network/threat-detection/v1/threats:
-    post:
-      operationId: getThreatAssessment
-      summary: Get AT&T Mobility Threat Assessment
-      description: Retrieve ML-based threat assessment for a device including risk level, anomaly score, and detected threat types.
-      tags:
-      - Threat Detection
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/DeviceStatusRequest'
-            examples:
-              assess:
-                summary: Assess Device Threats
-                value:
-                  phoneNumber: '+12125551234'
-      responses:
-        '200':
-          description: Threat assessment retrieved
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ThreatAssessment_2'
-              examples:
-                lowRisk:
-                  summary: Low Risk Device
-                  value:
-                    riskLevel: LOW
-                    anomalyScore: 0.05
-                    threats: []
-                highRisk:
-                  summary: High Risk Device
-                  value:
-                    riskLevel: HIGH
-                    anomalyScore: 0.87
-                    threats:
-                    - UNUSUAL_LOCATION
-                    - SIM_CLONING
-        '400':
-          description: Invalid request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-      security:
-      - oauth2: []
-    servers:
-    - url: https://api.att.com/camara
-      description: AT&T CAMARA Network API Server
 components:
   schemas:
-    ThreatAssessmentRequest:
+    DeviceStatusRequest:
       type: object
       required:
-      - device
+      - phoneNumber
       properties:
-        device:
-          $ref: '#/components/schemas/Device'
+        phoneNumber:
+          type: string
+          description: E.164 format phone number
+          pattern: ^\+[1-9]\d{1,14}$
+    ThreatAssessment:
+      type: object
+      properties:
+        riskLevel:
+          type: string
+          enum:
+          - LOW
+          - MEDIUM
+          - HIGH
+          - CRITICAL
+          description: Overall risk level for the device
+        anomalyScore:
+          type: number
+          format: float
+          minimum: 0
+          maximum: 1
+          description: ML-generated anomaly score between 0 and 1
+        threats:
+          type: array
+          items:
+            type: string
+            enum:
+            - UNUSUAL_LOCATION
+            - ABNORMAL_DATA_USAGE
+            - KNOWN_MALWARE_TRAFFIC
+            - SIM_CLONING
+            - ROAMING_ANOMALY
+            - CALL_PATTERN_ANOMALY
+          description: List of detected threat types
+    ErrorResponse:
+      type: object
+      properties:
+        status:
+          type: integer
+          description: HTTP status code
+        code:
+          type: string
+          description: CAMARA error code
+        message:
+          type: string
+          description: Error description
     Device:
       type: object
       properties:
@@ -182,7 +226,22 @@ components:
           format: date-time
           description: When the threat indicator was detected
           example: '2026-04-19T14:30:00Z'
-    ThreatAssessment:
+    ErrorInfo:
+      type: object
+      properties:
+        status:
+          type: integer
+          description: HTTP status code
+          example: 400
+        code:
+          type: string
+          description: Error code
+          example: INVALID_ARGUMENT
+        message:
+          type: string
+          description: Human-readable error message
+          example: Invalid device identifier
+    ThreatAssessment_2:
       type: object
       properties:
         riskLevel:
@@ -211,79 +270,21 @@ components:
           format: date-time
           description: Timestamp of the threat assessment
           example: '2026-04-19T14:30:00Z'
-    ErrorInfo:
-      type: object
-      properties:
-        status:
-          type: integer
-          description: HTTP status code
-          example: 400
-        code:
-          type: string
-          description: Error code
-          example: INVALID_ARGUMENT
-        message:
-          type: string
-          description: Human-readable error message
-          example: Invalid device identifier
-    ThreatAssessment_2:
-      type: object
-      properties:
-        riskLevel:
-          type: string
-          enum:
-          - LOW
-          - MEDIUM
-          - HIGH
-          - CRITICAL
-          description: Overall risk level for the device
-        anomalyScore:
-          type: number
-          format: float
-          minimum: 0
-          maximum: 1
-          description: ML-generated anomaly score between 0 and 1
-        threats:
-          type: array
-          items:
-            type: string
-            enum:
-            - UNUSUAL_LOCATION
-            - ABNORMAL_DATA_USAGE
-            - KNOWN_MALWARE_TRAFFIC
-            - SIM_CLONING
-            - ROAMING_ANOMALY
-            - CALL_PATTERN_ANOMALY
-          description: List of detected threat types
-    DeviceStatusRequest:
+    ThreatAssessmentRequest:
       type: object
       required:
-      - phoneNumber
+      - device
       properties:
-        phoneNumber:
-          type: string
-          description: E.164 format phone number
-          pattern: ^\+[1-9]\d{1,14}$
-    ErrorResponse:
-      type: object
-      properties:
-        status:
-          type: integer
-          description: HTTP status code
-        code:
-          type: string
-          description: CAMARA error code
-        message:
-          type: string
-          description: Error description
+        device:
+          $ref: '#/components/schemas/Device'
   securitySchemes:
     oauth2:
       type: oauth2
-      description: AT&T OAuth 2.0 for network security APIs
       flows:
         clientCredentials:
           tokenUrl: https://api.att.com/oauth/v4/token
-          scopes: {}
+          scopes:
+            network: Access AT&T network APIs
 x-refined-from:
-- att-mobility-threat-anomaly-detection-api.yaml
 - att-network-apis.yaml
+- att-mobility-threat-anomaly-detection-api.yaml

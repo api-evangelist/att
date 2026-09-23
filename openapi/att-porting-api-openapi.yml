@@ -283,35 +283,30 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    PortabilityOrderCreate:
+    PortabilityOrder:
       type: object
       properties:
-        portabilityOrderItem:
-          type: array
-          items:
-            type: object
-            properties:
-              msisdn:
-                type: string
-                description: Phone number to port
-                example: '+12125551234'
-              portingType:
-                type: string
-                enum:
-                - FULL
-                - PARTIAL
-                example: FULL
-              currentCarrier:
-                type: string
-                description: Current carrier name
-                example: Verizon
-    PortabilityOrderUpdate:
-      type: object
-      properties:
+        id:
+          type: string
+          description: Unique port order identifier
+          example: port-500123
+        href:
+          type: string
+          format: uri
+          example: https://devex-web.att.com/portabilityOrder/port-500123
+        state:
+          type: string
+          description: Port order state
+          enum:
+          - inProgress
+          - completed
+          - cancelled
+          - failed
+          example: inProgress
         requestedCompletionDate:
           type: string
           format: date-time
-          description: Updated requested completion date
+          description: Requested completion date for the port
           example: '2026-04-25T00:00:00Z'
     ErrorResponse:
       type: object
@@ -363,30 +358,35 @@ components:
             id:
               type: string
               example: port-500123
-    PortabilityOrder:
+    PortabilityOrderCreate:
       type: object
       properties:
-        id:
-          type: string
-          description: Unique port order identifier
-          example: port-500123
-        href:
-          type: string
-          format: uri
-          example: https://devex-web.att.com/portabilityOrder/port-500123
-        state:
-          type: string
-          description: Port order state
-          enum:
-          - inProgress
-          - completed
-          - cancelled
-          - failed
-          example: inProgress
+        portabilityOrderItem:
+          type: array
+          items:
+            type: object
+            properties:
+              msisdn:
+                type: string
+                description: Phone number to port
+                example: '+12125551234'
+              portingType:
+                type: string
+                enum:
+                - FULL
+                - PARTIAL
+                example: FULL
+              currentCarrier:
+                type: string
+                description: Current carrier name
+                example: Verizon
+    PortabilityOrderUpdate:
+      type: object
+      properties:
         requestedCompletionDate:
           type: string
           format: date-time
-          description: Requested completion date for the port
+          description: Updated requested completion date
           example: '2026-04-25T00:00:00Z'
   securitySchemes:
     clientId:

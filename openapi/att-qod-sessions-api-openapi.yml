@@ -248,21 +248,6 @@ components:
           type: string
           description: Bearer token for webhook notification authentication
           example: webhook-token-abc123
-    ErrorInfo:
-      type: object
-      properties:
-        status:
-          type: integer
-          description: HTTP status code
-          example: 400
-        code:
-          type: string
-          description: CAMARA error code
-          example: INVALID_ARGUMENT
-        message:
-          type: string
-          description: Human-readable error message
-          example: Invalid QoS profile specified
     Device:
       type: object
       description: Device identifier for QoD session
@@ -283,6 +268,21 @@ components:
               type: string
               description: Private IPv4 address
               example: 10.0.0.5
+    ErrorInfo:
+      type: object
+      properties:
+        status:
+          type: integer
+          description: HTTP status code
+          example: 400
+        code:
+          type: string
+          description: CAMARA error code
+          example: INVALID_ARGUMENT
+        message:
+          type: string
+          description: Human-readable error message
+          example: Invalid QoS profile specified
     SessionInfo:
       type: object
       properties:

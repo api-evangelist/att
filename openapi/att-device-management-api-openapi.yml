@@ -178,25 +178,6 @@ components:
                 type: string
                 description: New value for the characteristic
                 example: '1234'
-    ErrorResponse:
-      type: object
-      properties:
-        code:
-          type: string
-          description: Error code
-          example: '400'
-        reason:
-          type: string
-          description: Short reason for the error
-          example: Bad Request
-        message:
-          type: string
-          description: Detailed error message
-          example: Invalid input parameter value
-        status:
-          type: string
-          description: HTTP status code
-          example: '400'
     Resource:
       type: object
       properties:
@@ -227,6 +208,25 @@ components:
           type: string
           description: Device IMEI or SIM ICCID
           example: IMEI-123456789012345
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code
+          example: '400'
+        reason:
+          type: string
+          description: Short reason for the error
+          example: Bad Request
+        message:
+          type: string
+          description: Detailed error message
+          example: Invalid input parameter value
+        status:
+          type: string
+          description: HTTP status code
+          example: '400'
   securitySchemes:
     clientId:
       type: apiKey

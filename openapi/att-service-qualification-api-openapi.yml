@@ -80,30 +80,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ServiceQualificationItem'
-    Address:
-      type: object
-      required:
-      - streetAddress
-      - city
-      - state
-      - postalCode
-      - country
-      properties:
-        streetAddress:
-          type: string
-          description: Street address line
-        city:
-          type: string
-          description: City name
-        state:
-          type: string
-          description: State abbreviation (US)
-        postalCode:
-          type: string
-          description: ZIP or postal code
-        country:
-          type: string
-          description: ISO 3166-1 alpha-2 country code
     ErrorResponse:
       type: object
       properties:
@@ -116,13 +92,6 @@ components:
         message:
           type: string
           description: Detailed error message
-    ServiceQualificationRequest:
-      type: object
-      required:
-      - address
-      properties:
-        address:
-          $ref: '#/components/schemas/Address'
     ServiceQualificationItem:
       type: object
       properties:
@@ -152,6 +121,37 @@ components:
           - string
           - 'null'
           description: Reason service is unavailable (null if available)
+    ServiceQualificationRequest:
+      type: object
+      required:
+      - address
+      properties:
+        address:
+          $ref: '#/components/schemas/Address'
+    Address:
+      type: object
+      required:
+      - streetAddress
+      - city
+      - state
+      - postalCode
+      - country
+      properties:
+        streetAddress:
+          type: string
+          description: Street address line
+        city:
+          type: string
+          description: City name
+        state:
+          type: string
+          description: State abbreviation (US)
+        postalCode:
+          type: string
+          description: ZIP or postal code
+        country:
+          type: string
+          description: ISO 3166-1 alpha-2 country code
   securitySchemes:
     oauth2:
       type: oauth2

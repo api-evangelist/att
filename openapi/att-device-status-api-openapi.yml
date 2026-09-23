@@ -98,6 +98,15 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
+    DeviceStatusRequest:
+      type: object
+      required:
+      - phoneNumber
+      properties:
+        phoneNumber:
+          type: string
+          description: E.164 format phone number
+          pattern: ^\+[1-9]\d{1,14}$
     DeviceConnectivityStatus:
       type: object
       properties:
@@ -131,15 +140,6 @@ components:
         countryName:
           type: string
           description: Country name of the roaming network
-    DeviceStatusRequest:
-      type: object
-      required:
-      - phoneNumber
-      properties:
-        phoneNumber:
-          type: string
-          description: E.164 format phone number
-          pattern: ^\+[1-9]\d{1,14}$
     ErrorResponse:
       type: object
       properties:

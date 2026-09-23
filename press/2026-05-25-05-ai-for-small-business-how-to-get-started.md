@@ -1,7 +1,9 @@
 ---
 title: 'AI for small business: How to get started'
 url: https://www.business.att.com/learn/articles/ai-for-small-business-how-to-get-started.html
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"AT&T" press release artificial intelligence'
 position: 5
 source: serpapi-google

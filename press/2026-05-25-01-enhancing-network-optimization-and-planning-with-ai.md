@@ -1,7 +1,9 @@
 ---
 title: Enhancing Network Optimization and Planning with AI
 url: https://about.att.com/blogs/2025/geo-modeler.html
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"AT&T" press release artificial intelligence'
 position: 1
 source: serpapi-google

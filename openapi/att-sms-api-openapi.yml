@@ -144,80 +144,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    InboundSmsResponse:
-      type: object
-      properties:
-        inboundSMSMessageList:
-          type: object
-          properties:
-            inboundSMSMessage:
-              type: array
-              items:
-                $ref: '#/components/schemas/InboundSmsMessage'
-    SendSmsRequest:
-      type: object
-      required:
-      - outboundSMSRequest
-      properties:
-        outboundSMSRequest:
-          type: object
-          required:
-          - address
-          - message
-          properties:
-            address:
-              type: array
-              items:
-                type: string
-              description: 'List of recipient phone numbers in tel: URI format'
-            message:
-              type: string
-              maxLength: 160
-              description: SMS message text content
-            senderAddress:
-              type: string
-              description: Sender address or short code
-    SendSmsResponse:
-      type: object
-      properties:
-        outboundSMSResponse:
-          type: object
-          properties:
-            messageId:
-              type: string
-              description: Unique message identifier
-            resourceReference:
-              type: object
-              properties:
-                resourceURL:
-                  type: string
-                  format: uri
-                  description: URL to check message status
-    ErrorResponse:
-      type: object
-      properties:
-        RequestError:
-          type: object
-          properties:
-            ServiceException:
-              type: object
-              properties:
-                MessageId:
-                  type: string
-                Text:
-                  type: string
-                Variables:
-                  type: string
-    DeliveryInfoResponse:
-      type: object
-      properties:
-        deliveryInfoList:
-          type: object
-          properties:
-            deliveryInfo:
-              type: array
-              items:
-                $ref: '#/components/schemas/DeliveryInfo'
     InboundSmsMessage:
       type: object
       properties:
@@ -251,6 +177,80 @@ components:
           - DeliveredToNetwork
           - MessageWaiting
           description: Message delivery status
+    DeliveryInfoResponse:
+      type: object
+      properties:
+        deliveryInfoList:
+          type: object
+          properties:
+            deliveryInfo:
+              type: array
+              items:
+                $ref: '#/components/schemas/DeliveryInfo'
+    ErrorResponse:
+      type: object
+      properties:
+        RequestError:
+          type: object
+          properties:
+            ServiceException:
+              type: object
+              properties:
+                MessageId:
+                  type: string
+                Text:
+                  type: string
+                Variables:
+                  type: string
+    InboundSmsResponse:
+      type: object
+      properties:
+        inboundSMSMessageList:
+          type: object
+          properties:
+            inboundSMSMessage:
+              type: array
+              items:
+                $ref: '#/components/schemas/InboundSmsMessage'
+    SendSmsResponse:
+      type: object
+      properties:
+        outboundSMSResponse:
+          type: object
+          properties:
+            messageId:
+              type: string
+              description: Unique message identifier
+            resourceReference:
+              type: object
+              properties:
+                resourceURL:
+                  type: string
+                  format: uri
+                  description: URL to check message status
+    SendSmsRequest:
+      type: object
+      required:
+      - outboundSMSRequest
+      properties:
+        outboundSMSRequest:
+          type: object
+          required:
+          - address
+          - message
+          properties:
+            address:
+              type: array
+              items:
+                type: string
+              description: 'List of recipient phone numbers in tel: URI format'
+            message:
+              type: string
+              maxLength: 160
+              description: SMS message text content
+            senderAddress:
+              type: string
+              description: Sender address or short code
   securitySchemes:
     oauth2:
       type: oauth2

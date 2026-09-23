@@ -129,15 +129,23 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    ResourceReservationUpdate:
+    ResourceReservationCreate:
       type: object
       properties:
-        reservationState:
-          type: string
-          description: Updated reservation state
-          enum:
-          - cancelled
-          example: cancelled
+        resourceCapacity:
+          type: array
+          items:
+            type: object
+            properties:
+              resourcePool:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    example: pool-212-area
+              capacityAmount:
+                type: integer
+                example: 1
     ResourceReservation:
       type: object
       properties:
@@ -166,6 +174,15 @@ components:
                 type: string
                 description: Reserved phone number
                 example: '+12125559999'
+    ResourceReservationUpdate:
+      type: object
+      properties:
+        reservationState:
+          type: string
+          description: Updated reservation state
+          enum:
+          - cancelled
+          example: cancelled
     ErrorResponse:
       type: object
       properties:
@@ -185,23 +202,6 @@ components:
           type: string
           description: HTTP status code
           example: '400'
-    ResourceReservationCreate:
-      type: object
-      properties:
-        resourceCapacity:
-          type: array
-          items:
-            type: object
-            properties:
-              resourcePool:
-                type: object
-                properties:
-                  id:
-                    type: string
-                    example: pool-212-area
-              capacityAmount:
-                type: integer
-                example: 1
   securitySchemes:
     clientId:
       type: apiKey

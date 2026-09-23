@@ -167,18 +167,6 @@ components:
           description: Session duration in seconds
           minimum: 60
           maximum: 86400
-    ErrorResponse:
-      type: object
-      properties:
-        status:
-          type: integer
-          description: HTTP status code
-        code:
-          type: string
-          description: CAMARA error code
-        message:
-          type: string
-          description: Error description
     SessionInfo:
       type: object
       properties:
@@ -205,6 +193,18 @@ components:
           type: string
           format: date-time
           description: Session expiration timestamp
+    ErrorResponse:
+      type: object
+      properties:
+        status:
+          type: integer
+          description: HTTP status code
+        code:
+          type: string
+          description: CAMARA error code
+        message:
+          type: string
+          description: Error description
   securitySchemes:
     oauth2:
       type: oauth2

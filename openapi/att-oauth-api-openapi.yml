@@ -67,6 +67,26 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
+    TokenResponse:
+      type: object
+      properties:
+        access_token:
+          type: string
+          description: OAuth 2.0 access token
+        token_type:
+          type: string
+          enum:
+          - bearer
+          description: Token type
+        expires_in:
+          type: integer
+          description: Token expiration time in seconds
+        refresh_token:
+          type: string
+          description: Refresh token for obtaining new access tokens
+        scope:
+          type: string
+          description: Granted scopes
     TokenRequest:
       type: object
       required:
@@ -112,26 +132,6 @@ components:
                   type: string
                 Variables:
                   type: string
-    TokenResponse:
-      type: object
-      properties:
-        access_token:
-          type: string
-          description: OAuth 2.0 access token
-        token_type:
-          type: string
-          enum:
-          - bearer
-          description: Token type
-        expires_in:
-          type: integer
-          description: Token expiration time in seconds
-        refresh_token:
-          type: string
-          description: Refresh token for obtaining new access tokens
-        scope:
-          type: string
-          description: Granted scopes
   securitySchemes:
     oauth2:
       type: oauth2

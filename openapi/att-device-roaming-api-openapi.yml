@@ -74,6 +74,13 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    DeviceRoamingRequest:
+      type: object
+      required:
+      - device
+      properties:
+        device:
+          $ref: '#/components/schemas/Device'
     Device:
       type: object
       description: Device identifier for connectivity status queries
@@ -102,6 +109,21 @@ components:
           type: string
           description: Network access identifier (alternative to phoneNumber)
           example: user@example.com
+    ErrorInfo:
+      type: object
+      properties:
+        status:
+          type: integer
+          description: HTTP status code
+          example: 400
+        code:
+          type: string
+          description: CAMARA error code
+          example: INVALID_ARGUMENT
+        message:
+          type: string
+          description: Human-readable error message
+          example: Invalid device identifier provided
     DeviceRoamingStatus:
       type: object
       properties:
@@ -123,28 +145,6 @@ components:
           items:
             type: string
           example: null
-    ErrorInfo:
-      type: object
-      properties:
-        status:
-          type: integer
-          description: HTTP status code
-          example: 400
-        code:
-          type: string
-          description: CAMARA error code
-          example: INVALID_ARGUMENT
-        message:
-          type: string
-          description: Human-readable error message
-          example: Invalid device identifier provided
-    DeviceRoamingRequest:
-      type: object
-      required:
-      - device
-      properties:
-        device:
-          $ref: '#/components/schemas/Device'
   securitySchemes:
     oauth2:
       type: oauth2
