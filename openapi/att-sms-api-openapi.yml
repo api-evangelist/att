@@ -163,6 +163,16 @@ components:
           type: string
           format: date-time
           description: Message receipt timestamp
+    InboundSmsResponse:
+      type: object
+      properties:
+        inboundSMSMessageList:
+          type: object
+          properties:
+            inboundSMSMessage:
+              type: array
+              items:
+                $ref: '#/components/schemas/InboundSmsMessage'
     DeliveryInfo:
       type: object
       properties:
@@ -177,41 +187,6 @@ components:
           - DeliveredToNetwork
           - MessageWaiting
           description: Message delivery status
-    DeliveryInfoResponse:
-      type: object
-      properties:
-        deliveryInfoList:
-          type: object
-          properties:
-            deliveryInfo:
-              type: array
-              items:
-                $ref: '#/components/schemas/DeliveryInfo'
-    ErrorResponse:
-      type: object
-      properties:
-        RequestError:
-          type: object
-          properties:
-            ServiceException:
-              type: object
-              properties:
-                MessageId:
-                  type: string
-                Text:
-                  type: string
-                Variables:
-                  type: string
-    InboundSmsResponse:
-      type: object
-      properties:
-        inboundSMSMessageList:
-          type: object
-          properties:
-            inboundSMSMessage:
-              type: array
-              items:
-                $ref: '#/components/schemas/InboundSmsMessage'
     SendSmsResponse:
       type: object
       properties:
@@ -251,6 +226,31 @@ components:
             senderAddress:
               type: string
               description: Sender address or short code
+    DeliveryInfoResponse:
+      type: object
+      properties:
+        deliveryInfoList:
+          type: object
+          properties:
+            deliveryInfo:
+              type: array
+              items:
+                $ref: '#/components/schemas/DeliveryInfo'
+    ErrorResponse:
+      type: object
+      properties:
+        RequestError:
+          type: object
+          properties:
+            ServiceException:
+              type: object
+              properties:
+                MessageId:
+                  type: string
+                Text:
+                  type: string
+                Variables:
+                  type: string
   securitySchemes:
     oauth2:
       type: oauth2

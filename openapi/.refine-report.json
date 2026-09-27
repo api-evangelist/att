@@ -41,9 +41,7 @@
     "att-network-metrics-api-openapi.yml",
     "att-qod-sessions-api-openapi.yml"
   ],
-  "archived": [
-    "deleted 1 superseded output(s) from the previous generation"
-  ],
+  "archived": [],
   "errors": [],
   "warnings": [],
   "notes": [
@@ -81,8 +79,7 @@
     "tag 'Number Verification' spans 2 source specs (att-network-apis.yaml, att-number-verification-api.yaml): per-path servers applied",
     "tag 'SIM Swap' spans 2 source specs (att-network-apis.yaml, att-sim-swap-api.yaml): per-path servers applied",
     "tag 'Threat Detection' spans 2 source specs (att-network-apis.yaml, att-mobility-threat-anomaly-detection-api.yaml): per-path servers applied",
-    "superseded outputs removed: att-o-auth-api-openapi.yml",
-    "apis.yml register: written (+1 apis, 31 total)"
+    "apis.yml register: already-registered"
   ],
   "skipped": [
     "_ae-authored/att-sms-api.yaml: archived document superseded by a larger archived document",
@@ -98,7 +95,7 @@
     "att-network-metrics-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "att-number-management-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "att-number-verification-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "att-o-auth-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "att-oauth-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "att-order-management-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "att-porting-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "att-product-ordering-api-openapi.yml: previously refined output, superseded by openapi/_original/",

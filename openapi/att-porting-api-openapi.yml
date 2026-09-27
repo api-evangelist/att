@@ -308,56 +308,6 @@ components:
           format: date-time
           description: Requested completion date for the port
           example: '2026-04-25T00:00:00Z'
-    ErrorResponse:
-      type: object
-      properties:
-        code:
-          type: string
-          description: Error code
-          example: '400'
-        reason:
-          type: string
-          description: Short reason for the error
-          example: Bad Request
-        message:
-          type: string
-          description: Detailed error message
-          example: Invalid input parameter value
-        status:
-          type: string
-          description: HTTP status code
-          example: '400'
-    CancelPortabilityOrder:
-      type: object
-      properties:
-        portabilityOrder:
-          type: object
-          properties:
-            id:
-              type: string
-              description: Port order ID to cancel
-              example: port-500123
-        cancellationReason:
-          type: string
-          description: Reason for cancellation
-          example: Customer request
-    PortabilityOrderCancellation:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Cancellation record ID
-          example: cancel-500123
-        state:
-          type: string
-          description: Cancellation state
-          example: completed
-        portabilityOrder:
-          type: object
-          properties:
-            id:
-              type: string
-              example: port-500123
     PortabilityOrderCreate:
       type: object
       properties:
@@ -380,6 +330,20 @@ components:
                 type: string
                 description: Current carrier name
                 example: Verizon
+    CancelPortabilityOrder:
+      type: object
+      properties:
+        portabilityOrder:
+          type: object
+          properties:
+            id:
+              type: string
+              description: Port order ID to cancel
+              example: port-500123
+        cancellationReason:
+          type: string
+          description: Reason for cancellation
+          example: Customer request
     PortabilityOrderUpdate:
       type: object
       properties:
@@ -388,6 +352,42 @@ components:
           format: date-time
           description: Updated requested completion date
           example: '2026-04-25T00:00:00Z'
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code
+          example: '400'
+        reason:
+          type: string
+          description: Short reason for the error
+          example: Bad Request
+        message:
+          type: string
+          description: Detailed error message
+          example: Invalid input parameter value
+        status:
+          type: string
+          description: HTTP status code
+          example: '400'
+    PortabilityOrderCancellation:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Cancellation record ID
+          example: cancel-500123
+        state:
+          type: string
+          description: Cancellation state
+          example: completed
+        portabilityOrder:
+          type: object
+          properties:
+            id:
+              type: string
+              example: port-500123
   securitySchemes:
     clientId:
       type: apiKey

@@ -73,30 +73,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    ProductOrder:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Unique product order identifier
-          example: order-500123
-        href:
-          type: string
-          format: uri
-          example: https://devex-web.att.com/productOrder/order-500123
-        state:
-          type: string
-          description: Order state
-          enum:
-          - inProgress
-          - completed
-          - cancelled
-          - failed
-          example: inProgress
-        externalId:
-          type: string
-          description: External order identifier
-          example: ext-order-500123
     ProductOrderCreate:
       type: object
       properties:
@@ -125,6 +101,30 @@ components:
                       id:
                         type: string
                         example: offer-unlimited-basic
+    ProductOrder:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique product order identifier
+          example: order-500123
+        href:
+          type: string
+          format: uri
+          example: https://devex-web.att.com/productOrder/order-500123
+        state:
+          type: string
+          description: Order state
+          enum:
+          - inProgress
+          - completed
+          - cancelled
+          - failed
+          example: inProgress
+        externalId:
+          type: string
+          description: External order identifier
+          example: ext-order-500123
     ErrorResponse:
       type: object
       properties:

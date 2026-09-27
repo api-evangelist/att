@@ -290,6 +290,40 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    MessageListResponse:
+      type: object
+      properties:
+        messageResultSet:
+          type: object
+          properties:
+            messages:
+              type: array
+              items:
+                $ref: '#/components/schemas/MessageSummary'
+            totalCount:
+              type: integer
+              description: Total number of messages matching the query
+              example: 1
+            offset:
+              type: integer
+              description: Current pagination offset
+              example: 0
+            limit:
+              type: integer
+              description: Maximum messages per page
+              example: 50
+    SendMessageResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the sent message
+          example: msg-500123
+        resourceURL:
+          type: string
+          format: uri
+          description: URL to access the message resource
+          example: https://api.att.com/myMessages/v2/messages/msg-500123
     MessageDetail:
       type: object
       properties:
@@ -358,40 +392,13 @@ components:
               type: boolean
               description: Updated read status of the message
               example: false
-    SendMessageResponse:
+    UpdateMessageResponse:
       type: object
       properties:
         id:
           type: string
-          description: Unique identifier for the sent message
+          description: ID of the updated message
           example: msg-500123
-        resourceURL:
-          type: string
-          format: uri
-          description: URL to access the message resource
-          example: https://api.att.com/myMessages/v2/messages/msg-500123
-    MessageListResponse:
-      type: object
-      properties:
-        messageResultSet:
-          type: object
-          properties:
-            messages:
-              type: array
-              items:
-                $ref: '#/components/schemas/MessageSummary'
-            totalCount:
-              type: integer
-              description: Total number of messages matching the query
-              example: 1
-            offset:
-              type: integer
-              description: Current pagination offset
-              example: 0
-            limit:
-              type: integer
-              description: Maximum messages per page
-              example: 50
     SendMessageRequest:
       type: object
       required:
@@ -442,13 +449,6 @@ components:
                   type: string
                   description: Additional error context
                   example: address
-    UpdateMessageResponse:
-      type: object
-      properties:
-        id:
-          type: string
-          description: ID of the updated message
-          example: msg-500123
   securitySchemes:
     oauth2:
       type: oauth2

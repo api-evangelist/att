@@ -64,25 +64,30 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    ProductOrderRequest:
+    OrderItem:
       type: object
       required:
-      - orderItem
+      - id
+      - action
+      - productOffering
       properties:
-        externalId:
+        id:
           type: string
-          description: Customer-provided external order reference
-        description:
+          description: Order item identifier
+        action:
           type: string
-          description: Order description
-        requestedStartDate:
-          type: string
-          format: date
-          description: Requested service start date
-        orderItem:
-          type: array
-          items:
-            $ref: '#/components/schemas/OrderItem'
+          enum:
+          - add
+          - modify
+          - delete
+          - noChange
+          description: Order action type
+        productOffering:
+          type: object
+          properties:
+            name:
+              type: string
+              description: Product offering name
     ProductOrder:
       type: object
       properties:
@@ -116,30 +121,25 @@ components:
           - 'null'
           format: date-time
           description: Order completion timestamp
-    OrderItem:
+    ProductOrderRequest:
       type: object
       required:
-      - id
-      - action
-      - productOffering
+      - orderItem
       properties:
-        id:
+        externalId:
           type: string
-          description: Order item identifier
-        action:
+          description: Customer-provided external order reference
+        description:
           type: string
-          enum:
-          - add
-          - modify
-          - delete
-          - noChange
-          description: Order action type
-        productOffering:
-          type: object
-          properties:
-            name:
-              type: string
-              description: Product offering name
+          description: Order description
+        requestedStartDate:
+          type: string
+          format: date
+          description: Requested service start date
+        orderItem:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderItem'
     ErrorResponse:
       type: object
       properties:

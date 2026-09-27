@@ -72,26 +72,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    ThreatSubscription:
-      type: object
-      properties:
-        subscriptionId:
-          type: string
-          description: Unique subscription identifier
-          example: sub-threat-500123
-        device:
-          $ref: '#/components/schemas/Device'
-        minRiskLevel:
-          type: string
-          description: Minimum risk level triggering notifications
-          example: MEDIUM
-        status:
-          type: string
-          description: Subscription status
-          enum:
-          - ACTIVE
-          - INACTIVE
-          example: ACTIVE
     ThreatSubscriptionRequest:
       type: object
       required:
@@ -118,13 +98,6 @@ components:
           type: string
           description: Bearer token for webhook authentication
           example: webhook-token-abc123
-    Device:
-      type: object
-      properties:
-        phoneNumber:
-          type: string
-          description: Mobile phone number in E.164 format
-          example: '+12125551234'
     ErrorInfo:
       type: object
       properties:
@@ -140,6 +113,33 @@ components:
           type: string
           description: Human-readable error message
           example: Invalid device identifier
+    Device:
+      type: object
+      properties:
+        phoneNumber:
+          type: string
+          description: Mobile phone number in E.164 format
+          example: '+12125551234'
+    ThreatSubscription:
+      type: object
+      properties:
+        subscriptionId:
+          type: string
+          description: Unique subscription identifier
+          example: sub-threat-500123
+        device:
+          $ref: '#/components/schemas/Device'
+        minRiskLevel:
+          type: string
+          description: Minimum risk level triggering notifications
+          example: MEDIUM
+        status:
+          type: string
+          description: Subscription status
+          enum:
+          - ACTIVE
+          - INACTIVE
+          example: ACTIVE
   securitySchemes:
     oauth2:
       type: oauth2

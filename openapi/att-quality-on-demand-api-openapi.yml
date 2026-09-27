@@ -143,30 +143,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    CreateSessionRequest:
-      type: object
-      required:
-      - phoneNumber
-      - qosProfile
-      - duration
-      properties:
-        phoneNumber:
-          type: string
-          description: E.164 format phone number for the device
-        qosProfile:
-          type: string
-          enum:
-          - LOW_LATENCY
-          - THROUGHPUT_S
-          - THROUGHPUT_M
-          - THROUGHPUT_L
-          - VOICE
-          description: QoS profile to apply
-        duration:
-          type: integer
-          description: Session duration in seconds
-          minimum: 60
-          maximum: 86400
     SessionInfo:
       type: object
       properties:
@@ -193,6 +169,30 @@ components:
           type: string
           format: date-time
           description: Session expiration timestamp
+    CreateSessionRequest:
+      type: object
+      required:
+      - phoneNumber
+      - qosProfile
+      - duration
+      properties:
+        phoneNumber:
+          type: string
+          description: E.164 format phone number for the device
+        qosProfile:
+          type: string
+          enum:
+          - LOW_LATENCY
+          - THROUGHPUT_S
+          - THROUGHPUT_M
+          - THROUGHPUT_L
+          - VOICE
+          description: QoS profile to apply
+        duration:
+          type: integer
+          description: Session duration in seconds
+          minimum: 60
+          maximum: 86400
     ErrorResponse:
       type: object
       properties:

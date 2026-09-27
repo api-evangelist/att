@@ -70,33 +70,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    TopupBalanceCreate:
-      type: object
-      properties:
-        channel:
-          type: object
-          properties:
-            name:
-              type: string
-              example: API
-        product:
-          type: object
-          properties:
-            id:
-              type: string
-              description: Subscriber product ID
-              example: sub-a1b2c3d4
-        amount:
-          type: object
-          properties:
-            units:
-              type: number
-              description: Top-up amount
-              example: 10.0
-            currency:
-              type: string
-              description: Currency code (ISO 4217)
-              example: USD
     ErrorResponse:
       type: object
       properties:
@@ -135,6 +108,33 @@ components:
           - failed
           - inProgress
           example: completed
+    TopupBalanceCreate:
+      type: object
+      properties:
+        channel:
+          type: object
+          properties:
+            name:
+              type: string
+              example: API
+        product:
+          type: object
+          properties:
+            id:
+              type: string
+              description: Subscriber product ID
+              example: sub-a1b2c3d4
+        amount:
+          type: object
+          properties:
+            units:
+              type: number
+              description: Top-up amount
+              example: 10.0
+            currency:
+              type: string
+              description: Currency code (ISO 4217)
+              example: USD
   securitySchemes:
     clientId:
       type: apiKey

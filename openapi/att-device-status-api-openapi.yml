@@ -98,6 +98,18 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
+    DeviceRoamingStatus:
+      type: object
+      properties:
+        roaming:
+          type: boolean
+          description: Whether the device is roaming
+        countryCode:
+          type: string
+          description: Country code of the roaming network
+        countryName:
+          type: string
+          description: Country name of the roaming network
     DeviceStatusRequest:
       type: object
       required:
@@ -128,18 +140,6 @@ components:
         roaming:
           type: boolean
           description: Whether the device is currently roaming
-    DeviceRoamingStatus:
-      type: object
-      properties:
-        roaming:
-          type: boolean
-          description: Whether the device is roaming
-        countryCode:
-          type: string
-          description: Country code of the roaming network
-        countryName:
-          type: string
-          description: Country name of the roaming network
     ErrorResponse:
       type: object
       properties:

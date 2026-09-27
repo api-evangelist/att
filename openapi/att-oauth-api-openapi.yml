@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: AT&T Wireless O Auth API
+  title: AT&T Wireless OAuth API
   description: Developer APIs for AT&T's wireless network capabilities including SMS messaging, MMS messaging, OAuth authentication, speech-to-text, text-to-speech, in-app messaging, and advertising APIs for consumer and business applications.
   version: 1.0.0
   contact:
@@ -67,6 +67,21 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        RequestError:
+          type: object
+          properties:
+            ServiceException:
+              type: object
+              properties:
+                MessageId:
+                  type: string
+                Text:
+                  type: string
+                Variables:
+                  type: string
     TokenResponse:
       type: object
       properties:
@@ -117,21 +132,6 @@ components:
         refresh_token:
           type: string
           description: Refresh token (for refresh_token grant)
-    ErrorResponse:
-      type: object
-      properties:
-        RequestError:
-          type: object
-          properties:
-            ServiceException:
-              type: object
-              properties:
-                MessageId:
-                  type: string
-                Text:
-                  type: string
-                Variables:
-                  type: string
   securitySchemes:
     oauth2:
       type: oauth2
