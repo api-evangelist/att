@@ -57,6 +57,25 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code
+          example: '400'
+        reason:
+          type: string
+          description: Short reason for the error
+          example: Bad Request
+        message:
+          type: string
+          description: Detailed error message
+          example: Invalid input parameter value
+        status:
+          type: string
+          description: HTTP status code
+          example: '400'
     GeographicSite:
       type: object
       properties:
@@ -77,25 +96,6 @@ components:
           type: string
           description: Site availability status
           example: active
-    ErrorResponse:
-      type: object
-      properties:
-        code:
-          type: string
-          description: Error code
-          example: '400'
-        reason:
-          type: string
-          description: Short reason for the error
-          example: Bad Request
-        message:
-          type: string
-          description: Detailed error message
-          example: Invalid input parameter value
-        status:
-          type: string
-          description: HTTP status code
-          example: '400'
   securitySchemes:
     clientId:
       type: apiKey

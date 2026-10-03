@@ -67,21 +67,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    ErrorResponse:
-      type: object
-      properties:
-        RequestError:
-          type: object
-          properties:
-            ServiceException:
-              type: object
-              properties:
-                MessageId:
-                  type: string
-                Text:
-                  type: string
-                Variables:
-                  type: string
     TokenResponse:
       type: object
       properties:
@@ -132,6 +117,21 @@ components:
         refresh_token:
           type: string
           description: Refresh token (for refresh_token grant)
+    ErrorResponse:
+      type: object
+      properties:
+        RequestError:
+          type: object
+          properties:
+            ServiceException:
+              type: object
+              properties:
+                MessageId:
+                  type: string
+                Text:
+                  type: string
+                Variables:
+                  type: string
   securitySchemes:
     oauth2:
       type: oauth2

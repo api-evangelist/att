@@ -83,6 +83,13 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    NetworkMetricsRequest:
+      type: object
+      required:
+      - device
+      properties:
+        device:
+          $ref: '#/components/schemas/Device'
     NetworkMetrics:
       type: object
       properties:
@@ -124,13 +131,6 @@ components:
           - MEDIUM
           - HIGH
           example: LOW
-    NetworkMetricsRequest:
-      type: object
-      required:
-      - device
-      properties:
-        device:
-          $ref: '#/components/schemas/Device'
     ErrorInfo:
       type: object
       properties:

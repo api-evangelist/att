@@ -66,30 +66,18 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    Address:
+    ErrorResponse:
       type: object
-      required:
-      - streetAddress
-      - city
-      - state
-      - postalCode
-      - country
       properties:
-        streetAddress:
+        code:
           type: string
-          description: Street address line
-        city:
+          description: Error code
+        reason:
           type: string
-          description: City name
-        state:
+          description: Error reason
+        message:
           type: string
-          description: State abbreviation (US)
-        postalCode:
-          type: string
-          description: ZIP or postal code
-        country:
-          type: string
-          description: ISO 3166-1 alpha-2 country code
+          description: Detailed error message
     ServiceQualificationRequest:
       type: object
       required:
@@ -97,20 +85,6 @@ components:
       properties:
         address:
           $ref: '#/components/schemas/Address'
-    ServiceQualificationResponse:
-      type: object
-      properties:
-        qualificationId:
-          type: string
-          description: Unique qualification check identifier
-        qualificationDate:
-          type: string
-          format: date
-          description: Date the qualification was performed
-        serviceQualificationItems:
-          type: array
-          items:
-            $ref: '#/components/schemas/ServiceQualificationItem'
     ServiceQualificationItem:
       type: object
       properties:
@@ -140,18 +114,44 @@ components:
           - string
           - 'null'
           description: Reason service is unavailable (null if available)
-    ErrorResponse:
+    ServiceQualificationResponse:
       type: object
       properties:
-        code:
+        qualificationId:
           type: string
-          description: Error code
-        reason:
+          description: Unique qualification check identifier
+        qualificationDate:
           type: string
-          description: Error reason
-        message:
+          format: date
+          description: Date the qualification was performed
+        serviceQualificationItems:
+          type: array
+          items:
+            $ref: '#/components/schemas/ServiceQualificationItem'
+    Address:
+      type: object
+      required:
+      - streetAddress
+      - city
+      - state
+      - postalCode
+      - country
+      properties:
+        streetAddress:
           type: string
-          description: Detailed error message
+          description: Street address line
+        city:
+          type: string
+          description: City name
+        state:
+          type: string
+          description: State abbreviation (US)
+        postalCode:
+          type: string
+          description: ZIP or postal code
+        country:
+          type: string
+          description: ISO 3166-1 alpha-2 country code
   securitySchemes:
     oauth2:
       type: oauth2

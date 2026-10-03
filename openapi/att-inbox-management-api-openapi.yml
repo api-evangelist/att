@@ -105,6 +105,69 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        RequestError:
+          type: object
+          properties:
+            ServiceException:
+              type: object
+              properties:
+                MessageId:
+                  type: string
+                  description: Error message ID
+                  example: SVC0002
+                Text:
+                  type: string
+                  description: Human-readable error description
+                  example: Invalid input value for message part
+                Variables:
+                  type: string
+                  description: Additional error context
+                  example: address
+    MessageSummary:
+      type: object
+      properties:
+        messageId:
+          type: string
+          description: Unique message identifier
+          example: msg-500123
+        from:
+          type: string
+          description: Sender address (phone number or email)
+          example: tel:+12125551234
+        recipients:
+          type: array
+          description: List of recipient addresses
+          items:
+            type: string
+          example:
+          - tel:+12125559999
+        isUnread:
+          type: boolean
+          description: Whether the message has been read
+          example: false
+        isIncoming:
+          type: boolean
+          description: True if message was received, false if sent
+          example: true
+        type:
+          type: string
+          description: Message type
+          enum:
+          - TEXT
+          - MMS
+          example: TEXT
+        typeCode:
+          type: string
+          description: Numeric type code
+          example: '1'
+        timeStamp:
+          type: string
+          format: date-time
+          description: Date and time the message was sent or received
+          example: '2026-04-19T14:30:00Z'
     DeltaResponse:
       type: object
       properties:
@@ -149,69 +212,6 @@ components:
               - IN_PROGRESS
               - COMPLETE
               example: INITIALIZED
-    MessageSummary:
-      type: object
-      properties:
-        messageId:
-          type: string
-          description: Unique message identifier
-          example: msg-500123
-        from:
-          type: string
-          description: Sender address (phone number or email)
-          example: tel:+12125551234
-        recipients:
-          type: array
-          description: List of recipient addresses
-          items:
-            type: string
-          example:
-          - tel:+12125559999
-        isUnread:
-          type: boolean
-          description: Whether the message has been read
-          example: false
-        isIncoming:
-          type: boolean
-          description: True if message was received, false if sent
-          example: true
-        type:
-          type: string
-          description: Message type
-          enum:
-          - TEXT
-          - MMS
-          example: TEXT
-        typeCode:
-          type: string
-          description: Numeric type code
-          example: '1'
-        timeStamp:
-          type: string
-          format: date-time
-          description: Date and time the message was sent or received
-          example: '2026-04-19T14:30:00Z'
-    ErrorResponse:
-      type: object
-      properties:
-        RequestError:
-          type: object
-          properties:
-            ServiceException:
-              type: object
-              properties:
-                MessageId:
-                  type: string
-                  description: Error message ID
-                  example: SVC0002
-                Text:
-                  type: string
-                  description: Human-readable error description
-                  example: Invalid input value for message part
-                Variables:
-                  type: string
-                  description: Additional error context
-                  example: address
   securitySchemes:
     oauth2:
       type: oauth2

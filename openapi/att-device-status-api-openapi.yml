@@ -98,18 +98,18 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    DeviceRoamingStatus:
+    ErrorResponse:
       type: object
       properties:
-        roaming:
-          type: boolean
-          description: Whether the device is roaming
-        countryCode:
+        status:
+          type: integer
+          description: HTTP status code
+        code:
           type: string
-          description: Country code of the roaming network
-        countryName:
+          description: CAMARA error code
+        message:
           type: string
-          description: Country name of the roaming network
+          description: Error description
     DeviceStatusRequest:
       type: object
       required:
@@ -140,18 +140,18 @@ components:
         roaming:
           type: boolean
           description: Whether the device is currently roaming
-    ErrorResponse:
+    DeviceRoamingStatus:
       type: object
       properties:
-        status:
-          type: integer
-          description: HTTP status code
-        code:
+        roaming:
+          type: boolean
+          description: Whether the device is roaming
+        countryCode:
           type: string
-          description: CAMARA error code
-        message:
+          description: Country code of the roaming network
+        countryName:
           type: string
-          description: Error description
+          description: Country name of the roaming network
   securitySchemes:
     oauth2:
       type: oauth2

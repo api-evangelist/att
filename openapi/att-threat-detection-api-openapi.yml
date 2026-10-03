@@ -137,6 +137,15 @@ paths:
       description: AT&T Mobility Threat and Anomaly Detection API endpoint
 components:
   schemas:
+    DeviceStatusRequest:
+      type: object
+      required:
+      - phoneNumber
+      properties:
+        phoneNumber:
+          type: string
+          description: E.164 format phone number
+          pattern: ^\+[1-9]\d{1,14}$
     ThreatAssessment:
       type: object
       properties:
@@ -166,15 +175,6 @@ components:
             - ROAMING_ANOMALY
             - CALL_PATTERN_ANOMALY
           description: List of detected threat types
-    DeviceStatusRequest:
-      type: object
-      required:
-      - phoneNumber
-      properties:
-        phoneNumber:
-          type: string
-          description: E.164 format phone number
-          pattern: ^\+[1-9]\d{1,14}$
     ErrorResponse:
       type: object
       properties:
@@ -187,35 +187,13 @@ components:
         message:
           type: string
           description: Error description
-    ThreatAssessment_2:
+    Device:
       type: object
       properties:
-        riskLevel:
+        phoneNumber:
           type: string
-          description: Overall risk level for the device
-          enum:
-          - LOW
-          - MEDIUM
-          - HIGH
-          - CRITICAL
-          example: LOW
-        anomalyScore:
-          type: number
-          format: double
-          description: Normalized anomaly score from 0.0 (normal) to 1.0 (highly anomalous)
-          minimum: 0.0
-          maximum: 1.0
-          example: 0.05
-        threats:
-          type: array
-          description: List of detected threat indicators
-          items:
-            $ref: '#/components/schemas/ThreatIndicator'
-        assessedAt:
-          type: string
-          format: date-time
-          description: Timestamp of the threat assessment
-          example: '2026-04-19T14:30:00Z'
+          description: Mobile phone number in E.164 format
+          example: '+12125551234'
     ErrorInfo:
       type: object
       properties:
@@ -231,20 +209,6 @@ components:
           type: string
           description: Human-readable error message
           example: Invalid device identifier
-    Device:
-      type: object
-      properties:
-        phoneNumber:
-          type: string
-          description: Mobile phone number in E.164 format
-          example: '+12125551234'
-    ThreatAssessmentRequest:
-      type: object
-      required:
-      - device
-      properties:
-        device:
-          $ref: '#/components/schemas/Device'
     ThreatIndicator:
       type: object
       properties:
@@ -276,6 +240,42 @@ components:
           type: string
           format: date-time
           description: When the threat indicator was detected
+          example: '2026-04-19T14:30:00Z'
+    ThreatAssessmentRequest:
+      type: object
+      required:
+      - device
+      properties:
+        device:
+          $ref: '#/components/schemas/Device'
+    ThreatAssessment_2:
+      type: object
+      properties:
+        riskLevel:
+          type: string
+          description: Overall risk level for the device
+          enum:
+          - LOW
+          - MEDIUM
+          - HIGH
+          - CRITICAL
+          example: LOW
+        anomalyScore:
+          type: number
+          format: double
+          description: Normalized anomaly score from 0.0 (normal) to 1.0 (highly anomalous)
+          minimum: 0.0
+          maximum: 1.0
+          example: 0.05
+        threats:
+          type: array
+          description: List of detected threat indicators
+          items:
+            $ref: '#/components/schemas/ThreatIndicator'
+        assessedAt:
+          type: string
+          format: date-time
+          description: Timestamp of the threat assessment
           example: '2026-04-19T14:30:00Z'
   securitySchemes:
     oauth2:

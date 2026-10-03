@@ -85,13 +85,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    DeviceConnectivityRequest:
-      type: object
-      required:
-      - device
-      properties:
-        device:
-          $ref: '#/components/schemas/Device'
     ErrorInfo:
       type: object
       properties:
@@ -107,6 +100,28 @@ components:
           type: string
           description: Human-readable error message
           example: Invalid device identifier provided
+    DeviceConnectivityRequest:
+      type: object
+      required:
+      - device
+      properties:
+        device:
+          $ref: '#/components/schemas/Device'
+    DeviceConnectivityStatus:
+      type: object
+      properties:
+        connectivityStatus:
+          type: string
+          description: Current device connectivity state
+          enum:
+          - CONNECTED_DATA
+          - CONNECTED_SMS
+          - NOT_CONNECTED
+          example: CONNECTED_DATA
+        roaming:
+          type: boolean
+          description: Whether the device is currently roaming
+          example: false
     Device:
       type: object
       description: Device identifier for connectivity status queries
@@ -135,21 +150,6 @@ components:
           type: string
           description: Network access identifier (alternative to phoneNumber)
           example: user@example.com
-    DeviceConnectivityStatus:
-      type: object
-      properties:
-        connectivityStatus:
-          type: string
-          description: Current device connectivity state
-          enum:
-          - CONNECTED_DATA
-          - CONNECTED_SMS
-          - NOT_CONNECTED
-          example: CONNECTED_DATA
-        roaming:
-          type: boolean
-          description: Whether the device is currently roaming
-          example: false
   securitySchemes:
     oauth2:
       type: oauth2

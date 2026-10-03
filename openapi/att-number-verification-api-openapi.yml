@@ -141,15 +141,6 @@ components:
         devicePhoneNumberVerified:
           type: boolean
           description: Whether the device is using the specified phone number
-    NumberVerificationRequest:
-      type: object
-      required:
-      - phoneNumber
-      properties:
-        phoneNumber:
-          type: string
-          description: E.164 format phone number to verify
-          pattern: ^\+[1-9]\d{1,14}$
     ErrorResponse:
       type: object
       properties:
@@ -162,6 +153,15 @@ components:
         message:
           type: string
           description: Error description
+    NumberVerificationRequest:
+      type: object
+      required:
+      - phoneNumber
+      properties:
+        phoneNumber:
+          type: string
+          description: E.164 format phone number to verify
+          pattern: ^\+[1-9]\d{1,14}$
     NumberVerificationResponse_2:
       type: object
       properties:

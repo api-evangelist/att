@@ -64,30 +64,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    OrderItem:
-      type: object
-      required:
-      - id
-      - action
-      - productOffering
-      properties:
-        id:
-          type: string
-          description: Order item identifier
-        action:
-          type: string
-          enum:
-          - add
-          - modify
-          - delete
-          - noChange
-          description: Order action type
-        productOffering:
-          type: object
-          properties:
-            name:
-              type: string
-              description: Product offering name
     ProductOrder:
       type: object
       properties:
@@ -121,6 +97,30 @@ components:
           - 'null'
           format: date-time
           description: Order completion timestamp
+    OrderItem:
+      type: object
+      required:
+      - id
+      - action
+      - productOffering
+      properties:
+        id:
+          type: string
+          description: Order item identifier
+        action:
+          type: string
+          enum:
+          - add
+          - modify
+          - delete
+          - noChange
+          description: Order action type
+        productOffering:
+          type: object
+          properties:
+            name:
+              type: string
+              description: Product offering name
     ProductOrderRequest:
       type: object
       required:

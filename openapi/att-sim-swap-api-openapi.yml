@@ -244,15 +244,6 @@ paths:
       description: AT&T CAMARA SIM Swap API endpoint
 components:
   schemas:
-    SimSwapDateRequest:
-      type: object
-      required:
-      - phoneNumber
-      properties:
-        phoneNumber:
-          type: string
-          description: E.164 format phone number
-          pattern: ^\+[1-9]\d{1,14}$
     SimSwapDateResponse:
       type: object
       properties:
@@ -260,12 +251,6 @@ components:
           type: string
           format: date-time
           description: Timestamp of most recent SIM swap
-    SimSwapCheckResponse:
-      type: object
-      properties:
-        swapped:
-          type: boolean
-          description: Whether a SIM swap occurred within the specified time period
     ErrorResponse:
       type: object
       properties:
@@ -278,6 +263,12 @@ components:
         message:
           type: string
           description: Error description
+    SimSwapCheckResponse:
+      type: object
+      properties:
+        swapped:
+          type: boolean
+          description: Whether a SIM swap occurred within the specified time period
     SimSwapCheckRequest:
       type: object
       required:
@@ -292,15 +283,25 @@ components:
           description: Maximum age in hours for SIM swap lookback period
           minimum: 1
           maximum: 2400
-    SimSwapDateRequest_2:
+    SimSwapDateRequest:
       type: object
       required:
       - phoneNumber
       properties:
         phoneNumber:
           type: string
-          description: Mobile phone number in E.164 format
-          example: '+12125551234'
+          description: E.164 format phone number
+          pattern: ^\+[1-9]\d{1,14}$
+    SimSwapDateResponse_2:
+      type: object
+      properties:
+        latestSimChange:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: Date and time of the most recent SIM swap, or null if no swap has been detected recently.
+          example: null
     ErrorInfo:
       type: object
       properties:
@@ -316,16 +317,6 @@ components:
           type: string
           description: Human-readable error message
           example: Invalid phone number format. Must be E.164.
-    SimSwapDateResponse_2:
-      type: object
-      properties:
-        latestSimChange:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          description: Date and time of the most recent SIM swap, or null if no swap has been detected recently.
-          example: null
     SimSwapCheckResponse_2:
       type: object
       properties:
@@ -348,6 +339,15 @@ components:
           minimum: 1
           maximum: 2400
           example: 240
+    SimSwapDateRequest_2:
+      type: object
+      required:
+      - phoneNumber
+      properties:
+        phoneNumber:
+          type: string
+          description: Mobile phone number in E.164 format
+          example: '+12125551234'
   securitySchemes:
     oauth2:
       type: oauth2

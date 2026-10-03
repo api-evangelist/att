@@ -138,6 +138,23 @@ components:
           enum:
           - cancelled
           example: cancelled
+    ResourceReservationCreate:
+      type: object
+      properties:
+        resourceCapacity:
+          type: array
+          items:
+            type: object
+            properties:
+              resourcePool:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    example: pool-212-area
+              capacityAmount:
+                type: integer
+                example: 1
     ResourceReservation:
       type: object
       properties:
@@ -166,23 +183,6 @@ components:
                 type: string
                 description: Reserved phone number
                 example: '+12125559999'
-    ResourceReservationCreate:
-      type: object
-      properties:
-        resourceCapacity:
-          type: array
-          items:
-            type: object
-            properties:
-              resourcePool:
-                type: object
-                properties:
-                  id:
-                    type: string
-                    example: pool-212-area
-              capacityAmount:
-                type: integer
-                example: 1
     ErrorResponse:
       type: object
       properties:

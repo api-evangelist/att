@@ -144,49 +144,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    InboundSmsMessage:
-      type: object
-      properties:
-        messageId:
-          type: string
-          description: Unique message identifier
-        message:
-          type: string
-          description: SMS message text
-        senderAddress:
-          type: string
-          description: 'Sender phone number in tel: URI format'
-        destinationAddress:
-          type: string
-          description: Recipient address or short code
-        dateTime:
-          type: string
-          format: date-time
-          description: Message receipt timestamp
-    InboundSmsResponse:
-      type: object
-      properties:
-        inboundSMSMessageList:
-          type: object
-          properties:
-            inboundSMSMessage:
-              type: array
-              items:
-                $ref: '#/components/schemas/InboundSmsMessage'
-    DeliveryInfo:
-      type: object
-      properties:
-        address:
-          type: string
-          description: Recipient address
-        deliveryStatus:
-          type: string
-          enum:
-          - DeliveredToTerminal
-          - DeliveryImpossible
-          - DeliveredToNetwork
-          - MessageWaiting
-          description: Message delivery status
     SendSmsResponse:
       type: object
       properties:
@@ -226,16 +183,6 @@ components:
             senderAddress:
               type: string
               description: Sender address or short code
-    DeliveryInfoResponse:
-      type: object
-      properties:
-        deliveryInfoList:
-          type: object
-          properties:
-            deliveryInfo:
-              type: array
-              items:
-                $ref: '#/components/schemas/DeliveryInfo'
     ErrorResponse:
       type: object
       properties:
@@ -251,6 +198,59 @@ components:
                   type: string
                 Variables:
                   type: string
+    InboundSmsMessage:
+      type: object
+      properties:
+        messageId:
+          type: string
+          description: Unique message identifier
+        message:
+          type: string
+          description: SMS message text
+        senderAddress:
+          type: string
+          description: 'Sender phone number in tel: URI format'
+        destinationAddress:
+          type: string
+          description: Recipient address or short code
+        dateTime:
+          type: string
+          format: date-time
+          description: Message receipt timestamp
+    DeliveryInfoResponse:
+      type: object
+      properties:
+        deliveryInfoList:
+          type: object
+          properties:
+            deliveryInfo:
+              type: array
+              items:
+                $ref: '#/components/schemas/DeliveryInfo'
+    InboundSmsResponse:
+      type: object
+      properties:
+        inboundSMSMessageList:
+          type: object
+          properties:
+            inboundSMSMessage:
+              type: array
+              items:
+                $ref: '#/components/schemas/InboundSmsMessage'
+    DeliveryInfo:
+      type: object
+      properties:
+        address:
+          type: string
+          description: Recipient address
+        deliveryStatus:
+          type: string
+          enum:
+          - DeliveredToTerminal
+          - DeliveryImpossible
+          - DeliveredToNetwork
+          - MessageWaiting
+          description: Message delivery status
   securitySchemes:
     oauth2:
       type: oauth2
