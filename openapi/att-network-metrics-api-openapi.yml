@@ -83,13 +83,21 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    NetworkMetricsRequest:
+    Device:
       type: object
-      required:
-      - device
+      description: Device identifier for network metrics queries
       properties:
-        device:
-          $ref: '#/components/schemas/Device'
+        phoneNumber:
+          type: string
+          description: Mobile phone number in E.164 format
+          example: '+12125551234'
+        ipv4Address:
+          type: object
+          description: Device IP address (alternative to phoneNumber)
+          properties:
+            publicAddress:
+              type: string
+              example: 203.0.113.42
     NetworkMetrics:
       type: object
       properties:
@@ -131,6 +139,13 @@ components:
           - MEDIUM
           - HIGH
           example: LOW
+    NetworkMetricsRequest:
+      type: object
+      required:
+      - device
+      properties:
+        device:
+          $ref: '#/components/schemas/Device'
     ErrorInfo:
       type: object
       properties:
@@ -146,21 +161,6 @@ components:
           type: string
           description: Human-readable error message
           example: Invalid device identifier
-    Device:
-      type: object
-      description: Device identifier for network metrics queries
-      properties:
-        phoneNumber:
-          type: string
-          description: Mobile phone number in E.164 format
-          example: '+12125551234'
-        ipv4Address:
-          type: object
-          description: Device IP address (alternative to phoneNumber)
-          properties:
-            publicAddress:
-              type: string
-              example: 203.0.113.42
   securitySchemes:
     oauth2:
       type: oauth2

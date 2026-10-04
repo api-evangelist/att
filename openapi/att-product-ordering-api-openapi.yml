@@ -64,6 +64,37 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code
+        reason:
+          type: string
+          description: Error reason
+        message:
+          type: string
+          description: Detailed error message
+    ProductOrderRequest:
+      type: object
+      required:
+      - orderItem
+      properties:
+        externalId:
+          type: string
+          description: Customer-provided external order reference
+        description:
+          type: string
+          description: Order description
+        requestedStartDate:
+          type: string
+          format: date
+          description: Requested service start date
+        orderItem:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderItem'
     ProductOrder:
       type: object
       properties:
@@ -121,37 +152,6 @@ components:
             name:
               type: string
               description: Product offering name
-    ProductOrderRequest:
-      type: object
-      required:
-      - orderItem
-      properties:
-        externalId:
-          type: string
-          description: Customer-provided external order reference
-        description:
-          type: string
-          description: Order description
-        requestedStartDate:
-          type: string
-          format: date
-          description: Requested service start date
-        orderItem:
-          type: array
-          items:
-            $ref: '#/components/schemas/OrderItem'
-    ErrorResponse:
-      type: object
-      properties:
-        code:
-          type: string
-          description: Error code
-        reason:
-          type: string
-          description: Error reason
-        message:
-          type: string
-          description: Detailed error message
   securitySchemes:
     oauth2:
       type: oauth2

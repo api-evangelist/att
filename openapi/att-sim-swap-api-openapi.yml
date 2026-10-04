@@ -244,13 +244,6 @@ paths:
       description: AT&T CAMARA SIM Swap API endpoint
 components:
   schemas:
-    SimSwapDateResponse:
-      type: object
-      properties:
-        latestSimChange:
-          type: string
-          format: date-time
-          description: Timestamp of most recent SIM swap
     ErrorResponse:
       type: object
       properties:
@@ -263,12 +256,6 @@ components:
         message:
           type: string
           description: Error description
-    SimSwapCheckResponse:
-      type: object
-      properties:
-        swapped:
-          type: boolean
-          description: Whether a SIM swap occurred within the specified time period
     SimSwapCheckRequest:
       type: object
       required:
@@ -283,6 +270,19 @@ components:
           description: Maximum age in hours for SIM swap lookback period
           minimum: 1
           maximum: 2400
+    SimSwapCheckResponse:
+      type: object
+      properties:
+        swapped:
+          type: boolean
+          description: Whether a SIM swap occurred within the specified time period
+    SimSwapDateResponse:
+      type: object
+      properties:
+        latestSimChange:
+          type: string
+          format: date-time
+          description: Timestamp of most recent SIM swap
     SimSwapDateRequest:
       type: object
       required:
@@ -292,6 +292,28 @@ components:
           type: string
           description: E.164 format phone number
           pattern: ^\+[1-9]\d{1,14}$
+    SimSwapCheckRequest_2:
+      type: object
+      required:
+      - phoneNumber
+      properties:
+        phoneNumber:
+          type: string
+          description: Mobile phone number in E.164 format associated with the SIM to check.
+          example: '+12125551234'
+        maxAge:
+          type: integer
+          description: Maximum age in hours to check for a SIM swap. If not provided, the default lookback period is used.
+          minimum: 1
+          maximum: 2400
+          example: 240
+    SimSwapCheckResponse_2:
+      type: object
+      properties:
+        swapped:
+          type: boolean
+          description: True if a SIM swap was detected within the maxAge period, false otherwise.
+          example: false
     SimSwapDateResponse_2:
       type: object
       properties:
@@ -317,28 +339,6 @@ components:
           type: string
           description: Human-readable error message
           example: Invalid phone number format. Must be E.164.
-    SimSwapCheckResponse_2:
-      type: object
-      properties:
-        swapped:
-          type: boolean
-          description: True if a SIM swap was detected within the maxAge period, false otherwise.
-          example: false
-    SimSwapCheckRequest_2:
-      type: object
-      required:
-      - phoneNumber
-      properties:
-        phoneNumber:
-          type: string
-          description: Mobile phone number in E.164 format associated with the SIM to check.
-          example: '+12125551234'
-        maxAge:
-          type: integer
-          description: Maximum age in hours to check for a SIM swap. If not provided, the default lookback period is used.
-          minimum: 1
-          maximum: 2400
-          example: 240
     SimSwapDateRequest_2:
       type: object
       required:

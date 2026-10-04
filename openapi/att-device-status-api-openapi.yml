@@ -98,6 +98,18 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
+    DeviceRoamingStatus:
+      type: object
+      properties:
+        roaming:
+          type: boolean
+          description: Whether the device is roaming
+        countryCode:
+          type: string
+          description: Country code of the roaming network
+        countryName:
+          type: string
+          description: Country name of the roaming network
     ErrorResponse:
       type: object
       properties:
@@ -110,15 +122,6 @@ components:
         message:
           type: string
           description: Error description
-    DeviceStatusRequest:
-      type: object
-      required:
-      - phoneNumber
-      properties:
-        phoneNumber:
-          type: string
-          description: E.164 format phone number
-          pattern: ^\+[1-9]\d{1,14}$
     DeviceConnectivityStatus:
       type: object
       properties:
@@ -140,18 +143,15 @@ components:
         roaming:
           type: boolean
           description: Whether the device is currently roaming
-    DeviceRoamingStatus:
+    DeviceStatusRequest:
       type: object
+      required:
+      - phoneNumber
       properties:
-        roaming:
-          type: boolean
-          description: Whether the device is roaming
-        countryCode:
+        phoneNumber:
           type: string
-          description: Country code of the roaming network
-        countryName:
-          type: string
-          description: Country name of the roaming network
+          description: E.164 format phone number
+          pattern: ^\+[1-9]\d{1,14}$
   securitySchemes:
     oauth2:
       type: oauth2

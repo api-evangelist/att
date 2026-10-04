@@ -135,12 +135,6 @@ paths:
       description: AT&T CAMARA Number Verification API endpoint
 components:
   schemas:
-    NumberVerificationResponse:
-      type: object
-      properties:
-        devicePhoneNumberVerified:
-          type: boolean
-          description: Whether the device is using the specified phone number
     ErrorResponse:
       type: object
       properties:
@@ -162,6 +156,21 @@ components:
           type: string
           description: E.164 format phone number to verify
           pattern: ^\+[1-9]\d{1,14}$
+    NumberVerificationResponse:
+      type: object
+      properties:
+        devicePhoneNumberVerified:
+          type: boolean
+          description: Whether the device is using the specified phone number
+    NumberVerificationRequest_2:
+      type: object
+      required:
+      - phoneNumber
+      properties:
+        phoneNumber:
+          type: string
+          description: Phone number in E.164 format to verify against the requesting device
+          example: '+12125551234'
     NumberVerificationResponse_2:
       type: object
       properties:
@@ -184,15 +193,6 @@ components:
           type: string
           description: Human-readable error message
           example: Invalid phone number format. Must be E.164.
-    NumberVerificationRequest_2:
-      type: object
-      required:
-      - phoneNumber
-      properties:
-        phoneNumber:
-          type: string
-          description: Phone number in E.164 format to verify against the requesting device
-          example: '+12125551234'
   securitySchemes:
     oauth2:
       type: oauth2

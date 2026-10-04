@@ -215,6 +215,59 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    Device:
+      type: object
+      description: Device identifier for QoD session
+      properties:
+        phoneNumber:
+          type: string
+          description: Mobile phone number in E.164 format
+          example: '+12125551234'
+        ipv4Address:
+          type: object
+          description: Device IPv4 address
+          properties:
+            publicAddress:
+              type: string
+              description: Public IPv4 address
+              example: 203.0.113.42
+            privateAddress:
+              type: string
+              description: Private IPv4 address
+              example: 10.0.0.5
+    CreateSessionRequest:
+      type: object
+      required:
+      - device
+      - qosProfile
+      properties:
+        device:
+          $ref: '#/components/schemas/Device'
+        qosProfile:
+          type: string
+          description: Requested QoS profile
+          enum:
+          - LOW_LATENCY
+          - THROUGHPUT_S
+          - THROUGHPUT_M
+          - THROUGHPUT_L
+          - VOICE
+          example: LOW_LATENCY
+        duration:
+          type: integer
+          description: Session duration in seconds (default and max vary by profile)
+          minimum: 1
+          maximum: 86400
+          example: 3600
+        notificationUrl:
+          type: string
+          format: uri
+          description: Webhook URL to receive QoS status change notifications
+          example: https://webhook.example.com/qod-events
+        notificationAuthToken:
+          type: string
+          description: Bearer token for webhook notification authentication
+          example: webhook-token-abc123
     SessionInfo:
       type: object
       properties:
@@ -271,59 +324,6 @@ components:
           type: string
           description: Human-readable error message
           example: Invalid QoS profile specified
-    CreateSessionRequest:
-      type: object
-      required:
-      - device
-      - qosProfile
-      properties:
-        device:
-          $ref: '#/components/schemas/Device'
-        qosProfile:
-          type: string
-          description: Requested QoS profile
-          enum:
-          - LOW_LATENCY
-          - THROUGHPUT_S
-          - THROUGHPUT_M
-          - THROUGHPUT_L
-          - VOICE
-          example: LOW_LATENCY
-        duration:
-          type: integer
-          description: Session duration in seconds (default and max vary by profile)
-          minimum: 1
-          maximum: 86400
-          example: 3600
-        notificationUrl:
-          type: string
-          format: uri
-          description: Webhook URL to receive QoS status change notifications
-          example: https://webhook.example.com/qod-events
-        notificationAuthToken:
-          type: string
-          description: Bearer token for webhook notification authentication
-          example: webhook-token-abc123
-    Device:
-      type: object
-      description: Device identifier for QoD session
-      properties:
-        phoneNumber:
-          type: string
-          description: Mobile phone number in E.164 format
-          example: '+12125551234'
-        ipv4Address:
-          type: object
-          description: Device IPv4 address
-          properties:
-            publicAddress:
-              type: string
-              description: Public IPv4 address
-              example: 203.0.113.42
-            privateAddress:
-              type: string
-              description: Private IPv4 address
-              example: 10.0.0.5
   securitySchemes:
     oauth2:
       type: oauth2

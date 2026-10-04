@@ -311,6 +311,41 @@ components:
                   type: string
                   description: Additional error context
                   example: address
+    SendMessageResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the sent message
+          example: msg-500123
+        resourceURL:
+          type: string
+          format: uri
+          description: URL to access the message resource
+          example: https://api.att.com/myMessages/v2/messages/msg-500123
+    MessageDetail:
+      type: object
+      properties:
+        message:
+          allOf:
+          - $ref: '#/components/schemas/MessageSummary'
+          - type: object
+            properties:
+              text:
+                type: string
+                description: Full text content of the message
+                example: Hello from the AT&T In-App Messaging API!
+              subject:
+                type: string
+                description: Subject line (MMS only)
+                example: Greeting
+    UpdateMessageResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          description: ID of the updated message
+          example: msg-500123
     MessageListResponse:
       type: object
       properties:
@@ -333,25 +368,6 @@ components:
               type: integer
               description: Maximum messages per page
               example: 50
-    UpdateMessageResponse:
-      type: object
-      properties:
-        id:
-          type: string
-          description: ID of the updated message
-          example: msg-500123
-    SendMessageResponse:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Unique identifier for the sent message
-          example: msg-500123
-        resourceURL:
-          type: string
-          format: uri
-          description: URL to access the message resource
-          example: https://api.att.com/myMessages/v2/messages/msg-500123
     SendMessageRequest:
       type: object
       required:
@@ -380,6 +396,16 @@ components:
             group:
               type: boolean
               description: If true, send as a group message
+              example: false
+    UpdateMessageRequest:
+      type: object
+      properties:
+        message:
+          type: object
+          properties:
+            isUnread:
+              type: boolean
+              description: Updated read status of the message
               example: false
     MessageSummary:
       type: object
@@ -423,32 +449,6 @@ components:
           format: date-time
           description: Date and time the message was sent or received
           example: '2026-04-19T14:30:00Z'
-    MessageDetail:
-      type: object
-      properties:
-        message:
-          allOf:
-          - $ref: '#/components/schemas/MessageSummary'
-          - type: object
-            properties:
-              text:
-                type: string
-                description: Full text content of the message
-                example: Hello from the AT&T In-App Messaging API!
-              subject:
-                type: string
-                description: Subject line (MMS only)
-                example: Greeting
-    UpdateMessageRequest:
-      type: object
-      properties:
-        message:
-          type: object
-          properties:
-            isUnread:
-              type: boolean
-              description: Updated read status of the message
-              example: false
   securitySchemes:
     oauth2:
       type: oauth2

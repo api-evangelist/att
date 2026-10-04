@@ -58,15 +58,18 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    DeviceStatusRequest:
+    ErrorResponse:
       type: object
-      required:
-      - phoneNumber
       properties:
-        phoneNumber:
+        status:
+          type: integer
+          description: HTTP status code
+        code:
           type: string
-          description: E.164 format phone number
-          pattern: ^\+[1-9]\d{1,14}$
+          description: CAMARA error code
+        message:
+          type: string
+          description: Error description
     NetworkMetrics:
       type: object
       properties:
@@ -100,18 +103,15 @@ components:
           - MEDIUM
           - HIGH
           description: Current network congestion level
-    ErrorResponse:
+    DeviceStatusRequest:
       type: object
+      required:
+      - phoneNumber
       properties:
-        status:
-          type: integer
-          description: HTTP status code
-        code:
+        phoneNumber:
           type: string
-          description: CAMARA error code
-        message:
-          type: string
-          description: Error description
+          description: E.164 format phone number
+          pattern: ^\+[1-9]\d{1,14}$
   securitySchemes:
     oauth2:
       type: oauth2

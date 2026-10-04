@@ -129,32 +129,25 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    ResourceReservationUpdate:
+    ErrorResponse:
       type: object
       properties:
-        reservationState:
+        code:
           type: string
-          description: Updated reservation state
-          enum:
-          - cancelled
-          example: cancelled
-    ResourceReservationCreate:
-      type: object
-      properties:
-        resourceCapacity:
-          type: array
-          items:
-            type: object
-            properties:
-              resourcePool:
-                type: object
-                properties:
-                  id:
-                    type: string
-                    example: pool-212-area
-              capacityAmount:
-                type: integer
-                example: 1
+          description: Error code
+          example: '400'
+        reason:
+          type: string
+          description: Short reason for the error
+          example: Bad Request
+        message:
+          type: string
+          description: Detailed error message
+          example: Invalid input parameter value
+        status:
+          type: string
+          description: HTTP status code
+          example: '400'
     ResourceReservation:
       type: object
       properties:
@@ -183,25 +176,32 @@ components:
                 type: string
                 description: Reserved phone number
                 example: '+12125559999'
-    ErrorResponse:
+    ResourceReservationCreate:
       type: object
       properties:
-        code:
+        resourceCapacity:
+          type: array
+          items:
+            type: object
+            properties:
+              resourcePool:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    example: pool-212-area
+              capacityAmount:
+                type: integer
+                example: 1
+    ResourceReservationUpdate:
+      type: object
+      properties:
+        reservationState:
           type: string
-          description: Error code
-          example: '400'
-        reason:
-          type: string
-          description: Short reason for the error
-          example: Bad Request
-        message:
-          type: string
-          description: Detailed error message
-          example: Invalid input parameter value
-        status:
-          type: string
-          description: HTTP status code
-          example: '400'
+          description: Updated reservation state
+          enum:
+          - cancelled
+          example: cancelled
   securitySchemes:
     clientId:
       type: apiKey

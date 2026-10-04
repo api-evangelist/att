@@ -92,21 +92,6 @@ components:
           - ACTIVE
           - INACTIVE
           example: ACTIVE
-    ErrorInfo:
-      type: object
-      properties:
-        status:
-          type: integer
-          description: HTTP status code
-          example: 400
-        code:
-          type: string
-          description: Error code
-          example: INVALID_ARGUMENT
-        message:
-          type: string
-          description: Human-readable error message
-          example: Invalid device identifier
     Device:
       type: object
       properties:
@@ -140,6 +125,21 @@ components:
           type: string
           description: Bearer token for webhook authentication
           example: webhook-token-abc123
+    ErrorInfo:
+      type: object
+      properties:
+        status:
+          type: integer
+          description: HTTP status code
+          example: 400
+        code:
+          type: string
+          description: Error code
+          example: INVALID_ARGUMENT
+        message:
+          type: string
+          description: Human-readable error message
+          example: Invalid device identifier
   securitySchemes:
     oauth2:
       type: oauth2

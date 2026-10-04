@@ -302,50 +302,23 @@ components:
           type: string
           description: HTTP status code
           example: '400'
-    PortabilityOrderUpdate:
+    PortabilityOrderCancellation:
       type: object
       properties:
-        requestedCompletionDate:
+        id:
           type: string
-          format: date-time
-          description: Updated requested completion date
-          example: '2026-04-25T00:00:00Z'
-    PortabilityOrderCreate:
-      type: object
-      properties:
-        portabilityOrderItem:
-          type: array
-          items:
-            type: object
-            properties:
-              msisdn:
-                type: string
-                description: Phone number to port
-                example: '+12125551234'
-              portingType:
-                type: string
-                enum:
-                - FULL
-                - PARTIAL
-                example: FULL
-              currentCarrier:
-                type: string
-                description: Current carrier name
-                example: Verizon
-    CancelPortabilityOrder:
-      type: object
-      properties:
+          description: Cancellation record ID
+          example: cancel-500123
+        state:
+          type: string
+          description: Cancellation state
+          example: completed
         portabilityOrder:
           type: object
           properties:
             id:
               type: string
-              description: Port order ID to cancel
               example: port-500123
-        cancellationReason:
-          type: string
-          description: Reason for cancellation
-          example: Customer request
     PortabilityOrder:
       type: object
       properties:
@@ -371,23 +344,50 @@ components:
           format: date-time
           description: Requested completion date for the port
           example: '2026-04-25T00:00:00Z'
-    PortabilityOrderCancellation:
+    PortabilityOrderUpdate:
       type: object
       properties:
-        id:
+        requestedCompletionDate:
           type: string
-          description: Cancellation record ID
-          example: cancel-500123
-        state:
-          type: string
-          description: Cancellation state
-          example: completed
+          format: date-time
+          description: Updated requested completion date
+          example: '2026-04-25T00:00:00Z'
+    CancelPortabilityOrder:
+      type: object
+      properties:
         portabilityOrder:
           type: object
           properties:
             id:
               type: string
+              description: Port order ID to cancel
               example: port-500123
+        cancellationReason:
+          type: string
+          description: Reason for cancellation
+          example: Customer request
+    PortabilityOrderCreate:
+      type: object
+      properties:
+        portabilityOrderItem:
+          type: array
+          items:
+            type: object
+            properties:
+              msisdn:
+                type: string
+                description: Phone number to port
+                example: '+12125551234'
+              portingType:
+                type: string
+                enum:
+                - FULL
+                - PARTIAL
+                example: FULL
+              currentCarrier:
+                type: string
+                description: Current carrier name
+                example: Verizon
   securitySchemes:
     clientId:
       type: apiKey

@@ -137,15 +137,18 @@ paths:
       description: AT&T Mobility Threat and Anomaly Detection API endpoint
 components:
   schemas:
-    DeviceStatusRequest:
+    ErrorResponse:
       type: object
-      required:
-      - phoneNumber
       properties:
-        phoneNumber:
+        status:
+          type: integer
+          description: HTTP status code
+        code:
           type: string
-          description: E.164 format phone number
-          pattern: ^\+[1-9]\d{1,14}$
+          description: CAMARA error code
+        message:
+          type: string
+          description: Error description
     ThreatAssessment:
       type: object
       properties:
@@ -175,40 +178,22 @@ components:
             - ROAMING_ANOMALY
             - CALL_PATTERN_ANOMALY
           description: List of detected threat types
-    ErrorResponse:
+    DeviceStatusRequest:
       type: object
-      properties:
-        status:
-          type: integer
-          description: HTTP status code
-        code:
-          type: string
-          description: CAMARA error code
-        message:
-          type: string
-          description: Error description
-    Device:
-      type: object
+      required:
+      - phoneNumber
       properties:
         phoneNumber:
           type: string
-          description: Mobile phone number in E.164 format
-          example: '+12125551234'
-    ErrorInfo:
+          description: E.164 format phone number
+          pattern: ^\+[1-9]\d{1,14}$
+    ThreatAssessmentRequest:
       type: object
+      required:
+      - device
       properties:
-        status:
-          type: integer
-          description: HTTP status code
-          example: 400
-        code:
-          type: string
-          description: Error code
-          example: INVALID_ARGUMENT
-        message:
-          type: string
-          description: Human-readable error message
-          example: Invalid device identifier
+        device:
+          $ref: '#/components/schemas/Device'
     ThreatIndicator:
       type: object
       properties:
@@ -241,13 +226,28 @@ components:
           format: date-time
           description: When the threat indicator was detected
           example: '2026-04-19T14:30:00Z'
-    ThreatAssessmentRequest:
+    ErrorInfo:
       type: object
-      required:
-      - device
       properties:
-        device:
-          $ref: '#/components/schemas/Device'
+        status:
+          type: integer
+          description: HTTP status code
+          example: 400
+        code:
+          type: string
+          description: Error code
+          example: INVALID_ARGUMENT
+        message:
+          type: string
+          description: Human-readable error message
+          example: Invalid device identifier
+    Device:
+      type: object
+      properties:
+        phoneNumber:
+          type: string
+          description: Mobile phone number in E.164 format
+          example: '+12125551234'
     ThreatAssessment_2:
       type: object
       properties:

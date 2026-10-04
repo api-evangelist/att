@@ -85,43 +85,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    ErrorInfo:
-      type: object
-      properties:
-        status:
-          type: integer
-          description: HTTP status code
-          example: 400
-        code:
-          type: string
-          description: CAMARA error code
-          example: INVALID_ARGUMENT
-        message:
-          type: string
-          description: Human-readable error message
-          example: Invalid device identifier provided
-    DeviceConnectivityRequest:
-      type: object
-      required:
-      - device
-      properties:
-        device:
-          $ref: '#/components/schemas/Device'
-    DeviceConnectivityStatus:
-      type: object
-      properties:
-        connectivityStatus:
-          type: string
-          description: Current device connectivity state
-          enum:
-          - CONNECTED_DATA
-          - CONNECTED_SMS
-          - NOT_CONNECTED
-          example: CONNECTED_DATA
-        roaming:
-          type: boolean
-          description: Whether the device is currently roaming
-          example: false
     Device:
       type: object
       description: Device identifier for connectivity status queries
@@ -150,6 +113,43 @@ components:
           type: string
           description: Network access identifier (alternative to phoneNumber)
           example: user@example.com
+    DeviceConnectivityStatus:
+      type: object
+      properties:
+        connectivityStatus:
+          type: string
+          description: Current device connectivity state
+          enum:
+          - CONNECTED_DATA
+          - CONNECTED_SMS
+          - NOT_CONNECTED
+          example: CONNECTED_DATA
+        roaming:
+          type: boolean
+          description: Whether the device is currently roaming
+          example: false
+    DeviceConnectivityRequest:
+      type: object
+      required:
+      - device
+      properties:
+        device:
+          $ref: '#/components/schemas/Device'
+    ErrorInfo:
+      type: object
+      properties:
+        status:
+          type: integer
+          description: HTTP status code
+          example: 400
+        code:
+          type: string
+          description: CAMARA error code
+          example: INVALID_ARGUMENT
+        message:
+          type: string
+          description: Human-readable error message
+          example: Invalid device identifier provided
   securitySchemes:
     oauth2:
       type: oauth2
