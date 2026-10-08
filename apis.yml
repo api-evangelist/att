@@ -526,6 +526,12 @@ apis:
   - type: Authentication
     url: https://developer.att.com/oauth-2/docs
 common:
+- type: Plans
+  url: plans/att-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/att-rate-limits.yml
+- type: FinOps
+  url: finops/att-finops.yml
 - type: PostmanWorkspace
   url: https://www.postman.com/kinlaneapi/att/overview
 - type: AgenticAccess
