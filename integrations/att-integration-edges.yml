@@ -19,7 +19,56 @@ edges:
     api_families_basis: null
     detected_by: sweep-telco-network-apis.py
     detected: '2026-10-12'
+- partner_name: AWS Marketplace
+  partner: amazon-web-services
+  partner_match: aggregator
+  type: marketplace
+  marketplace: aws-marketplace
+  channel: distribution
+  relationship: platform-app
+  direction: provider-built
+  evidence: https://aws.amazon.com/marketplace/seller-profile?id=seller-5oxqtr6gzphzc
+  listing_count: 2
+  apps:
+  - AT&T NetBond® Advanced - Free Trial Only
+  - AT&T Connected Spaces
+  seller_name: AT&T Services, Inc.
+  detected_by: sweep-cloud-marketplaces.py
+  detected: '2026-10-13'
+- partner_name: Microsoft Azure Marketplace
+  partner: microsoft-azure
+  partner_match: aggregator
+  type: marketplace
+  marketplace: azure-marketplace
+  channel: distribution
+  relationship: platform-app
+  direction: provider-built
+  evidence: https://azuremarketplace.microsoft.com/en-us/marketplace/apps?search=AT%26T
+  listing_count: 1
+  apps:
+  - E911 Fast Start
+  seller_name: AT&T
+  detected_by: sweep-cloud-marketplaces.py
+  detected: '2026-10-13'
+- partner_name: Microsoft Azure Marketplace
+  partner: microsoft-azure
+  partner_match: aggregator
+  type: marketplace
+  marketplace: azure-marketplace
+  channel: distribution
+  relationship: platform-app
+  direction: provider-built
+  evidence: https://azuremarketplace.microsoft.com/en-us/marketplace/apps?search=ATTCS
+  listing_count: 1
+  apps:
+  - USM Anywhere
+  seller_name: ATTCS
+  detected_by: sweep-cloud-marketplaces.py
+  detected: '2026-10-13'
 generated: '2026-10-12'
 method: searched
 checked:
+- https://aws.amazon.com/marketplace/
+- https://azuremarketplace.microsoft.com/
 - https://raw.githubusercontent.com/camaraproject/camara-landscape/main/landscape.yml
+marketplace_apps: []
