@@ -143,18 +143,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    ErrorResponse:
-      type: object
-      properties:
-        status:
-          type: integer
-          description: HTTP status code
-        code:
-          type: string
-          description: CAMARA error code
-        message:
-          type: string
-          description: Error description
     CreateSessionRequest:
       type: object
       required:
@@ -205,6 +193,18 @@ components:
           type: string
           format: date-time
           description: Session expiration timestamp
+    ErrorResponse:
+      type: object
+      properties:
+        status:
+          type: integer
+          description: HTTP status code
+        code:
+          type: string
+          description: CAMARA error code
+        message:
+          type: string
+          description: Error description
   securitySchemes:
     oauth2:
       type: oauth2

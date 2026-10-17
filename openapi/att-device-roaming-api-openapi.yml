@@ -74,6 +74,27 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    DeviceRoamingStatus:
+      type: object
+      properties:
+        roaming:
+          type: boolean
+          description: Whether the device is roaming
+          example: false
+        countryCode:
+          type:
+          - integer
+          - 'null'
+          description: Country code where device is roaming (ITU-T E.164)
+          example: null
+        countryName:
+          type:
+          - array
+          - 'null'
+          description: Country name(s) where device is roaming
+          items:
+            type: string
+          example: null
     ErrorInfo:
       type: object
       properties:
@@ -117,27 +138,6 @@ components:
           type: string
           description: Network access identifier (alternative to phoneNumber)
           example: user@example.com
-    DeviceRoamingStatus:
-      type: object
-      properties:
-        roaming:
-          type: boolean
-          description: Whether the device is roaming
-          example: false
-        countryCode:
-          type:
-          - integer
-          - 'null'
-          description: Country code where device is roaming (ITU-T E.164)
-          example: null
-        countryName:
-          type:
-          - array
-          - 'null'
-          description: Country name(s) where device is roaming
-          items:
-            type: string
-          example: null
     DeviceRoamingRequest:
       type: object
       required:

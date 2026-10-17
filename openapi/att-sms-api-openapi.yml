@@ -144,51 +144,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    ErrorResponse:
-      type: object
-      properties:
-        RequestError:
-          type: object
-          properties:
-            ServiceException:
-              type: object
-              properties:
-                MessageId:
-                  type: string
-                Text:
-                  type: string
-                Variables:
-                  type: string
-    SendSmsResponse:
-      type: object
-      properties:
-        outboundSMSResponse:
-          type: object
-          properties:
-            messageId:
-              type: string
-              description: Unique message identifier
-            resourceReference:
-              type: object
-              properties:
-                resourceURL:
-                  type: string
-                  format: uri
-                  description: URL to check message status
-    DeliveryInfo:
-      type: object
-      properties:
-        address:
-          type: string
-          description: Recipient address
-        deliveryStatus:
-          type: string
-          enum:
-          - DeliveredToTerminal
-          - DeliveryImpossible
-          - DeliveredToNetwork
-          - MessageWaiting
-          description: Message delivery status
     SendSmsRequest:
       type: object
       required:
@@ -212,16 +167,16 @@ components:
             senderAddress:
               type: string
               description: Sender address or short code
-    DeliveryInfoResponse:
+    InboundSmsResponse:
       type: object
       properties:
-        deliveryInfoList:
+        inboundSMSMessageList:
           type: object
           properties:
-            deliveryInfo:
+            inboundSMSMessage:
               type: array
               items:
-                $ref: '#/components/schemas/DeliveryInfo'
+                $ref: '#/components/schemas/InboundSmsMessage'
     InboundSmsMessage:
       type: object
       properties:
@@ -241,16 +196,61 @@ components:
           type: string
           format: date-time
           description: Message receipt timestamp
-    InboundSmsResponse:
+    SendSmsResponse:
       type: object
       properties:
-        inboundSMSMessageList:
+        outboundSMSResponse:
           type: object
           properties:
-            inboundSMSMessage:
+            messageId:
+              type: string
+              description: Unique message identifier
+            resourceReference:
+              type: object
+              properties:
+                resourceURL:
+                  type: string
+                  format: uri
+                  description: URL to check message status
+    DeliveryInfoResponse:
+      type: object
+      properties:
+        deliveryInfoList:
+          type: object
+          properties:
+            deliveryInfo:
               type: array
               items:
-                $ref: '#/components/schemas/InboundSmsMessage'
+                $ref: '#/components/schemas/DeliveryInfo'
+    ErrorResponse:
+      type: object
+      properties:
+        RequestError:
+          type: object
+          properties:
+            ServiceException:
+              type: object
+              properties:
+                MessageId:
+                  type: string
+                Text:
+                  type: string
+                Variables:
+                  type: string
+    DeliveryInfo:
+      type: object
+      properties:
+        address:
+          type: string
+          description: Recipient address
+        deliveryStatus:
+          type: string
+          enum:
+          - DeliveredToTerminal
+          - DeliveryImpossible
+          - DeliveredToNetwork
+          - MessageWaiting
+          description: Message delivery status
   securitySchemes:
     oauth2:
       type: oauth2

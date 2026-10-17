@@ -105,27 +105,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    ErrorResponse:
-      type: object
-      properties:
-        RequestError:
-          type: object
-          properties:
-            ServiceException:
-              type: object
-              properties:
-                MessageId:
-                  type: string
-                  description: Error message ID
-                  example: SVC0002
-                Text:
-                  type: string
-                  description: Human-readable error description
-                  example: Invalid input value for message part
-                Variables:
-                  type: string
-                  description: Additional error context
-                  example: address
     DeltaResponse:
       type: object
       properties:
@@ -152,24 +131,6 @@ components:
               type: string
               description: New state token for next delta sync call
               example: state-e5f6g7h8
-    MessageIndexResponse:
-      type: object
-      properties:
-        messageIndexInfo:
-          type: object
-          properties:
-            state:
-              type: string
-              description: State token to use for delta synchronization
-              example: state-a1b2c3d4
-            status:
-              type: string
-              description: Index creation status
-              enum:
-              - INITIALIZED
-              - IN_PROGRESS
-              - COMPLETE
-              example: INITIALIZED
     MessageSummary:
       type: object
       properties:
@@ -212,6 +173,45 @@ components:
           format: date-time
           description: Date and time the message was sent or received
           example: '2026-04-19T14:30:00Z'
+    ErrorResponse:
+      type: object
+      properties:
+        RequestError:
+          type: object
+          properties:
+            ServiceException:
+              type: object
+              properties:
+                MessageId:
+                  type: string
+                  description: Error message ID
+                  example: SVC0002
+                Text:
+                  type: string
+                  description: Human-readable error description
+                  example: Invalid input value for message part
+                Variables:
+                  type: string
+                  description: Additional error context
+                  example: address
+    MessageIndexResponse:
+      type: object
+      properties:
+        messageIndexInfo:
+          type: object
+          properties:
+            state:
+              type: string
+              description: State token to use for delta synchronization
+              example: state-a1b2c3d4
+            status:
+              type: string
+              description: Index creation status
+              enum:
+              - INITIALIZED
+              - IN_PROGRESS
+              - COMPLETE
+              example: INITIALIZED
   securitySchemes:
     oauth2:
       type: oauth2

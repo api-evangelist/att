@@ -67,41 +67,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    ErrorResponse:
-      type: object
-      properties:
-        RequestError:
-          type: object
-          properties:
-            ServiceException:
-              type: object
-              properties:
-                MessageId:
-                  type: string
-                Text:
-                  type: string
-                Variables:
-                  type: string
-    TokenResponse:
-      type: object
-      properties:
-        access_token:
-          type: string
-          description: OAuth 2.0 access token
-        token_type:
-          type: string
-          enum:
-          - bearer
-          description: Token type
-        expires_in:
-          type: integer
-          description: Token expiration time in seconds
-        refresh_token:
-          type: string
-          description: Refresh token for obtaining new access tokens
-        scope:
-          type: string
-          description: Granted scopes
     TokenRequest:
       type: object
       required:
@@ -132,6 +97,41 @@ components:
         refresh_token:
           type: string
           description: Refresh token (for refresh_token grant)
+    TokenResponse:
+      type: object
+      properties:
+        access_token:
+          type: string
+          description: OAuth 2.0 access token
+        token_type:
+          type: string
+          enum:
+          - bearer
+          description: Token type
+        expires_in:
+          type: integer
+          description: Token expiration time in seconds
+        refresh_token:
+          type: string
+          description: Refresh token for obtaining new access tokens
+        scope:
+          type: string
+          description: Granted scopes
+    ErrorResponse:
+      type: object
+      properties:
+        RequestError:
+          type: object
+          properties:
+            ServiceException:
+              type: object
+              properties:
+                MessageId:
+                  type: string
+                Text:
+                  type: string
+                Variables:
+                  type: string
   securitySchemes:
     oauth2:
       type: oauth2

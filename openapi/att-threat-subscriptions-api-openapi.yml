@@ -92,13 +92,21 @@ components:
           - ACTIVE
           - INACTIVE
           example: ACTIVE
-    Device:
+    ErrorInfo:
       type: object
       properties:
-        phoneNumber:
+        status:
+          type: integer
+          description: HTTP status code
+          example: 400
+        code:
           type: string
-          description: Mobile phone number in E.164 format
-          example: '+12125551234'
+          description: Error code
+          example: INVALID_ARGUMENT
+        message:
+          type: string
+          description: Human-readable error message
+          example: Invalid device identifier
     ThreatSubscriptionRequest:
       type: object
       required:
@@ -125,21 +133,13 @@ components:
           type: string
           description: Bearer token for webhook authentication
           example: webhook-token-abc123
-    ErrorInfo:
+    Device:
       type: object
       properties:
-        status:
-          type: integer
-          description: HTTP status code
-          example: 400
-        code:
+        phoneNumber:
           type: string
-          description: Error code
-          example: INVALID_ARGUMENT
-        message:
-          type: string
-          description: Human-readable error message
-          example: Invalid device identifier
+          description: Mobile phone number in E.164 format
+          example: '+12125551234'
   securitySchemes:
     oauth2:
       type: oauth2

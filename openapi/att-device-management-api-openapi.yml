@@ -162,6 +162,36 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    Resource:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique resource identifier
+          example: resource-500123
+        name:
+          type: string
+          description: Device or SIM name
+          example: Samsung Galaxy S25
+        resourceType:
+          type: string
+          description: Type of resource
+          enum:
+          - device
+          - sim
+          example: device
+        status:
+          type: string
+          description: Resource operational status
+          enum:
+          - active
+          - inactive
+          - suspended
+          example: active
+        serialNumber:
+          type: string
+          description: Device IMEI or SIM ICCID
+          example: IMEI-123456789012345
     ErrorResponse:
       type: object
       properties:
@@ -197,36 +227,6 @@ components:
                 type: string
                 description: New value for the characteristic
                 example: '1234'
-    Resource:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Unique resource identifier
-          example: resource-500123
-        name:
-          type: string
-          description: Device or SIM name
-          example: Samsung Galaxy S25
-        resourceType:
-          type: string
-          description: Type of resource
-          enum:
-          - device
-          - sim
-          example: device
-        status:
-          type: string
-          description: Resource operational status
-          enum:
-          - active
-          - inactive
-          - suspended
-          example: active
-        serialNumber:
-          type: string
-          description: Device IMEI or SIM ICCID
-          example: IMEI-123456789012345
   securitySchemes:
     clientId:
       type: apiKey

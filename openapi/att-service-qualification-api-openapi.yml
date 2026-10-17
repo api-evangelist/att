@@ -66,18 +66,20 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    ErrorResponse:
+    ServiceQualificationResponse:
       type: object
       properties:
-        code:
+        qualificationId:
           type: string
-          description: Error code
-        reason:
+          description: Unique qualification check identifier
+        qualificationDate:
           type: string
-          description: Error reason
-        message:
-          type: string
-          description: Detailed error message
+          format: date
+          description: Date the qualification was performed
+        serviceQualificationItems:
+          type: array
+          items:
+            $ref: '#/components/schemas/ServiceQualificationItem'
     Address:
       type: object
       required:
@@ -102,27 +104,6 @@ components:
         country:
           type: string
           description: ISO 3166-1 alpha-2 country code
-    ServiceQualificationRequest:
-      type: object
-      required:
-      - address
-      properties:
-        address:
-          $ref: '#/components/schemas/Address'
-    ServiceQualificationResponse:
-      type: object
-      properties:
-        qualificationId:
-          type: string
-          description: Unique qualification check identifier
-        qualificationDate:
-          type: string
-          format: date
-          description: Date the qualification was performed
-        serviceQualificationItems:
-          type: array
-          items:
-            $ref: '#/components/schemas/ServiceQualificationItem'
     ServiceQualificationItem:
       type: object
       properties:
@@ -152,6 +133,25 @@ components:
           - string
           - 'null'
           description: Reason service is unavailable (null if available)
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code
+        reason:
+          type: string
+          description: Error reason
+        message:
+          type: string
+          description: Detailed error message
+    ServiceQualificationRequest:
+      type: object
+      required:
+      - address
+      properties:
+        address:
+          $ref: '#/components/schemas/Address'
   securitySchemes:
     oauth2:
       type: oauth2
