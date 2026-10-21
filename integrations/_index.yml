@@ -89,3 +89,1194 @@
     detected: '2026-10-20'
   status: not-a-workflow
   arazzo: null
+- slug: att-callyo
+  label: Callyo
+  partner_name: Callyo
+  category: Community (Send/Receive) Phone Call Engagement Mgt
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=33
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-asavie-technologies
+  label: Asavie Technologies
+  partner_name: Asavie Technologies
+  category: Endpoint Security Enterprise Access and and Access Mgt Persistence
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=33
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-active911-digital-blue-software
+  label: Active911 - Digital Blue Software
+  partner_name: Active911 - Digital Blue Software
+  category: Mission Activities Dispatch
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=33
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-southern-stars-network-inc
+  label: Southern Stars Network, Inc.
+  partner_name: Southern Stars Network, Inc.
+  category: Mission Activities Threat Intelligence
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=33
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-starchase-llc
+  label: StarChase LLC
+  partner_name: StarChase LLC
+  category: Law Enforcement, Mission Activities Dispatch
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=33
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-patrocinium-systems-inc
+  label: Patrocinium Systems, Inc.
+  partner_name: Patrocinium Systems, Inc.
+  category: Community (Receive) On-Scene Info Engagement
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=33
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-esri-inc
+  label: Esri, Inc.
+  partner_name: Esri, Inc.
+  category: Situational Operating Picture - Public Awareness Safety
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=34
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-association-of-american-railroads
+  label: Association of American Railroads
+  partner_name: Association of American Railroads
+  category: External HAZMAT - Railcar Contents Awareness
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=34
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-at-t
+  label: AT&T
+  partner_name: AT&T
+  category: Communications Messaging
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=34
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-select-engineering-services
+  label: Select Engineering Services
+  partner_name: Select Engineering Services
+  category: External Vitals - Injury Alerts Awareness
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=34
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-trek-medics
+  label: Trek Medics
+  partner_name: Trek Medics
+  category: Dispatch CAD Solutions
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=34
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-beamlive-inc
+  label: beamLive Inc
+  partner_name: beamLive Inc
+  category: Operating Picture Situational Awareness
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=34
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-beamlive-inc
+  label: BeamLive, Inc.
+  partner_name: BeamLive, Inc.
+  category: Situational Operating Picture - Public Awareness Safety
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=35
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-the-better-app-company
+  label: The Better App Company
+  partner_name: The Better App Company
+  category: Personal and Health & Wellness Professional Development
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=35
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-mobile4ps
+  label: Mobile4PS
+  partner_name: Mobile4PS
+  category: Communications Collaboration/Interoperabili ty
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=35
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-building-safe
+  label: Building Safe
+  partner_name: Building Safe
+  category: Community (Receive) School Safety Engagement Alert
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=35
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-sander-resources-llc
+  label: Sander Resources LLC
+  partner_name: Sander Resources LLC
+  category: HAZMAT- chemical External Awareness pipeline mapping
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=35
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-guard911
+  label: Guard911
+  partner_name: Guard911
+  category: Community (Receive) School Safety Engagement Alert
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=35
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-cordico-inc
+  label: Cordico Inc
+  partner_name: Cordico Inc
+  category: Personal and Health & Wellness Professional Development
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=36
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-corrata-ltd
+  label: Corrata Ltd.
+  partner_name: Corrata Ltd.
+  category: Endpoint Security Device Security Threat and Access Mgt Protection
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=36
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-crisisgo-inc
+  label: CrisisGo, Inc.
+  partner_name: CrisisGo, Inc.
+  category: Community (Receive) School Safety Engagement Alert
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=36
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-defender-llc
+  label: Defender LLC
+  partner_name: Defender LLC
+  category: External Body-Worn-Camera Awareness
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=36
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-drakontas-llc
+  label: Drakontas, LLC
+  partner_name: Drakontas, LLC
+  category: Situational Operating Picture - Public Awareness Safety
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=36
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-dhs-cisa
+  label: DHS - CISA
+  partner_name: DHS - CISA
+  category: Responder Ops Resource - National Resources
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=36
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-general-devices
+  label: General Devices
+  partner_name: General Devices
+  category: Mission Activities Patient Treatment
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=36
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-nikatec-llc
+  label: Nikatec LLC
+  partner_name: Nikatec LLC
+  category: Mission Activities Patient Triage/Tracking
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=36
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-juvare
+  label: Juvare
+  partner_name: Juvare
+  category: External Assets - Capacity Awareness
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=36
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-digital-blue-software-llc
+  label: Digital Blue Software, LLC
+  partner_name: Digital Blue Software, LLC
+  category: Mission Activities Law Enforcement
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=37
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-erinfopro-inc
+  label: ERinfoPro, Inc.
+  partner_name: ERinfoPro, Inc.
+  category: Community (Receive) Patient Engagement Identification/Info
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=37
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-es-chat
+  label: ES Chat
+  partner_name: ES Chat
+  category: Communications Push-to-Talk (Over-the- Top)
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=37
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-esper-io-inc
+  label: Esper.io.Inc
+  partner_name: Esper.io.Inc
+  category: Endpoint Security App Security Test Tool/SDK and Access Mgt
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=37
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-everywhere-communications
+  label: EVERYWHERE Communications
+  partner_name: EVERYWHERE Communications
+  category: Communications Messaging
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=37
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-firstnet
+  label: FirstNet
+  partner_name: FirstNet
+  category: Mission Activities FirstNet Uplift and Support
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=37
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-fleet-complete
+  label: Fleet Complete
+  partner_name: Fleet Complete
+  category: External Fleet Management Awareness
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=38
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-image-insight-inc
+  label: Image Insight Inc.
+  partner_name: Image Insight Inc.
+  category: External HAZMAT - Radiation Awareness Detection
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=38
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-zco-corporation
+  label: Zco Corporation
+  partner_name: Zco Corporation
+  category: Situational Operating Picture - Smart Awareness Cities
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=38
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-ecoptt-inc
+  label: EcoPTT Inc
+  partner_name: EcoPTT Inc
+  category: Endpoint Security Data Encryption and Access Mgt
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=38
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-bae-systems
+  label: BAE Systems
+  partner_name: BAE Systems
+  category: Tactical Operating Situational Awareness Picture
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=39
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-centrallo-corporation
+  label: Centrallo Corporation
+  partner_name: Centrallo Corporation
+  category: Mission Activities Response Coordination
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=39
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-harman-connected-services-ltd
+  label: Harman Connected Services Ltd
+  partner_name: Harman Connected Services Ltd
+  category: Fleet Management Cloud Solutions
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=39
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-haas-inc
+  label: HAAS, Inc.
+  partner: haas-alert
+  partner_name: HAAS, Inc.
+  category: Community (Send) - Emergency Vehicle Engagement Warning
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=39
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-semotus-inc
+  label: Semotus Inc.
+  partner_name: Semotus Inc.
+  category: Communications Messaging
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=39
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-ibm
+  label: IBM
+  partner_name: IBM
+  category: Endpoint Security Device Fleet and Security and Access Mgt Mgt
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=40
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-imageware-systems-inc
+  label: ImageWare Systems, Inc.
+  partner_name: ImageWare Systems, Inc.
+  category: Endpoint Security Authentication - Biometric and Access Mgt
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=40
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-intrado-life-and-safety
+  label: Intrado Life and Safety
+  partner_name: Intrado Life and Safety
+  category: (Receive) School Community Engagement Safety Alert
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=40
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-translatelive-llc
+  label: TranslateLive LLC
+  partner_name: TranslateLive LLC
+  category: Near real-time Communications translation
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=40
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-vmware
+  label: VMWare
+  partner_name: VMWare
+  category: Endpoint Security Device Fleet and Security and Access Mgt Mgt
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=40
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-jps-interoperability-solutions
+  label: JPS Interoperability Solutions
+  partner_name: JPS Interoperability Solutions
+  category: Communications Push-to-Talk (Over-the- Top)
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=40
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-lighthouse-health-wellness-pbc
+  label: Lighthouse Health & Wellness PBC
+  partner_name: Lighthouse Health & Wellness PBC
+  category: Personal and Health & Wellness Professional Development
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=40
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-lookout-inc
+  label: Lookout Inc.
+  partner_name: Lookout Inc.
+  category: Endpoint Security Device Security Threat and Access Mgt Protection
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=41
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-agis-inc
+  label: AGIS, Inc
+  partner_name: AGIS, Inc
+  category: Situational Operating Picture - Law Awareness Enforcement
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=41
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-everbridge-inc
+  label: Everbridge, Inc.
+  partner: everbridge
+  partner_name: Everbridge, Inc.
+  category: Health & Wellness Public Safety Communication
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=41
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-mindbase-llc
+  label: Mindbase, LLC
+  partner_name: Mindbase, LLC
+  category: Health & Wellness Public Safety Communication
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=41
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-ksi-data-sciences
+  label: KSI Data Sciences
+  partner_name: KSI Data Sciences
+  category: External Drone - Steaming Video Awareness
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=41
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-mobileiron
+  label: MobileIron
+  partner_name: MobileIron
+  category: Endpoint Security Device Security Threat and Access Mgt Protection
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=41
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-mutualink-inc
+  label: Mutualink, Inc.
+  partner_name: Mutualink, Inc.
+  category: Interoperability Communications
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=41
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-netmotion-software
+  label: NetMotion Software
+  partner_name: NetMotion Software
+  category: Endpoint Security Enterprise Access and and Access Mgt Persistence
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=42
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-ocv-llc
+  label: OCV, LLC
+  partner_name: OCV, LLC
+  category: Fleet Management Public Safety Communication
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=42
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-sens-net-canada-ltd
+  label: Sens-Net Canada Ltd.
+  partner_name: Sens-Net Canada Ltd.
+  category: Responder Worker Safety Resources
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=42
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-orion-labs-inc
+  label: Orion Labs, Inc.
+  partner_name: Orion Labs, Inc.
+  category: Communications Push-to-Talk (Over-the- Top)
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=42
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-caliber-public-safety
+  label: Caliber Public Safety
+  partner_name: Caliber Public Safety
+  category: Mission Activities Law Enforcement
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=42
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-mooseworks-software-llc
+  label: Mooseworks Software, LLC
+  partner_name: Mooseworks Software, LLC
+  category: Community (Send/Receive) On-Scene Engagement Info
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=42
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-gdit-under-dhs-cisa
+  label: GDIT Under DHS- CISA
+  partner_name: GDIT Under DHS- CISA
+  category: Communications Govt Secure Messaging
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=42
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-communicare-tech-dba-pulsara
+  label: Communicare Tech (dba Pulsara)
+  partner_name: Communicare Tech (dba Pulsara)
+  category: Mission Activities Patient Treatment
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=42
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-pulsepoint-foundation
+  label: PulsePoint Foundation
+  partner_name: PulsePoint Foundation
+  category: Responder Equipment Tracking - AEDs Resources
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=43
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-quantastat
+  label: QuantaSTAT
+  partner_name: QuantaSTAT
+  category: Mission Activities Patient Triage/Tacking
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=43
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-radio-ip-software-inc
+  label: Radio IP Software, Inc.
+  partner_name: Radio IP Software, Inc.
+  category: Endpoint Security Enterprise Access and and Access Mgt Persistence
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=43
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-rapiddeploy-inc
+  label: RapidDeploy, Inc
+  partner_name: RapidDeploy, Inc
+  category: Mission Activities Dispatch and Emergency Management
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=43
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-rave-mobile-safety
+  label: Rave Mobile Safety
+  partner_name: Rave Mobile Safety
+  category: Communications Messaging
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=43
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-all-clear-foundation
+  label: All Clear Foundation
+  partner_name: All Clear Foundation
+  category: Personal and Health & Wellness Professional Development
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=44
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-intrepid-networks
+  label: Intrepid Networks
+  partner_name: Intrepid Networks
+  category: Situational Operating Picture - Public Awareness Safety
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=44
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-rumbleup
+  label: RumbleUp
+  partner_name: RumbleUp
+  category: Community (Send/Receive) Mass Peer- Engagement to-Peer Messaging
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=44
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-global-sourcing-group-inc
+  label: Global Sourcing Group Inc
+  partner_name: Global Sourcing Group Inc
+  category: Device Fleet and Endpoint Security and Security Mgt Access Mgt
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=44
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-scylla-ai
+  label: Scylla AI
+  partner_name: Scylla AI
+  category: Near real-time Public Safety threat detection Communication
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=44
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-predictable-ryde-inc
+  label: Predictable Ryde Inc.
+  partner_name: Predictable Ryde Inc.
+  category: Community (Receive) School Buses Engagement
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=44
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-drone-analytics
+  label: Drone Analytics
+  partner_name: Drone Analytics
+  category: External Drone - Flight Logs Awareness
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=44
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-sectra-communications
+  label: Sectra Communications
+  partner_name: Sectra Communications
+  category: Endpoint Security Enterprise Access and and Access Mgt Persistence
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=45
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-security-enhancement-systems
+  label: Security Enhancement Systems
+  partner_name: Security Enhancement Systems
+  category: Responder Remote Key Access Resources
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=45
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-tyler-technologies
+  label: Tyler Technologies
+  partner_name: Tyler Technologies
+  category: Mission Activities Law Enforcement
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=45
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-sonim-technologies-inc
+  label: Sonim Technologies, Inc.
+  partner_name: Sonim Technologies, Inc.
+  category: Responder Digital Scanner Resources
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=45
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-02x-human-performance
+  label: 02X Human Performance
+  partner_name: 02X Human Performance
+  category: Personal and Health & Wellness Professional Development
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=45
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-tango-tango-inc
+  label: Tango Tango, Inc.
+  partner_name: Tango Tango, Inc.
+  category: Communications Push-to-Talk (Over-the- Top)
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=45
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-tassta
+  label: TASSTA
+  partner_name: TASSTA
+  category: Communications Push-to-Talk (Over-the- Top)
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=46
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-tbl-systems-inc
+  label: TBL Systems, Inc.
+  partner_name: TBL Systems, Inc.
+  category: Mission Activities Law Enforcement
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=46
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-teamconnect-llc
+  label: TeamConnect, LLC
+  partner_name: TeamConnect, LLC
+  category: Communications Push-to-Talk (Over-the- Top)
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=46
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-qnexis-inc
+  label: Qnexis, Inc.
+  partner_name: Qnexis, Inc.
+  category: Communications Push-to-Talk (Over-the- Top)
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=46
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-logictree-it-solutions-inc
+  label: LogicTree IT Solutions, Inc.
+  partner_name: LogicTree IT Solutions, Inc.
+  category: Responder Agency Information Resources
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=46
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-iir-bja
+  label: IIR - BJA
+  partner_name: IIR - BJA
+  category: Personal and Health, Wellness, and Professional Training Development
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=46
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-visual-labs-inc
+  label: Visual Labs Inc.
+  partner_name: Visual Labs Inc.
+  category: External Body-Worn-Camera Awareness
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=46
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-southwest-synergistic-solutions-llc
+  label: Southwest Synergistic Solutions, LLC
+  partner_name: Southwest Synergistic Solutions, LLC
+  category: Responder On-Scene Signaling Resources
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=47
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-vitals-aware-services-inc
+  label: Vitals™ Aware Services, Inc.
+  partner_name: Vitals™ Aware Services, Inc.
+  category: Community (Receive) Personal Engagement Encounter Awareness
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=47
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-vizsafe-inc
+  label: Vizsafe, Inc.
+  partner_name: Vizsafe, Inc.
+  category: Situational Operating Picture - Public Awareness Safety
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=47
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-salient-crgt
+  label: Salient CRGT
+  partner_name: Salient CRGT
+  category: Mission Activities Law Enforcement
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=47
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-motorola-solutions
+  label: Motorola Solutions
+  partner: motorola-solutions
+  partner_name: Motorola Solutions
+  category: Communications Push-to-Talk (Over-the- Top)
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=47
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-what3words-ltd
+  label: What3Words LTD
+  partner_name: What3Words LTD
+  category: External Location Identification Awareness
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=47
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-wickrpro
+  label: WickrPro
+  partner_name: WickrPro
+  category: Messaging and Communications communication
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=47
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-tidyware-llc
+  label: Tidyware, LLC
+  partner_name: Tidyware, LLC
+  category: Responder Worker Safety Resources
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=48
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-tchtnk-llc-dba-irel8
+  label: TchTnk, LLC dba iRel8
+  partner_name: TchTnk, LLC dba iRel8
+  category: Health & Wellness Public Safety Communication
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=48
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: att-zimperium
+  label: Zimperium
+  partner_name: Zimperium
+  category: Endpoint Security Device Security Threat and Access Mgt Protection
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=48
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null

@@ -103,6 +103,2549 @@ edges:
     detected: '2026-10-20'
   detected_by: sweep-network-edge.py
   first_seen: '2026-10-20'
+- partner_name: Callyo
+  app: 10-21 Police Phone
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=33
+  category: Community (Send/Receive) Phone Call Engagement Mgt
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: '~'
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: https://10-21.com/police-phone
+- partner_name: Callyo
+  app: 10-21 Video
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=33
+  category: External Body-Worn-Camera Awareness
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: https://10-21.com/
+- partner_name: Asavie Technologies
+  app: AccessMyLAN for FirstNet®
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=33
+  category: Endpoint Security Enterprise Access and and Access Mgt Persistence
+  badges:
+  - FirstNet Certified
+  os_designation:
+    android: C
+    ios: C
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: https://www.asavie.com/accessmylan/
+- partner_name: Active911 - Digital Blue Software
+  app: Active Alert
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=33
+  category: Mission Activities Dispatch
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: http://www.active911.com/
+- partner_name: Southern Stars Network, Inc.
+  app: Actual Live
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=33
+  category: Mission Activities Threat Intelligence
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: https://theactual.live/
+- partner_name: StarChase LLC
+  app: AppTrac365
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=33
+  category: Law Enforcement, Mission Activities Dispatch
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+- partner_name: Patrocinium Systems, Inc.
+  app: ArcAngel
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=33
+  category: Community (Receive) On-Scene Info Engagement
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: https://www.patrocinium.com/first-responders/
+- partner_name: Esri, Inc.
+  app: ArcGIS Explorer
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=34
+  category: Situational Operating Picture - Public Awareness Safety
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: https://www.esri.com/en-us/industries/emergency-communications/solutions/firstnet-esri?rmedium=esri_com_redirects01&rsource=/en-us/industries/public-safety/firstnet-esri
+  partner_held:
+    candidate: esri
+    why: 'market-fit gate: partner''s own tags carry no public-safety / emergency / law-enforcement term'
+- partner_name: Association of American Railroads
+  app: AskRail
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=34
+  category: External HAZMAT - Railcar Contents Awareness
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: '~'
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: http://askrail.us/
+- partner_name: AT&T
+  app: AT&T Business Messenger
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=34
+  category: Communications Messaging
+  badges:
+  - FirstNet Certified
+  os_designation:
+    android: C
+    ios: C
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: https://www.business.att.com/products/business-messaging.html
+- partner_name: AT&T
+  app: AT&T Enhanced Push-to-Talk
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=34
+  category: Communications Push-to-Talk (Over-the- Top)
+  badges:
+  - FirstNet Certified
+  os_designation:
+    android: C
+    ios: C
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: https://www.att.com/shop/wireless/features/enhanced-push-to-talk-sku6290267.html
+- partner_name: AT&T
+  app: AT&T Workforce Manager Shield
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=34
+  category: Situational Operating Picture - Field Awareness Data Collection
+  badges:
+  - FirstNet Certified
+  os_designation:
+    android: C
+    ios: C
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: https://www.business.att.com/products/workforce-manager.html
+- partner_name: Select Engineering Services
+  app: Automatic Injury Detection
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=34
+  category: External Vitals - Injury Alerts Awareness
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: http://www.selectengineering.net/
+- partner_name: Trek Medics
+  app: Beacon Emergency Dispatch
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=34
+  category: Dispatch CAD Solutions
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+- partner_name: beamLive Inc
+  app: beamOnMoveFirst
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=34
+  category: Operating Picture Situational Awareness
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: '~'
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+- partner_name: BeamLive, Inc.
+  app: beamFirst
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=35
+  category: Situational Operating Picture - Public Awareness Safety
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: '~'
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: https://first-admin.beam.live/
+- partner_name: The Better App Company
+  app: Better app
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=35
+  category: Personal and Health & Wellness Professional Development
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: '~'
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: https://thebetterappcompany.com/
+- partner_name: The Better App Company
+  app: Better Stop Suicide
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=35
+  category: Personal and Health & Wellness Professional Development
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: '~'
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: https://thebetterappcompany.com/
+- partner_name: Mobile4PS
+  app: Bridge4PS
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=35
+  category: Communications Collaboration/Interoperabili ty
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: https://www.bridge4ps.com/
+- partner_name: Building Safe
+  app: Building Safe
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=35
+  category: Community (Receive) School Safety Engagement Alert
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: http://buildingsafeapp.com/
+- partner_name: Sander Resources LLC
+  app: Buxus
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=35
+  category: HAZMAT- chemical External Awareness pipeline mapping
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+- partner_name: Guard911
+  app: CampusGuard911
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=35
+  category: Community (Receive) School Safety Engagement Alert
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: https://www.guard911.com/
+- partner_name: Cordico Inc
+  app: Cordico
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=36
+  category: Personal and Health & Wellness Professional Development
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: '~'
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+- partner_name: Corrata Ltd.
+  app: Corrata
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=36
+  category: Endpoint Security Device Security Threat and Access Mgt Protection
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: https://corrata.com/
+- partner_name: CrisisGo, Inc.
+  app: CrisisGo
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=36
+  category: Community (Receive) School Safety Engagement Alert
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: http://www.crisisgo.com/
+- partner_name: Defender LLC
+  app: Defender Body Worn
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=36
+  category: External Body-Worn-Camera Awareness
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: '~'
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: http://defender-ai.com/
+- partner_name: Drakontas, LLC
+  app: DragonForce
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=36
+  category: Situational Operating Picture - Public Awareness Safety
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: http://www.drakontas.com/
+- partner_name: DHS - CISA
+  app: eAUXFOG
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=36
+  category: Responder Ops Resource - National Resources
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: https://www.dhs.gov/safecom/eauxfog-mobile-app
+- partner_name: General Devices
+  app: e-Bridge
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=36
+  category: Mission Activities Patient Treatment
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: http://www.general-devices.com/
+- partner_name: Nikatec LLC
+  app: EMOS1
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=36
+  category: Mission Activities Patient Triage/Tracking
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: http://nikatec.com/
+- partner_name: Juvare
+  app: EMResource
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=36
+  category: External Assets - Capacity Awareness
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: https://www.juvare.com/emresource/
+- partner_name: Juvare
+  app: EMTrack
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=37
+  category: External Assets - Tracking Awareness
+  badges:
+  - FirstNet Certified
+  os_designation:
+    android: C
+    ios: '~'
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: https://www.juvare.com/emtrack/
+- partner_name: Digital Blue Software, LLC
+  app: EnforceNet
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=37
+  category: Mission Activities Law Enforcement
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: https://www.digitalbluesoftware.com/
+- partner_name: DHS - CISA
+  app: eNIFOG
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=37
+  category: Responder Ops Resource - National Resources
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: https://www.dhs.gov/safecom/enifog-mobile-app
+- partner_name: ERinfoPro, Inc.
+  app: ERinfoPRO for FirstNet®
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=37
+  category: Community (Receive) Patient Engagement Identification/Info
+  badges:
+  - FirstNet Certified
+  os_designation:
+    android: C
+    ios: '~'
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: https://erinfo.me/
+- partner_name: ES Chat
+  app: ESChat (Push-to- Talk)
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=37
+  category: Communications Push-to-Talk (Over-the- Top)
+  badges:
+  - FirstNet Certified
+  os_designation:
+    android: C
+    ios: C
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: https://www.eschat.com/index.php?page=firstnet
+- partner_name: Esper.io.Inc
+  app: Esper Device Management
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=37
+  category: Endpoint Security App Security Test Tool/SDK and Access Mgt
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: '~'
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: https://esper.io/
+  partner_held:
+    candidate: esper
+    why: 'market-fit gate: partner''s own tags carry no public-safety / emergency / law-enforcement term'
+- partner_name: EVERYWHERE Communications
+  app: EVERYWHERE
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=37
+  category: Communications Messaging
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: http://www.everywherecomms.com/
+- partner_name: FirstNet
+  app: FirstNet® Assist
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=37
+  category: Mission Activities FirstNet Uplift and Support
+  badges:
+  - FirstNet Certified
+  os_designation:
+    android: C
+    ios: C
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: http://www.firstnet.com/
+- partner_name: FirstNet
+  app: FirstNet® Cybersecurity Aware
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=38
+  category: Personal and Training - Cybersecurity Professional Development
+  badges:
+  - FirstNet Certified
+  os_designation:
+    android: C
+    ios: C
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: http://www.firstnet.com/
+- partner_name: FirstNet
+  app: FirstNet® Messaging
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=38
+  category: Communications Messaging
+  badges:
+  - FirstNet Certified
+  os_designation:
+    android: C
+    ios: C
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: http://www.firstnet.com/
+- partner_name: FirstNet
+  app: FirstNet® Push-to- Talk
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=38
+  category: Communications Push-to-Talk (FirstNet Core)
+  badges:
+  - FirstNet Certified
+  os_designation:
+    android: C
+    ios: '~'
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: http://www.firstnet.com/
+- partner_name: FirstNet
+  app: FirstNet® Single Sign-On
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=38
+  category: Endpoint Security Authentication - SSO and Access Mgt
+  badges:
+  - FirstNet Certified
+  os_designation:
+    android: C
+    ios: C
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: http://www.firstnet.com/
+- partner_name: Fleet Complete
+  app: FleetComplete®
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=38
+  category: External Fleet Management Awareness
+  badges:
+  - FirstNet Certified
+  os_designation:
+    android: C
+    ios: C
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: https://urldefense.proofpoint.com/v2/url?u=https-3A__att.fleetcomplete.com_government-2Dfleet-2Dsolutions_smart-2Dgreen-2Dcities_&d=DwMGaQ&c=LFYZ-o9_HUMeMTSQicvjIg&r=0FEJamv_EePifGgG4qXcJw&m=kkg1uwnax2uOHyHTVzh8_oxbEErMSLmJwhH0uWcebsY&s=-SYabGebBZihArkzddgIZ18lFDy_tKr2H487vJaCcBc&e=
+- partner_name: Image Insight Inc.
+  app: GammaPix Pro Command Center
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=38
+  category: External HAZMAT - Radiation Awareness Detection
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: '~'
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: https://www.imageinsightinc.com/
+- partner_name: Image Insight Inc.
+  app: GammaPix Training Simulator
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=38
+  category: Responder Training - Hazmat Resources
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: '~'
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: https://www.imageinsightinc.com/
+- partner_name: Zco Corporation
+  app: Geoteamz City
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=38
+  category: Situational Operating Picture - Smart Awareness Cities
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: '~'
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: https://city.geoteamz.com/
+- partner_name: EcoPTT Inc
+  app: GovSecure
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=38
+  category: Endpoint Security Data Encryption and Access Mgt
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: '~'
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+- partner_name: BAE Systems
+  app: GXP OnScene
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=39
+  category: Tactical Operating Situational Awareness Picture
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_held:
+    candidate: bae-systems
+    why: 'market-fit gate: partner''s own tags carry no public-safety / emergency / law-enforcement term'
+- partner_name: Centrallo Corporation
+  app: Groupdolists
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=39
+  category: Mission Activities Response Coordination
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: https://www.groupdolists.com/
+- partner_name: Guard911
+  app: Guard911
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=39
+  category: Community (Receive) Safety Alert - Engagement Business
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: https://www.guard911.com/
+- partner_name: Harman Connected Services Ltd
+  app: Harman Spark
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=39
+  category: Fleet Management Cloud Solutions
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+- partner_name: HAAS, Inc.
+  app: HAAS Alert
+  partner: haas-alert
+  partner_match: domain
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=39
+  category: Community (Send) - Emergency Vehicle Engagement Warning
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: '~'
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: https://www.haasalert.com/
+- partner_name: Zco Corporation
+  app: Hazmat Radar
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=39
+  category: Community (Send) COVID Infection Engagement Alert
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: '~'
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: https://www.geoteamz.com/covid19/
+- partner_name: Guard911
+  app: Hero911
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=39
+  category: Community (Receive) School Safety Engagement Alert
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: https://www.guard911.com/
+- partner_name: Semotus Inc.
+  app: HipLink Mobile
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=39
+  category: Communications Messaging
+  badges:
+  - FirstNet Certified
+  os_designation:
+    android: C
+    ios: C
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: http://www.hiplink.com/
+- partner_name: IBM
+  app: IBM MaaS 360
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=40
+  category: Endpoint Security Device Fleet and Security and Access Mgt Mgt
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: https://www.business.att.com/products/ibm-maas360.html
+- partner_name: ImageWare Systems, Inc.
+  app: ImageWare Authenticator
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=40
+  category: Endpoint Security Authentication - Biometric and Access Mgt
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: https://www.iwsinc.om/
+- partner_name: Intrado Life and Safety
+  app: Intrado Safety Shield
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=40
+  category: (Receive) School Community Engagement Safety Alert
+  badges:
+  - FirstNet Certified
+  os_designation:
+    android: C
+    ios: C
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+- partner_name: TranslateLive LLC
+  app: Instant Language Assistant
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=40
+  category: Near real-time Communications translation
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+- partner_name: VMWare
+  app: Intelligent Hub - Workspace One
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=40
+  category: Endpoint Security Device Fleet and Security and Access Mgt Mgt
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: https://www.business.att.com/products/vmware.html
+- partner_name: JPS Interoperability Solutions
+  app: JPS VIA
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=40
+  category: Communications Push-to-Talk (Over-the- Top)
+  badges:
+  - FirstNet Certified
+  os_designation:
+    android: C
+    ios: C
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: https://www.jpsinterop.com/
+- partner_name: DHS - CISA
+  app: Kansas eFOG
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=40
+  category: Responder Ops Resource - State Resources
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: https://appadvice.com/app/kansas-efog/1357746057
+- partner_name: Lighthouse Health & Wellness PBC
+  app: Lighthouse Health & Wellness
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=40
+  category: Personal and Health & Wellness Professional Development
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: https://www.lighthousew.org/
+- partner_name: Lookout Inc.
+  app: Lookout for Work
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=41
+  category: Endpoint Security Device Security Threat and Access Mgt Protection
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: https://www.lookout.com/products/mobile-endpoint-security
+  partner_held:
+    candidate: lookout
+    why: 'market-fit gate: partner''s own tags carry no public-safety / emergency / law-enforcement term'
+- partner_name: AGIS, Inc
+  app: LR Responder
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=41
+  category: Situational Operating Picture - Law Awareness Enforcement
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: '~'
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: https://www.agisinc.com/
+- partner_name: Everbridge, Inc.
+  app: ManageBridge
+  partner: everbridge
+  partner_match: domain
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=41
+  category: Health & Wellness Public Safety Communication
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: '~'
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  identity: wikidata Q16957455 'Everbridge' P856 http://everbridge.com
+  identity_source: wikidata P856 (labelled provenance step; Kin 2026-10-15 decision 1)
+- partner_name: Mindbase, LLC
+  app: Mindbase - Health and Wellness
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=41
+  category: Health & Wellness Public Safety Communication
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: '~'
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+- partner_name: KSI Data Sciences
+  app: Mission Keeper Mobile-X7
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=41
+  category: External Drone - Steaming Video Awareness
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: '~'
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: http://www.ksidatasciences.com/
+- partner_name: MobileIron
+  app: Mobile @ Work
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=41
+  category: Endpoint Security Device Security Threat and Access Mgt Protection
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: https://www.business.att.com/products/mobile-iron.html
+- partner_name: MobileIron
+  app: MobileIron Go
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=41
+  category: Endpoint Security Device Fleet and Security and Access Mgt Mgt
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: https://www.business.att.com/products/mobile-iron.html
+- partner_name: Nikatec LLC
+  app: MPTS
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=41
+  category: Mission Activities Patient Treatment
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: http://nikatec.com/
+- partner_name: Mutualink, Inc.
+  app: Mutualink LNK360
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=41
+  category: Interoperability Communications
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+- partner_name: Mutualink, Inc.
+  app: Mutualink Edge
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=41
+  category: Communications Interoperability
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: https://mutualink.net/push-to-talk/
+- partner_name: Mutualink, Inc.
+  app: Mutualink Edge @Team
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=42
+  category: Communications Interoperability
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: https://mutualink.net/
+- partner_name: NetMotion Software
+  app: NetMotion Mobility
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=42
+  category: Endpoint Security Enterprise Access and and Access Mgt Persistence
+  badges:
+  - FirstNet Certified
+  os_designation:
+    android: C
+    ios: C
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: https://www.business.att.com/products/netmotion.html
+- partner_name: OCV, LLC
+  app: OCV Wellness
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=42
+  category: Fleet Management Public Safety Communication
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+- partner_name: Sens-Net Canada Ltd.
+  app: OnGuard Lone Worker
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=42
+  category: Responder Worker Safety Resources
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: http://onguardlonesafety.com/
+- partner_name: Orion Labs, Inc.
+  app: Orion Push-to-Talk
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=42
+  category: Communications Push-to-Talk (Over-the- Top)
+  badges:
+  - FirstNet Certified
+  os_designation:
+    android: '~'
+    ios: C
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: http://www.orionlabs.io/
+- partner_name: Caliber Public Safety
+  app: PocketCop®
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=42
+  category: Mission Activities Law Enforcement
+  badges:
+  - FirstNet Certified
+  os_designation:
+    android: '~'
+    ios: C
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: https://caliberpublicsafety.com/mobile-solutions/
+- partner_name: Mooseworks Software, LLC
+  app: Private Safety Network
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=42
+  category: Community (Send/Receive) On-Scene Engagement Info
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+- partner_name: GDIT Under DHS- CISA
+  app: PTS Dialer
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=42
+  category: Communications Govt Secure Messaging
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: https://www.gdit.com/
+- partner_name: Communicare Tech (dba Pulsara)
+  app: Pulsara
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=42
+  category: Mission Activities Patient Treatment
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: http://www.pulsara.com/
+- partner_name: PulsePoint Foundation
+  app: PulsePoint AED
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=43
+  category: Responder Equipment Tracking - AEDs Resources
+  badges:
+  - FirstNet Certified
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: C
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: http://www.pulsepoint.org/
+- partner_name: PulsePoint Foundation
+  app: PulsePoint Respond
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=43
+  category: Community (Send) CPR Assistance Engagement Request
+  badges:
+  - FirstNet Certified
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: C
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: http://www.pulsepoint.org/
+- partner_name: QuantaSTAT
+  app: QS First Responder
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=43
+  category: Mission Activities Patient Triage/Tacking
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: '~'
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: https://www.quantastat.com/first-responder
+- partner_name: QuantaSTAT
+  app: QuantaSTAT for Teams
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=43
+  category: Responder Health & Wellness Resources
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: '~'
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: https://www.quantastat.com/teams
+- partner_name: Radio IP Software, Inc.
+  app: Radio IP Armada Mobile VPN
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=43
+  category: Endpoint Security Enterprise Access and and Access Mgt Persistence
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: http://www.radioip.com/en/
+- partner_name: RapidDeploy, Inc
+  app: RapidDeploy Nimbus
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=43
+  category: Mission Activities Dispatch and Emergency Management
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: https://www.rapiddeploy.com/
+- partner_name: Rave Mobile Safety
+  app: Rave Guardian
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=43
+  category: Communications Messaging
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: https://www.ravemobilesafety.com/
+- partner_name: Rave Mobile Safety
+  app: Rave Panic Button
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=43
+  category: Community (Receive) School Safety Engagement Alert
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: https://www.ravemobilesafety.com/
+- partner_name: All Clear Foundation
+  app: ResponderRel8
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=44
+  category: Personal and Health & Wellness Professional Development
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: http://irel8.org/
+- partner_name: Intrepid Networks
+  app: Response for FirstNet®
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=44
+  category: Situational Operating Picture - Public Awareness Safety
+  badges:
+  - FirstNet Certified
+  os_designation:
+    android: C
+    ios: C
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: https://intrepid-networks.com/
+- partner_name: RumbleUp
+  app: RumbleUp
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=44
+  category: Community (Send/Receive) Mass Peer- Engagement to-Peer Messaging
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: '~'
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: https://pro.rumbleup.com/
+- partner_name: Global Sourcing Group Inc
+  app: Sakon Mobility Management
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=44
+  category: Device Fleet and Endpoint Security and Security Mgt Access Mgt
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+- partner_name: Scylla AI
+  app: Scylla
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=44
+  category: Near real-time Public Safety threat detection Communication
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: '~'
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+- partner_name: Global Sourcing Group Inc
+  app: Sakon Mobility Management
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=44
+  category: Device Fleet and Endpoint Security and Security Mgt Access Mgt
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+- partner_name: Predictable Ryde Inc.
+  app: SAFEBUS by Predictable Ryde
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=44
+  category: Community (Receive) School Buses Engagement
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: '~'
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: http://www.sonimsafebus.info/
+- partner_name: Drone Analytics
+  app: SafetyDrone
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=44
+  category: External Drone - Flight Logs Awareness
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: https://www.safetydrone.org/
+- partner_name: Guard911
+  app: SchoolGuard
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=45
+  category: Community (Receive) School Safety Engagement Alert
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: https://www.guard911.com/
+- partner_name: Sectra Communications
+  app: Sectra Mobile VPN
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=45
+  category: Endpoint Security Enterprise Access and and Access Mgt Persistence
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: '~'
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: https://communications.sectra.com/
+- partner_name: Security Enhancement Systems
+  app: SES Remote Access Control
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=45
+  category: Responder Remote Key Access Resources
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: http://www.securityesys.com/
+- partner_name: Tyler Technologies
+  app: Shield Force
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=45
+  category: Mission Activities Law Enforcement
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: '~'
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: http://www.tylertech.com/
+- partner_name: Sonim Technologies, Inc.
+  app: Sonim Scan
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=45
+  category: Responder Digital Scanner Resources
+  badges:
+  - FirstNet Certified
+  os_designation:
+    android: C
+    ios: '~'
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: https://store.sonimtech.com/pages/sonimscan-xp8
+- partner_name: Sonim Technologies, Inc.
+  app: Sonim SOS
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=45
+  category: Responder Worker Safety Resources
+  badges:
+  - FirstNet Certified
+  os_designation:
+    android: C
+    ios: '~'
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: https://store.sonimtech.com/pages/sonimscan-xp8
+- partner_name: 02X Human Performance
+  app: Tactical Performance
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=45
+  category: Personal and Health & Wellness Professional Development
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: '~'
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: https://o2x.com/
+- partner_name: Tango Tango, Inc.
+  app: Tango Tango
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=45
+  category: Communications Push-to-Talk (Over-the- Top)
+  badges:
+  - FirstNet Certified
+  os_designation:
+    android: C
+    ios: C
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: http://www.tangotango.net/
+- partner_name: TASSTA
+  app: TASSTAT.Flex
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=46
+  category: Communications Push-to-Talk (Over-the- Top)
+  badges:
+  - FirstNet Certified
+  os_designation:
+    android: C
+    ios: '~'
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: http://tassta.com/
+- partner_name: TBL Systems, Inc.
+  app: TBL Universal Reporting
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=46
+  category: Mission Activities Law Enforcement
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: '~'
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: http://www.tblsys.com/
+- partner_name: TeamConnect, LLC
+  app: TeamConnect
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=46
+  category: Communications Push-to-Talk (Over-the- Top)
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: '~'
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: http://www.teamconnectusa.com/
+- partner_name: Qnexis, Inc.
+  app: TULU Pro
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=46
+  category: Communications Push-to-Talk (Over-the- Top)
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: https://www.qnexis.com/tulupro
+- partner_name: DHS - CISA
+  app: TX eFOG
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=46
+  category: Responder Ops Resource – State Resources
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: https://www.cisa.gov/safecome/resources
+- partner_name: LogicTree IT Solutions, Inc.
+  app: USPD Hub
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=46
+  category: Responder Agency Information Resources
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: '~'
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: http://www.logictree.com/
+- partner_name: IIR - BJA
+  app: VALOR Officer Safety
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=46
+  category: Personal and Health, Wellness, and Professional Training Development
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+- partner_name: Visual Labs Inc.
+  app: Visual Labs for FirstNet
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=46
+  category: External Body-Worn-Camera Awareness
+  badges:
+  - FirstNet Certified
+  os_designation:
+    android: C
+    ios: '~'
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: https://visuallabsinc.com/
+- partner_name: Southwest Synergistic Solutions, LLC
+  app: Visual911+
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=47
+  category: Responder On-Scene Signaling Resources
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: http://www.everythingtactical.com/
+- partner_name: Vitals™ Aware Services, Inc.
+  app: Vitals First Responder
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=47
+  category: Community (Receive) Personal Engagement Encounter Awareness
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: http://thevitalsapp.com/
+- partner_name: Vizsafe, Inc.
+  app: Vizsafe
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=47
+  category: Situational Operating Picture - Public Awareness Safety
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: http://www.vizsafe.com/
+- partner_name: Salient CRGT
+  app: Voyager Query
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=47
+  category: Mission Activities Law Enforcement
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: https://www.salientcrgt.com/
+- partner_name: Salient CRGT
+  app: Voyager SAFE
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=47
+  category: Community School Safety Engagement
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: https://www.salientcrgt.com/
+- partner_name: Motorola Solutions
+  app: Wave Push-to-Talk (PTT)
+  partner: motorola-solutions
+  partner_match: domain+name-among-holders
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=47
+  category: Communications Push-to-Talk (Over-the- Top)
+  badges:
+  - FirstNet Certified
+  os_designation:
+    android: C
+    ios: '~'
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: http://waveoncloud.com/
+  identity: wikidata Q634815 'Motorola Solutions' P856 https://www.motorolasolutions.com/
+  identity_source: wikidata P856 (labelled provenance step; Kin 2026-10-15 decision 1)
+- partner_name: What3Words LTD
+  app: What3Words Lite
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=47
+  category: External Location Identification Awareness
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: https://what3words.com/clip.apples.leap
+  partner_held:
+    candidate: what3words
+    why: 'market-fit gate: partner''s own tags carry no public-safety / emergency / law-enforcement term'
+- partner_name: WickrPro
+  app: WickrPro
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=47
+  category: Messaging and Communications communication
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+- partner_name: Tidyware, LLC
+  app: WorkerSafety Pro - Safety Alerts
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=48
+  category: Responder Worker Safety Resources
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: https://fallsafetyapp.com/
+- partner_name: TchTnk, LLC dba iRel8
+  app: Youturn Health
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=48
+  category: Health & Wellness Public Safety Communication
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+- partner_name: DHS - CISA
+  app: WV eFOG
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=48
+  category: Responder Ops Resource – State Resources
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: https://www.dhs.gov/safecom/eauxfog-mobile-app
+- partner_name: Zimperium
+  app: ZIMPERIUM Mobile IPS / zIPS
+  partner: null
+  partner_match: null
+  type: marketplace
+  marketplace: firstnet-app-catalog
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf#page=48
+  category: Endpoint Security Device Security Threat and Access Mgt Protection
+  badges:
+  - FirstNet Verified
+  os_designation:
+    android: V
+    ios: V
+  as_of: '2023-03-08'
+  detected_by: sweep-public-safety-ng911.py
+  detected: '2026-10-20'
+  partner_url: https://www.zimperium.com/
+  partner_held:
+    candidate: zimperium
+    why: 'market-fit gate: partner''s own tags carry no public-safety / emergency / law-enforcement term'
 generated: '2026-10-12'
 method: searched
 checked:
@@ -113,6 +2656,14 @@ checked:
 - https://www.peeringdb.com/api/fac
 - https://www.peeringdb.com/api/ix
 - https://www.peeringdb.com/api/net
+- https://appcomm.org/
+- https://apps.firstnet.att.com/
+- https://cbi.colorado.gov/criminal-justice/cjis-security/cjis-vendor-management-program/vendor-directory
+- https://www.dps.texas.gov/section/infrastructure-operations/vendor-forms
+- https://www.firstnet.com/apps.html
+- https://www.firstnet.com/content/dam/firstnet/white-papers/firstnet-app-catalog-booklet.pdf
+- https://www.ijis.org/
+- https://www.nena.org/
 marketplace_apps: []
 source:
 - https://www.peeringdb.com/api/net
